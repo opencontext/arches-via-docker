@@ -33,8 +33,7 @@ But for Docker Compose there is no such popular and robust tool for TLS certific
 The example supports separate TLS certificates for multiple domain names, e.g. example.com, anotherdomain.net etc.
 For simplicity this example deals with the following domain names:
 
-* teach1.with.arches.org
-* teach2.with.arches.org
+* teach-with-arches.org
 
 The idea is simple. There are 3 containers:
 
