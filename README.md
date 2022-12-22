@@ -70,8 +70,8 @@ The directories and files:
 To adapt the example to your domain names you need to change only `config.env`:
 
 ```properties
-DOMAINS=teach1.with.arches.org teach2.with.arches.org
-CERTBOT_EMAILS=info@teach.with.arches.org info@teach2.with.arches.org
+DOMAINS=teach-with-arches.org
+CERTBOT_EMAILS=info@teach-with-arches.org info@teach2.with.arches.org
 CERTBOT_TEST_CERT=1
 CERTBOT_RSA_KEY_SIZE=4096
 ```
@@ -104,8 +104,8 @@ For all domain names configure DNS A records to point to a server where Docker c
 Specify you domain names and contact emails for these domains in the `config.env`:
 
 ```properties
-DOMAINS=teach.with.arches.org
-CERTBOT_EMAILS=info@teach.with.arches.org
+DOMAINS=teach-with-arches.org
+CERTBOT_EMAILS=info@teach-with-arches.org
 ```
 
 ## Step 2 - Create named Docker volumes for dummy and Let's Encrypt TLS certificates
