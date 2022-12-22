@@ -1,0 +1,141 @@
+version: "3"
+
+services:
+
+  arches_couchdb:
+    container_name: arches_couchdb
+    image: couchdb:2.1.1
+    ports:
+      - "5984:5984"
+    volumes:
+      - couchdb-data:/usr/local/var/lib/couchdb
+      - couchdb-log:/usr/local/var/log/couchdb
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=password
+    networks:
+      - arches_net
+
+  arches_elasticsearch:
+    container_name: arches_elasticsearch
+    image: elasticsearch:7.9.2
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - TZ=PST
+      - discovery.type=single-node
+      - discovery.seed_hosts=
+      - "ES_JAVA_OPTS=-Xms400m -Xmx400m"
+    networks:
+      - arches_net
+
+  arches_rabbitmq:
+    container_name: arches_rabbitmq
+    image: rabbitmq:3-management
+    hostname: my-rabbit
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq/mnesia/rabbit@my-rabbit
+      - rabbitmq-logs:/var/log/rabbitmq/log
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - arches_net
+
+  arches:
+    container_name: arches
+    image: arches
+    restart: always
+    env_file:
+      - ./.env
+    build:
+      context: .
+      dockerfile: arches/Dockerfile
+    environment:
+      - DEBUG="${DEBUG}"
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    ports:
+      - "5432:5432"
+      - "8983:8983"
+    expose:
+      - 8000
+    volumes:
+      -  $PWD:/deploy_files
+      - ./logs/arches:/arches/logs
+    depends_on:
+      - arches_couchdb
+      - arches_elasticsearch
+      - arches_rabbitmq
+    networks:
+      - arches_net
+
+  nginx:
+    container_name: nginx
+    build: ./nginx
+    image: arches_oc/nginx
+    env_file:
+      - ./config.env
+    volumes:
+      - ./logs/nginx:/logs/nginx
+      - nginx_ssl:/etc/nginx/ssl
+      - certbot_certs:/etc/letsencrypt
+      - arches_certbot:"/var/www/certbot/${DOMAIN}"
+      - ./html:"/var/www/html/${DOMAIN}"
+    ports:
+      - "8000:8000"
+      - "80:80"
+      - "443:443"
+    restart: always
+    depends_on:
+      - arches
+    networks:
+      - arches_net
+
+  certbot:
+    build: ./certbot
+    image: arches_oc/certbot
+    env_file:
+      - ./config.env
+    volumes:
+      - certbot_certs:/etc/letsencrypt
+      - arches_certbot:"/var/www/certbot/${DOMAIN}"
+    depends_on:
+      - nginx
+
+  cron:
+    build: ./cron
+    image: arches_oc/cron
+    environment:
+      COMPOSE_PROJECT_NAME: "${COMPOSE_PROJECT_NAME}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./:/workdir:ro
+    depends_on:
+      - nginx
+      - certbot
+
+networks:
+  arches_net:
+    external: true
+    name: arches_net
+
+volumes:
+  logs_nginx:
+    external: true
+  nginx_ssl:
+    external: true
+  certbot_certs:
+    external: true
+  arches_certbot:
+    external: true
+  couchdb-data:
+  couchdb-log:
+  postgres-data:
+  postgres-log:
+  elasticsearch-data:
+  rabbitmq-logs:
+  rabbitmq-data:
