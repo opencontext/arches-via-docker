@@ -11,6 +11,7 @@ ENV WHEELS=/wheels
 ENV PYTHONUNBUFFERED=1
 
 RUN apt-get update && apt-get install -y make software-properties-common
+RUN add-apt-repository ppa:deadsnakes/ppa
 
 # Get the pre-built python wheels from the build environment
 RUN mkdir ${WEB_ROOT}
@@ -23,6 +24,7 @@ RUN mkdir ${WEB_ROOT}
 RUN set -ex \
     && RUN_DEPS=" \
         build-essential \
+        python3.10 \
         python3.10-dev \
         mime-support \
         libgdal-dev \
