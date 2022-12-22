@@ -3,7 +3,7 @@ Deployment of Arches (archesproject.org) via Docker for archaeology and related 
 
 
 # NOTE
-This repo will hopefully streamline deployment of Arches for use in archaeological teaching and learning applications. 
+This repo will hopefully streamline deployment of Arches for use in archaeological teaching and learning applications.
 The repo started by forking:
 https://github.com/evgeniy-khist/letsencrypt-docker-compose
 
@@ -33,10 +33,10 @@ But for Docker Compose there is no such popular and robust tool for TLS certific
 The example supports separate TLS certificates for multiple domain names, e.g. example.com, anotherdomain.net etc.
 For simplicity this example deals with the following domain names:
 
-* test1.devcomanda.com
-* test2.devcomanda.com
+* teach1.with.arches.org
+* teach2.with.arches.org
 
-The idea is simple. There are 3 containers: 
+The idea is simple. There are 3 containers:
 
 * Nginx
 * Certbot - for obtaining and renewing certificates
@@ -70,8 +70,8 @@ The directories and files:
 To adapt the example to your domain names you need to change only `config.env`:
 
 ```properties
-DOMAINS=test1.devcomanda.com test2.devcomanda.com
-CERTBOT_EMAILS=info@devcomanda.com info@devcomanda.com
+DOMAINS=teach1.with.arches.org teach2.with.arches.org
+CERTBOT_EMAILS=info@teach.with.arches.org info@teach2.with.arches.org
 CERTBOT_TEST_CERT=1
 CERTBOT_RSA_KEY_SIZE=4096
 ```
@@ -92,7 +92,7 @@ When you are ready to use production Let's Encrypt server, set `CERTBOT_TEST_CER
 3. You have a server with a publicly routable IP address
 4. You have cloned this repository
    ```bash
-   git clone https://github.com/opencontext/oc-docker.git
+   git clone https://github.com/opencontext/arches-via-docker.git
    ```
 
 ## Step 0 - Point your domain to server with DNS A records
@@ -104,24 +104,23 @@ For all domain names configure DNS A records to point to a server where Docker c
 Specify you domain names and contact emails for these domains in the `config.env`:
 
 ```properties
-DOMAINS=arches.opencontext.org
-CERTBOT_EMAILS=eric@opencontext.org
+DOMAINS=teach.with.arches.org
+CERTBOT_EMAILS=info@teach.with.arches.org
 ```
 
 ## Step 2 - Create named Docker volumes for dummy and Let's Encrypt TLS certificates
 
 ```bash
 docker volume create --name=logs_nginx
-docker volume create --name=opencontext_nginx_ssl
-docker volume create --name=opencontext_certbot_certs
+docker volume create --name=nginx_ssl
+docker volume create --name=certbot_certs
 docker volume create --name=arches_certbot
-docker volume create --name=redisdata
 ```
 
 ## Step 3 - Build images and start containers
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 ## Step 4 - Switch to production Let's Encrypt server after verifying HTTPS works with test certificates
@@ -129,7 +128,7 @@ docker-compose up --build
 Stop the containers:
 
 ```bash
-docker-compose down
+docker compose down
 ```
 
 Configure to use production Let's Encrypt server in `config.env`:
@@ -141,14 +140,14 @@ CERTBOT_TEST_CERT=0
 Re-create the volume for Let's Encrypt certificates:
 
 ```bash
-docker volume rm opencontext_certbot_certs
-docker volume create --name=opencontext_certbot_certs
+docker volume rm certbot_certs
+docker volume create --name=certbot_certs
 ```
 
 Start the containers:
 
 ```bash
-docker-compose up
+docker compose up
 ```
 
 
