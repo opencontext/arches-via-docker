@@ -1,47 +1,38 @@
-version: "3"
+version: "3.9"
 
 services:
 
-  arches_couchdb:
-    container_name: arches_couchdb
-    image: couchdb:2.1.1
-    ports:
-      - "5984:5984"
+  arches_db:
+    container_name: arches_db
+    image: postgis/postgis:14-3.2
+    env_file:
+      - ./.env
+    restart: always
     volumes:
-      - couchdb-data:/usr/local/var/lib/couchdb
-      - couchdb-log:/usr/local/var/log/couchdb
-    environment:
-      - COUCHDB_USER=admin
-      - COUCHDB_PASSWORD=password
+        - postgres-data:/var/lib/postgresql/data/
+        - postgres-log:/var/log/postgresql
+        - ./init-unix.sql:/docker-entrypoint-initdb.d/init.sql # to set up the DB template
+    ports:
+      - '5434:5432'
     networks:
       - arches_net
 
   arches_elasticsearch:
     container_name: arches_elasticsearch
-    image: elasticsearch:7.9.2
+    image: elasticsearch:8.3.1
+    restart: always
+    env_file:
+      - ./.env
+    environment:
+      - TZ="${TZ}"
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms400m -Xmx400m"
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
     ports:
-      - "9200:9200"
-      - "9300:9300"
-    environment:
-      - TZ=PST
-      - discovery.type=single-node
-      - discovery.seed_hosts=
-      - "ES_JAVA_OPTS=-Xms400m -Xmx400m"
-    networks:
-      - arches_net
-
-  arches_rabbitmq:
-    container_name: arches_rabbitmq
-    image: rabbitmq:3-management
-    hostname: my-rabbit
-    volumes:
-      - rabbitmq-data:/var/lib/rabbitmq/mnesia/rabbit@my-rabbit
-      - rabbitmq-logs:/var/log/rabbitmq/log
-    ports:
-      - 5672:5672
-      - 15672:15672
+      - "9202:9200"
+      - "9302:9300"
     networks:
       - arches_net
 
@@ -61,15 +52,14 @@ services:
     ports:
       - "5432:5432"
       - "8983:8983"
+    depends_on:
+      - arches_db
+      - arches_elasticsearch
     expose:
       - 8000
     volumes:
-      -  $PWD:/deploy_files
-      - ./logs/arches:/arches/logs
-    depends_on:
-      - arches_couchdb
-      - arches_elasticsearch
-      - arches_rabbitmq
+      - arches-log:/arches/arches/logs
+      - arches-static:/static_root
     networks:
       - arches_net
 
@@ -78,13 +68,13 @@ services:
     build: ./nginx
     image: arches_oc/nginx
     env_file:
-      - ./config.env
+      - ./.env
     volumes:
       - ./logs/nginx:/logs/nginx
       - nginx_ssl:/etc/nginx/ssl
       - certbot_certs:/etc/letsencrypt
-      - arches_certbot:"/var/www/certbot/${DOMAIN}"
-      - ./html:"/var/www/html/${DOMAIN}"
+      - arches_certbot:"/var/www/certbot/${DEPLOY_HOST}"
+      - ./html:"/var/www/html/${DEPLOY_HOST}"
     ports:
       - "8000:8000"
       - "80:80"
@@ -99,10 +89,10 @@ services:
     build: ./certbot
     image: arches_oc/certbot
     env_file:
-      - ./config.env
+      - ./.env
     volumes:
       - certbot_certs:/etc/letsencrypt
-      - arches_certbot:"/var/www/certbot/${DOMAIN}"
+      - arches_certbot:"/var/www/certbot/${DEPLOY_HOST}"
     depends_on:
       - nginx
 
@@ -139,3 +129,5 @@ volumes:
   elasticsearch-data:
   rabbitmq-logs:
   rabbitmq-data:
+  arches-log:
+  arches-static:
