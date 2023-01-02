@@ -2,6 +2,51 @@ version: "3.9"
 
 services:
 
+  nginx:
+    container_name: nginx
+    build: ./nginx
+    image: arches_oc/nginx
+    env_file:
+      - ./.env
+    volumes:
+      - ./logs/nginx:/logs/nginx
+      - nginx_ssl:/etc/nginx/ssl
+      - certbot_certs:/etc/letsencrypt
+      - arches_certbot:$CERT_PATH
+      - ./html:$NGINX_HTML_PATH
+    ports:
+      - "8000:8000"
+      - "80:80"
+      - "443:443"
+    restart: always
+    depends_on:
+      - arches
+    networks:
+      - arches_net
+
+  certbot:
+    build: ./certbot
+    image: arches_oc/certbot
+    env_file:
+      - ./.env
+    volumes:
+      - certbot_certs:/etc/letsencrypt
+      - arches_certbot:$CERT_PATH
+    depends_on:
+      - nginx
+
+  cron:
+    build: ./cron
+    image: arches_oc/cron
+    environment:
+      COMPOSE_PROJECT_NAME: "${COMPOSE_PROJECT_NAME}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./:/workdir:ro
+    depends_on:
+      - nginx
+      - certbot
+
   arches_db:
     container_name: arches_db
     image: postgis/postgis:14-3.2
@@ -62,51 +107,6 @@ services:
       - arches-static:/static_root
     networks:
       - arches_net
-
-  nginx:
-    container_name: nginx
-    build: ./nginx
-    image: arches_oc/nginx
-    env_file:
-      - ./.env
-    volumes:
-      - ./logs/nginx:/logs/nginx
-      - nginx_ssl:/etc/nginx/ssl
-      - certbot_certs:/etc/letsencrypt
-      - arches_certbot:"/var/www/certbot/${DEPLOY_HOST}"
-      - ./html:"/var/www/html/${DEPLOY_HOST}"
-    ports:
-      - "8000:8000"
-      - "80:80"
-      - "443:443"
-    restart: always
-    depends_on:
-      - arches
-    networks:
-      - arches_net
-
-  certbot:
-    build: ./certbot
-    image: arches_oc/certbot
-    env_file:
-      - ./.env
-    volumes:
-      - certbot_certs:/etc/letsencrypt
-      - arches_certbot:"/var/www/certbot/${DEPLOY_HOST}"
-    depends_on:
-      - nginx
-
-  cron:
-    build: ./cron
-    image: arches_oc/cron
-    environment:
-      COMPOSE_PROJECT_NAME: "${COMPOSE_PROJECT_NAME}"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./:/workdir:ro
-    depends_on:
-      - nginx
-      - certbot
 
 networks:
   arches_net:
