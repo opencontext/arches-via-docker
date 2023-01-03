@@ -7,7 +7,7 @@ ENV WEB_ROOT=/web_root
 # Root project folder
 ENV ARCHES_PROJECT=arches_proj
 ENV ARCHES_ROOT=/web_root/arches
-ENV APP_ROOT=/web_root/arches/arches_proj
+ENV APP_ROOT=/web_root/arches/${ARCHES_PROJECT}
 ENV WHEELS=/wheels
 ENV PYTHONUNBUFFERED=1
 

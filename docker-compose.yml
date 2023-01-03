@@ -96,7 +96,7 @@ services:
       dockerfile: arches/Dockerfile
     environment:
       - DEBUG="${DEBUG}"
-      - ARCHES_PROJECT="${ARCHES_PROJECT}"
+      - ARCHES_PROJECT=${ARCHES_PROJECT}
     stdin_open: true # docker run -i
     tty: true        # docker run -t
     ports:
