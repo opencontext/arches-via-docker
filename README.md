@@ -51,7 +51,7 @@ The directories and files:
 
 * `docker-compose.yml`
 * `.env` - specifies `COMPOSE_PROJECT_NAME` to make container names independent from the base directory name
-* `config.env` - specifies project configuration, e.g. domain names, emails etc.
+* `.env` - specifies project configuration, e.g. domain names, emails etc.
 * `html/` - directory mounted as `root` for Nginx
     * `index.html`
 * `nginx/`
@@ -66,7 +66,7 @@ The directories and files:
     * `Dockerfile`
     * `renew_certs.sh` - script executed on a daily basis to try to renew certificates
 
-To adapt the example to your domain names you need to change only `config.env`:
+To adapt the example to your domain names you need to change only `.env`:
 
 ```properties
 DOMAINS=teach-with-arches.org
@@ -100,7 +100,7 @@ For all domain names configure DNS A records to point to a server where Docker c
 
 ## Step 1 - Edit domain names and emails in the configuration
 
-Specify you domain names and contact emails for these domains in the `config.env`:
+Specify you domain names and contact emails for these domains in the `.env`:
 
 ```properties
 DOMAINS=teach-with-arches.org
@@ -130,7 +130,7 @@ Stop the containers:
 docker compose down
 ```
 
-Configure to use production Let's Encrypt server in `config.env`:
+Configure to use production Let's Encrypt server in `.env`:
 
 ```properties
 CERTBOT_TEST_CERT=0

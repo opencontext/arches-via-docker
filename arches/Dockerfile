@@ -4,9 +4,10 @@ USER root
 
 ## Setting default environment variables
 ENV WEB_ROOT=/web_root
-ENV APP_ROOT=${WEB_ROOT}/arches_oc
 # Root project folder
+ENV ARCHES_PROJECT=arches_proj
 ENV ARCHES_ROOT=${WEB_ROOT}/arches
+ENV APP_ROOT=${WEB_ROOT}/${ARCHES_PROJECT}
 ENV WHEELS=/wheels
 ENV PYTHONUNBUFFERED=1
 
@@ -15,6 +16,7 @@ RUN add-apt-repository ppa:deadsnakes/ppa
 
 # Get the pre-built python wheels from the build environment
 RUN mkdir ${WEB_ROOT}
+RUN mkdir ${APP_ROOT}
 
 # Install packages required to run Arches
 # Note that the ubuntu/debian package for libgdal1-dev pulls in libgdal1i, which is built
@@ -58,14 +60,27 @@ WORKDIR ${ARCHES_ROOT}
 # Install the Arches application
 RUN pip install arches
 
+# Create the Arches project
+RUN arches-project create ${ARCHES_PROJECT}
+
 # copy in local settings
+WORKDIR ${APP_ROOT}
 COPY ./arches/settings_local.py /settings_local.py
 RUN sed -i 's/\r$//g' /settings_local.py
 
 RUN mkdir /var/log/supervisor
 RUN mkdir /var/log/celery
 
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+# Make sure the entry point is available and lacks weird characters
+# that don't work in a Linux OS
+COPY /arches/entrypoint.sh ${APP_ROOT}/entrypoint.sh
+RUN chmod -R 700 ${APP_ROOT}/entrypoint.sh &&\
+  dos2unix ${APP_ROOT}/entrypoint.sh
+
+# Set default workdir
+WORKDIR ${APP_ROOT}
+ENTRYPOINT ["./entrypoint.sh"]
+CMD ["run_arches"]
 
 # Expose port 8000
 EXPOSE 8000

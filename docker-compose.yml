@@ -25,6 +25,7 @@ services:
       - arches_net
 
   certbot:
+    container_name: certbot
     build: ./certbot
     image: arches_oc/certbot
     env_file:
@@ -36,6 +37,7 @@ services:
       - nginx
 
   cron:
+    container_name: cron
     build: ./cron
     image: arches_oc/cron
     environment:
@@ -92,6 +94,7 @@ services:
       dockerfile: arches/Dockerfile
     environment:
       - DEBUG="${DEBUG}"
+      - ARCHES_PROJECT="${ARCHES_PROJECT}"
     stdin_open: true # docker run -i
     tty: true        # docker run -t
     ports:
