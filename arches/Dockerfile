@@ -6,8 +6,8 @@ USER root
 ENV WEB_ROOT=/web_root
 # Root project folder
 ENV ARCHES_PROJECT=arches_proj
-ENV ARCHES_ROOT=${WEB_ROOT}/arches
-ENV APP_ROOT=${WEB_ROOT}/${ARCHES_PROJECT}
+ENV ARCHES_ROOT=/web_root/arches
+ENV APP_ROOT=/web_root/arches/arches_proj
 ENV WHEELS=/wheels
 ENV PYTHONUNBUFFERED=1
 
@@ -16,6 +16,7 @@ RUN add-apt-repository ppa:deadsnakes/ppa
 
 # Get the pre-built python wheels from the build environment
 RUN mkdir ${WEB_ROOT}
+RUN mkdir ${ARCHES_ROOT}
 RUN mkdir ${APP_ROOT}
 
 # Install packages required to run Arches
@@ -26,15 +27,15 @@ RUN mkdir ${APP_ROOT}
 RUN set -ex \
     && RUN_DEPS=" \
         build-essential \
-        python3.10 \
-        python3.10-dev \
+        python3.9 \
+        python3.9-dev \
         mime-support \
         libgdal-dev \
         python3-venv \
         postgresql-client-12 \
-        python3.10 \
-        python3.10-distutils \
-        python3.10-venv \
+        python3.9 \
+        python3.9-distutils \
+        python3.9-venv \
         dos2unix \
     " \
     && apt-get install -y --no-install-recommends curl \
@@ -45,7 +46,7 @@ RUN set -ex \
     && apt-get install -y nano \
     && apt-get install -y --no-install-recommends $RUN_DEPS \
     && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
-    && python3.10 get-pip.py \
+    && python3.9 get-pip.py \
     && apt-get install -y nodejs \
     && npm install -g yarn
 
@@ -60,8 +61,7 @@ WORKDIR ${ARCHES_ROOT}
 # Install the Arches application
 RUN pip install arches
 
-# Create the Arches project
-RUN arches-project create ${ARCHES_PROJECT}
+
 
 # copy in local settings
 WORKDIR ${APP_ROOT}
