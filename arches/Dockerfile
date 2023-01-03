@@ -6,8 +6,8 @@ USER root
 ENV WEB_ROOT=/web_root
 # Root project folder
 ENV ARCHES_PROJECT=arches_proj
-ENV ARCHES_ROOT=/web_root/arches
-ENV APP_ROOT=/web_root/arches/${ARCHES_PROJECT}
+ENV APP_ROOT=/web_root/${ARCHES_PROJECT}
+ENV ARCHES_DATA=/web_root/arches_data
 ENV WHEELS=/wheels
 ENV PYTHONUNBUFFERED=1
 
@@ -16,8 +16,6 @@ RUN add-apt-repository ppa:deadsnakes/ppa
 
 # Get the pre-built python wheels from the build environment
 RUN mkdir ${WEB_ROOT}
-RUN mkdir ${ARCHES_ROOT}
-RUN mkdir ${APP_ROOT}
 
 # Install packages required to run Arches
 # Note that the ubuntu/debian package for libgdal1-dev pulls in libgdal1i, which is built
@@ -56,17 +54,17 @@ WORKDIR ${WEB_ROOT}
 RUN rm -rf /root/.cache/pip/*
 
 
-# From here, run commands from ARCHES_ROOT
-WORKDIR ${ARCHES_ROOT}
+# From here, run commands from WEB_ROOT
+WORKDIR ${WEB_ROOT}
 # Install the Arches application
 RUN pip install arches
 
-
+RUN arches-project create ${ARCHES_PROJECT}
 
 # copy in local settings
 WORKDIR ${APP_ROOT}
-COPY ./arches/settings_local.py /settings_local.py
-RUN sed -i 's/\r$//g' /settings_local.py
+COPY ./arches/settings_local.py ${APP_ROOT}/settings_local.py
+RUN sed -i 's/\r$//g' ${APP_ROOT}/settings_local.py
 
 RUN mkdir /var/log/supervisor
 RUN mkdir /var/log/celery

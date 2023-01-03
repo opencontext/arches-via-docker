@@ -5,7 +5,7 @@ services:
   nginx:
     container_name: nginx
     build: ./nginx
-    image: arches_oc/nginx
+    image: arches_via_docker/nginx
     env_file:
       - ./.env
     volumes:
@@ -39,7 +39,7 @@ services:
   cron:
     container_name: cron
     build: ./cron
-    image: arches_oc/cron
+    image: arches_via_docker/cron
     environment:
       COMPOSE_PROJECT_NAME: "${COMPOSE_PROJECT_NAME}"
     volumes:
@@ -55,7 +55,10 @@ services:
     env_file:
       - ./.env
     environment:
-      - POSTGRES_PASSWORD="${PGPASSWORD}"
+      - PGUSER=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgis
+      - POSTGRES_MULTIPLE_EXTENSIONS=postgis,postgis_topology
     restart: always
     volumes:
         - postgres-data:/var/lib/postgresql/data/
@@ -110,6 +113,7 @@ services:
     volumes:
       - arches-log:/arches/arches/logs
       - arches-static:/static_root
+      - ../arches_data/:/web_root/arches_data
     networks:
       - arches_net
 

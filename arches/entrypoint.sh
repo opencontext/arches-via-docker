@@ -4,10 +4,10 @@
 # ${WEB_ROOT} and ${ARCHES_ROOT} is defined in the Dockerfile, ${ARCHES_PROJECT} in env_file.env
 if [[ -z ${ARCHES_PROJECT} ]]; then
 	APP_FOLDER=${ARCHES_ROOT}
-	PACKAGE_JSON_FOLDER=${ARCHES_ROOT}
+	PACKAGE_JSON_FOLDER=${WEB_ROOT}/arches_data/packages
 else
 	APP_FOLDER=${WEB_ROOT}/${ARCHES_PROJECT}
-	PACKAGE_JSON_FOLDER=${ARCHES_ROOT}
+	PACKAGE_JSON_FOLDER=${WEB_ROOT}/arches_data/packages
 fi
 
 YARN_MODULES_FOLDER=${PACKAGE_JSON_FOLDER}/$(awk \
@@ -75,7 +75,7 @@ init_arches() {
 
 		arches-project create ${ARCHES_PROJECT}
 		run_setup_db
-		setup_couchdb
+		# setup_couchdb
 
 		exit_code=$?
 		if [[ ${exit_code} != 0 ]]; then
@@ -91,8 +91,9 @@ init_arches() {
 			echo "Skipping Package Loading"
 		else
 			echo "Database ${PGDBNAME} does not exists yet."
-			run_load_package #change to run_load_package if preferred
-			setup_couchdb
+			run_setup_db
+			# run_load_package #change to run_load_package if preferred
+			# setup_couchdb
 		fi
 	fi
 }
@@ -136,7 +137,7 @@ run_migrations() {
 	echo "----- RUNNING DATABASE MIGRATIONS -----"
 	echo ""
 	cd ${APP_FOLDER}
-	python3 manage.py migrate
+	manage.py migrate
 }
 
 run_setup_db() {
@@ -144,7 +145,7 @@ run_setup_db() {
 	echo "----- RUNNING SETUP_DB -----"
 	echo ""
 	cd ${APP_FOLDER}
-	python3 manage.py setup_db --force
+	manage.py setup_db --force
 }
 
 run_load_package() {
@@ -152,7 +153,7 @@ run_load_package() {
 	echo "----- *** LOADING PACKAGE: ${ARCHES_PROJECT} *** -----"
 	echo ""
 	cd ${APP_FOLDER}
-	python3 manage.py packages -o load_package -s ${ARCHES_PROJECT}/pkg -db -dev -y
+	manage.py packages -o load_package -s ${ARCHES_PROJECT}/pkg -db -dev -y
 }
 
 # "exec" means that it will finish building???
@@ -171,7 +172,7 @@ run_livereload_server() {
 	echo ""
 	cd ${APP_FOLDER}
     echo "Running livereload"
-    exec sh -c "python3 manage.py developer livereload --livereloadhost 0.0.0.0"
+    exec sh -c "manage.py developer livereload --livereloadhost 0.0.0.0"
 }
 
 activate_virtualenv() {
