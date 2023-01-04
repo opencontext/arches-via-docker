@@ -1,14 +1,8 @@
 #!/bin/bash
 
 # APP and YARN folder locations
-# ${WEB_ROOT} and ${ARCHES_ROOT} is defined in the Dockerfile, ${ARCHES_PROJECT} in env_file.env
-if [[ -z ${ARCHES_PROJECT} ]]; then
-	APP_FOLDER=${ARCHES_ROOT}
-	PACKAGE_JSON_FOLDER=${WEB_ROOT}/arches_data/packages
-else
-	APP_FOLDER=${WEB_ROOT}/${ARCHES_PROJECT}
-	PACKAGE_JSON_FOLDER=${WEB_ROOT}/arches_data/packages
-fi
+APP_FOLDER=${WEB_ROOT}/${ARCHES_PROJECT}
+PACKAGE_JSON_FOLDER=${WEB_ROOT}/arches_data/packages
 
 YARN_MODULES_FOLDER=${PACKAGE_JSON_FOLDER}/$(awk \
 	-F '--install.modules-folder' '{print $2}' ${PACKAGE_JSON_FOLDER}/.yarnrc \
@@ -117,19 +111,21 @@ install_yarn_components() {
 
 #### Misc
 copy_settings_local() {
-	# The settings_local.py in ${ARCHES_ROOT}/arches/ gets ignored if running manage.py from a custom Arches project instead of Arches core app
-	echo "Copying ${APP_FOLDER}/docker/settings_docker.py to ${APP_FOLDER}/${ARCHES_PROJECT}/settings_docker.py..."
-	cp ${APP_FOLDER}/docker/settings_docker.py ${APP_FOLDER}/${ARCHES_PROJECT}/settings_docker.py
+	# Copy settings_local to make sure it exists in the proper location of the project
+	echo "Copying ${APP_FOLDER}/settings_local.py to ${APP_FOLDER}/${ARCHES_PROJECT}/settings_local.py..."
+	cp -n ${APP_FOLDER}/settings_local.py ${APP_FOLDER}/${ARCHES_PROJECT}/settings_local.py
 
-	# Copy settings_local if it does not exist
-	cp -n ${APP_FOLDER}/docker/settings_local.py ${APP_FOLDER}/${ARCHES_PROJECT}/settings_local.py
+	cd ${APP_FOLDER}/${ARCHES_PROJECT}
+	echo "The directory ${APP_FOLDER}/${ARCHES_PROJECT} now contains:"
+	ls
+	echo "---------------------------------------------------------------"
 }
 
 #### Run commands
 
 start_celery_supervisor() {
 	cd ${APP_FOLDER}
-	supervisord -c docker/arches-supervisor.conf
+	supervisord -c arches-supervisor.conf
 }
 
 run_migrations() {
@@ -137,7 +133,7 @@ run_migrations() {
 	echo "----- RUNNING DATABASE MIGRATIONS -----"
 	echo ""
 	cd ${APP_FOLDER}
-	manage.py migrate
+	python3 manage.py migrate
 }
 
 run_setup_db() {
@@ -145,7 +141,9 @@ run_setup_db() {
 	echo "----- RUNNING SETUP_DB -----"
 	echo ""
 	cd ${APP_FOLDER}
-	manage.py setup_db --force
+	ls
+	echo "Setup arches database with connection: ${DATABASE_URL}"
+	python3 manage.py setup_db --force
 }
 
 run_load_package() {
@@ -153,37 +151,14 @@ run_load_package() {
 	echo "----- *** LOADING PACKAGE: ${ARCHES_PROJECT} *** -----"
 	echo ""
 	cd ${APP_FOLDER}
-	manage.py packages -o load_package -s ${ARCHES_PROJECT}/pkg -db -dev -y
-}
-
-# "exec" means that it will finish building???
-run_django_server() {
-	echo ""
-	echo "----- *** RUNNING DJANGO DEVELOPMENT SERVER *** -----"
-	echo ""
-	cd ${APP_FOLDER}
-    echo "Running Django"
-	exec sh -c "pip install debugpy -t /tmp && python3 /tmp/debugpy --listen 0.0.0.0:5678 manage.py runserver 0.0.0.0:${DJANGO_PORT}"
-}
-
-run_livereload_server() {
-	echo ""
-	echo "----- *** RUNNING LIVERELOAD SERVER *** -----"
-	echo ""
-	cd ${APP_FOLDER}
-    echo "Running livereload"
-    exec sh -c "manage.py developer livereload --livereloadhost 0.0.0.0"
-}
-
-activate_virtualenv() {
-	. ${WEB_ROOT}/ENV/bin/activate
+	python3 manage.py packages -o load_package -s ${ARCHES_PROJECT}/pkg -db -dev -y
 }
 
 #### Main commands
 run_arches() {
 	init_arches
-	install_yarn_components
-	run_django_server
+	# install_yarn_components
+	# run_django_server
 }
 
 #### Main commands
@@ -237,7 +212,7 @@ do
 			run_tests
 		;;
 		run_migrations)
-			copy_settings_local
+		    copy_settings_local
 			wait_for_db
 			run_migrations
 		;;

@@ -7,15 +7,19 @@ ENV WEB_ROOT=/web_root
 # Root project folder
 ENV ARCHES_PROJECT=arches_proj
 ENV APP_ROOT=/web_root/${ARCHES_PROJECT}
+# settings_local.py provides the DB credentials, etc. to the Arches project.
+ENV SETTINGS_LOCAL_PATH=/web_root/${ARCHES_PROJECT}/${ARCHES_PROJECT}/settings_local.py
 ENV ARCHES_DATA=/web_root/arches_data
 ENV WHEELS=/wheels
 ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE 1
 
+# Setup needed directories
+RUN mkdir ${WEB_ROOT} && mkdir /var/log/supervisor && mkdir /var/log/celery
+
+# Get ready to do some code installation
 RUN apt-get update && apt-get install -y make software-properties-common
 RUN add-apt-repository ppa:deadsnakes/ppa
-
-# Get the pre-built python wheels from the build environment
-RUN mkdir ${WEB_ROOT}
 
 # Install packages required to run Arches
 # Note that the ubuntu/debian package for libgdal1-dev pulls in libgdal1i, which is built
@@ -27,13 +31,12 @@ RUN set -ex \
         build-essential \
         python3.9 \
         python3.9-dev \
-        mime-support \
-        libgdal-dev \
-        python3-venv \
-        postgresql-client-12 \
-        python3.9 \
         python3.9-distutils \
         python3.9-venv \
+        python3-pip \
+        mime-support \
+        libgdal-dev \
+        postgresql-client-14 \
         dos2unix \
     " \
     && apt-get install -y --no-install-recommends curl \
@@ -43,8 +46,6 @@ RUN set -ex \
     && apt-get update -y \
     && apt-get install -y nano \
     && apt-get install -y --no-install-recommends $RUN_DEPS \
-    && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
-    && python3.9 get-pip.py \
     && apt-get install -y nodejs \
     && npm install -g yarn
 
@@ -56,18 +57,19 @@ RUN rm -rf /root/.cache/pip/*
 
 # From here, run commands from WEB_ROOT
 WORKDIR ${WEB_ROOT}
-# Install the Arches application
-RUN pip install arches
 
-RUN arches-project create ${ARCHES_PROJECT}
+RUN pip3 install --upgrade pip
+RUN pip3 install pipenv
 
-# copy in local settings
+# Install the Arches application and make an Arches project.
+RUN pip install arches && arches-project create ${ARCHES_PROJECT}
+
+# Make sure we have the environment variables in the python app?
+
+# copy in local settings to our newly created Arches project.
 WORKDIR ${APP_ROOT}
-COPY ./arches/settings_local.py ${APP_ROOT}/settings_local.py
-RUN sed -i 's/\r$//g' ${APP_ROOT}/settings_local.py
-
-RUN mkdir /var/log/supervisor
-RUN mkdir /var/log/celery
+COPY ./arches/settings_local.py ${SETTINGS_LOCAL_PATH}
+RUN sed -i 's/\r$//g' ${SETTINGS_LOCAL_PATH}
 
 # Make sure the entry point is available and lacks weird characters
 # that don't work in a Linux OS

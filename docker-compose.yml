@@ -91,7 +91,6 @@ services:
   arches:
     container_name: arches
     image: arches
-    restart: always
     env_file:
       - ./.env
     build:
@@ -108,8 +107,10 @@ services:
     depends_on:
       - arches_db
       - arches_elasticsearch
+    command: run_arches
     expose:
       - 8000
+      - 5678:5678
     volumes:
       - arches-log:/arches/arches/logs
       - arches-static:/static_root
