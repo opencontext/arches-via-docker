@@ -36,7 +36,7 @@ DATABASES = {
     }
 }
 
-ARCHES_NAMESPACE_FOR_DATA_EXPORT = "http://aher7-0:8000/"
+ARCHES_NAMESPACE_FOR_DATA_EXPORT = get_env_variable("ARCHES_NAMESPACE")
 CELERY_BROKER_URL = "amqp://{}:{}@arches_rabbitmq".format(
     get_env_variable("RABBITMQ_USER"), get_env_variable("RABBITMQ_PASS")
 )  # RabbitMQ --> "amqp://guest:guest@localhost",  Redis --> "redis://localhost:6379/0"
@@ -49,7 +49,7 @@ USER_ELASTICSEARCH_PREFIX = get_optional_env_variable("ELASTICSEARCH_PREFIX")
 if USER_ELASTICSEARCH_PREFIX:
     ELASTICSEARCH_PREFIX = USER_ELASTICSEARCH_PREFIX
 
-ALLOWED_HOSTS = get_env_variable("DOMAIN_NAMES").split()
+ALLOWED_HOSTS = get_env_variable("DOMAIN_NAMES").split() + ['*']
 
 USER_SECRET_KEY = get_optional_env_variable("DJANGO_SECRET_KEY")
 if USER_SECRET_KEY:

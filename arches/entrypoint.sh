@@ -2,10 +2,10 @@
 
 # APP and YARN folder locations
 APP_FOLDER=${WEB_ROOT}/${ARCHES_PROJECT}
-PACKAGE_JSON_FOLDER=${WEB_ROOT}/arches_data/packages
+APP_COMP_FOLDER=${APP_ROOT}/${ARCHES_PROJECT}
 
-YARN_MODULES_FOLDER=${PACKAGE_JSON_FOLDER}/$(awk \
-	-F '--install.modules-folder' '{print $2}' ${PACKAGE_JSON_FOLDER}/.yarnrc \
+YARN_MODULES_FOLDER=${APP_COMP_FOLDER}/$(awk \
+	-F '--install.modules-folder' '{print $2}' ${APP_COMP_FOLDER}/.yarnrc \
 	| awk '{print $1}' \
 	| tr -d $'\r' \
 	| tr -d '"' \
@@ -69,7 +69,7 @@ init_arches() {
 
 		arches-project create ${ARCHES_PROJECT}
 		run_setup_db
-		# setup_couchdb
+		setup_couchdb
 
 		exit_code=$?
 		if [[ ${exit_code} != 0 ]]; then
@@ -87,7 +87,7 @@ init_arches() {
 			echo "Database ${PGDBNAME} does not exists yet."
 			run_setup_db
 			# run_load_package #change to run_load_package if preferred
-			# setup_couchdb
+			setup_couchdb
 		fi
 	fi
 }
@@ -102,21 +102,30 @@ setup_couchdb() {
 
 # Yarn
 install_yarn_components() {
+	echo "Check to see if Yarn modules exist..."
 	if [[ ! -d ${YARN_MODULES_FOLDER} ]] || [[ ! "$(ls ${YARN_MODULES_FOLDER})" ]]; then
 		echo "Yarn modules do not exist, installing..."
-		cd ${PACKAGE_JSON_FOLDER}
-		yarn install
+		cd ${APP_COMP_FOLDER}
+		yarn build_development
+	else
+		echo "Yarn modules seem to exist:"
+		echo "---------------------------------------------------------------"
+		cd ${YARN_MODULES_FOLDER}
+		ls
+		echo "---------------------------------------------------------------"
 	fi
 }
 
 #### Misc
-copy_settings_local() {
-	# Copy settings_local to make sure it exists in the proper location of the project
-	echo "Copying ${APP_FOLDER}/settings_local.py to ${APP_FOLDER}/${ARCHES_PROJECT}/settings_local.py..."
-	cp -n ${APP_FOLDER}/settings_local.py ${APP_FOLDER}/${ARCHES_PROJECT}/settings_local.py
+check_settings_local() {
+	# Make sure we have a settings_local in the proper location of the project
 
-	cd ${APP_FOLDER}/${ARCHES_PROJECT}
-	echo "The directory ${APP_FOLDER}/${ARCHES_PROJECT} now contains:"
+	# Skip this, this happens with the docker container build.
+	# echo "Copying ${APP_FOLDER}/settings_local.py to ${APP_FOLDER}/${ARCHES_PROJECT}/settings_local.py..."
+	# cp -n ${APP_FOLDER}/settings_local.py ${APP_FOLDER}/${ARCHES_PROJECT}/settings_local.py
+
+	cd ${APP_COMP_FOLDER}
+	echo "The directory ${APP_COMP_FOLDER} contains:"
 	ls
 	echo "---------------------------------------------------------------"
 }
@@ -125,7 +134,7 @@ copy_settings_local() {
 
 start_celery_supervisor() {
 	cd ${APP_FOLDER}
-	supervisord -c arches-supervisor.conf
+	# supervisord -c arches-supervisor.conf
 }
 
 run_migrations() {
@@ -136,13 +145,21 @@ run_migrations() {
 	python3 manage.py migrate
 }
 
+run_collect_static() {
+	echo ""
+	echo "----- RUNNING COLLECT STATIC -----"
+	echo ""
+	python3 manage.py collectstatic
+	echo "----- Static built from -----"
+	cd /web_root/arches_proj/arches_proj/media
+	ls
+	echo "---------------------------------------------------------------"
+}
+
 run_setup_db() {
 	echo ""
 	echo "----- RUNNING SETUP_DB -----"
 	echo ""
-	cd ${APP_FOLDER}
-	ls
-	echo "Setup arches database with connection: ${DATABASE_URL}"
 	python3 manage.py setup_db --force
 }
 
@@ -154,11 +171,22 @@ run_load_package() {
 	python3 manage.py packages -o load_package -s ${ARCHES_PROJECT}/pkg -db -dev -y
 }
 
+run_django_server() {
+	echo ""
+	echo "----- *** RUNNING DJANGO DEVELOPMENT SERVER *** -----"
+	echo ""
+	cd ${APP_FOLDER}
+    echo "Running Django"
+	exec sh -c "pip install debugpy -t /tmp && python3 /tmp/debugpy --listen 0.0.0.0:5678 manage.py runserver 0.0.0.0:${DJANGO_PORT}"
+}
+
 #### Main commands
 run_arches() {
 	init_arches
-	# install_yarn_components
-	# run_django_server
+	run_migrations
+	run_collect_static
+	run_django_server
+	install_yarn_components
 }
 
 #### Main commands
@@ -193,7 +221,7 @@ do
 	case ${key} in
 		run_arches)
 			start_celery_supervisor
-			copy_settings_local
+			check_settings_local
 			wait_for_db
 			run_arches
 		;;
@@ -202,17 +230,17 @@ do
 		;;
 		setup_arches)
 			start_celery_supervisor
-			copy_settings_local
+			check_settings_local
 			wait_for_db
 			setup_arches
 		;;
 		run_tests)
-			copy_settings_local
+			check_settings_local
 			wait_for_db
 			run_tests
 		;;
 		run_migrations)
-		    copy_settings_local
+		    check_settings_local
 			wait_for_db
 			run_migrations
 		;;

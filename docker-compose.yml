@@ -15,7 +15,6 @@ services:
       - arches_certbot:$CERT_PATH
       - ./html:$NGINX_HTML_PATH
     ports:
-      - "8000:8000"
       - "80:80"
       - "443:443"
     restart: always
@@ -104,13 +103,14 @@ services:
     ports:
       - "5432:5432"
       - "8983:8983"
+      - 8004:8000
+      - 5678:5678
     depends_on:
       - arches_db
       - arches_elasticsearch
     command: run_arches
     expose:
-      - 8000
-      - 5678:5678
+      - 8004:8000
     volumes:
       - arches-log:/arches/arches/logs
       - arches-static:/static_root

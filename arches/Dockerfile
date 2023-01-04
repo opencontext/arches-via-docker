@@ -6,9 +6,10 @@ USER root
 ENV WEB_ROOT=/web_root
 # Root project folder
 ENV ARCHES_PROJECT=arches_proj
-ENV APP_ROOT=/web_root/${ARCHES_PROJECT}
+ENV APP_ROOT=${WEB_ROOT}/${ARCHES_PROJECT}
+ENV APP_COMP_FOLDER=${APP_ROOT}/${ARCHES_PROJECT}
 # settings_local.py provides the DB credentials, etc. to the Arches project.
-ENV SETTINGS_LOCAL_PATH=/web_root/${ARCHES_PROJECT}/${ARCHES_PROJECT}/settings_local.py
+ENV SETTINGS_LOCAL_PATH=${APP_COMP_FOLDER}/settings_local.py
 ENV ARCHES_DATA=/web_root/arches_data
 ENV WHEELS=/wheels
 ENV PYTHONUNBUFFERED=1
@@ -70,6 +71,11 @@ RUN pip install arches && arches-project create ${ARCHES_PROJECT}
 WORKDIR ${APP_ROOT}
 COPY ./arches/settings_local.py ${SETTINGS_LOCAL_PATH}
 RUN sed -i 's/\r$//g' ${SETTINGS_LOCAL_PATH}
+
+# copy the celery supervisor
+COPY /arches/arches-supervisor.conf ${APP_ROOT}/arches-supervisor.conf
+RUN chmod -R 700 ${APP_ROOT}/arches-supervisor.conf &&\
+  dos2unix ${APP_ROOT}/arches-supervisor.conf
 
 # Make sure the entry point is available and lacks weird characters
 # that don't work in a Linux OS
