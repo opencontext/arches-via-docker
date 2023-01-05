@@ -86,6 +86,7 @@ init_arches() {
 		else
 			echo "Database ${PGDBNAME} does not exists yet."
 			run_setup_db
+			run_migrations
 			# run_load_package #change to run_load_package if preferred
 			setup_couchdb
 		fi
@@ -149,6 +150,7 @@ run_collect_static() {
 	echo ""
 	echo "----- RUNNING COLLECT STATIC -----"
 	echo ""
+	cd ${APP_FOLDER}
 	python3 manage.py collectstatic
 	echo "----- Static built from -----"
 	cd /web_root/arches_proj/arches_proj/media
@@ -160,6 +162,7 @@ run_setup_db() {
 	echo ""
 	echo "----- RUNNING SETUP_DB -----"
 	echo ""
+	cd ${APP_FOLDER}
 	python3 manage.py setup_db --force
 }
 
@@ -180,11 +183,31 @@ run_django_server() {
 	exec sh -c "pip install debugpy -t /tmp && python3 /tmp/debugpy --listen 0.0.0.0:5678 manage.py runserver 0.0.0.0:${DJANGO_PORT}"
 }
 
+run_webpack() {
+	echo ""
+	echo "----- *** RUNNING WEBPACK *** -----"
+	echo ""
+	# A hacky way to start the django server so the webpack can see it and use it.
+	cd ${APP_FOLDER}
+	# Kill the server if it is running.
+	fuser -k ${DJANGO_PORT}/tcp
+	# Start up the django server
+	python3 manage.py runserver 0.0.0.0:${DJANGO_PORT} &
+	# Now do the webpack thing
+	cd ${APP_COMP_FOLDER}
+    echo "Running Webpack"
+	exec sh -c "yarn install && wait-for-it localhost:${DJANGO_PORT} -t 45 && yarn start"
+	fuser -k ${DJANGO_PORT}/tcp
+	# yarn install
+	# yarn start
+}
+
 #### Main commands
 run_arches() {
 	init_arches
 	run_migrations
 	run_collect_static
+	run_webpack
 	run_django_server
 	install_yarn_components
 }

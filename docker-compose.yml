@@ -108,11 +108,14 @@ services:
     depends_on:
       - arches_db
       - arches_elasticsearch
-    command: run_arches
+    command:
+      - run_arches
+      - run_webpack
     expose:
       - 8004:8000
+      - 8021:8021
     volumes:
-      - arches-log:/arches/arches/logs
+      - arches-log:/web_root/logs
       - arches-static:/static_root
       - ../arches_data/:/web_root/arches_data
     networks:

@@ -45,6 +45,7 @@ RUN set -ex \
     && curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
     && add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -sc)-pgdg main" \
     && apt-get update -y \
+    && apt-get install -y "wait-for-it" \
     && apt-get install -y nano \
     && apt-get install -y --no-install-recommends $RUN_DEPS \
     && apt-get install -y nodejs \
@@ -55,13 +56,7 @@ WORKDIR ${WEB_ROOT}
 
 RUN rm -rf /root/.cache/pip/*
 
-
-# From here, run commands from WEB_ROOT
-WORKDIR ${WEB_ROOT}
-
-RUN pip3 install --upgrade pip
-RUN pip3 install pipenv
-
+RUN pip install --upgrade pip
 # Install the Arches application and make an Arches project.
 RUN pip install arches && arches-project create ${ARCHES_PROJECT}
 
@@ -83,10 +78,16 @@ COPY /arches/entrypoint.sh ${APP_ROOT}/entrypoint.sh
 RUN chmod -R 700 ${APP_ROOT}/entrypoint.sh &&\
   dos2unix ${APP_ROOT}/entrypoint.sh
 
+
 # Set default workdir
 WORKDIR ${APP_ROOT}
 ENTRYPOINT ["./entrypoint.sh"]
 CMD ["run_arches"]
 
-# Expose port 8000
+
+# Set default workdir
+WORKDIR ${APP_ROOT}
+# Expose port 8000 (Django server)
 EXPOSE 8000
+# Expose port 8021 (Webpack)
+EXPOSE 8021
