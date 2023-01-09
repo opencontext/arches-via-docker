@@ -3,8 +3,9 @@ Deployment of Arches (archesproject.org) via Docker for archaeology and related 
 
 
 # NOTE
-This repo will hopefully streamline deployment of Arches for use in archaeological teaching and learning applications.
-The repo started by forking:
+This repo will hopefully streamline deployment of Arches for use on the Web. Eventually, we hope to use this as the basis for deploying instances of Arches for use in archaeological teaching and learning applications.
+
+None of this code is very original. This repo started by forking:
 https://github.com/evgeniy-khist/letsencrypt-docker-compose
 
 Some elements of this repo are also derived from:
@@ -14,6 +15,20 @@ and
 
 https://github.com/archesproject/arches-for-science-prj
 
+and
+
+https://github.com/archesproject/arches-dependency-containers
+
+and finally
+
+https://github.com/archesproject/arches-her
+
+
+# Testing a localhost deployment
+
+This main goal of this repo is to offer a simple, turnkey approach to deploying HTTPS secured Arches on the Web. You can also use this to deploy Arches for use on a `localhost` by leaving Arches with the Django `DEBUG` setting as `True`.
+
+*NOTE* At this early stage of development, we're still only testing this docker deployemnt on the `localhost`
 
 
 
