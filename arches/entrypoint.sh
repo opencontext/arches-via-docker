@@ -135,7 +135,15 @@ check_settings_local() {
 
 start_celery_supervisor() {
 	cd ${APP_FOLDER}
-	# supervisord -c arches-supervisor.conf
+	supervisord -c arches-supervisor.conf
+}
+
+run_make_migrations() {
+	echo ""
+	echo "----- RUNNING DATABASE MAKE MIGRATIONS -----"
+	echo ""
+	cd ${APP_FOLDER}
+	python3 manage.py makemigrations
 }
 
 run_migrations() {
@@ -205,6 +213,7 @@ run_webpack() {
 #### Main commands
 run_arches() {
 	init_arches
+	run_make_migrations
 	run_migrations
 	run_collect_static
 	run_webpack

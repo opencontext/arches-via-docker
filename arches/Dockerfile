@@ -58,7 +58,7 @@ RUN rm -rf /root/.cache/pip/*
 
 RUN pip install --upgrade pip
 # Install the Arches application and make an Arches project.
-RUN pip install arches && arches-project create ${ARCHES_PROJECT}
+RUN pip install supervisor && pip install arches && arches-project create ${ARCHES_PROJECT}
 
 # Make sure we have the environment variables in the python app?
 
@@ -68,6 +68,7 @@ COPY ./arches/settings_local.py ${SETTINGS_LOCAL_PATH}
 RUN sed -i 's/\r$//g' ${SETTINGS_LOCAL_PATH}
 
 # copy the celery supervisor
+COPY /arches/conf.d/ ${APP_ROOT}/conf.d/
 COPY /arches/arches-supervisor.conf ${APP_ROOT}/arches-supervisor.conf
 RUN chmod -R 700 ${APP_ROOT}/arches-supervisor.conf &&\
   dos2unix ${APP_ROOT}/arches-supervisor.conf
