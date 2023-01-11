@@ -138,6 +138,14 @@ start_celery_supervisor() {
 	supervisord -c arches-supervisor.conf
 }
 
+run_createcachetable() {
+	echo ""
+	echo "----- RUNNING CREATE CACHETABLE -----"
+	echo ""
+	cd ${APP_FOLDER}
+	python3 manage.py createcachetable
+}
+
 run_make_migrations() {
 	echo ""
 	echo "----- RUNNING DATABASE MAKE MIGRATIONS -----"
@@ -159,7 +167,7 @@ run_collect_static() {
 	echo "----- RUNNING COLLECT STATIC -----"
 	echo ""
 	cd ${APP_FOLDER}
-	python3 manage.py collectstatic
+	python3 manage.py collectstatic --noinput
 	echo "----- Static built from -----"
 	cd /web_root/arches_proj/arches_proj/media
 	ls
@@ -215,6 +223,7 @@ run_arches() {
 	init_arches
 	run_make_migrations
 	run_migrations
+	run_createcachetable
 	run_collect_static
 	run_webpack
 	run_django_server
