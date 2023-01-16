@@ -195,8 +195,13 @@ run_django_server() {
 	echo "----- *** RUNNING DJANGO DEVELOPMENT SERVER *** -----"
 	echo ""
 	cd ${APP_FOLDER}
-    echo "Running Django"
-	exec sh -c "pip install debugpy -t /tmp && python3 /tmp/debugpy --listen 0.0.0.0:5678 manage.py runserver 0.0.0.0:${DJANGO_PORT}"
+	if [[ ${DJANGO_DEBUG} == 'True' ]]; then
+		echo "Running DEBUG mode Django"
+		exec sh -c "python3 manage.py runserver 0.0.0.0:${DJANGO_PORT}"
+	else
+		echo "Running production mode Django"
+		exec sh -c "python3 gunicorn -w 2 -b 0.0.0.0:${DJANGO_PORT} arches.wsgi:application --reload --timeout 3600"
+	fi
 }
 
 run_webpack() {
