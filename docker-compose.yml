@@ -36,6 +36,8 @@ services:
     volumes:
       - certbot_certs:/etc/letsencrypt
       - arches_certbot:$CERT_PATH
+    networks:
+      - arches_net
 
   cron:
     container_name: cron
@@ -49,6 +51,8 @@ services:
     depends_on:
       - nginx
       - certbot
+    networks:
+      - arches_net
 
   arches_db:
     container_name: arches_db
