@@ -45,7 +45,7 @@ for domain in $domains_fixed; do
   echo "Checking configuration for $domain"
 
   if [ ! -f "/etc/nginx/sites/$domain.conf" ]; then
-    # echo "Creating Nginx configuration file /etc/nginx/sites/$domain.conf"
+    echo "Skip creating Nginx configuration file /etc/nginx/sites/$domain.conf"
     # sed "s/\${domain}/$domain/g" /customization/site.conf.tpl > "/etc/nginx/sites/$domain.conf"
   fi
 
