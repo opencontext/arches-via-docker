@@ -13,8 +13,8 @@ services:
       - nginx_ssl:/etc/nginx/ssl
       - certbot_certs:/etc/letsencrypt
       - arches_certbot:$CERT_PATH
+      - arches-static:/static_root
       - ./html:$NGINX_HTML_PATH
-      - ../arches_data/static_root:/static_root
     ports:
       - "80:80"
       - "443:443"
@@ -117,7 +117,7 @@ services:
       - 8021:8021
     volumes:
       - arches-log:/web_root/logs
-      - ../arches_data/static_root:/static_root
+      - arches-static:/static_root
       - ../arches_data/:/web_root/arches_data
     networks:
       - arches_net
