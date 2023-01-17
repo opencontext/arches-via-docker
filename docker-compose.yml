@@ -8,6 +8,11 @@ services:
     image: arches_via_docker/nginx
     env_file:
       - ./.env
+    environment:
+      - DOMAINS="${DOMAINS}"
+      - DEPLOY_HOST="${DEPLOY_HOST}"
+      - CERT_PATH="${CERT_PATH}"
+      - DJANGO_PORT="${DJANGO_PORT}"
     volumes:
       - nginx-log:/logs/nginx
       - nginx_ssl:/etc/nginx/ssl
