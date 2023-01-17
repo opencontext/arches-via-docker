@@ -100,7 +100,7 @@ services:
       context: .
       dockerfile: arches/Dockerfile
     environment:
-      - DEBUG="${DEBUG}"
+      - DEBUG="${DJANGO_DEBUG}"
       - ARCHES_PROJECT=${ARCHES_PROJECT}
     stdin_open: true # docker run -i
     tty: true        # docker run -t

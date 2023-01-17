@@ -12,12 +12,19 @@ use_dummy_certificate() {
     echo "Switching Nginx to use dummy certificate for $1"
     sed -i "s|/etc/letsencrypt/live/$1|/etc/nginx/sites/ssl/dummy/$1|g" "/etc/nginx/sites/default.conf"
   fi
+  if grep -q "/etc/nginx/sites/ssl/dummy/$1" "/etc/nginx/sites/default.conf"; then
+    echo "Nginx already using dummy (testing) Let's Encrypt certificate for $1"
+    sed -i "s|/etc/nginx/sites/ssl/dummy/$1|/etc/letsencrypt/live/$1|g" "/etc/nginx/sites/default.conf"
+  fi
 }
 
 use_lets_encrypt_certificate() {
   if grep -q "/etc/nginx/sites/ssl/dummy/$1" "/etc/nginx/sites/default.conf"; then
     echo "Switching Nginx to use Let's Encrypt certificate for $1"
     sed -i "s|/etc/nginx/sites/ssl/dummy/$1|/etc/letsencrypt/live/$1|g" "/etc/nginx/sites/default.conf"
+  fi
+  if grep -q "/etc/letsencrypt/live/$1" "/etc/nginx/sites/default.conf"; then
+    echo "Nginx already using production Let's Encrypt certificate for $1"
   fi
 }
 
@@ -29,7 +36,7 @@ reload_nginx() {
 wait_for_lets_encrypt() {
   until [ -d "/etc/letsencrypt/live/$1" ]; do
     echo "Waiting for Let's Encrypt certificates for $1"
-    sleep 5s & wait ${!}
+    sleep 10s & wait ${!}
   done
   use_lets_encrypt_certificate "$1"
   reload_nginx
