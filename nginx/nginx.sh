@@ -8,16 +8,16 @@ if [ -z "$DOMAINS" ]; then
 fi
 
 use_dummy_certificate() {
-  if grep -q "/etc/letsencrypt/live/$1" "/etc/nginx/sites/$1.conf"; then
+  if grep -q "/etc/letsencrypt/live/$1" "/etc/nginx/sites/default.conf"; then
     echo "Switching Nginx to use dummy certificate for $1"
-    sed -i "s|/etc/letsencrypt/live/$1|/etc/nginx/sites/ssl/dummy/$1|g" "/etc/nginx/sites/$1.conf"
+    sed -i "s|/etc/letsencrypt/live/$1|/etc/nginx/sites/ssl/dummy/$1|g" "/etc/nginx/sites/default.conf"
   fi
 }
 
 use_lets_encrypt_certificate() {
-  if grep -q "/etc/nginx/sites/ssl/dummy/$1" "/etc/nginx/sites/$1.conf"; then
+  if grep -q "/etc/nginx/sites/ssl/dummy/$1" "/etc/nginx/sites/default.conf"; then
     echo "Switching Nginx to use Let's Encrypt certificate for $1"
-    sed -i "s|/etc/nginx/sites/ssl/dummy/$1|/etc/letsencrypt/live/$1|g" "/etc/nginx/sites/$1.conf"
+    sed -i "s|/etc/nginx/sites/ssl/dummy/$1|/etc/letsencrypt/live/$1|g" "/etc/nginx/sites/default.conf"
   fi
 }
 
@@ -45,8 +45,8 @@ for domain in $domains_fixed; do
   echo "Checking configuration for $domain"
 
   if [ ! -f "/etc/nginx/sites/$domain.conf" ]; then
-    echo "Creating Nginx configuration file /etc/nginx/sites/$domain.conf"
-    sed "s/\${domain}/$domain/g" /customization/site.conf.tpl > "/etc/nginx/sites/$domain.conf"
+    # echo "Creating Nginx configuration file /etc/nginx/sites/$domain.conf"
+    # sed "s/\${domain}/$domain/g" /customization/site.conf.tpl > "/etc/nginx/sites/$domain.conf"
   fi
 
   if [ ! -f "/etc/nginx/sites/ssl/dummy/$domain/fullchain.pem" ]; then
