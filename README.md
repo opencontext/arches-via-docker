@@ -117,6 +117,12 @@ For all domain names configure DNS A records to point to a server where Docker c
 
 Specify you domain names and contact emails for these domains in the `edit_dot_env` file and then save this file as `.env`:
 
+First make an `.env` file
+```bash
+cp edit_dot_env .env
+```
+
+
 ```properties
 DOMAINS=teach-with-arches.org
 CERTBOT_EMAILS=info@teach-with-arches.org
