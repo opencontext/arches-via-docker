@@ -9,7 +9,7 @@ services:
     env_file:
       - ./.env
     volumes:
-      - ./logs/nginx:/logs/nginx
+      - nginx-log:/logs/nginx
       - nginx_ssl:/etc/nginx/ssl
       - certbot_certs:/etc/letsencrypt
       - arches_certbot:$CERT_PATH
@@ -143,3 +143,4 @@ volumes:
   rabbitmq-data:
   arches-log:
   arches-static:
+  nginx-log:
