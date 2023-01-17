@@ -1,5 +1,3 @@
 *.ini
 *.log
-secrets.json
-*/secrets.json
-/static
+.env
