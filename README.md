@@ -115,7 +115,7 @@ For all domain names configure DNS A records to point to a server where Docker c
 
 ## Step 1 - Edit domain names and emails in the configuration
 
-Specify you domain names and contact emails for these domains in the `.env`:
+Specify you domain names and contact emails for these domains in the `.env-edit` file and then save this file as `.env`:
 
 ```properties
 DOMAINS=teach-with-arches.org
