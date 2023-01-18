@@ -35,8 +35,8 @@ reload_nginx() {
 
 wait_for_lets_encrypt() {
   until [ -d "/etc/letsencrypt/live/$1" ]; do
-    echo "CERT_PATH is apparently $CERT_PATH, with contents: ";
-    ls $CERT_PATH;
+    echo "CERT_PATH is apparently ${CERT_PATH}, with contents: ";
+    ls ${CERT_PATH};
     echo "Waiting for Let's Encrypt certificates for $1";
     sleep 10s & wait ${!}
   done
@@ -54,7 +54,11 @@ for domain in $domains_fixed; do
   echo "Checking configuration for $domain"
 
   echo "Make sure we have a cerbot directory for $domain";
-  mkdir -p "/var/www/certbot/$domain";
+  mkdir -p /var/www/certbot/$domain;
+
+  echo "Prepping cerbot acme-challenge folder for: $domain"
+    mkdir -p /var/www/certbot/$domain
+    cp /customization/hello.txt /var/www/certbot/$domain/hello.txt
 
   if [ ! -f "/etc/nginx/sites/$domain.conf" ]; then
     echo "Skip creating Nginx configuration file /etc/nginx/sites/$domain.conf"
@@ -71,9 +75,6 @@ for domain in $domains_fixed; do
       -subj "/CN=${domain}" -extensions EXT -config openssl.cnf
     rm -f openssl.cnf
 
-    echo "Prepping cerbot acme-challenge folder for: $domain"
-    mkdir -p /var/www/certbot/$domain
-    cp /customization/hello.txt /var/www/certbot/$domain/hello.txt
   fi
 
   if [ ! -d "/etc/letsencrypt/live/$domain" ]; then
