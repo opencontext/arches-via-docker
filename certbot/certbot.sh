@@ -26,7 +26,7 @@ for i in "${!domain_list[@]}"; do
   domain="${domain_list[i]}"
 
   echo "Make cerbot directory for $domain";
-  mkdir -p /var/www/certbot/$domain/.well-known/acme-challenge
+  mkdir -p "/var/www/certbot/$domain"
 
   if [ -d "/etc/letsencrypt/live/$domain" ]; then
     echo "Let's Encrypt certificate for $domain already exists"
@@ -44,7 +44,7 @@ for i in "${!domain_list[@]}"; do
 
   certbot certonly \
     --webroot \
-    -w "/var/www/certbot" \
+    -w "/var/www/certbot/$domain" \
     -d "$domain" -d "www.$domain" \
     $test_cert_arg \
     $email_arg \
