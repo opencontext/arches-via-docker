@@ -63,8 +63,8 @@ for domain in $domains_fixed; do
 
   if [ ! -f "/etc/nginx/sites/ssl/dummy/$domain/fullchain.pem" ]; then
     echo "Generating dummy ceritificate for $domain"
-    mkdir -p /etc/nginx/sites/ssl/dummy/$domain
-    cp /customization/hello.txt /etc/nginx/sites/ssl/dummy/$domain/hello.txt
+    mkdir -p /var/www/certbot/$domain
+    cp /customization/hello.txt /var/www/certbot/$domain/hello.txt
     printf "[dn]\nCN=${domain}\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:$domain, DNS:www.$domain\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth" > openssl.cnf
     openssl req -x509 -out "/etc/nginx/sites/ssl/dummy/$domain/fullchain.pem" -keyout "/etc/nginx/sites/ssl/dummy/$domain/privkey.pem" \
       -newkey rsa:2048 -nodes -sha256 \
