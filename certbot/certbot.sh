@@ -25,6 +25,7 @@ emails_list=($emails_fixed)
 for i in "${!domain_list[@]}"; do
   domain="${domain_list[i]}"
 
+  echo "Make cerbot directory for $domain";
   mkdir -p "/var/www/certbot/$domain"
 
   if [ -d "/etc/letsencrypt/live/$domain" ]; then
