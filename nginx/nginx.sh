@@ -53,6 +53,9 @@ domains_fixed=$(echo "$DOMAINS" | tr -d \")
 for domain in $domains_fixed; do
   echo "Checking configuration for $domain"
 
+  echo "Make sure we have a cerbot directory for $domain";
+  mkdir -p "/var/www/certbot/$domain";
+
   if [ ! -f "/etc/nginx/sites/$domain.conf" ]; then
     echo "Skip creating Nginx configuration file /etc/nginx/sites/$domain.conf"
     # sed "s/\${domain}/$domain/g" /customization/site.conf.tpl > "/etc/nginx/sites/$domain.conf"
