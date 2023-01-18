@@ -161,7 +161,9 @@ Re-create the volume for Let's Encrypt certificates:
 
 ```bash
 docker volume rm certbot_certs
+docker volume rm arches_certbot
 docker volume create --name=certbot_certs
+docker volume create --name=arches_certbot
 ```
 
 Start the containers:
