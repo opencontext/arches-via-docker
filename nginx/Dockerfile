@@ -3,8 +3,6 @@ FROM nginx:1.18-alpine-perl
 RUN apk add --no-cache nginx-mod-http-perl
 RUN apk add --no-cache openssl
 
-
-COPY hello.txt /customization/
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY default.conf /etc/nginx/conf.d/default.conf
 COPY options-ssl-nginx.conf /etc/nginx/

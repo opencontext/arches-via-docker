@@ -58,8 +58,8 @@ for domain in $domains_fixed; do
   mkdir -p /var/www/certbot/$domain;
 
   echo "Prepping cerbot acme-challenge folder for: $domain"
-    mkdir -p /var/www/certbot/$domain
-    cp /customization/hello.txt /var/www/certbot/$domain/hello.txt
+    mkdir -p /var/www/certbot/$domain/.well-known/acme-challenge
+    echo "look here for $domain cert dir!" > /var/www/certbot/$domain/.well-known/acme-challenge/hello.txt
 
   if [ ! -f "/etc/nginx/sites/$domain.conf" ]; then
     echo "Skip creating Nginx configuration file /etc/nginx/sites/$domain.conf"
