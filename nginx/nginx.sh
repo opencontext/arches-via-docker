@@ -34,9 +34,10 @@ reload_nginx() {
 }
 
 wait_for_lets_encrypt() {
+  certpath_fixed=$(echo "$CERT_PATH" | tr -d \");
   until [ -d "/etc/letsencrypt/live/$1" ]; do
-    echo "CERT_PATH is apparently ${CERT_PATH}, with contents: ";
-    ls ${CERT_PATH};
+    echo "CERT_PATH is apparently $certpath_fixed, with contents: ";
+    ls $certpath_fixed;
     echo "Waiting for Let's Encrypt certificates for $1";
     sleep 10s & wait ${!}
   done
