@@ -28,7 +28,7 @@ for i in "${!domain_list[@]}"; do
   echo "Make cerbot directory for $domain";
   mkdir -p /var/www/certbot/$domain;
   echo "Make the $domain deep directory for acme-challenges";
-  mkdir -p/var/www/certbot/$domain/.well-known/acme-challenge;
+  mkdir -p /var/www/certbot/$domain/.well-known/acme-challenge;
 
   if [ -d "/etc/letsencrypt/live/$domain" ]; then
     echo "Let's Encrypt certificate for $domain already exists"
