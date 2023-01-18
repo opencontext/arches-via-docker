@@ -8,22 +8,22 @@ if [ -z "$DOMAINS" ]; then
 fi
 
 use_dummy_certificate() {
-  if grep -q "/etc/letsencrypt/live/$1" "/etc/nginx/sites/default.conf"; then
+  if grep -q "/etc/letsencrypt/live/$1" "/etc/nginx/conf.d/default.conf"; then
     echo "Switching Nginx to use dummy certificate for $1"
-    sed -i "s|/etc/letsencrypt/live/$1|/etc/nginx/sites/ssl/dummy/$1|g" "/etc/nginx/sites/default.conf"
+    sed -i "s|/etc/letsencrypt/live/$1|/etc/nginx/sites/ssl/dummy/$1|g" "/etc/nginx/conf.d/default.conf"
   fi
-  if grep -q "/etc/nginx/sites/ssl/dummy/$1" "/etc/nginx/sites/default.conf"; then
+  if grep -q "/etc/nginx/sites/ssl/dummy/$1" "/etc/nginx/conf.d/default.conf"; then
     echo "Nginx already using dummy (testing) Let's Encrypt certificate for $1"
-    sed -i "s|/etc/nginx/sites/ssl/dummy/$1|/etc/letsencrypt/live/$1|g" "/etc/nginx/sites/default.conf"
+    sed -i "s|/etc/nginx/sites/ssl/dummy/$1|/etc/letsencrypt/live/$1|g" "/etc/nginx/conf.d/default.conf"
   fi
 }
 
 use_lets_encrypt_certificate() {
-  if grep -q "/etc/nginx/sites/ssl/dummy/$1" "/etc/nginx/sites/default.conf"; then
+  if grep -q "/etc/nginx/sites/ssl/dummy/$1" "/etc/nginx/conf.d/default.conf"; then
     echo "Switching Nginx to use Let's Encrypt certificate for $1"
-    sed -i "s|/etc/nginx/sites/ssl/dummy/$1|/etc/letsencrypt/live/$1|g" "/etc/nginx/sites/default.conf"
+    sed -i "s|/etc/nginx/sites/ssl/dummy/$1|/etc/letsencrypt/live/$1|g" "/etc/nginx/conf.d/default.conf"
   fi
-  if grep -q "/etc/letsencrypt/live/$1" "/etc/nginx/sites/default.conf"; then
+  if grep -q "/etc/letsencrypt/live/$1" "/etc/nginx/conf.d/default.conf"; then
     echo "Nginx already using production Let's Encrypt certificate for $1"
   fi
 }
