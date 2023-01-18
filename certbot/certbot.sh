@@ -44,7 +44,7 @@ for i in "${!domain_list[@]}"; do
 
   certbot certonly \
     --webroot \
-    -w "/var/www/certbot/$domain" \
+    -w "/var/www/certbot" \
     -d "$domain" -d "www.$domain" \
     $test_cert_arg \
     $email_arg \
