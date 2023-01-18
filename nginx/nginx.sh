@@ -59,7 +59,10 @@ for domain in $domains_fixed; do
 
   echo "Prepping cerbot acme-challenge folder for: $domain"
     mkdir -p /var/www/certbot/$domain/.well-known/acme-challenge
-    echo "look here for $domain cert dir!" > /var/www/certbot/$domain/.well-known/acme-challenge/hello.txt
+    echo "look here for $domain cert dir (deep)!" > /var/www/certbot/$domain/.well-known/acme-challenge/hello.txt;
+    chmod 644 /var/www/certbot/$domain/.well-known/acme-challenge/hello.txt;
+    echo "look here for $domain cert dir (shallow)!" > /var/www/certbot/$domain/hello.txt;
+    chmod 644 /var/www/certbot/$domain/hello.txt;
 
   if [ ! -f "/etc/nginx/sites/$domain.conf" ]; then
     echo "Skip creating Nginx configuration file /etc/nginx/sites/$domain.conf"
