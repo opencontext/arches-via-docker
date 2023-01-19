@@ -87,7 +87,7 @@ services:
       - ./.env
     build:
       context: .
-      dockerfile: /webpack/Dockerfile
+      dockerfile: webpack/Dockerfile
       args:
         ARCHES_PROJECT: ${ARCHES_PROJECT}
         ARCHES_ROOT: ${ARCHES_ROOT}
