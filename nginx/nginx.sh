@@ -37,12 +37,14 @@ use_lets_encrypt_certificate() {
   if grep -q "/etc/letsencrypt/live/" "/etc/nginx/conf.d/default.conf"; then
     echo "Nginx now using production Let's Encrypt certificate for $1";
   fi
+  nginx -c /etc/nginx/nginx.conf;
   nginx -s reload;
 }
 
 reload_nginx() {
   echo "Reloading Nginx configuration"
-  nginx -s reload
+  nginx -c /etc/nginx/nginx.conf;
+  nginx -s reload;
 }
 
 wait_for_lets_encrypt() {
