@@ -122,6 +122,10 @@ First make an `.env` file
 cp edit_dot_env .env
 ```
 
+Now edit `.env` to change your settings:
+```bash
+nano .env
+```
 
 ```properties
 DOMAINS=teach-with-arches.org
