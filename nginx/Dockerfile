@@ -7,7 +7,8 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY default.conf /etc/nginx/conf.d/default.conf
 COPY options-ssl-nginx.conf /etc/nginx/
 COPY hsts.conf /etc/nginx/
-COPY nginx.sh /customization/
+RUN mkdir -p /customization
+COPY nginx.sh /customization/nginx.sh
 RUN chmod +x /customization/nginx.sh
 
 EXPOSE 80

@@ -12,14 +12,16 @@ TZ=PST
 
 #arches project and paths
 ARCHES_PROJECT=arches_proj
-WEB_ROOT=/web_root
-APP_ROOT=$WEB_ROOT/$ARCHES_PROJECT
+ARCHES_ROOT=/arches_app
+APP_ROOT=$ARCHES_ROOT/$ARCHES_PROJECT
 APP_COMP_FOLDER=$APP_ROOT/$ARCHES_PROJECT
 
 #Arches configs
 ARCHES_NAMESPACE=arches-via-docker
 INSTALL_DEFAULT_GRAPHS=True
 INSTALL_DEFAULT_CONCEPTS=True
+# Don't change these, because I can't figure out how dynamically pass
+# a new database password to Postgres via docker compose
 PGUSERNAME=postgres
 PGPASSWORD=postgis
 PGDBNAME=$ARCHES_PROJECT

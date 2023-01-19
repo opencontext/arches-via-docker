@@ -7,10 +7,13 @@ services:
     image: postgis/postgis:14-3.2
     env_file:
       - ./.env
+    build:
+      context: .
+      args:
+        PGUSER: ${PGUSERNAME}
+        POSTGRES_USER: ${POSTGRES_USER}
+        POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     environment:
-      - PGUSER=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgis
       - POSTGRES_MULTIPLE_EXTENSIONS=postgis,postgis_topology
     restart: always
     volumes:

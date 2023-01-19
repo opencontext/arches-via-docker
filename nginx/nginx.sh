@@ -31,12 +31,13 @@ use_dummy_certificate() {
 
 use_lets_encrypt_certificate() {
   if grep -q "/etc/nginx/sites/ssl/dummy/" "/etc/nginx/conf.d/default.conf"; then
-    echo "Switching Nginx to use Let's Encrypt certificate for $1"
+    echo "Switching Nginx to use Let's Encrypt certificate for $1";
     sed -i "s|/etc/nginx/sites/ssl/dummy/|/etc/letsencrypt/live/|g" "/etc/nginx/conf.d/default.conf"
   fi
   if grep -q "/etc/letsencrypt/live/" "/etc/nginx/conf.d/default.conf"; then
-    echo "Nginx already using production Let's Encrypt certificate for $1"
+    echo "Nginx now using production Let's Encrypt certificate for $1";
   fi
+  nginx -s reload;
 }
 
 reload_nginx() {

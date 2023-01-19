@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # APP and YARN folder locations
-APP_FOLDER=${WEB_ROOT}/${ARCHES_PROJECT}
-APP_COMP_FOLDER=${APP_ROOT}/${ARCHES_PROJECT}
+APP_FOLDER=${APP_ROOT}
+APP_COMP_FOLDER=${APP_COMP_FOLDER}
 
 YARN_MODULES_FOLDER=${APP_COMP_FOLDER}/$(awk \
 	-F '--install.modules-folder' '{print $2}' ${APP_COMP_FOLDER}/.yarnrc \
@@ -65,7 +65,7 @@ init_arches() {
 		echo "----- Creating '${ARCHES_PROJECT}'... -----"
 		echo ""
 
-		cd ${WEB_ROOT}
+		cd ${APP_FOLDER}
 
 		arches-project create ${ARCHES_PROJECT}
 		run_setup_db
@@ -95,7 +95,7 @@ init_arches() {
 
 # Setup Couchdb (when should this happen?)
 setup_couchdb() {
-    echo "Running: Creating couchdb system databases"
+    echo "--- Running: Creating couchdb system databases ---"
     curl -X PUT ${COUCHDB_URL}/_users
     curl -X PUT ${COUCHDB_URL}/_global_changes
     curl -X PUT ${COUCHDB_URL}/_replicator
@@ -169,7 +169,7 @@ run_collect_static() {
 	cd ${APP_FOLDER}
 	python3 manage.py collectstatic --noinput
 	echo "----- Static built from -----"
-	cd /web_root/arches_proj/arches_proj/media
+	cd ${APP_COMP_FOLDER}/media
 	ls
 	echo "---------------------------------------------------------------"
 }
@@ -199,8 +199,10 @@ run_django_server() {
 		echo "Running DEBUG mode Django"
 		exec sh -c "python3 manage.py runserver 0.0.0.0:${DJANGO_PORT}"
 	else
-		echo "Running production mode Django"
-		exec sh -c "python3 gunicorn -w 2 -b 0.0.0.0:${DJANGO_PORT} arches.wsgi:application --reload --timeout 3600"
+		echo "Should run the production mode Arches Django via gunicorn"
+		# gunicorn -w 2 -b 0.0.0.0:${DJANGO_PORT} arches.wsgi:application --reload --timeout 3600
+		echo "But, since I can get gunicorn to work yet, running via Django"
+		exec sh -c "python3 manage.py runserver 0.0.0.0:${DJANGO_PORT}"
 	fi
 }
 
@@ -210,15 +212,12 @@ run_webpack() {
 	echo ""
 	# A hacky way to start the django server so the webpack can see it and use it.
 	cd ${APP_FOLDER}
-	# Kill the server if it is running.
-	fuser -k ${DJANGO_PORT}/tcp
 	# Start up the django server
 	python3 manage.py runserver 0.0.0.0:${DJANGO_PORT} &
 	# Now do the webpack thing
 	cd ${APP_COMP_FOLDER}
     echo "Running Webpack"
-	exec sh -c "yarn install && wait-for-it localhost:${DJANGO_PORT} -t 45 && yarn start"
-	fuser -k ${DJANGO_PORT}/tcp
+	exec sh -c "yarn install && wait-for-it 0.0.0.0:${DJANGO_PORT} -t 45 && yarn start"
 	# yarn install
 	# yarn start
 }
@@ -230,7 +229,6 @@ run_arches() {
 	run_migrations
 	run_createcachetable
 	run_collect_static
-	run_webpack
 	run_django_server
 	install_yarn_components
 }

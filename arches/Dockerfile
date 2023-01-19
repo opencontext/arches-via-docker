@@ -3,20 +3,21 @@ FROM ubuntu:20.04 as base
 USER root
 
 ## Setting default environment variables
-ENV WEB_ROOT=/web_root
-# Root project folder
-ENV ARCHES_PROJECT=arches_proj
-ENV APP_ROOT=${WEB_ROOT}/${ARCHES_PROJECT}
-ENV APP_COMP_FOLDER=${APP_ROOT}/${ARCHES_PROJECT}
+ARG ARCHES_ROOT
+# The name of the arches project
+ARG ARCHES_PROJECT
+# Project specific paths
+ARG APP_ROOT
+ARG APP_COMP_FOLDER
 # settings_local.py provides the DB credentials, etc. to the Arches project.
 ENV SETTINGS_LOCAL_PATH=${APP_COMP_FOLDER}/settings_local.py
-ENV ARCHES_DATA=/web_root/arches_data
+ENV ARCHES_DATA=${ARCHES_ROOT}/arches_data
 ENV WHEELS=/wheels
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE 1
 
 # Setup needed directories
-RUN mkdir ${WEB_ROOT} && mkdir /var/log/supervisor && mkdir /var/log/celery
+RUN mkdir ${ARCHES_ROOT} && mkdir /var/log/supervisor && mkdir /var/log/celery
 
 # Get ready to do some code installation
 RUN apt-get update && apt-get install -y make software-properties-common
@@ -52,13 +53,13 @@ RUN set -ex \
     && npm install -g yarn
 
 
-WORKDIR ${WEB_ROOT}
+WORKDIR ${ARCHES_ROOT}
 
 RUN rm -rf /root/.cache/pip/*
 
 RUN pip install --upgrade pip
 # Install the Arches application and make an Arches project.
-RUN pip install supervisor && pip install arches && arches-project create ${ARCHES_PROJECT}
+RUN pip install supervisor && pip install gunicorn && pip install arches && arches-project create ${ARCHES_PROJECT}
 
 # Make sure we have the environment variables in the python app?
 
