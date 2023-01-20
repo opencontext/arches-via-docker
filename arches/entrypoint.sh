@@ -222,8 +222,9 @@ run_django_server() {
 		echo "Running DEBUG mode Django"
 		exec sh -c "python3 manage.py runserver 0.0.0.0:${DJANGO_PORT}"
 	else
-		echo "Should run the production mode Arches Django via gunicorn"
-		gunicorn -w 2 -b 0.0.0.0:${DJANGO_PORT} ${ARCHES_PROJECT}.wsgi:application --reload --timeout 3600
+		echo "Should run the production mode Arches Django via gunicorn via:"
+		echo "gunicorn -w 2 -b 0.0.0.0:${DJANGO_PORT} ${ARCHES_PROJECT}.wsgi:application --reload --timeout 3600"
+		exec sh -c "gunicorn -w 2 -b 0.0.0.0:${DJANGO_PORT} ${ARCHES_PROJECT}.wsgi:application --reload --timeout 3600"
 		# echo "But, since I can get gunicorn to work yet, running via Django"
 		# exec sh -c "python3 manage.py runserver 0.0.0.0:${DJANGO_PORT}"
 	fi
