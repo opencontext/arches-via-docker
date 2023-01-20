@@ -7,6 +7,11 @@ ARG ARCHES_PROJECT
 # Project specific paths
 ARG APP_ROOT
 ARG APP_COMP_FOLDER
+
+# Make sure we have the local settings copyied into here too
+ENV SETTINGS_LOCAL_PATH=${APP_COMP_FOLDER}/settings_local.py
+COPY ./arches/settings_local.py ${SETTINGS_LOCAL_PATH}
+
 RUN mkdir -p ${APP_COMP_FOLDER}/webpack
 RUN mkdir -p /ep_dir
 
@@ -41,7 +46,8 @@ RUN apt-get update && apt-get -y install curl \
   && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
   && apt-get install nodejs && npm install -g yarn && apt install wait-for-it
 RUN pip install --upgrade pip
-RUN pip install supervisor && pip install gunicorn && pip install arches
+RUN pip install supervisor && pip install arches
+
 COPY /webpack/webpack_entrypoint.sh /ep_dir/webpack_entrypoint.sh
 RUN chmod -R 700 /ep_dir/webpack_entrypoint.sh &&\
   dos2unix /ep_dir/webpack_entrypoint.sh
