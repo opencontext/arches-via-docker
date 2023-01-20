@@ -1,5 +1,5 @@
 #! /bin/bash
-
+APP_FOLDER=${APP_ROOT}
 APP_COMP_FOLDER=${APP_COMP_FOLDER}
 run_webpack() {
 	echo ""
@@ -7,6 +7,9 @@ run_webpack() {
 	echo ""
 	if [[ ${BUILD_PRODUCTION} == 'True' ]]; then
 		echo "Skipping Webpack, hopefully buildproduction will do the trick..."
+		echo "So, doing the buildproduction thing..."
+		cd ${APP_FOLDER}
+		python3 manage.py build_production
 	else
 		cd ${APP_COMP_FOLDER}
 		echo "Running Webpack"
