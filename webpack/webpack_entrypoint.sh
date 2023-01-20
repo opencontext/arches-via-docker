@@ -9,7 +9,7 @@ run_webpack() {
 		echo "Skipping Webpack, hopefully buildproduction will do the trick..."
 		echo "So, doing the buildproduction thing..."
 		cd ${APP_FOLDER}
-		python3 manage.py build_production
+		exec sh -c "wait-for-it arches:8000 -t 1200 && python3 manage.py build_production"
 	else
 		cd ${APP_COMP_FOLDER}
 		echo "Running Webpack"
