@@ -130,6 +130,11 @@ for domain in $domains_fixed; do
   else
     use_lets_encrypt_certificate "$domain"
   fi
+
+  echo "-----------------------------------------------";
+  echo "Check out the contents of /static_root/";
+  ls /static_root;
+  echo "-----------------------------------------------";
 done
 
 exec nginx -g "daemon off;"

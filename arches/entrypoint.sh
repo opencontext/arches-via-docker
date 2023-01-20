@@ -174,6 +174,15 @@ run_collect_static() {
 	echo "---------------------------------------------------------------"
 }
 
+run_list_static() {
+	echo ""
+	echo "----- VIEW COLLECTED STATIC -----"
+	echo ""
+	cd /static_root;
+	ls
+	echo "---------------------------------------------------------------"
+}
+
 run_setup_db() {
 	echo ""
 	echo "----- RUNNING SETUP_DB -----"
@@ -204,22 +213,6 @@ run_django_server() {
 		echo "But, since I can get gunicorn to work yet, running via Django"
 		exec sh -c "python3 manage.py runserver 0.0.0.0:${DJANGO_PORT}"
 	fi
-}
-
-run_webpack() {
-	echo ""
-	echo "----- *** RUNNING WEBPACK *** -----"
-	echo ""
-	# A hacky way to start the django server so the webpack can see it and use it.
-	cd ${APP_FOLDER}
-	# Start up the django server
-	python3 manage.py runserver 0.0.0.0:${DJANGO_PORT} &
-	# Now do the webpack thing
-	cd ${APP_COMP_FOLDER}
-    echo "Running Webpack"
-	exec sh -c "yarn install && wait-for-it 0.0.0.0:${DJANGO_PORT} -t 45 && yarn start"
-	# yarn install
-	# yarn start
 }
 
 #### Main commands
@@ -271,6 +264,12 @@ do
 		;;
 		run_livereload)
 			run_livereload_server
+		;;
+		run_collect_static)
+			run_collect_static
+		;;
+		run_list_static)
+			run_list_static
 		;;
 		setup_arches)
 			start_celery_supervisor
