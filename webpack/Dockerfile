@@ -55,3 +55,5 @@ WORKDIR /ep_dir
 ENTRYPOINT ["./webpack_entrypoint.sh"]
 CMD ["run_webpack"]
 EXPOSE 8021
+
+EXPOSE 8080
