@@ -95,10 +95,10 @@ init_arches() {
 
 # Setup Couchdb (when should this happen?)
 setup_couchdb() {
-    echo "--- Running: Creating couchdb system databases ---"
-    curl -X PUT ${COUCHDB_URL}/_users
-    curl -X PUT ${COUCHDB_URL}/_global_changes
-    curl -X PUT ${COUCHDB_URL}/_replicator
+    echo "--- SKIP Running: Creating couchdb system databases ---"
+    # curl -X PUT ${COUCHDB_URL}/_users
+    # curl -X PUT ${COUCHDB_URL}/_global_changes
+    # curl -X PUT ${COUCHDB_URL}/_replicator
 }
 
 # Yarn
@@ -223,9 +223,9 @@ run_django_server() {
 		exec sh -c "python3 manage.py runserver 0.0.0.0:${DJANGO_PORT}"
 	else
 		echo "Should run the production mode Arches Django via gunicorn"
-		# gunicorn -w 2 -b 0.0.0.0:${DJANGO_PORT} arches.wsgi:application --reload --timeout 3600
-		echo "But, since I can get gunicorn to work yet, running via Django"
-		exec sh -c "python3 manage.py runserver 0.0.0.0:${DJANGO_PORT}"
+		gunicorn -w 2 -b 0.0.0.0:${DJANGO_PORT} ${ARCHES_PROJECT}.wsgi:application --reload --timeout 3600
+		# echo "But, since I can get gunicorn to work yet, running via Django"
+		# exec sh -c "python3 manage.py runserver 0.0.0.0:${DJANGO_PORT}"
 	fi
 }
 
