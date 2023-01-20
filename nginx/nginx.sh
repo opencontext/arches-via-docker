@@ -42,8 +42,6 @@ use_lets_encrypt_certificate_old() {
 use_dummy_certificate() {
   # Switch sympolic links to reference the apprpriate SSL keys
   mkdir -p /etc/symb_link_ssl;
-  rm /etc/symb_link_ssl/fullchain.pem;
-  rm /etc/symb_link_ssl/privkey.pem;
 
   if [ -f "/etc/letsencrypt/live/$1/fullchain.pem" ]; then
     echo "Nginx to use Let's Encrypt certificate for $1";
