@@ -166,11 +166,25 @@ run_collect_static() {
 	echo ""
 	echo "----- RUNNING COLLECT STATIC -----"
 	echo ""
-	cd ${APP_FOLDER}
-	python3 manage.py collectstatic --noinput
-	echo "----- Static built from -----"
-	cd ${APP_COMP_FOLDER}/media
-	ls
+	if [[ ${BUILD_PRODUCTION} == 'True' ]]; then
+		echo "Skipping collectstatic, hopefully buildproduction will do the trick..."
+	else
+		cd ${APP_FOLDER}
+		python3 manage.py collectstatic --noinput
+	fi
+	echo "---------------------------------------------------------------"
+}
+
+run_build_production() {
+	echo ""
+	echo "----- RUNNING BUILD PRODUCTION -----"
+	echo ""
+	if [[ ${BUILD_PRODUCTION} == 'True' ]]; then
+		cd ${APP_FOLDER}
+		python3 manage.py build_production
+	else
+		echo "Skipping buildproduction because BUILD_PRODUCTION is not 'True' "
+	fi
 	echo "---------------------------------------------------------------"
 }
 
@@ -223,6 +237,7 @@ run_arches() {
 	run_createcachetable
 	run_collect_static
 	run_django_server
+	run_build_production
 	install_yarn_components
 }
 
@@ -270,6 +285,9 @@ do
 		;;
 		run_list_static)
 			run_list_static
+		;;
+		run_build_production)
+			run_build_production
 		;;
 		setup_arches)
 			start_celery_supervisor
