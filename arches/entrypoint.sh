@@ -178,7 +178,7 @@ run_list_static() {
 	echo ""
 	echo "----- VIEW COLLECTED STATIC -----"
 	echo ""
-	cd /static_root;
+	cd /static_root
 	ls
 	echo "---------------------------------------------------------------"
 }

@@ -71,7 +71,6 @@ services:
       - run_arches
     expose:
       - 8004:8000
-      - 8021:8021
     volumes:
       - arches-log:/web_root/logs
       - arches-static:/static_root
