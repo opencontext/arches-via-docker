@@ -6,7 +6,7 @@ run_webpack() {
 	echo "----- *** RUNNING WEBPACK DEVELOPMENT SERVER *** -----"
 	echo ""
 	if [[ ${BUILD_PRODUCTION} == 'True' ]]; then
-		echo "Running Webpack, hopefully followed by the build_production thing"
+		echo "Running Webpack, hopefully the yarn build_production thing will work!"
 		cd ${APP_COMP_FOLDER}
 		exec sh -c "yarn install && wait-for-it arches:8000 -t 1200 && yarn build_production"
 		# echo "Do the build_production thing"
