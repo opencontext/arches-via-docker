@@ -175,6 +175,15 @@ run_collect_static() {
 	echo "---------------------------------------------------------------"
 }
 
+run_collect_static_nocheck() {
+	echo ""
+	echo "----- RUNNING COLLECT STATIC -----"
+	echo ""
+	cd ${APP_FOLDER}
+	python3 manage.py collectstatic --noinput
+	echo "---------------------------------------------------------------"
+}
+
 run_build_production() {
 	echo ""
 	echo "----- RUNNING BUILD PRODUCTION -----"
@@ -283,6 +292,9 @@ do
 		;;
 		run_collect_static)
 			run_collect_static
+		;;
+		run_collect_static_nocheck)
+			run_collect_static_nocheck
 		;;
 		run_list_static)
 			run_list_static
