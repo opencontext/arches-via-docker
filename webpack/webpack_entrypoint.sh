@@ -9,9 +9,9 @@ run_webpack() {
 		echo "Running Webpack, hopefully followed by the build_production thing"
 		cd ${APP_COMP_FOLDER}
 		exec sh -c "yarn install && wait-for-it arches:8000 -t 1200 && yarn build_production"
-		echo "Do the build_production thing"
-		cd ${APP_FOLDER}
-		python3 manage.py build_production
+		# echo "Do the build_production thing"
+		# cd ${APP_FOLDER}
+		# python3 manage.py build_production
 	else
 		cd ${APP_COMP_FOLDER}
 		echo "Running Webpack"
