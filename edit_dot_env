@@ -1,6 +1,6 @@
 # Edit this file and save as ".env" for use.
 
-COMPOSE_PROJECT_NAME=arches_for_teaching
+COMPOSE_PROJECT_NAME=arches_proj
 DOMAINS=arches.opencontext.org
 DEPLOY_HOST=arches.opencontext.org
 NGINX_HTML_PATH=/var/www/html/$DEPLOY_HOST
@@ -17,11 +17,15 @@ APP_ROOT=$ARCHES_ROOT/$ARCHES_PROJECT
 APP_COMP_FOLDER=$APP_ROOT/$ARCHES_PROJECT
 
 #Arches configs
-ARCHES_NAMESPACE=arches-via-docker
+# NOTE: the ARCHES_NAMESPACE needs to look like a URL, ending in a '/',
+# with the same port as used by the Arches Django APP.
+ARCHES_NAMESPACE='http://arches:8000/'
 INSTALL_DEFAULT_GRAPHS=True
 INSTALL_DEFAULT_CONCEPTS=True
 # Don't change these, because I can't figure out how dynamically pass
-# a new database password to Postgres via docker compose
+# a new database password to Postgres via docker compose. If you change
+# something like the PGPASSWORD, be sure to change it in the corresponding
+# value in the docker-compse.yml for the Postgres container.
 PGUSERNAME=postgres
 PGPASSWORD=postgis
 PGDBNAME=$ARCHES_PROJECT
@@ -31,13 +35,14 @@ ESHOST=arches_elasticsearch
 ESPORT=9200
 DJANGO_MODE=PROD
 DJANGO_DEBUG=False
+# Don't change the port, since it's pretty hard-coded.
 DJANGO_PORT=8000
 DOMAIN_NAMES=$DOMAINS localhost 0.0.0.0 127.0.0.1
 BUILD_PRODUCTION=False
 PYTHONUNBUFFERED=0
 ELASTICSEARCH_PREFIX=$ARCHES_PROJECT
 
-#couchdb for arches
+#couchdb for arches. This seems not needed for v7.3.0 and later.
 COUCHDB_HOST=arches_couchdb
 COUCHDB_PORT=5984
 COUCHDB_USER=admin
