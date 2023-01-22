@@ -168,6 +168,7 @@ run_elastic_safe_migrations() {
     echo "Elasticsearch is up"
 	echo "Do Migrations..."
 	cd ${APP_FOLDER}
+	python3 manage.py runserver --noreload
 	python3 manage.py migrate
 }
 
