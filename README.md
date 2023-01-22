@@ -101,7 +101,7 @@ When you are ready to use production Let's Encrypt server, set `CERTBOT_TEST_CER
 
 ## Prerequisites
 
-1. [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/) are installed
+1. [Docker](https://docs.docker.com/engine/install/ubuntu/) and [Docker Compose](https://docs.docker.com/compose/install/) are installed.
 2. You have a domain name
 3. You have a server with a publicly routable IP address
 4. You have cloned this repository
@@ -122,7 +122,7 @@ First make an `.env` file
 cp edit_dot_env .env
 ```
 
-Now edit `.env` to change your settings:
+Now edit `.env` file to change your settings.
 ```bash
 nano .env
 ```

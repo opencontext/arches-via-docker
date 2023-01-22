@@ -45,12 +45,12 @@ use_dummy_certificate() {
 
   if [ -f "/etc/letsencrypt/live/$1/fullchain.pem" ]; then
     echo "Nginx to use Let's Encrypt certificate for $1";
-    ln -s "/etc/letsencrypt/live/$1/fullchain.pem" /etc/symb_link_ssl/fullchain.pem;
-    ln -s "/etc/letsencrypt/live/$1/privkey.pem" /etc/symb_link_ssl/privkey.pem;
+    ln -sfn  "/etc/letsencrypt/live/$1/fullchain.pem" /etc/symb_link_ssl/fullchain.pem;
+    ln -sfn  "/etc/letsencrypt/live/$1/privkey.pem" /etc/symb_link_ssl/privkey.pem;
   else
    echo "Nginx to use dummy (testing) SSL certificate for $1"
-    ln -s "/etc/nginx/sites/ssl/dummy/$1/fullchain.pem"  /etc/symb_link_ssl/fullchain.pem;
-    ln -s "/etc/nginx/sites/ssl/dummy/$1/privkey.pem"  /etc/symb_link_ssl/privkey.pem;
+    ln -sfn  "/etc/nginx/sites/ssl/dummy/$1/fullchain.pem" /etc/symb_link_ssl/fullchain.pem;
+    ln -sfn  "/etc/nginx/sites/ssl/dummy/$1/privkey.pem" /etc/symb_link_ssl/privkey.pem;
   fi
 }
 
@@ -64,8 +64,8 @@ use_lets_encrypt_certificate() {
     ln -sfn  "/etc/letsencrypt/live/$1/privkey.pem" /etc/symb_link_ssl/privkey.pem;
   else
    echo "Nginx to use dummy (testing) SSL certificate for $1"
-    ln -sfn  "/etc/nginx/sites/ssl/dummy/$1/fullchain.pem"  /etc/symb_link_ssl/fullchain.pem;
-    ln -sfn  "/etc/nginx/sites/ssl/dummy/$1/privkey.pem"  /etc/symb_link_ssl/privkey.pem;
+    ln -sfn  "/etc/nginx/sites/ssl/dummy/$1/fullchain.pem" /etc/symb_link_ssl/fullchain.pem;
+    ln -sfn  "/etc/nginx/sites/ssl/dummy/$1/privkey.pem" /etc/symb_link_ssl/privkey.pem;
   fi
 }
 
