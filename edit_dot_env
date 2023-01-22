@@ -20,6 +20,8 @@ APP_COMP_FOLDER=$APP_ROOT/$ARCHES_PROJECT
 # NOTE: the ARCHES_NAMESPACE needs to look like a URL, ending in a '/',
 # with the same port as used by the Arches Django APP.
 ARCHES_NAMESPACE='http://arches:8000/'
+# This will hopefully make the yarn build not fail.
+NODE_OPTIONS='--max-old-space-size=1024'
 INSTALL_DEFAULT_GRAPHS=True
 INSTALL_DEFAULT_CONCEPTS=True
 # Don't change these, because I can't figure out how dynamically pass
