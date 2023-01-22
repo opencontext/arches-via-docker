@@ -169,6 +169,7 @@ run_elastic_safe_migrations() {
 	cd ${APP_FOLDER}
 	echo "Run the server for a few seconds..."
 	python3 manage.py runserver --noreload
+	echo "Sleep for a few seconds because elastic search seems to need the wait (a total hack)..."
 	sleep 10s;
 	echo "Now do Migrations..."
 	python3 manage.py migrate
