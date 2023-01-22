@@ -242,13 +242,13 @@ run_django_server() {
 #### Main commands
 run_arches() {
 	init_arches
-	run_make_migrations
-	run_migrations
+	# run_make_migrations
+	# run_migrations
 	run_createcachetable
-	run_collect_static
+	# run_collect_static
 	run_django_server
-	run_build_production
-	install_yarn_components
+	# run_build_production
+	# install_yarn_components
 }
 
 #### Main commands
