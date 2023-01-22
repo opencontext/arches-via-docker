@@ -154,6 +154,23 @@ run_make_migrations() {
 	python3 manage.py makemigrations
 }
 
+run_elastic_safe_migrations() {
+	echo ""
+	echo "----- RUNNING DATABASE MIGRATIONS WITH ELASTIC CHECK -----"
+	echo ""
+	echo "Testing if Elasticsearch is up..."
+    while [[ ! ${return_code} == 0 ]]
+    do
+        curl -s "http://${ESHOST}:${ESPORT}/_cluster/health?wait_for_status=green&timeout=60s" >&/dev/null
+        return_code=$?
+        sleep 1
+    done
+    echo "Elasticsearch is up"
+	echo "Do Migrations..."
+	cd ${APP_FOLDER}
+	python3 manage.py migrate
+}
+
 run_migrations() {
 	echo ""
 	echo "----- RUNNING DATABASE MIGRATIONS -----"
@@ -242,8 +259,8 @@ run_django_server() {
 #### Main commands
 run_arches() {
 	init_arches
-	# run_make_migrations
-	# run_migrations
+	run_make_migrations
+	run_elastic_safe_migrations
 	# run_createcachetable
 	# run_collect_static
 	run_django_server
