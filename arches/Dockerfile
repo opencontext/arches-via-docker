@@ -90,5 +90,7 @@ CMD ["run_arches"]
 WORKDIR ${APP_ROOT}
 # Expose port 8000 (Django server)
 EXPOSE 8000
-# Expose port 8021 (Webpack)
+# Expose Webpack port
 EXPOSE 8021
+# Expose CouchDB port
+EXPOSE 5984
