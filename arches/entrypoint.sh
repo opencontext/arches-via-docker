@@ -171,6 +171,7 @@ run_elastic_safe_migrations() {
 	# echo "Run the server for a few seconds..."
 	# python3 manage.py runserver --noreload
 	echo "Sleep for a 20 seconds because elastic search seems to need the wait (a total hack)..."
+	echo "We're running migrations in case the initial db setup failed because elasticsearch was still not quite ready"
 	sleep 20s;
 	echo "Now do Migrations..."
 	python3 manage.py migrate
