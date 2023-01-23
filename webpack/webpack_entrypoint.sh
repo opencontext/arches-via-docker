@@ -14,10 +14,7 @@ run_webpack() {
 	else
 		cd ${APP_COMP_FOLDER}
 		echo "Running Webpack to do the yarn build_development thing."
-		exec sh -c "yarn install && wait-for-it arches:8000 -t 1200 && yarn build_development"
-		echo "Build development done. Now collectstatic."
-		cd ${APP_FOLDER}
-		python3 manage.py collectstatic --noinput
+		exec sh -c "yarn install && wait-for-it arches:8000 -t 1200 && yarn build_development && python3 $APP_FOLDER/manage.py collectstatic --noinput"
 	fi
 }
 
