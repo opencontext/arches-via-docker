@@ -96,12 +96,12 @@ init_arches() {
 
 # Setup Couchdb
 setup_couchdb() {
-    echo "--- Creating couchdb system databases ---"
-	echo "Sleep for a 10 seconds because elastic search seems to need the wait (a total hack)..."
-	sleep 10s;
-    curl -X PUT ${COUCHDB_URL}/_users
-    curl -X PUT ${COUCHDB_URL}/_global_changes
-    curl -X PUT ${COUCHDB_URL}/_replicator
+    echo "--- SKIP Creating couchdb system databases (not in V7) ---"
+	# echo "Sleep for a 10 seconds because elastic search seems to need the wait (a total hack)..."
+	# sleep 10s;
+    # curl -X PUT ${COUCHDB_URL}/_users
+    # curl -X PUT ${COUCHDB_URL}/_global_changes
+    # curl -X PUT ${COUCHDB_URL}/_replicator
 }
 
 # Yarn
