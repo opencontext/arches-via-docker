@@ -66,7 +66,8 @@ init_arches() {
 		echo ""
 
 		cd ${APP_FOLDER}
-
+		echo "Sleep for a 20 seconds because elastic search seems to need the wait (a total hack)..."
+		sleep 20s;
 		arches-project create ${ARCHES_PROJECT}
 		run_setup_db
 		setup_couchdb
