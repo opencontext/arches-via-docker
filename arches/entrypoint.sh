@@ -169,8 +169,8 @@ run_elastic_safe_migrations() {
 	cd ${APP_FOLDER}
 	# echo "Run the server for a few seconds..."
 	# python3 manage.py runserver --noreload
-	echo "Sleep for a few seconds because elastic search seems to need the wait (a total hack)..."
-	sleep 10s;
+	echo "Sleep for a 20 seconds because elastic search seems to need the wait (a total hack)..."
+	sleep 20s;
 	echo "Now do Migrations..."
 	python3 manage.py migrate
 }
@@ -263,7 +263,7 @@ run_django_server() {
 #### Main commands
 run_arches() {
 	init_arches
-	run_make_migrations
+	run_elastic_safe_migrations
 	run_elastic_safe_migrations
 	# run_createcachetable
 	# run_collect_static
