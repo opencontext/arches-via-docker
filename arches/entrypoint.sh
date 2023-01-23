@@ -66,8 +66,8 @@ init_arches() {
 		echo ""
 
 		cd ${APP_FOLDER}
-		echo "Sleep for a 20 seconds because elastic search seems to need the wait (a total hack)..."
-		sleep 20s;
+		echo "Sleep for a 45 seconds because elastic search seems to need the wait (a total hack)..."
+		sleep 45s;
 		arches-project create ${ARCHES_PROJECT}
 		run_setup_db
 		setup_couchdb
@@ -266,8 +266,10 @@ run_django_server() {
 run_arches() {
 	init_arches
 	run_elastic_safe_migrations
+	# Yes, do this again, just in case elastic is still not totally ready...
 	run_elastic_safe_migrations
-	# run_createcachetable
+	# This should be run in elastic wasn't ready for a full setup.
+	run_createcachetable
 	# run_collect_static
 	run_django_server
 	# run_build_production
