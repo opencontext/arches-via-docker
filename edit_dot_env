@@ -35,7 +35,7 @@ PGHOST=arches_db
 PGPORT=5432
 ESHOST=arches_elasticsearch
 ESPORT=9200
-DJANGO_MODE=PROD
+DJANGO_MODE=DEV
 DJANGO_DEBUG=False
 # Don't change the port, since it's pretty hard-coded.
 DJANGO_PORT=8000

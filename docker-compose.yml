@@ -156,9 +156,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./:/workdir:ro
-    depends_on:
-      - nginx
-      - certbot
+    restart: unless-stopped
     networks:
       - arches_net
 
