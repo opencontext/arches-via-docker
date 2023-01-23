@@ -137,6 +137,10 @@ check_settings_local() {
 #### Run commands
 
 start_celery_supervisor() {
+	echo ""
+	echo "----- START CELERY SUPERVISOR -----"
+	echo ""
+	sleep 5s;
 	cd ${APP_FOLDER}
 	supervisord -c arches-supervisor.conf
 }
@@ -267,6 +271,7 @@ run_django_server() {
 #### Main commands
 run_arches() {
 	init_arches
+	start_celery_supervisor
 	run_elastic_safe_migrations
 	# Yes, do this again, just in case elastic is still not totally ready...
 	run_elastic_safe_migrations
