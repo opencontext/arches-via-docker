@@ -13,7 +13,7 @@ YARN_MODULES_FOLDER=${APP_COMP_FOLDER}/$(awk \
 
 # Environmental Variables
 export DJANGO_PORT=${DJANGO_PORT:-8000}
-COUCHDB_URL="http://$COUCHDB_USER:$COUCHDB_PASS@$COUCHDB_HOST:$COUCHDB_PORT"
+COUCHDB_URL=${COUCHDB_URL}
 
 #Utility functions that check db status
 wait_for_db() {
@@ -87,19 +87,21 @@ init_arches() {
 		else
 			echo "Database ${PGDBNAME} does not exists yet."
 			run_setup_db
-			run_migrations
+			run_elastic_safe_migrations
 			# run_load_package #change to run_load_package if preferred
 			setup_couchdb
 		fi
 	fi
 }
 
-# Setup Couchdb (when should this happen?)
+# Setup Couchdb
 setup_couchdb() {
-    echo "--- SKIP Running: Creating couchdb system databases ---"
-    # curl -X PUT ${COUCHDB_URL}/_users
-    # curl -X PUT ${COUCHDB_URL}/_global_changes
-    # curl -X PUT ${COUCHDB_URL}/_replicator
+    echo "--- Creating couchdb system databases ---"
+	echo "Sleep for a 10 seconds because elastic search seems to need the wait (a total hack)..."
+	sleep 10s;
+    curl -X PUT ${COUCHDB_URL}/_users
+    curl -X PUT ${COUCHDB_URL}/_global_changes
+    curl -X PUT ${COUCHDB_URL}/_replicator
 }
 
 # Yarn
