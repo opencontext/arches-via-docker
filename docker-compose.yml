@@ -42,7 +42,7 @@ services:
       - arches_net
 
   arches_rabbitmq:
-    container_name: rabbitmq3
+    container_name: arches_rabbitmq
     image: rabbitmq:3-management
     hostname: my-rabbit
     volumes:
