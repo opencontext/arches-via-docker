@@ -49,8 +49,8 @@ services:
       - rabbitmq-data:/var/lib/rabbitmq/mnesia/rabbit@my-rabbit
       - rabbitmq-logs:/var/log/rabbitmq/log
     ports:
-      - 5674:5672
-      - 15674:15672
+      - 5672:5672
+      - 15672:15672
     networks:
       - arches_net
 

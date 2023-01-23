@@ -46,7 +46,8 @@ BUILD_PRODUCTION=False
 PYTHONUNBUFFERED=0
 ELASTICSEARCH_PREFIX=$ARCHES_PROJECT
 
-#couchdb for arches. This seems not needed for v7.3.0 and later.
+# couchdb for arches. Not needed for V7+, but config exists incase it
+# reappears.
 COUCHDB_HOST=arches
 COUCHDB_PORT=5984
 COUCHDB_USER=admin
