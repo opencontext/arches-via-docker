@@ -6,17 +6,18 @@ run_webpack() {
 	echo "----- *** RUNNING WEBPACK DEVELOPMENT SERVER *** -----"
 	echo ""
 	if [[ ${BUILD_PRODUCTION} == 'True' ]]; then
+		# NOTE: Only do this if you have more than 8GB of system RAM. This will likely error out
+		# otherwise.
 		echo "Running Webpack, hopefully the build_production thing will work!"
 		cd ${APP_FOLDER}
 		exec sh -c "yarn install && wait-for-it arches:8000 -t 1200 && python3 manage.py build_production"
-		# exec sh -c "yarn install && wait-for-it arches:8000 -t 1200 && yarn build_production"
-		# echo "Do the build_production thing"
-		# cd ${APP_FOLDER}
-		# python3 manage.py build_production
 	else
 		cd ${APP_COMP_FOLDER}
-		echo "Running Webpack"
-		exec sh -c "yarn install && wait-for-it arches:8000 -t 1200 && yarn start"
+		echo "Running Webpack to do the yarn build_development thing."
+		exec sh -c "yarn install && wait-for-it arches:8000 -t 1200 && yarn build_development"
+		echo "Build development done. Now collectstatic."
+		cd ${APP_FOLDER}
+		python3 manage.py collectstatic --noinput
 	fi
 }
 

@@ -40,6 +40,8 @@ DJANGO_DEBUG=False
 # Don't change the port, since it's pretty hard-coded.
 DJANGO_PORT=8000
 DOMAIN_NAMES=$DOMAINS localhost 0.0.0.0 127.0.0.1
+# NOTE: Only set BUILD_PRODUCTION=True if you have well over
+# 8GB of system RAM. Otherwise, yarn will likely error out.
 BUILD_PRODUCTION=False
 PYTHONUNBUFFERED=0
 ELASTICSEARCH_PREFIX=$ARCHES_PROJECT
