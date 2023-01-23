@@ -41,6 +41,19 @@ services:
     networks:
       - arches_net
 
+  arches_rabbitmq:
+    container_name: rabbitmq3
+    image: rabbitmq:3-management
+    hostname: my-rabbit
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq/mnesia/rabbit@my-rabbit
+      - rabbitmq-logs:/var/log/rabbitmq/log
+    ports:
+      - 5674:5672
+      - 15674:15672
+    networks:
+      - arches_net
+
   arches:
     container_name: arches
     image: arches
@@ -68,6 +81,7 @@ services:
     depends_on:
       - arches_db
       - arches_elasticsearch
+      - arches_rabbitmq
     command:
       - run_arches
     expose:
