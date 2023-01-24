@@ -24,12 +24,9 @@ and finally
 https://github.com/archesproject/arches-her
 
 
-# Testing a localhost deployment
+# Public Web Server and Localhost Deployments
 
-This main goal of this repo is to offer a simple, turnkey approach to deploying HTTPS secured Arches on the Web. You can also use this to deploy Arches for use on a `localhost` by leaving Arches with the Django `DEBUG` setting as `True`.
-
-*NOTE* At this early stage of development, we're still only testing this docker deployemnt on the `localhost`
-
+This main goal of this repo is to offer a simple, turnkey approach to deploying HTTPS secured Arches on the Web. You can also use this to deploy Arches for use on a `localhost` by leaving Arches with the Django `DEBUG` setting as `True`. See below for instructions on creating and editing an `.env` file.
 
 
 # Nginx and Let’s Encrypt with Docker Compose in less than 3 minutes
@@ -101,7 +98,7 @@ When you are ready to use production Let's Encrypt server, set `CERTBOT_TEST_CER
 
 ## Prerequisites
 
-1. [Docker](https://docs.docker.com/engine/install/ubuntu/) and [Docker Compose](https://docs.docker.com/compose/install/) are installed.
+1. [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/) are installed.
 2. You have a domain name
 3. You have a server with a publicly routable IP address
 4. You have cloned this repository
@@ -113,7 +110,7 @@ When you are ready to use production Let's Encrypt server, set `CERTBOT_TEST_CER
 
 For all domain names configure DNS A records to point to a server where Docker containers will be running.
 
-## Step 1 - Edit domain names and emails in the configuration
+## Step 1 - Edit domain names, emails and other variables in the configuration
 
 Specify you domain names and contact emails for these domains in the `edit_dot_env` file and then save this file as `.env`:
 
@@ -127,10 +124,25 @@ Now edit `.env` file to change your settings.
 nano .env
 ```
 
+Here are properties to change based on your specific Web domain. Please note, for now this only supports one domain specified by the `DOMAINS` variable (the plural is asperational..).
+
 ```properties
 DOMAINS=teach-with-arches.org
 CERTBOT_EMAILS=info@teach-with-arches.org
 ```
+
+Below are properties to edit to change how Arches deploy. If you want to deploy this on your own machine (localhost), setting `DJANGO_DEBUG=True` is useful to see and diagnose useful error messages in the Arches Django application, but be sure to set `DJANGO_DEBUG=False` for deployments on the public Web. *NOTE* if you run this on your localhost, this Docker build will currently make your Arches application available to your browser via [[http://](http://127.0.0.1:8004/)](http://127.0.0.1:8004/) *on port 8004*, not the usual 8000. This nonstandard port was chosen in case your local host has other applications already running on port 8000.
+
+If you set `BUILD_PRODUCTION=True`, be sure you have well over 8GB of system RAM. `BUILD_PRODUCTION=True` will invoke the Arches `manage.py build_production` command, and this command is *very* resource intensive and time consuming. You will likely get errors that will cause your build to fail if you do a production build on a server with only 8GB of RAM.
+
+```properties
+DJANGO_MODE=DEV
+DJANGO_DEBUG=False
+...
+BUILD_PRODUCTION=False
+```
+
+
 
 ## Step 2 - Create named Docker volumes for dummy and Let's Encrypt TLS certificates
 
