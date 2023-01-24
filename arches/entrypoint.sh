@@ -143,12 +143,13 @@ start_celery_supervisor() {
 	echo "Sleep 30s in the hope that arches_rabbitmq will be fully up and running..."
 	sleep 30s;
 	if [ -f "/tmp/supervisor.sock" ]; then
-		echo "The celery supervisor seems up and working "
+		echo "The celery supervisor seems started, so why try to start it again? "
 		# unlink /tmp/supervisor.sock
+		# wait-for-it arches_rabbitmq:5672 -t 120 && supervisord -c arches_proj-supervisor.conf
 	else
 		echo "The celery supervisor has yet to start, so we'll start it.."
 		cd ${APP_FOLDER}
-		wait-for-it arches_rabbitmq:15672 -t 120 && supervisord -c arches_proj-supervisor.conf
+		wait-for-it arches_rabbitmq:5672 -t 120 && supervisord -c arches_proj-supervisor.conf
 	fi
 }
 
