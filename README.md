@@ -83,7 +83,7 @@ To adapt the example to your domain names you need to change only `.env`:
 ```properties
 DOMAINS=teach-with-arches.org
 CERTBOT_EMAILS=info@teach-with-arches.org info@teach2.with.arches.org
-CERTBOT_TEST_CERT=1
+CERTBOT_TEST_CERT=0
 CERTBOT_RSA_KEY_SIZE=4096
 ```
 
@@ -131,7 +131,7 @@ DOMAINS=teach-with-arches.org
 CERTBOT_EMAILS=info@teach-with-arches.org
 ```
 
-Below are properties to edit to change how Arches deploy. If you want to deploy this on your own machine (localhost), setting `DJANGO_DEBUG=True` is useful to see and diagnose useful error messages in the Arches Django application, but be sure to set `DJANGO_DEBUG=False` for deployments on the public Web. *NOTE* if you run this on your localhost, this Docker build will currently make your Arches application available to your browser via [[http://](http://127.0.0.1:8004/)](http://127.0.0.1:8004/) *on port 8004*, not the usual 8000. This nonstandard port was chosen in case your local host has other applications already running on port 8000.
+Below are properties to edit to change how Arches deploy. If you want to deploy this on your own machine (localhost), setting `DJANGO_DEBUG=True` is useful to see and diagnose useful error messages in the Arches Django application, but be sure to set `DJANGO_DEBUG=False` for deployments on the public Web. *NOTE* if you run this on your localhost, this Docker build will currently make your Arches application available to your browser via [http://127.0.0.1:8004/](http://127.0.0.1:8004/) *on port 8004*, not the usual 8000. This nonstandard port was chosen in case your local host has other applications already running on port 8000.
 
 If you set `BUILD_PRODUCTION=True`, be sure you have well over 8GB of system RAM. `BUILD_PRODUCTION=True` will invoke the Arches `manage.py build_production` command, and this command is *very* resource intensive and time consuming. You will likely get errors that will cause your build to fail if you do a production build on a server with only 8GB of RAM.
 
@@ -153,24 +153,25 @@ docker volume create --name=certbot_certs
 docker volume create --name=arches_certbot
 ```
 
-## Step 3 - Build images and start containers
+## Step 3 - Use Valid Let's Encrypt Certificates
+Configure to use production Let's Encrypt server in `.env`:
+
+```properties
+CERTBOT_TEST_CERT=0
+```
+
+## Step 4 - Build images and start containers
 
 ```bash
 docker compose up --build
 ```
 
-## Step 4 - Switch to production Let's Encrypt server after verifying HTTPS works with test certificates
+## Config Changes? - Replace volumes etc to implement changes
 
 Stop the containers:
 
 ```bash
 docker compose down
-```
-
-Configure to use production Let's Encrypt server in `.env`:
-
-```properties
-CERTBOT_TEST_CERT=0
 ```
 
 Re-create the volume for Let's Encrypt certificates:
