@@ -143,7 +143,7 @@ start_celery_supervisor() {
 	echo "Sleep 30s in the hope that arches_rabbitmq will be fully up and running..."
 	sleep 30s;
 	cd ${APP_FOLDER}
-	wait-for-it arches_rabbitmq:15672 -t 120 && supervisord -c arches-supervisor.conf
+	wait-for-it arches_rabbitmq:15672 -t 120 && supervisord -c arches_proj-supervisor.conf
 }
 
 run_createcachetable() {
