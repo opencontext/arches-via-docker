@@ -140,7 +140,8 @@ start_celery_supervisor() {
 	echo ""
 	echo "----- START CELERY SUPERVISOR -----"
 	echo ""
-	sleep 5s;
+	echo "Sleep 30s in the hope that arches_rabbitmq will be fully up and running..."
+	sleep 30s;
 	cd ${APP_FOLDER}
 	supervisord -c arches-supervisor.conf
 }
