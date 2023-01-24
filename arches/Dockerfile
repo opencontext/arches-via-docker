@@ -72,6 +72,8 @@ RUN sed -i 's/\r$//g' ${SETTINGS_LOCAL_PATH}
 COPY /arches/conf.d/ ${APP_ROOT}/conf.d/
 COPY /arches/arches_proj-supervisor.conf ${APP_ROOT}/arches_proj-supervisor.conf
 RUN chmod -R 700 ${APP_ROOT}/arches_proj-supervisor.conf
+RUN mkdir -p /var/log/supervisor
+RUN mkdir -p /var/log/celery
 
 # Make sure the entry point is available and lacks weird characters
 # that don't work in a Linux OS
