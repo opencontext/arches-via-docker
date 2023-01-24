@@ -46,6 +46,7 @@ RUN set -ex \
     && curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
     && add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -sc)-pgdg main" \
     && apt-get update -y \
+    && apt-get install -y "wait-for-it" \
     && apt-get install -y nano \
     && apt-get install -y --no-install-recommends $RUN_DEPS \
     && apt-get install -y nodejs \

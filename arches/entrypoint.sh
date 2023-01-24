@@ -143,7 +143,7 @@ start_celery_supervisor() {
 	echo "Sleep 30s in the hope that arches_rabbitmq will be fully up and running..."
 	sleep 30s;
 	cd ${APP_FOLDER}
-	supervisord -c arches-supervisor.conf
+	exec sh -c "wait-for-it arches_rabbitmq:15672 -t 120 && supervisord -c arches-supervisor.conf"
 }
 
 run_createcachetable() {
@@ -300,8 +300,8 @@ run_livereload() {
 
 # If no arguments are supplied, assume the server needs to be run
 if [[ $#  -eq 0 ]]; then
-	start_celery_supervisor
 	wait_for_db
+	start_celery_supervisor
 	run_arches
 fi
 
@@ -314,9 +314,9 @@ do
 
 	case ${key} in
 		run_arches)
-			start_celery_supervisor
 			check_settings_local
 			wait_for_db
+			start_celery_supervisor
 			run_arches
 		;;
 		run_livereload)
