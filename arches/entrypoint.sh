@@ -284,6 +284,7 @@ run_arches() {
 	run_elastic_safe_migrations
 	# This should be run in elastic wasn't ready for a full setup.
 	run_createcachetable
+	start_celery_supervisor
 	# run_collect_static
 	run_django_server
 	# run_build_production
@@ -308,7 +309,6 @@ run_livereload() {
 # If no arguments are supplied, assume the server needs to be run
 if [[ $#  -eq 0 ]]; then
 	wait_for_db
-	start_celery_supervisor
 	run_arches
 fi
 
@@ -323,7 +323,6 @@ do
 		run_arches)
 			check_settings_local
 			wait_for_db
-			start_celery_supervisor
 			run_arches
 		;;
 		run_livereload)
