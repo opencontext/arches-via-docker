@@ -143,7 +143,7 @@ start_celery_beat() {
 	else
 		echo "The celery beat process doesn't seem to exist yet, so start it.."
 		cd ${APP_FOLDER}
-		exec sh -c "wait-for-it arches_rabbitmq:5672 -t 120 && nohup celery -A arches_proj.celery beat --schedule=/tmp/celerybeat-schedule --loglevel=INFO --pidfile=/tmp/celerybeat.pid &"
+		wait-for-it arches_rabbitmq:5672 -t 120 && nohup celery -A arches_proj.celery beat --schedule=/tmp/celerybeat-schedule --loglevel=INFO --pidfile=/tmp/celerybeat.pid &
 	fi
 }
 
