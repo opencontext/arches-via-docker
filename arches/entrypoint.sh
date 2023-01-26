@@ -140,8 +140,8 @@ start_celery_supervisor() {
 	echo ""
 	echo "----- START CELERY SUPERVISOR -----"
 	echo ""
-	echo "Sleep 30s in the hope that arches_rabbitmq will be fully up and running..."
-	sleep 30s;
+	echo "Sleep 60s in the hope that arches_rabbitmq will be fully up and running..."
+	sleep 60s;
 	if [ -f "/tmp/supervisor.sock" ]; then
 		echo "The celery supervisor seems started, so why try to start it again? "
 		# unlink /tmp/supervisor.sock
