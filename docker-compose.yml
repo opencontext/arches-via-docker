@@ -44,9 +44,13 @@ services:
   arches_rabbitmq:
     container_name: arches_rabbitmq
     image: rabbitmq:3-management
-    hostname: my-rabbit
+    hostname: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+      RABBITMQ_NODENAME: rabbitmq
     volumes:
-      - rabbitmq-data:/var/lib/rabbitmq/mnesia/rabbit@my-rabbit
+      - rabbitmq-data:/var/lib/rabbitmq/mnesia
       - rabbitmq-logs:/var/log/rabbitmq/log
     ports:
       - "5672:5672"
