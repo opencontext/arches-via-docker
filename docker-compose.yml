@@ -49,13 +49,9 @@ services:
       - rabbitmq-data:/var/lib/rabbitmq/mnesia/rabbit@my-rabbit
       - rabbitmq-logs:/var/log/rabbitmq/log
     ports:
-      - 5672:5672
+      - "5672:5672"
       - 15672:15672
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:15672"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
+    restart: always
     networks:
       - arches_net
 
@@ -79,7 +75,7 @@ services:
     tty: true        # docker run -t
     ports:
       - "5432:5432"
-      - "8983:8983"
+      - "5672:5672"
       - 8004:8000
       - 5678:5678
       - 5984:5984
