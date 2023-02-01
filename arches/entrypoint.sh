@@ -259,6 +259,16 @@ run_setup_db() {
 	echo ""
 	echo "----- RUNNING SETUP_DB -----"
 	echo ""
+	echo "Testing if Elasticsearch is up..."
+    while [[ ! ${return_code} == 0 ]]
+    do
+        curl -s "http://${ESHOST}:${ESPORT}/_cluster/health?wait_for_status=green&timeout=60s" >&/dev/null
+        return_code=$?
+        sleep 1
+    done
+    echo "Elasticsearch is up, pause for 10 secs to be sure."
+	sleep 10s;
+	echo "Now we should be safe to setup the database"
 	cd ${APP_FOLDER}
 	python3 manage.py setup_db --force
 }
@@ -290,13 +300,13 @@ run_django_server() {
 
 #### Main commands
 run_arches() {
+	start_celery_supervisor
 	init_arches
 	run_elastic_safe_migrations
 	# Yes, do this again, just in case elastic is still not totally ready...
 	run_elastic_safe_migrations
 	# This should be run in elastic wasn't ready for a full setup.
 	run_createcachetable
-	start_celery_supervisor
 	# run_collect_static
 	run_django_server
 	# run_build_production
