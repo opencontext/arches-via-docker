@@ -3,6 +3,7 @@
 # APP and YARN folder locations
 APP_FOLDER=${APP_ROOT}
 APP_COMP_FOLDER=${APP_COMP_FOLDER}
+GUNICORN_CONFIG_PATH=${APP_COMP_FOLDER}/media/node_modules/arches/docker/gunicorn_config.py
 
 YARN_MODULES_FOLDER=${APP_COMP_FOLDER}/$(awk \
 	-F '--install.modules-folder' '{print $2}' ${APP_COMP_FOLDER}/.yarnrc \
@@ -291,8 +292,8 @@ run_django_server() {
 		exec sh -c "python3 manage.py runserver 0.0.0.0:${DJANGO_PORT}"
 	else
 		echo "Should run the production mode Arches Django via gunicorn via:"
-		echo "gunicorn -w 2 -b 0.0.0.0:${DJANGO_PORT} ${ARCHES_PROJECT}.wsgi:application --reload --timeout 3600"
-		exec sh -c "gunicorn -w 2 -b 0.0.0.0:${DJANGO_PORT} ${ARCHES_PROJECT}.wsgi:application --reload --timeout 3600"
+		echo "gunicorn ${ARCHES_PROJECT}.wsgi:application --config ${GUNICORN_CONFIG_PATH}"
+		exec sh -c "gunicorn ${ARCHES_PROJECT}.wsgi:application --config ${GUNICORN_CONFIG_PATH}"
 		# echo "But, since I can get gunicorn to work yet, running via Django"
 		# exec sh -c "python3 manage.py runserver 0.0.0.0:${DJANGO_PORT}"
 	fi
