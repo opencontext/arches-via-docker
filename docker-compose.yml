@@ -95,6 +95,8 @@ services:
       - arches-static:/static_root
       - arches-app:/arches_app
       - ../arches_data/:/arches_data
+    links:
+      - arches_rabbitmq
     networks:
       - arches_net
 
