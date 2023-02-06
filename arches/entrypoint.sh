@@ -163,7 +163,7 @@ start_celery_supervisor() {
 		cd ${APP_FOLDER}
 		wait-for-it arches_rabbitmq:5672 -t 120 && supervisord -c arches_proj-supervisor.conf
 	fi
-	start_celery_beat
+	# start_celery_beat
 }
 
 run_createcachetable() {
