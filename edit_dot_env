@@ -46,6 +46,12 @@ BUILD_PRODUCTION=False
 PYTHONUNBUFFERED=0
 ELASTICSEARCH_PREFIX=$ARCHES_PROJECT
 
+# RabbitMQ credentials, don't change these unless
+# you also change the values for the RabbitMQ container in
+# docker-compose.yml
+RABBITMQ_USER=arches
+RABBITMQ_PASS=arches
+
 # couchdb for arches. Not needed for V7+, but config exists incase it
 # reappears.
 COUCHDB_HOST=arches
