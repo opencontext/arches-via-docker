@@ -136,17 +136,6 @@ check_settings_local() {
 }
 
 #### Run commands
-start_celery_beat() {
-	# NOTE: This is a suboptimal hack to get celery beat started until we
-	# can make it work with supervisord
-	if [ -f "/var/log/celery/beat.log" ]; then
-		echo "Celery beat log appears to exist. So hopefully it works?"
-	else
-		echo "The celery beat process doesn't seem to exist yet, so start it.."
-		cd ${APP_FOLDER}
-		wait-for-it arches_rabbitmq:5672 -t 120 && nohup celery -A arches_proj.celery beat --schedule=/tmp/celerybeat-schedule --loglevel=INFO --pidfile=/tmp/celerybeat.pid &
-	fi
-}
 
 start_celery_supervisor() {
 	echo ""
@@ -163,7 +152,6 @@ start_celery_supervisor() {
 		cd ${APP_FOLDER}
 		wait-for-it arches_rabbitmq:5672 -t 120 && supervisord -c arches_proj-supervisor.conf
 	fi
-	# start_celery_beat
 }
 
 run_createcachetable() {
