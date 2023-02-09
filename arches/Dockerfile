@@ -11,6 +11,7 @@ ARG APP_ROOT
 ARG APP_COMP_FOLDER
 # settings_local.py provides the DB credentials, etc. to the Arches project.
 ENV SETTINGS_LOCAL_PATH=${APP_COMP_FOLDER}/settings_local.py
+ENV URLS_PATH=${APP_COMP_FOLDER}/urls.py
 ENV ARCHES_DATA=${ARCHES_ROOT}/arches_data
 ENV WHEELS=/wheels
 ENV PYTHONUNBUFFERED=1
@@ -67,6 +68,10 @@ RUN pip install supervisor && pip install gunicorn && pip install arches && arch
 WORKDIR ${APP_ROOT}
 COPY ./arches/settings_local.py ${SETTINGS_LOCAL_PATH}
 RUN sed -i 's/\r$//g' ${SETTINGS_LOCAL_PATH}
+# copy the urls.py into our new Arches project. This is part of
+# customization for internationalization
+COPY ./arches/urls.py ${URLS_PATH}
+RUN sed -i 's/\r$//g' ${URLS_PATH}
 
 # copy the celery supervisor
 COPY /arches/conf.d/ ${APP_ROOT}/conf.d/
