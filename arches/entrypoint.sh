@@ -136,11 +136,11 @@ check_settings_local() {
 }
 
 #### Run commands
-alt_start_celery_supervisor() {
+start_celery_supervisor() {
 	echo ""
 	echo "----- START CELERY SUPERVISOR -----"
 	echo ""
-	echo "Sleep 60s in the hope that arches_rabbitmq will be fully up and running..."
+	echo "Sleep 60s in the hope that arches_redis will be fully up and running..."
 	sleep 60s;
 	if [ -f "/tmp/supervisor.sock" ]; then
 		echo "The celery supervisor seems started, so why try to start it again? "
@@ -149,15 +149,8 @@ alt_start_celery_supervisor() {
 	else
 		echo "The celery supervisor has yet to start, so we'll start it.."
 		cd ${APP_FOLDER}
-		wait-for-it arches_rabbitmq:5672 -t 120 && supervisord -c arches_proj-supervisor.conf
+		wait-for-it arches_redis:6379 -t 120 && supervisord -c arches_proj-supervisor.conf
 	fi
-}
-
-start_celery_supervisor() {
-	echo ""
-	echo "----- SKIP START OF CELERY SUPERVISOR -----"
-	echo ""
-	echo "Supervisor and celery don't seem to work well together"
 }
 
 run_createcachetable() {

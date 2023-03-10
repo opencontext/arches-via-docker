@@ -37,9 +37,15 @@ DATABASES = {
 }
 
 ARCHES_NAMESPACE_FOR_DATA_EXPORT = get_env_variable("ARCHES_NAMESPACE")
+"""
+Too hard a time configuring with Rabbimq, so try redis.
+
 CELERY_BROKER_URL = "amqp://{}:{}@arches_rabbitmq:5672".format(
     get_env_variable("RABBITMQ_USER"), get_env_variable("RABBITMQ_PASS")
 )  # RabbitMQ --> "amqp://guest:guest@localhost",  Redis --> "redis://localhost:6379/0"
+"""
+
+CELERY_BROKER_URL = "redis://@arches_redis:6379/0"
 
 # CANTALOUPE_HTTP_ENDPOINT = "http://{}:{}".format(get_env_variable("CANTALOUPE_HOST"), get_env_variable("CANTALOUPE_PORT"))
 ELASTICSEARCH_HTTP_PORT = get_env_variable("ESPORT")

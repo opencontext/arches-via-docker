@@ -42,23 +42,15 @@ services:
     networks:
       - arches_net
 
-  arches_rabbitmq:
-    container_name: arches_rabbitmq
-    image: rabbitmq:3-management
-    hostname: rabbitmq
-    environment:
-      RABBITMQ_DEFAULT_USER: arches
-      RABBITMQ_DEFAULT_PASS: arches
-      RABBITMQ_NODENAME: rabbitmq
-    volumes:
-      - rabbitmq-data:/var/lib/rabbitmq/mnesia
-      - rabbitmq-logs:/var/log/rabbitmq/log
-    ports:
-      - "5672:5672"
-      - 15672:15672
+  redis:
+    container_name: arches_redis
+    image: "redis:6-alpine"
     restart: always
-    networks:
-      - arches_net
+    ports:
+      - "6379:6379"
+    volumes:
+      - "redisdata:/data"
+    command: "redis-server"
 
   arches:
     container_name: arches
@@ -86,7 +78,7 @@ services:
     depends_on:
       - arches_db
       - arches_elasticsearch
-      - arches_rabbitmq
+      - arches_redis
     command:
       - run_arches
     expose:
@@ -201,8 +193,6 @@ volumes:
   postgres-data:
   postgres-log:
   elasticsearch-data:
-  rabbitmq-logs:
-  rabbitmq-data:
   arches-log:
   arches-static:
   arches-app:
