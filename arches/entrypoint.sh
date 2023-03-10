@@ -136,8 +136,7 @@ check_settings_local() {
 }
 
 #### Run commands
-
-start_celery_supervisor() {
+alt_start_celery_supervisor() {
 	echo ""
 	echo "----- START CELERY SUPERVISOR -----"
 	echo ""
@@ -152,6 +151,13 @@ start_celery_supervisor() {
 		cd ${APP_FOLDER}
 		wait-for-it arches_rabbitmq:5672 -t 120 && supervisord -c arches_proj-supervisor.conf
 	fi
+}
+
+start_celery_supervisor() {
+	echo ""
+	echo "----- SKIP START OF CELERY SUPERVISOR -----"
+	echo ""
+	echo "Supervisor and celery don't seem to work well together"
 }
 
 run_createcachetable() {
