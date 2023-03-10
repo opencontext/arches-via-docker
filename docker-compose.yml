@@ -42,7 +42,7 @@ services:
     networks:
       - arches_net
 
-  redis:
+  arches_redis:
     container_name: arches_redis
     image: "redis:6-alpine"
     restart: always
