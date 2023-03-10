@@ -188,6 +188,7 @@ volumes:
     external: true
   arches_certbot:
     external: true
+  redisdata:
   couchdb-data:
   couchdb-log:
   postgres-data:
