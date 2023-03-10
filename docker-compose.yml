@@ -17,6 +17,7 @@ services:
         - postgres-data:/var/lib/postgresql/data/
         - postgres-log:/var/log/postgresql
         - ./init-unix.sql:/docker-entrypoint-initdb.d/init.sql # to set up the DB template
+        - ../arches_data/:/arches_data
     ports:
       - '5434:5432'
     networks:
