@@ -51,6 +51,8 @@ services:
     volumes:
       - "redisdata:/data"
     command: "redis-server"
+    networks:
+      - arches_net
 
   arches:
     container_name: arches
