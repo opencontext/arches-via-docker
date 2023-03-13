@@ -65,6 +65,7 @@ if USER_SECRET_KEY:
 
 STATIC_ROOT = "/static_root"
 
+LANGUAGE_CODE = 'en'
 # Added for v7 internationalization demo
 LANGUAGES = [
     ('en', ('English')),
