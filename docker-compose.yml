@@ -98,8 +98,11 @@ services:
     image: arches/arches_webpack
     build: ./webpack
     restart: unless-stopped
+    env_file:
+      - ./.env
     depends_on:
       - arches
+      - nginx
     networks:
       - arches_net
 
