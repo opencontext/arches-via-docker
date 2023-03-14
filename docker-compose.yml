@@ -167,8 +167,6 @@ networks:
     name: arches_net
 
 volumes:
-  logs_nginx:
-    external: true
   nginx_ssl:
     external: true
   certbot_certs:
@@ -184,3 +182,4 @@ volumes:
   arches-log:
   arches-static:
   arches-app:
+  logs_nginx:
