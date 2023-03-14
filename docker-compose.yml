@@ -121,7 +121,7 @@ services:
       - CERT_PATH="${CERT_PATH}"
       - DJANGO_PORT="${DJANGO_PORT}"
     volumes:
-      - nginx-log:/logs/nginx
+      - logs_nginx:/logs/nginx
       - nginx_ssl:/etc/nginx/ssl
       - certbot_certs:/etc/letsencrypt
       - arches_certbot:$CERT_PATH
@@ -184,4 +184,3 @@ volumes:
   arches-log:
   arches-static:
   arches-app:
-  nginx-log:

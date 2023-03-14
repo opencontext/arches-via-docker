@@ -9,6 +9,7 @@ COPY options-ssl-nginx.conf /etc/nginx/
 COPY hsts.conf /etc/nginx/
 RUN mkdir -p /customization
 RUN mkdir -p /etc/symb_link_ssl
+RUN mkdir -p /logs/nginx
 COPY nginx.sh /customization/nginx.sh
 RUN chmod +x /customization/nginx.sh
 
