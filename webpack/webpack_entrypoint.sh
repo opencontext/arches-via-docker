@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd /action_dir
+cd /workdir
 echo "Start Arches Webpack via Docker"
 echo "docker compose run oc run_worker"
 until nc -z arches 8000; do
