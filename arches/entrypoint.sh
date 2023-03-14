@@ -246,11 +246,11 @@ run_webpack() {
 		# otherwise.
 		echo "Running Webpack, hopefully the build_production thing will work!"
 		cd ${APP_FOLDER}
-		exec sh -c "yarn install && wait-for-it 0.0.0.0:8000 -t 1200 && python3 manage.py build_production"
+		exec sh -c "yarn install && python3 manage.py build_production"
 	else
 		cd ${APP_COMP_FOLDER}
 		echo "Running Webpack to do the yarn build_development thing."
-		exec sh -c "yarn install && wait-for-it 0.0.0.0:8000 -t 1200 && yarn build_development && python3 $APP_FOLDER/manage.py collectstatic --noinput"
+		exec sh -c "yarn install && yarn build_development && python3 $APP_FOLDER/manage.py collectstatic --noinput"
 	fi
 }
 
