@@ -5,7 +5,7 @@ APP_FOLDER=${APP_ROOT}
 APP_COMP_FOLDER=${APP_COMP_FOLDER}
 GUNICORN_CONFIG_PATH=${APP_COMP_FOLDER}/media/node_modules/arches/docker/gunicorn_config.py
 STATIC_ROOT=/static_root
-STATIC_JS=${APP_COMP_FOLDER}/js
+STATIC_JS=${STATIC_ROOT}/js
 
 YARN_MODULES_FOLDER=${APP_COMP_FOLDER}/$(awk \
 	-F '--install.modules-folder' '{print $2}' ${APP_COMP_FOLDER}/.yarnrc \
@@ -242,6 +242,8 @@ run_setup_webpack() {
 	echo ""
 	echo "----- *** RUNNING WEBPACK SERVER FOR SETUP *** -----"
 	echo ""
+	# We're going to first check to see if we have anythin in the static_root/js folder.
+	# If we do, then we've run this already and can skip webpack and collect static.
 	if [[ ! -d ${STATIC_JS} ]] || [[ ! "$(ls ${STATIC_JS})" ]]; then
 		echo "We (apparently) have yet to run webpack and collectstatic. Do it now!";
 
