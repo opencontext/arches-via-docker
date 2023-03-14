@@ -96,16 +96,7 @@ services:
   arches_webpack:
     container_name: arches_webpack
     image: arches/arches_webpack
-    env_file:
-      - ./.env
-    build:
-      context: .
-      dockerfile: webpack/Dockerfile
-      args:
-        ARCHES_PROJECT: ${ARCHES_PROJECT}
-        ARCHES_ROOT: ${ARCHES_ROOT}
-        APP_ROOT: ${APP_ROOT}
-        APP_COMP_FOLDER: ${APP_COMP_FOLDER}
+    build: ./webpack
     restart: unless-stopped
     depends_on:
       - arches

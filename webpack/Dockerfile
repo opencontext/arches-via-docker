@@ -5,9 +5,9 @@ RUN apk update && \
 
 RUN apk add --no-cache --upgrade bash
 
-RUN mkdir -p /workdir
-COPY webpack_entrypoint.sh /workdir/
-RUN chmod +x /workdir/webpack_entrypoint.sh
+RUN mkdir -p /action_dir
+COPY webpack_entrypoint.sh /action_dir/
+RUN chmod +x /action_dir/webpack_entrypoint.sh
 
-WORKDIR /workdir
+WORKDIR /action_dir
 CMD ["./webpack_entrypoint.sh"]
