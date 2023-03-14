@@ -97,9 +97,12 @@ services:
     container_name: arches_webpack
     image: arches/arches_webpack
     build: ./webpack
-    restart: unless-stopped
     environment:
       COMPOSE_PROJECT_NAME: "${COMPOSE_PROJECT_NAME}"
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./:/workdir:ro
     depends_on:
       - arches
       - nginx
