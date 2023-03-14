@@ -98,8 +98,8 @@ services:
     image: arches/arches_webpack
     build: ./webpack
     restart: unless-stopped
-    env_file:
-      - ./.env
+    environment:
+      COMPOSE_PROJECT_NAME: "${COMPOSE_PROJECT_NAME}"
     depends_on:
       - arches
       - nginx
