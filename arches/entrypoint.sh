@@ -4,6 +4,8 @@
 APP_FOLDER=${APP_ROOT}
 APP_COMP_FOLDER=${APP_COMP_FOLDER}
 GUNICORN_CONFIG_PATH=${APP_COMP_FOLDER}/media/node_modules/arches/docker/gunicorn_config.py
+STATIC_ROOT=/static_root
+STATIC_JS=${APP_COMP_FOLDER}/js
 
 YARN_MODULES_FOLDER=${APP_COMP_FOLDER}/$(awk \
 	-F '--install.modules-folder' '{print $2}' ${APP_COMP_FOLDER}/.yarnrc \
@@ -236,6 +238,30 @@ run_build_production() {
 	echo "---------------------------------------------------------------"
 }
 
+run_setup_webpack() {
+	echo ""
+	echo "----- *** RUNNING WEBPACK SERVER FOR SETUP *** -----"
+	echo ""
+	if [[ ! -d ${STATIC_JS} ]] || [[ ! "$(ls ${STATIC_JS})" ]]; then
+		echo "We (apparently) have yet to run webpack and collectstatic. Do it now!";
+
+		if [[ ${BUILD_PRODUCTION} == 'True' ]]; then
+			# NOTE: Only do this if you have more than 8GB of system RAM. This will likely error out
+			# otherwise.
+			echo "Running Webpack, hopefully the build_production thing will work!"
+			cd ${APP_FOLDER}
+			exec sh -c "yarn install && python3 manage.py build_production"
+		else
+			cd ${APP_COMP_FOLDER}
+			echo "Running Webpack to do the yarn build_development thing."
+			exec sh -c "yarn install && yarn build_development && python3 $APP_FOLDER/manage.py collectstatic --noinput"
+		fi
+
+	else
+		echo "Webpack and Collectstatic for setup already completed.";
+	fi
+}
+
 
 run_webpack() {
 	echo ""
@@ -367,6 +393,9 @@ do
 		;;
 		run_list_static)
 			run_list_static
+		;;
+		run_setup_webpack)
+			run_setup_webpack
 		;;
 		run_webpack)
 			run_webpack
