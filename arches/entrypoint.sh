@@ -226,6 +226,8 @@ run_build_production() {
 	echo "----- RUNNING BUILD PRODUCTION -----"
 	echo ""
 	if [[ ${BUILD_PRODUCTION} == 'True' ]]; then
+		# NOTE: Only do this if you have more than 8GB of system RAM. This will likely error out
+		# otherwise.
 		cd ${APP_FOLDER}
 		python3 manage.py build_production
 	else
@@ -233,6 +235,25 @@ run_build_production() {
 	fi
 	echo "---------------------------------------------------------------"
 }
+
+
+run_webpack() {
+	echo ""
+	echo "----- *** RUNNING WEBPACK SERVER *** -----"
+	echo ""
+	if [[ ${BUILD_PRODUCTION} == 'True' ]]; then
+		# NOTE: Only do this if you have more than 8GB of system RAM. This will likely error out
+		# otherwise.
+		echo "Running Webpack, hopefully the build_production thing will work!"
+		cd ${APP_FOLDER}
+		exec sh -c "yarn install && wait-for-it 0.0.0.0:8000 -t 1200 && python3 manage.py build_production"
+	else
+		cd ${APP_COMP_FOLDER}
+		echo "Running Webpack to do the yarn build_development thing."
+		exec sh -c "yarn install && wait-for-it 0.0.0.0:8000 -t 1200 && yarn build_development && python3 $APP_FOLDER/manage.py collectstatic --noinput"
+	fi
+}
+
 
 run_list_static() {
 	echo ""
@@ -346,6 +367,9 @@ do
 		;;
 		run_list_static)
 			run_list_static
+		;;
+		run_webpack)
+			run_webpack
 		;;
 		run_build_production)
 			run_build_production

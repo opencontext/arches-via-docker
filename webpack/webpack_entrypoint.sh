@@ -1,21 +1,6 @@
-#! /bin/bash
-APP_FOLDER=${APP_ROOT}
-APP_COMP_FOLDER=${APP_COMP_FOLDER}
-run_webpack() {
-	echo ""
-	echo "----- *** RUNNING WEBPACK DEVELOPMENT SERVER *** -----"
-	echo ""
-	if [[ ${BUILD_PRODUCTION} == 'True' ]]; then
-		# NOTE: Only do this if you have more than 8GB of system RAM. This will likely error out
-		# otherwise.
-		echo "Running Webpack, hopefully the build_production thing will work!"
-		cd ${APP_FOLDER}
-		exec sh -c "yarn install && wait-for-it arches:8000 -t 1200 && python3 manage.py build_production"
-	else
-		cd ${APP_COMP_FOLDER}
-		echo "Running Webpack to do the yarn build_development thing."
-		exec sh -c "yarn install && wait-for-it arches:8000 -t 1200 && yarn build_development && python3 $APP_FOLDER/manage.py collectstatic --noinput"
-	fi
-}
+#!/bin/sh
 
-run_webpack
+cd /workdir
+echo "Start Arches Webpack via Docker"
+echo "docker compose run oc run_worker"
+docker compose run arches run_webpack

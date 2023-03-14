@@ -93,7 +93,7 @@ services:
     networks:
       - arches_net
 
-  webpack:
+  arches_webpack:
     container_name: arches_webpack
     image: arches/arches_webpack
     env_file:
@@ -106,17 +106,7 @@ services:
         ARCHES_ROOT: ${ARCHES_ROOT}
         APP_ROOT: ${APP_ROOT}
         APP_COMP_FOLDER: ${APP_COMP_FOLDER}
-    command: run_webpack
-    volumes:
-      - arches-app:/arches_app
-      - arches-static:/static_root
-    ports:
-      - 8021:8021
-      - 8080:8080
-    expose:
-      - 8080:8080
-    stdin_open: true
-    tty: true
+    restart: unless-stopped
     depends_on:
       - arches
     networks:
