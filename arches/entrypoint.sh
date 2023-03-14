@@ -193,6 +193,14 @@ run_elastic_safe_migrations() {
 	python3 manage.py migrate
 }
 
+run_make_migrations() {
+	echo ""
+	echo "----- RUNNING DATABASE MAKE MIGRATIONS -----"
+	echo ""
+	cd ${APP_FOLDER}
+	python3 manage.py makemigrations
+}
+
 run_migrations() {
 	echo ""
 	echo "----- RUNNING DATABASE MIGRATIONS -----"
@@ -200,6 +208,15 @@ run_migrations() {
 	cd ${APP_FOLDER}
 	python3 manage.py migrate
 }
+
+run_es_reindex() {
+	echo ""
+	echo "----- RUNNING ELASTIC SEARCH (ES) REINDEX DATABASE -----"
+	echo ""
+	cd ${APP_FOLDER}
+	python3 manage.py es reindex_database
+}
+
 
 run_collect_static() {
 	echo ""
@@ -416,10 +433,20 @@ do
 			wait_for_db
 			run_tests
 		;;
+		run_make_migrations)
+			check_settings_local
+			wait_for_db
+			run_make_migrations
+		;;
 		run_migrations)
 		    check_settings_local
 			wait_for_db
 			run_migrations
+		;;
+		run_es_reindex)
+			check_settings_local
+			wait_for_db
+			run_es_reindex
 		;;
 		install_yarn_components)
 			install_yarn_components
