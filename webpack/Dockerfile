@@ -7,7 +7,7 @@ RUN apk add --no-cache --upgrade bash
 
 RUN mkdir -p /workdir
 COPY webpack_entrypoint.sh /workdir/
-RUN chmod +x /action_dir/webpack_entrypoint.sh
+RUN chmod +x /workdir/webpack_entrypoint.sh
 
 WORKDIR /workdir
 CMD ["./webpack_entrypoint.sh"]
