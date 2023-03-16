@@ -46,11 +46,10 @@ BUILD_PRODUCTION=False
 PYTHONUNBUFFERED=0
 ELASTICSEARCH_PREFIX=$ARCHES_PROJECT
 
-# RabbitMQ credentials, don't change these unless
-# you also change the values for the RabbitMQ container in
-# docker-compose.yml
-RABBITMQ_USER=arches
-RABBITMQ_PASS=arches
+# RabbitMQ credentials. We're currently using Redis as a task
+# broker, not RabbitMQ, so these are commented out.
+# RABBITMQ_USER=guest
+# RABBITMQ_PASS=guest
 
 # couchdb for arches. Not needed for V7+, but config exists incase it
 # reappears.
@@ -60,10 +59,6 @@ COUCHDB_USER=admin
 COUCHDB_PASS=password
 COUCHDB_URL=http://$COUCHDB_USER:$COUCHDB_PASS@$COUCHDB_HOST:$COUCHDB_PORT
 
-
-#rabbitmq
-RABBITMQ_USER=guest
-RABBITMQ_PASS=guest
-
-#pg_featureserv and tileserv
+# The DATABASE_URL is a convenience consolidated way help connect to Postgresql
+# pg_featureserv and tileserv
 DATABASE_URL=postgresql://$PGUSERNAME:$PGPASSWORD@$PGHOST/$PGDBNAME
