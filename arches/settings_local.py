@@ -19,7 +19,8 @@ def get_optional_env_variable(var_name):
         return None
 
 
-# options are either "PROD" or "DEV" (installing with Dev mode set gets you extra dependencies)
+# options are either "PROD" or "DEV"
+# (installing with Dev mode set gets you extra dependencies)
 MODE = get_env_variable("DJANGO_MODE")
 
 DEBUG = ast.literal_eval(get_env_variable("DJANGO_DEBUG"))
@@ -37,15 +38,21 @@ DATABASES = {
 }
 
 ARCHES_NAMESPACE_FOR_DATA_EXPORT = get_env_variable("ARCHES_NAMESPACE")
+
 """
-Too hard a time configuring with Rabbimq, so try redis.
+Since we're using Docker, we can use Redis (even on a Windows OS). So, we
+will comment out the RabbitMQ connection in favor of a Redis connection.
 
 CELERY_BROKER_URL = "amqp://{}:{}@arches_rabbitmq:5672".format(
     get_env_variable("RABBITMQ_USER"), get_env_variable("RABBITMQ_PASS")
-)  # RabbitMQ --> "amqp://guest:guest@localhost",  Redis --> "redis://localhost:6379/0"
+)
 """
 
 CELERY_BROKER_URL = "redis://@arches_redis:6379/0"
+
+# NOTE: If you want to disable celery and workers, leave a blank string fo
+# the CELERY_BROKER_URL as follows:
+#
 # CELERY_BROKER_URL = ""
 
 # CANTALOUPE_HTTP_ENDPOINT = "http://{}:{}".format(get_env_variable("CANTALOUPE_HOST"), get_env_variable("CANTALOUPE_PORT"))
