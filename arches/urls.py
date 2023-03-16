@@ -7,6 +7,8 @@ urlpatterns = [
     url(r'^', include('arches.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-# Enable internationalization functionality for en, ar, he demo
+# The language URL patterns with i18n_patterns seem a little buggy,
+# so they are disabled with the "if False..." below. Remove
+# the False if you want to try to use this feature.
 if False and settings.SHOW_LANGUAGE_SWITCH is True:
     urlpatterns = i18n_patterns(*urlpatterns)
