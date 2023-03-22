@@ -35,15 +35,6 @@ The sequence of actions:
 * The Nginx container uses updates symbolic links that point to either "dummy" certificates or Let's Encrypt certificates.
 
 
-
-# Running Arches
-Besides setting up HTTPS and Nginx, this repo deploys an instance of Arches. Currently this will setup an "empty" Arches instance. You'll need to load it with your own data by loading a package or some other approach. Once you deploy Arches, you can use normal Arches management commands as so:
-
-```bash
-docker exec -it arches python3 manage.py [Arches management commands and arguments here]
-```
-
-
 # The directories and files
 The following lists some information about the contents of this repo and how they fit together:
 
@@ -187,6 +178,14 @@ Start the containers:
 ```bash
 docker compose up
 ```
+
+## Running Arches
+Besides setting up HTTPS and Nginx, this repo deploys an instance of Arches. Currently this will setup an "empty" Arches instance. You'll need to load it with your own data by loading a package or some other approach. Once you deploy Arches, you can use normal Arches management commands as so:
+
+```bash
+docker exec -it arches python3 manage.py [Arches management commands and arguments here]
+```
+
 
 
 ## NOTE
