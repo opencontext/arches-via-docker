@@ -11,17 +11,13 @@ This main goal of this repo is to offer a simple, turnkey approach to deploying 
 
 # Nginx and Let’s Encrypt with Docker Compose in less than 3 minutes
 
-This example automatically obtains and renews [Let's Encrypt](https://letsencrypt.org/) TLS certificates and set up HTTPS in Nginx for multiple domain names using Docker Compose.
+This approach automatically obtains and renews [Let's Encrypt](https://letsencrypt.org/) TLS certificates and set up HTTPS in Nginx for your domain name using Docker Compose.
 
-You can set up HTTPS in Nginx with Let's Encrypt TLS certificates for your domain names and get A+ rating at [SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/) by changing a few configuration parameters of this example.
+You can set up HTTPS in Nginx with Let's Encrypt TLS certificates for your domain name and get A+ rating at [SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/) by changing a few configuration parameters of this example.
 
 Let's Encrypt is a certificate authority that provides free X.509 certificates for TLS encryption. The certificates are valid for 90 days and can be renewed. Both initial creation and renewal can be automated using [Certbot](https://certbot.eff.org/).
 
-When using Kubernetes Let's Encrypt TLS certificates can be easily obtained and installed using [Cert Manager](https://cert-manager.io/). For simple web sites and applications Kubernetes is too much overhead and Docker Compose is more suitable.
-But for Docker Compose there is no such popular and robust tool for TLS certificate management.
-
-The example supports separate TLS certificates for multiple domain names, e.g. example.com, anotherdomain.net etc.
-For simplicity this example deals with the following domain names:
+The approach currently only supports one domain name, as discussed in this example:
 
 * teach-with-arches.org
 
@@ -38,7 +34,18 @@ The sequence of actions:
 * Cron triggers Certbot to try to renew certificates and Nginx to reload configuration on a daily basis
 * The Nginx container uses updates symbolic links that point to either "dummy" certificates or Let's Encrypt certificates.
 
-# The directories and files:
+
+
+# Running Arches
+Besides setting up HTTPS and Nginx, this repo deploys an instance of Arches. Currently this will setup an "empty" Arches instance. You'll need to load it with your own data by loading a package or some other approach. Once you deploy Arches, you can use normal Arches management commands as so:
+
+```bash
+docker exec -it arches python3 manage.py [Arches management commands and arguments here]
+```
+
+
+# The directories and files
+The following lists some information about the contents of this repo and how they fit together:
 
 * `docker-compose.yml`
 * `.env` - specifies `COMPOSE_PROJECT_NAME` to make container names independent from the base directory name. specifies project configuration, e.g. domain names, emails, database connection details, etc. This file contains sensitive information.
