@@ -179,7 +179,7 @@ Start the containers:
 docker compose up
 ```
 
-## Running Arches
+## How to Make Arches (administrative) Management Commands
 Besides setting up HTTPS and Nginx, this repo deploys an instance of Arches. Currently this will setup an "empty" Arches instance. You'll need to load it with your own data by loading a package or some other approach. Once you deploy Arches, you can use normal Arches management commands as so:
 
 ```bash
