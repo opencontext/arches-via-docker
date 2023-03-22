@@ -1,27 +1,7 @@
 # arches-via-docker
-Deployment of Arches (archesproject.org) via Docker for archaeology and related instruction
+Deployment of Arches (archesproject.org) via Docker. We initially developed this repo to simplify and streamline deployment of Arches for use in archaeology and related instruction.
 
 
-# NOTE
-This repo will hopefully streamline deployment of Arches for use on the Web. Eventually, we hope to use this as the basis for deploying instances of Arches for use in archaeological teaching and learning applications.
-
-None of this code is very original. This repo started by forking:
-https://github.com/evgeniy-khist/letsencrypt-docker-compose
-
-Some elements of this repo are also derived from:
-https://github.com/opencontext/oc-docker
-
-and
-
-https://github.com/archesproject/arches-for-science-prj
-
-and
-
-https://github.com/archesproject/arches-dependency-containers
-
-and finally
-
-https://github.com/archesproject/arches-her
 
 
 # Public Web Server and Localhost Deployments
@@ -35,11 +15,9 @@ This example automatically obtains and renews [Let's Encrypt](https://letsencryp
 
 You can set up HTTPS in Nginx with Let's Encrypt TLS certificates for your domain names and get A+ rating at [SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/) by changing a few configuration parameters of this example.
 
-Let's Encrypt is a certificate authority that provides free X.509 certificates for TLS encryption.
-The certificates are valid for 90 days and can be renewed. Both initial creation and renewal can be automated using [Certbot](https://certbot.eff.org/).
+Let's Encrypt is a certificate authority that provides free X.509 certificates for TLS encryption. The certificates are valid for 90 days and can be renewed. Both initial creation and renewal can be automated using [Certbot](https://certbot.eff.org/).
 
-When using Kubernetes Let's Encrypt TLS certificates can be easily obtained and installed using [Cert Manager](https://cert-manager.io/).
-For simple web sites and applications Kubernetes is too much overhead and Docker Compose is more suitable.
+When using Kubernetes Let's Encrypt TLS certificates can be easily obtained and installed using [Cert Manager](https://cert-manager.io/). For simple web sites and applications Kubernetes is too much overhead and Docker Compose is more suitable.
 But for Docker Compose there is no such popular and robust tool for TLS certificate management.
 
 The example supports separate TLS certificates for multiple domain names, e.g. example.com, anotherdomain.net etc.
@@ -58,25 +36,39 @@ The sequence of actions:
 * Nginx generates self-signed "dummy" certificates to pass ACME challenge for obtaining Let's Encrypt certificates
 * Certbot waits for Nginx to become ready and obtains certificates
 * Cron triggers Certbot to try to renew certificates and Nginx to reload configuration on a daily basis
+* The Nginx container uses updates symbolic links that point to either "dummy" certificates or Let's Encrypt certificates.
 
-The directories and files:
+# The directories and files:
 
 * `docker-compose.yml`
-* `.env` - specifies `COMPOSE_PROJECT_NAME` to make container names independent from the base directory name
-* `.env` - specifies project configuration, e.g. domain names, emails etc.
-* `html/` - directory mounted as `root` for Nginx
-    * `index.html`
-* `nginx/`
+* `.env` - specifies `COMPOSE_PROJECT_NAME` to make container names independent from the base directory name. specifies project configuration, e.g. domain names, emails, database connection details, etc. This file contains sensitive information.
+* `arches/`
     * `Dockerfile`
-    * `nginx.sh` - entrypoint script
-    * `hsts.conf` - HTTP Strict Transport Security (HSTS) policy
-    * `default.conf` - Nginx configuration for all domains. Contains a configuration to get A+ rating at [SSL Server Test](https://www.ssllabs.com/ssltest/)
+    * `arches_data` - A directory on your host machine that gets attached to the Arches container. This makes it convenient to pass data (like packages or exports) in and out of your Arches container.
+    * `conf.d/` - A directory of Supervisord configurations for the celery worker and celery beat processes. This gets copied into the Arches container.
+    * `celery.py` - Editable file if you want to modify your Arches project use of celery
+    * `arches_proj-supervisor.conf` - Supervisord configurations for the celery worker and celery beat processes
+    * `entrypoint.sh` - entrypoint script. This has some handy utility functions for some routine administration of the Arches container.
+    * `settings_local.py` - Editable python file to define project specific settings for your Arches instance. Many of the environment variables that you assign in your `.env` file
+    * `settings_local.py` - Editable python file configuring URLs in your Arches instance
 * `certbot/`
     * `Dockerfile`
     * `certbot.sh` - entrypoint script
 * `cron/`
     * `Dockerfile`
     * `renew_certs.sh` - script executed on a daily basis to try to renew certificates
+* `html/` - directory mounted as `root` for Nginx
+    * `index.html`
+* `nginx/`
+    * `Dockerfile`
+    * `nginx.sh` - entrypoint script. This script will update where symbolic links will resolve (either to the dummy self-assigned certificates or to the Let's Encrypt obtained certificates)
+    * `hsts.conf` - HTTP Strict Transport Security (HSTS) policy
+    * `options-ssl-nginx.conf` - SSL related configurations
+    * `default.conf` - Nginx configuration for your domain. Contains a configuration to get A+ rating at [SSL Server Test](https://www.ssllabs.com/ssltest/). This configuration also asks Nginx to gzip compress certain text-based static files (especially CSS and Javascript) which should help with performance. This config uses symbolic links to specify the path to SSL certificates.
+    * `default.conf` - Nginx server configuration. It loads the Perl language module to simplify passing environment variables to your Nginx domain configuration.
+* `webpack/`
+    * `Dockerfile`
+    * `webpack_entrypoint.sh` - The `webpack` container is a minimalist container that invokes a docker command on the `arches` container. This command prepares static assets for the Arches frontend by running webpack and collectstatic.
 
 To adapt the example to your domain names you need to change only `.env`:
 
@@ -196,3 +188,25 @@ You may run into weirdness permissions issues restarting the docker container. I
 sudo chmod 666 /var/run/docker.sock
 
 ```
+
+
+# BACKGROUND AND CREDIT
+This repo will hopefully streamline deployment of Arches for use on the Web. Eventually, we hope to use this as the basis for deploying instances of Arches for use in archaeological teaching and learning applications.
+
+None of this code is very original. This repo started by forking:
+https://github.com/evgeniy-khist/letsencrypt-docker-compose
+
+Some elements of this repo are also derived from:
+https://github.com/opencontext/oc-docker
+
+and
+
+https://github.com/archesproject/arches-for-science-prj
+
+and
+
+https://github.com/archesproject/arches-dependency-containers
+
+and finally
+
+https://github.com/archesproject/arches-her
