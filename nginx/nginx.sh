@@ -7,38 +7,6 @@ if [ -z "$DOMAINS" ]; then
   exit 1;
 fi
 
-use_dummy_certificate_old() {
-  if grep -q "/etc/letsencrypt/live/$1" "/etc/nginx/conf.d/default.conf"; then
-    echo "Switching Nginx to use dummy certificate for $1"
-    sed -i "s|/etc/letsencrypt/live/$1|/etc/nginx/sites/ssl/dummy/$1|g" "/etc/nginx/conf.d/default.conf"
-  fi
-  if grep -q "/etc/nginx/sites/ssl/dummy/$1" "/etc/nginx/conf.d/default.conf"; then
-    echo "Nginx already using dummy (testing) Let's Encrypt certificate for $1"
-    sed -i "s|/etc/nginx/sites/ssl/dummy/$1|/etc/letsencrypt/live/$1|g" "/etc/nginx/conf.d/default.conf"
-  fi
-}
-
-use_dummy_certificate_old() {
-  if grep -q "/etc/letsencrypt/live/" "/etc/nginx/conf.d/default.conf"; then
-    echo "Switching Nginx to use dummy certificate for $1"
-    sed -i "s|/etc/letsencrypt/live/|/etc/nginx/sites/ssl/dummy/|g" "/etc/nginx/conf.d/default.conf"
-  fi
-  if grep -q "/etc/nginx/sites/ssl/dummy/" "/etc/nginx/conf.d/default.conf"; then
-    echo "Nginx already using dummy (testing) SSL certificate for $1"
-    sed -i "s|/etc/nginx/sites/ssl/dummy/|/etc/letsencrypt/live/|g" "/etc/nginx/conf.d/default.conf"
-  fi
-}
-
-use_lets_encrypt_certificate_old() {
-  if grep -q "/etc/nginx/sites/ssl/dummy/" "/etc/nginx/conf.d/default.conf"; then
-    echo "Switching Nginx to use Let's Encrypt certificate for $1";
-    sed -i "s|/etc/nginx/sites/ssl/dummy/|/etc/letsencrypt/live/|g" "/etc/nginx/conf.d/default.conf"
-  fi
-  if grep -q "/etc/letsencrypt/live/" "/etc/nginx/conf.d/default.conf"; then
-    echo "Nginx now using production Let's Encrypt certificate for $1";
-  fi
-}
-
 use_dummy_certificate() {
   # Switch sympolic links to reference the apprpriate SSL keys
   mkdir -p /etc/symb_link_ssl;
