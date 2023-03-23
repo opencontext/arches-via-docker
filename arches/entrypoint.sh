@@ -91,7 +91,6 @@ init_arches() {
 			echo "Database ${PGDBNAME} does not exists yet."
 			run_setup_db
 			run_elastic_safe_migrations
-			# run_load_package #change to run_load_package if preferred
 			setup_couchdb
 		fi
 	fi
@@ -99,7 +98,7 @@ init_arches() {
 
 # Setup Couchdb
 setup_couchdb() {
-    echo "--- SKIP Creating couchdb system databases (not in V7) ---"
+    echo "--- SKIP Creating couchdb system databases (not in V7, no Collector) ---"
 	# echo "Sleep for a 10 seconds because elastic search seems to need the wait (a total hack)..."
 	# sleep 10s;
     # curl -X PUT ${COUCHDB_URL}/_users
@@ -126,14 +125,9 @@ install_yarn_components() {
 #### Misc
 check_settings_local() {
 	# Make sure we have a settings_local in the proper location of the project
-
-	# Skip this, this happens with the docker container build.
-	# echo "Copying ${APP_FOLDER}/settings_local.py to ${APP_FOLDER}/${ARCHES_PROJECT}/settings_local.py..."
-	# cp -n ${APP_FOLDER}/settings_local.py ${APP_FOLDER}/${ARCHES_PROJECT}/settings_local.py
-
 	cd ${APP_COMP_FOLDER}
 	echo "The directory ${APP_COMP_FOLDER} contains:"
-	ls
+	ls -l
 	echo "---------------------------------------------------------------"
 }
 
@@ -146,8 +140,6 @@ start_celery_supervisor() {
 	sleep 60s;
 	if [ -f "/tmp/supervisor.sock" ]; then
 		echo "The celery supervisor seems started, so why try to start it again? "
-		# unlink /tmp/supervisor.sock
-		# wait-for-it arches_rabbitmq:5672 -t 120 && supervisord -c arches_proj-supervisor.conf
 	else
 		echo "The celery supervisor has yet to start, so we'll start it.."
 		cd ${APP_FOLDER}
@@ -184,8 +176,6 @@ run_elastic_safe_migrations() {
     done
     echo "Elasticsearch is up"
 	cd ${APP_FOLDER}
-	# echo "Run the server for a few seconds..."
-	# python3 manage.py runserver --noreload
 	echo "Sleep for a 20 seconds because elastic search seems to need the wait (a total hack)..."
 	echo "We're running migrations in case the initial db setup failed because elasticsearch was still not quite ready"
 	sleep 20s;
@@ -347,8 +337,6 @@ run_django_server() {
 		echo "Should run the production mode Arches Django via gunicorn via:"
 		echo "gunicorn ${ARCHES_PROJECT}.wsgi:application --config ${GUNICORN_CONFIG_PATH}"
 		exec sh -c "gunicorn ${ARCHES_PROJECT}.wsgi:application --config ${GUNICORN_CONFIG_PATH}"
-		# echo "But, since I can get gunicorn to work yet, running via Django"
-		# exec sh -c "python3 manage.py runserver 0.0.0.0:${DJANGO_PORT}"
 	fi
 }
 
@@ -357,14 +345,8 @@ run_arches() {
 	start_celery_supervisor
 	init_arches
 	run_elastic_safe_migrations
-	# Yes, do this again, just in case elastic is still not totally ready...
-	run_elastic_safe_migrations
-	# This should be run in elastic wasn't ready for a full setup.
 	run_createcachetable
-	# run_collect_static
 	run_django_server
-	# run_build_production
-	# install_yarn_components
 }
 
 #### Main commands
@@ -397,7 +379,6 @@ do
 
 	case ${key} in
 		run_arches)
-			check_settings_local
 			wait_for_db
 			run_arches
 		;;
@@ -424,27 +405,18 @@ do
 		;;
 		setup_arches)
 			start_celery_supervisor
-			check_settings_local
 			wait_for_db
 			setup_arches
 		;;
-		run_tests)
-			check_settings_local
-			wait_for_db
-			run_tests
-		;;
 		run_make_migrations)
-			check_settings_local
 			wait_for_db
 			run_make_migrations
 		;;
 		run_migrations)
-		    check_settings_local
 			wait_for_db
 			run_migrations
 		;;
 		run_es_reindex)
-			check_settings_local
 			wait_for_db
 			run_es_reindex
 		;;
