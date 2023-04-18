@@ -105,7 +105,6 @@ services:
       - ./:/workdir:ro
     depends_on:
       - arches
-      - nginx
     networks:
       - arches_net
 
