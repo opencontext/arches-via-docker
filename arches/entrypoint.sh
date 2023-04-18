@@ -252,7 +252,7 @@ run_setup_webpack() {
 	# We're going to first check to see if we have anythin in the static_root/js folder.
 	# If we do, then we've run this already and can skip webpack and collect static.
 	if [[ ! -d ${STATIC_JS} ]] || [[ ! "$(ls ${STATIC_JS})" ]]; then
-		echo "We (apparently) have yet to run webpack and collectstatic. Do it now!";
+		echo "We (apparently) have yet to run webpack and collectstatic. We will do it now!";
 
 		if [[ ${BUILD_PRODUCTION} == 'True' ]]; then
 			# NOTE: Only do this if you have more than 8GB of system RAM. This will likely error out
