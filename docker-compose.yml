@@ -20,6 +20,11 @@ services:
         - ../arches_data/:/arches_data
     ports:
       - '5434:5432'
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10k"
+        max-file: "10"
     networks:
       - arches_net
 
@@ -39,6 +44,11 @@ services:
     ports:
       - "9202:9200"
       - "9302:9300"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10k"
+        max-file: "10"
     networks:
       - arches_net
 
@@ -51,6 +61,11 @@ services:
     volumes:
       - "redisdata:/data"
     command: "redis-server"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10k"
+        max-file: "10"
     networks:
       - arches_net
 
@@ -90,6 +105,11 @@ services:
       - arches-static:/static_root
       - arches-app:/arches_app
       - ../arches_data/:/arches_data
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "10"
     networks:
       - arches_net
 
@@ -98,13 +118,19 @@ services:
     image: arches/arches_webpack
     build: ./webpack
     environment:
-      COMPOSE_PROJECT_NAME: "${COMPOSE_PROJECT_NAME}"
+      - COMPOSE_PROJECT_NAME="${COMPOSE_PROJECT_NAME}"
+      - DJANGO_DEBUG="${DJANGO_DEBUG}"
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./:/workdir:ro
     depends_on:
       - arches
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1k"
+        max-file: "3"
     networks:
       - arches_net
 
@@ -132,6 +158,11 @@ services:
     restart: always
     depends_on:
       - arches
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "10"
     networks:
       - arches_net
 
@@ -144,6 +175,11 @@ services:
     volumes:
       - certbot_certs:/etc/letsencrypt
       - arches_certbot:$CERT_PATH
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1k"
+        max-file: "3"
     networks:
       - arches_net
 
@@ -157,6 +193,11 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./:/workdir:ro
     restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1k"
+        max-file: "3"
     networks:
       - arches_net
 
