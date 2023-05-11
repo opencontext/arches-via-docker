@@ -1,6 +1,7 @@
 FROM nginx:1.18-alpine-perl
 
 RUN apk add --no-cache nginx-mod-http-perl
+RUN apk add --no-cache nginx-module-logrotate
 RUN apk add --no-cache openssl
 
 COPY nginx.conf /etc/nginx/nginx.conf
