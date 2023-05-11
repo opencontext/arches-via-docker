@@ -8,7 +8,6 @@ COPY default.conf /etc/nginx/conf.d/default.conf
 COPY options-ssl-nginx.conf /etc/nginx/
 COPY hsts.conf /etc/nginx/
 RUN mkdir -p /customization
-COPY extra.conf /customization/extra.conf
 COPY blacklist.conf /customization/blacklist.conf
 RUN mkdir -p /etc/symb_link_ssl
 RUN mkdir -p /logs/nginx
