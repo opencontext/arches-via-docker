@@ -30,7 +30,7 @@ services:
 
   arches_elasticsearch:
     container_name: arches_elasticsearch
-    image: elasticsearch:8.5.3
+    image: elasticsearch:7.9.2
     restart: always
     env_file:
       - ./.env
