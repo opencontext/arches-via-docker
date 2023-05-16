@@ -261,7 +261,7 @@ run_setup_webpack() {
 			cd ${APP_FOLDER}
 			exec sh -c "yarn install && python3 manage.py build_production"
 		else
-			cd ${APP_FOLDER}
+			cd ${APP_COMP_FOLDER}
 			echo "Running Webpack to do the yarn build_development thing."
 			exec sh -c "yarn install && python3 $APP_FOLDER/manage.py collectstatic --noinput"
 		fi
@@ -283,7 +283,7 @@ run_webpack() {
 		cd ${APP_FOLDER}
 		exec sh -c "yarn install && python3 manage.py build_production"
 	else
-		ccd ${APP_FOLDER}
+		ccd ${APP_COMP_FOLDER}
 		echo "Running Webpack to do the yarn build_development thing."
 		exec sh -c "yarn install  && python3 $APP_FOLDER/manage.py collectstatic --noinput"
 	fi
