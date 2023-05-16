@@ -123,7 +123,7 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
-        delay: 5s
+        delay: 15s
         max_attempts: 30
         window: 1200s
     volumes:
