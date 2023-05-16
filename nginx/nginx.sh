@@ -97,6 +97,8 @@ for domain in $domains_fixed; do
     use_lets_encrypt_certificate "$domain"
   fi
 
+  # seems needed for yarn in v6 arches
+  mkdir -p /static_root/CACHE;
   echo "-----------------------------------------------";
   echo "Check out the contents of /static_root/";
   ls /static_root;
