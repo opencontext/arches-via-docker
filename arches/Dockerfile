@@ -12,6 +12,7 @@ ARG APP_COMP_FOLDER
 # settings_local.py provides the DB credentials, etc. to the Arches project.
 ENV SETTINGS_LOCAL_PATH=${APP_COMP_FOLDER}/settings_local.py
 ENV CELERY_PATH=${APP_COMP_FOLDER}/celery.py
+ENV GUNICORN_PATH=${APP_COMP_FOLDER}/gunicorn_config.py
 ENV URLS_PATH=${APP_COMP_FOLDER}/urls.py
 ENV ARCHES_DATA=${ARCHES_ROOT}/arches_data
 ENV WHEELS=/wheels
@@ -71,9 +72,12 @@ RUN pip install supervisor && pip install Redis && pip install gunicorn && pip i
 WORKDIR ${APP_ROOT}
 COPY ./arches/settings_local.py ${SETTINGS_LOCAL_PATH}
 RUN sed -i 's/\r$//g' ${SETTINGS_LOCAL_PATH}
-# copy the celery.py file into out archaes project. This hopefully makes the workers and beat work:
+# copy the celery.py file into our archaes project. This hopefully makes the workers and beat work:
 COPY ./arches/celery.py ${CELERY_PATH}
 RUN sed -i 's/\r$//g' ${CELERY_PATH}
+# copy the gunicorn_config.py file into our archaes project. This hopefully enables gunicorn work:
+COPY ./arches/gunicorn_config.py ${GUNICORN_PATH}
+RUN sed -i 's/\r$//g' ${GUNICORN_PATH}
 # copy the urls.py into our new Arches project. This is part of
 # customization for internationalization
 COPY ./arches/urls.py ${URLS_PATH}
