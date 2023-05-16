@@ -120,7 +120,12 @@ services:
     environment:
       - COMPOSE_PROJECT_NAME="${COMPOSE_PROJECT_NAME}"
       - DJANGO_DEBUG="${DJANGO_DEBUG}"
-    restart: unless-stopped
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 15s
+        max_attempts: 30
+        window: 1200s
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./:/workdir:ro
