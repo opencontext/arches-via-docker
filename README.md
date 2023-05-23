@@ -1,12 +1,11 @@
 # arches-via-docker
-Deployment of Arches (archesproject.org) via Docker. We initially developed this repo to simplify and streamline deployment of Arches for use in archaeology and related instruction.
-
+Deployment of Arches (archesproject.org) via Docker. We initially developed this repo to simplify and streamline deployment of Arches for use in archaeology and related instruction. 
 
 
 
 # Public Web Server and Localhost Deployments
 
-This main goal of this repo is to offer a simple, turnkey approach to deploying HTTPS secured Arches on the Web. You can also use this to deploy Arches for use on a `localhost` by leaving Arches with the Django `DEBUG` setting as `True`. See below for instructions on creating and editing an `.env` file.
+This main goal of this repo is to offer a simple, turnkey approach to deploying HTTPS secured Arches on the Web. You can also use this to deploy the current stable version of Arches for use on a `localhost` by leaving Arches with the Django `DEBUG` setting as `True`. See below for instructions on creating and editing an `.env` file.
 
 
 # Nginx and Let’s Encrypt with Docker Compose in less than 3 minutes
@@ -95,6 +94,13 @@ When you are ready to use production Let's Encrypt server, set `CERTBOT_TEST_CER
    ```bash
    git clone https://github.com/opencontext/arches-via-docker.git
    ```
+
+### Note:
+This approach will setup the most current stable version of Arches. If you want to deploy Arches version 6 (specifically stable version 6.2.3), please switch to the `v6` branch of this repo, with:
+   ```bash
+   git checkout origin/v6
+   ```
+
 
 ## Step 0 - Point your domain to server with DNS A records
 
