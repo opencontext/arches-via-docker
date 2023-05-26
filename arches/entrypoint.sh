@@ -74,6 +74,7 @@ init_arches() {
 		arches-project create ${ARCHES_PROJECT}
 		run_setup_db
 		setup_couchdb
+		run_load_package
 
 		exit_code=$?
 		if [[ ${exit_code} != 0 ]]; then
