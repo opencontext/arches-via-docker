@@ -105,7 +105,9 @@ RUN chmod -R 700 ${APP_ROOT}/entrypoint.sh &&\
   dos2unix ${APP_ROOT}/entrypoint.sh
 
 # Now copy the cloned arches-her files into our app.
+RUN yes | cp -rf ${HER_REPO_PATH}/arches_her/ ${APP_ROOT}
 RUN yes | cp -rf ${HER_REPO_PATH}/arches_her/* ${APP_COMP_FOLDER}
+RUN rm ${APP_COMP_FOLDER}/settings_docker.py
 
 # Set default workdir
 WORKDIR ${APP_ROOT}
