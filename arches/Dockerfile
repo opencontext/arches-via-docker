@@ -11,6 +11,7 @@ ARG APP_ROOT
 ARG APP_COMP_FOLDER
 # settings_local.py provides the DB credentials, etc. to the Arches project.
 ENV SETTINGS_LOCAL_PATH=${APP_COMP_FOLDER}/settings_local.py
+ENV HER_REPO_PATH=${ARCHES_ROOT}/arches_her
 ENV CELERY_PATH=${APP_COMP_FOLDER}/celery.py
 ENV GUNICORN_PATH=${APP_COMP_FOLDER}/gunicorn_config.py
 ENV URLS_PATH=${APP_COMP_FOLDER}/urls.py
@@ -53,6 +54,7 @@ RUN set -ex \
     && apt-get update -y \
     && apt-get install -y "wait-for-it" \
     && apt-get install -y nano \
+    && apt-get install -y git \
     && apt-get install -y --no-install-recommends $RUN_DEPS \
     && apt-get install -y nodejs \
     && npm install -g yarn
@@ -66,7 +68,13 @@ RUN pip install --upgrade pip
 # Install the Arches application and make an Arches project.
 RUN pip install supervisor && pip install Redis && pip install gunicorn && pip install arches==6.2.3 && arches-project create ${ARCHES_PROJECT}
 
-# Make sure we have the environment variables in the python app?
+# Clone the arches-her repo
+RUN mkdir -p ${HER_REPO_PATH}
+RUN git clone https://github.com/archesproject/arches-her.git ${HER_REPO_PATH}
+WORKDIR ${HER_REPO_PATH}
+RUN echo "Use the arches-her dev/6.2.x branch";
+RUN echo "git checkout dev/6.2.x";
+RUN git checkout dev/6.2.x;
 
 # copy in local settings to our newly created Arches project.
 WORKDIR ${APP_ROOT}
@@ -96,6 +104,8 @@ COPY /arches/entrypoint.sh ${APP_ROOT}/entrypoint.sh
 RUN chmod -R 700 ${APP_ROOT}/entrypoint.sh &&\
   dos2unix ${APP_ROOT}/entrypoint.sh
 
+# Now copy the cloned arches-her files into our app.
+RUN yes | cp -rf ${HER_REPO_PATH}/arches_her/* ${APP_COMP_FOLDER}
 
 # Set default workdir
 WORKDIR ${APP_ROOT}
