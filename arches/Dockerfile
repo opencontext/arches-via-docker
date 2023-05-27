@@ -78,6 +78,15 @@ RUN git checkout dev/6.2.x;
 
 # copy in local settings to our newly created Arches project.
 WORKDIR ${APP_ROOT}
+
+# Now copy the cloned arches-her files into our app.
+RUN yes | cp -rf ${HER_REPO_PATH}/arches_her/ ${APP_ROOT}
+RUN yes | cp -rf ${HER_REPO_PATH}/arches_her/* ${APP_COMP_FOLDER}
+# remove the arches-her settings_docker
+RUN rm ${APP_COMP_FOLDER}/settings_docker.py
+# remove the arches-her celery.py, it has configs that don't work for this
+RUN rm ${CELERY_PATH}
+
 COPY ./arches/settings_local.py ${SETTINGS_LOCAL_PATH}
 RUN sed -i 's/\r$//g' ${SETTINGS_LOCAL_PATH}
 # copy the celery.py file into our archaes project. This hopefully makes the workers and beat work:
@@ -86,10 +95,7 @@ RUN sed -i 's/\r$//g' ${CELERY_PATH}
 # copy the gunicorn_config.py file into our archaes project. This hopefully enables gunicorn work:
 COPY ./arches/gunicorn_config.py ${GUNICORN_PATH}
 RUN sed -i 's/\r$//g' ${GUNICORN_PATH}
-# copy the urls.py into our new Arches project. This is part of
-# customization for internationalization
-COPY ./arches/urls.py ${URLS_PATH}
-RUN sed -i 's/\r$//g' ${URLS_PATH}
+
 
 # copy the celery supervisor
 COPY /arches/conf.d/ ${APP_ROOT}/conf.d/
@@ -103,11 +109,6 @@ RUN mkdir -p /var/log/celery
 COPY /arches/entrypoint.sh ${APP_ROOT}/entrypoint.sh
 RUN chmod -R 700 ${APP_ROOT}/entrypoint.sh &&\
   dos2unix ${APP_ROOT}/entrypoint.sh
-
-# Now copy the cloned arches-her files into our app.
-RUN yes | cp -rf ${HER_REPO_PATH}/arches_her/ ${APP_ROOT}
-RUN yes | cp -rf ${HER_REPO_PATH}/arches_her/* ${APP_COMP_FOLDER}
-RUN rm ${APP_COMP_FOLDER}/settings_docker.py
 
 # Set default workdir
 WORKDIR ${APP_ROOT}
