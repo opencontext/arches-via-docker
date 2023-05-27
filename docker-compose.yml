@@ -123,9 +123,9 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
-        delay: 15s
-        max_attempts: 30
-        window: 1200s
+        delay: 30s
+        max_attempts: 60
+        window: 1800s
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./:/workdir:ro

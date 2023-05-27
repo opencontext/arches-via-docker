@@ -87,7 +87,7 @@ init_arches() {
 		wait_for_db
 		if db_exists; then
 			echo "Database ${PGDBNAME} already exists."
-			echo "Skipping Package Loading"
+			run_load_package
 		else
 			echo "Database ${PGDBNAME} does not exists yet."
 			run_setup_db
@@ -138,8 +138,8 @@ start_celery_supervisor() {
 	echo ""
 	echo "----- START CELERY SUPERVISOR -----"
 	echo ""
-	echo "Sleep 60s in the hope that arches_redis will be fully up and running..."
-	sleep 60s;
+	echo "Sleep 30s in the hope that arches_redis will be fully up and running..."
+	sleep 30s;
 	if [ -f "/tmp/supervisor.sock" ]; then
 		echo "The celery supervisor seems started, so why try to start it again? "
 	else
