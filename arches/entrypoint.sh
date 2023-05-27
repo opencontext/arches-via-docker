@@ -87,7 +87,6 @@ init_arches() {
 		wait_for_db
 		if db_exists; then
 			echo "Database ${PGDBNAME} already exists."
-			run_load_package
 		else
 			echo "Database ${PGDBNAME} does not exists yet."
 			run_setup_db
