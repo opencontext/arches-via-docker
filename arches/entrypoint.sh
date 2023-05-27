@@ -93,6 +93,7 @@ init_arches() {
 			run_setup_db
 			run_elastic_safe_migrations
 			setup_couchdb
+			run_load_package
 		fi
 	fi
 }
