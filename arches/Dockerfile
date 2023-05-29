@@ -12,7 +12,7 @@ ARG APP_COMP_FOLDER
 # settings_local.py provides the DB credentials, etc. to the Arches project.
 ENV SETTINGS_PATH=${APP_COMP_FOLDER}/settings.py
 ENV SETTINGS_LOCAL_PATH=${APP_COMP_FOLDER}/settings_local.py
-ENV HER_REPO_PATH=${ARCHES_ROOT}/arches_her
+ENV HER_REPO_PATH=${ARCHES_ROOT}/arches_her_repo
 ENV CELERY_PATH=${APP_COMP_FOLDER}/celery.py
 ENV GUNICORN_PATH=${APP_COMP_FOLDER}/gunicorn_config.py
 ENV URLS_PATH=${APP_COMP_FOLDER}/urls.py
@@ -93,7 +93,6 @@ RUN rm ${SETTINGS_PATH}
 # copy the settings from our host.
 COPY ./arches/settings.py ${SETTINGS_PATH}
 RUN sed -i 's/\r$//g' ${SETTINGS_PATH}
-
 COPY ./arches/settings_local.py ${SETTINGS_LOCAL_PATH}
 RUN sed -i 's/\r$//g' ${SETTINGS_LOCAL_PATH}
 # copy the celery.py file into our archaes project. This hopefully makes the workers and beat work:
