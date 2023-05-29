@@ -49,7 +49,7 @@ DEBUG = ast.literal_eval(arches_get_env_variable("DJANGO_DEBUG"))
 ROOT_URLCONF = "arches_her.urls"
 
 # a prefix to append to all elasticsearch indexes, note: must be lower case
-ELASTICSEARCH_PREFIX = arches_get_env_variable("ARCHES_NAMESPACE")
+ELASTICSEARCH_PREFIX = "arches_her"
 
 SEARCH_EXPORT_IMMEDIATE_DOWNLOAD_THRESHOLD = 2000  # The maximum number of instances a user can download from search export without celery
 SEARCH_EXPORT_LIMIT = 15000  # The maximum documents ElasticSearch will return in an export - **System Settings**
