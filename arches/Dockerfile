@@ -10,6 +10,7 @@ ARG ARCHES_PROJECT
 ARG APP_ROOT
 ARG APP_COMP_FOLDER
 # settings_local.py provides the DB credentials, etc. to the Arches project.
+ENV SETTINGS_PATH=${APP_COMP_FOLDER}/settings.py
 ENV SETTINGS_LOCAL_PATH=${APP_COMP_FOLDER}/settings_local.py
 ENV HER_REPO_PATH=${ARCHES_ROOT}/arches_her
 ENV CELERY_PATH=${APP_COMP_FOLDER}/celery.py
@@ -86,6 +87,12 @@ RUN yes | cp -rf ${HER_REPO_PATH}/arches_her/* ${APP_COMP_FOLDER}
 RUN rm ${APP_COMP_FOLDER}/settings_docker.py
 # remove the arches-her celery.py, it has configs that don't work for this
 RUN rm ${CELERY_PATH}
+# remove the settings from the arches-her package
+RUN rm ${SETTINGS_PATH}
+
+# copy the settings from our host.
+COPY ./arches/settings.py ${SETTINGS_PATH}
+RUN sed -i 's/\r$//g' ${SETTINGS_PATH}
 
 COPY ./arches/settings_local.py ${SETTINGS_LOCAL_PATH}
 RUN sed -i 's/\r$//g' ${SETTINGS_LOCAL_PATH}
