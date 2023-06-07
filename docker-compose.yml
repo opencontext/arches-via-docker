@@ -118,8 +118,8 @@ services:
     image: arches/arches_webpack
     build: ./webpack
     environment:
-      - COMPOSE_PROJECT_NAME="${COMPOSE_PROJECT_NAME}"
-      - DJANGO_DEBUG="${DJANGO_DEBUG}"
+      COMPOSE_PROJECT_NAME: "${COMPOSE_PROJECT_NAME}"
+      DJANGO_DEBUG: "${DJANGO_DEBUG}"
     deploy:
       restart_policy:
         condition: on-failure
