@@ -212,7 +212,7 @@ run_collect_static() {
 	echo ""
 	echo "----- RUNNING COLLECT STATIC -----"
 	echo ""
-	if [[ ${BUILD_PRODUCTION} == 'True' ]]; then
+	if [[ ${build} == 'True' ]]; then
 		echo "Skipping collectstatic, hopefully buildproduction will do the trick..."
 	else
 		cd ${APP_FOLDER}
@@ -230,17 +230,17 @@ run_collect_static_nocheck() {
 	echo "---------------------------------------------------------------"
 }
 
-run_build_production() {
+run_build() {
 	echo ""
 	echo "----- RUNNING BUILD PRODUCTION -----"
 	echo ""
-	if [[ ${BUILD_PRODUCTION} == 'True' ]]; then
+	if [[ ${build} == 'True' ]]; then
 		# NOTE: Only do this if you have more than 8GB of system RAM. This will likely error out
 		# otherwise.
 		cd ${APP_FOLDER}
-		python3 manage.py build_production
+		python3 manage.py build
 	else
-		echo "Skipping buildproduction because BUILD_PRODUCTION is not 'True' "
+		echo "Skipping buildproduction because build is not 'True' "
 	fi
 	echo "---------------------------------------------------------------"
 }
@@ -254,12 +254,12 @@ run_setup_webpack() {
 	if [[ ! -d ${STATIC_JS} ]] || [[ ! "$(ls ${STATIC_JS})" ]]; then
 		echo "We (apparently) have yet to run webpack and collectstatic. Do it now!";
 
-		if [[ ${BUILD_PRODUCTION} == 'True' ]]; then
+		if [[ ${build} == 'True' ]]; then
 			# NOTE: Only do this if you have more than 8GB of system RAM. This will likely error out
 			# otherwise.
-			echo "Running Webpack, hopefully the build_production thing will work!"
+			echo "Running Webpack, hopefully the build thing will work!"
 			cd ${APP_FOLDER}
-			exec sh -c "yarn install && python3 manage.py build_production"
+			exec sh -c "yarn install && python3 manage.py build"
 		else
 			cd ${APP_COMP_FOLDER}
 			echo "Running Webpack to do the yarn build_development thing."
@@ -276,12 +276,12 @@ run_webpack() {
 	echo ""
 	echo "----- *** RUNNING WEBPACK SERVER *** -----"
 	echo ""
-	if [[ ${BUILD_PRODUCTION} == 'True' ]]; then
+	if [[ ${build} == 'True' ]]; then
 		# NOTE: Only do this if you have more than 8GB of system RAM. This will likely error out
 		# otherwise.
-		echo "Running Webpack, hopefully the build_production thing will work!"
+		echo "Running Webpack, hopefully the build thing will work!"
 		cd ${APP_FOLDER}
-		exec sh -c "yarn install && python3 manage.py build_production"
+		exec sh -c "yarn install && python3 manage.py build"
 	else
 		ccd ${APP_COMP_FOLDER}
 		echo "Running Webpack to do the yarn build_development thing."
@@ -400,8 +400,8 @@ do
 		run_webpack)
 			run_webpack
 		;;
-		run_build_production)
-			run_build_production
+		run_build)
+			run_build
 		;;
 		setup_arches)
 			start_celery_supervisor
