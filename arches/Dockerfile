@@ -41,6 +41,7 @@ RUN set -ex \
         mime-support \
         libgdal-dev \
         libpq-dev \
+        python3-dev \
         postgresql-client-14 \
         dos2unix \
     " \
