@@ -1,5 +1,5 @@
 # arches-via-docker
-Deployment of Arches (archesproject.org) via Docker. We initially developed this repo to simplify and streamline deployment of Arches for use in archaeology and related instruction. 
+Deployment of Arches (archesproject.org) via Docker. We initially developed this repo to simplify and streamline deployment of Arches for use in archaeology and related instruction.
 
 
 
@@ -96,7 +96,7 @@ When you are ready to use production Let's Encrypt server, set `CERTBOT_TEST_CER
    ```
 
 ### Note:
-This approach will setup the most current stable version of Arches. If you want to deploy Arches version 6 (specifically stable version 6.2.3), please switch to the `v6` branch of this repo, with:
+This approach will setup the most current stable version of Arches (now v7.4.0). If you want to deploy Arches version 6 (specifically stable version 6.2.3), please switch to the `v6` branch of this repo, with:
    ```bash
    git checkout origin/v6
    ```
