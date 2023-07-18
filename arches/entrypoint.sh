@@ -155,14 +155,6 @@ run_createcachetable() {
 	python3 manage.py createcachetable
 }
 
-run_make_migrations() {
-	echo ""
-	echo "----- RUNNING DATABASE MAKE MIGRATIONS -----"
-	echo ""
-	cd ${APP_FOLDER}
-	python3 manage.py makemigrations
-}
-
 run_elastic_safe_migrations() {
 	echo ""
 	echo "----- RUNNING DATABASE MIGRATIONS WITH ELASTIC CHECK -----"
