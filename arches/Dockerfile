@@ -67,15 +67,15 @@ RUN rm -rf /root/.cache/pip/*
 
 RUN pip install --upgrade pip
 # Install the Arches application and make an Arches project.
-RUN pip install supervisor && pip install Redis && pip install gunicorn && pip install arches==6.2.3 && arches-project create ${ARCHES_PROJECT}
+RUN pip install supervisor && pip install Redis && pip install gunicorn && pip install arches==6.2.4 && arches-project create ${ARCHES_PROJECT}
 
 # Clone the arches-her repo
 RUN mkdir -p ${HER_REPO_PATH}
 RUN git clone https://github.com/archesproject/arches-her.git ${HER_REPO_PATH}
 WORKDIR ${HER_REPO_PATH}
-RUN echo "Use the arches-her dev/6.2.x branch";
-RUN echo "git checkout dev/6.2.x";
-RUN git checkout dev/6.2.x;
+RUN echo "Use the arches-her master branch";
+RUN echo "git checkout master";
+RUN git checkout master;
 
 # copy in local settings to our newly created Arches project.
 WORKDIR ${APP_ROOT}
