@@ -73,9 +73,9 @@ RUN pip install supervisor && pip install Redis && pip install gunicorn && pip i
 RUN mkdir -p ${HER_REPO_PATH}
 RUN git clone https://github.com/archesproject/arches-her.git ${HER_REPO_PATH}
 WORKDIR ${HER_REPO_PATH}
-RUN echo "Use the arches-her master branch";
-RUN echo "git checkout master";
-RUN git checkout master;
+RUN echo "Use the arches-her dev/6.2.x branch";
+RUN echo "git checkout dev/6.2.x";
+RUN git checkout dev/6.2.x;
 
 # copy in local settings to our newly created Arches project.
 WORKDIR ${APP_ROOT}

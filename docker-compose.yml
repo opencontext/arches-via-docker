@@ -14,8 +14,8 @@ services:
       - POSTGRES_MULTIPLE_EXTENSIONS=postgis,postgis_topology
     restart: always
     volumes:
-        - postgres-data:/var/lib/postgresql/data/
-        - postgres-log:/var/log/postgresql
+        - postgres-data-avd-her-6-2:/var/lib/postgresql/data/
+        - postgres-log-avd-her-6-2:/var/log/postgresql
         - ./init-unix.sql:/docker-entrypoint-initdb.d/init.sql # to set up the DB template
         - ../arches_data/:/arches_data
     ports:
@@ -26,7 +26,7 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - arches_net
+      - arches_net_avd_her_6_2
 
   arches_elasticsearch:
     container_name: arches_elasticsearch
@@ -40,7 +40,7 @@ services:
       - discovery.type=single-node
       - "ES_JAVA_OPTS=-Xms400m -Xmx400m"
     volumes:
-      - elasticsearch-data:/usr/share/elasticsearch/data
+      - elasticsearch-data-avd-her-6-2:/usr/share/elasticsearch/data
     ports:
       - "9202:9200"
       - "9302:9300"
@@ -50,7 +50,7 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - arches_net
+      - arches_net_avd_her_6_2
 
   arches_redis:
     container_name: arches_redis
@@ -59,7 +59,7 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - "redisdata:/data"
+      - "redisdata-avd-her-6-2:/data"
     command: "redis-server"
     logging:
       driver: "json-file"
@@ -67,7 +67,7 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - arches_net
+      - arches_net_avd_her_6_2
 
   arches:
     container_name: arches
@@ -101,9 +101,9 @@ services:
     expose:
       - 8004:8000
     volumes:
-      - arches-log:/web_root/logs
-      - arches-static:/static_root
-      - arches-app:/arches_app
+      - arches-log-avd-her-6-2:/web_root/logs
+      - arches-static-avd-her-6-2:/static_root
+      - arches-app-avd-her-6-2:/arches_app
       - ../arches_data/:/arches_data
     logging:
       driver: "json-file"
@@ -111,7 +111,7 @@ services:
         max-size: "10m"
         max-file: "10"
     networks:
-      - arches_net
+      - arches_net_avd_her_6_2
 
   arches_webpack:
     container_name: arches_webpack
@@ -137,94 +137,20 @@ services:
         max-size: "1k"
         max-file: "3"
     networks:
-      - arches_net
-
-  nginx:
-    container_name: nginx
-    build: ./nginx
-    image: arches_via_docker/nginx
-    env_file:
-      - ./.env
-    environment:
-      - DOMAINS="${DOMAINS}"
-      - DEPLOY_HOST="${DEPLOY_HOST}"
-      - CERT_PATH="${CERT_PATH}"
-      - DJANGO_PORT="${DJANGO_PORT}"
-    volumes:
-      - logs_nginx:/logs/nginx
-      - nginx_ssl:/etc/nginx/ssl
-      - certbot_certs:/etc/letsencrypt
-      - arches_certbot:$CERT_PATH
-      - arches-static:/static_root
-      - ./html:$NGINX_HTML_PATH
-    ports:
-      - "80:80"
-      - "443:443"
-    restart: always
-    depends_on:
-      - arches
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "10"
-    networks:
-      - arches_net
-
-  certbot:
-    container_name: certbot
-    build: ./certbot
-    image: arches_oc/certbot
-    env_file:
-      - ./.env
-    volumes:
-      - certbot_certs:/etc/letsencrypt
-      - arches_certbot:$CERT_PATH
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "1k"
-        max-file: "3"
-    networks:
-      - arches_net
-
-  cron:
-    container_name: cron
-    build: ./cron
-    image: arches_via_docker/cron
-    environment:
-      COMPOSE_PROJECT_NAME: "${COMPOSE_PROJECT_NAME}"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./:/workdir:ro
-    restart: unless-stopped
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "1k"
-        max-file: "3"
-    networks:
-      - arches_net
+      - arches_net_avd_her_6_2
 
 networks:
-  arches_net:
+  arches_net_avd_her_6_2:
     driver: bridge
-    name: arches_net
+    name: arches_net_avd_her_6_2
 
 volumes:
-  nginx_ssl:
-    external: true
-  certbot_certs:
-    external: true
-  arches_certbot:
-    external: true
-  redisdata:
-  couchdb-data:
-  couchdb-log:
-  postgres-data:
-  postgres-log:
-  elasticsearch-data:
-  arches-log:
-  arches-static:
-  arches-app:
-  logs_nginx:
+  redisdata-avd-her-6-2:
+  couchdb-data-avd-her-6-2:
+  couchdb-log-avd-her-6-2:
+  postgres-data-avd-her-6-2:
+  postgres-log-avd-her-6-2:
+  elasticsearch-data-avd-her-6-2:
+  arches-log-avd-her-6-2:
+  arches-static-avd-her-6-2:
+  arches-app-avd-her-6-2:
