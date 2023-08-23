@@ -139,85 +139,12 @@ services:
     networks:
       - arches_net
 
-  nginx:
-    container_name: nginx
-    build: ./nginx
-    image: arches_via_docker/nginx
-    env_file:
-      - ./.env
-    environment:
-      - DOMAINS="${DOMAINS}"
-      - DEPLOY_HOST="${DEPLOY_HOST}"
-      - CERT_PATH="${CERT_PATH}"
-      - DJANGO_PORT="${DJANGO_PORT}"
-    volumes:
-      - logs_nginx:/logs/nginx
-      - nginx_ssl:/etc/nginx/ssl
-      - certbot_certs:/etc/letsencrypt
-      - arches_certbot:$CERT_PATH
-      - arches-static:/static_root
-      - ./html:$NGINX_HTML_PATH
-    ports:
-      - "80:80"
-      - "443:443"
-    restart: always
-    depends_on:
-      - arches
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "10"
-    networks:
-      - arches_net
-
-  certbot:
-    container_name: certbot
-    build: ./certbot
-    image: arches_oc/certbot
-    env_file:
-      - ./.env
-    volumes:
-      - certbot_certs:/etc/letsencrypt
-      - arches_certbot:$CERT_PATH
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "1k"
-        max-file: "3"
-    networks:
-      - arches_net
-
-  cron:
-    container_name: cron
-    build: ./cron
-    image: arches_via_docker/cron
-    environment:
-      COMPOSE_PROJECT_NAME: "${COMPOSE_PROJECT_NAME}"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./:/workdir:ro
-    restart: unless-stopped
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "1k"
-        max-file: "3"
-    networks:
-      - arches_net
-
 networks:
   arches_net:
     driver: bridge
     name: arches_net
 
 volumes:
-  nginx_ssl:
-    external: true
-  certbot_certs:
-    external: true
-  arches_certbot:
-    external: true
   redisdata:
   couchdb-data:
   couchdb-log:
@@ -227,4 +154,3 @@ volumes:
   arches-log:
   arches-static:
   arches-app:
-  logs_nginx:

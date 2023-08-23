@@ -1,13 +1,6 @@
 # Edit this file and save as ".env" for use.
 
 COMPOSE_PROJECT_NAME=arches_proj
-DOMAINS=arches.opencontext.org
-DEPLOY_HOST=arches.opencontext.org
-NGINX_HTML_PATH=/var/www/html/$DEPLOY_HOST
-CERT_PATH=/var/www/certbot/$DEPLOY_HOST
-CERTBOT_EMAILS=eric@opencontext.org
-CERTBOT_TEST_CERT=1
-CERTBOT_RSA_KEY_SIZE=4096
 TZ=PST
 
 #arches project and paths
@@ -30,16 +23,16 @@ INSTALL_DEFAULT_CONCEPTS=True
 # value in the docker-compse.yml for the Postgres container.
 PGUSERNAME=postgres
 PGPASSWORD=postgis
-PGDBNAME=$ARCHES_PROJECT
+PGDBNAME=arches_proj
 PGHOST=arches_db
 PGPORT=5432
 ESHOST=arches_elasticsearch
 ESPORT=9200
 DJANGO_MODE=DEV
-DJANGO_DEBUG=False
+DJANGO_DEBUG=True
 # Don't change the port, since it's pretty hard-coded.
 DJANGO_PORT=8000
-DOMAIN_NAMES=$DOMAINS localhost 0.0.0.0 127.0.0.1
+DOMAIN_NAMES=localhost 0.0.0.0 127.0.0.1
 # NOTE: Only set BUILD_PRODUCTION=True if you have well over
 # 8GB of system RAM. Otherwise, yarn will likely error out.
 BUILD_PRODUCTION=False
