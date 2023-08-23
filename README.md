@@ -7,6 +7,11 @@ Deployment of Arches (archesproject.org) via Docker. We initially developed this
 
 This main goal of this repo is to offer a simple, turnkey approach to deploying HTTPS secured Arches on the Web. You can also use this to deploy the current stable version of Arches for use on a `localhost` by leaving Arches with the Django `DEBUG` setting as `True`. See below for instructions on creating and editing an `.env` file.
 
+If you're interested in deploying Arches to a `localhost` (not the public Web), switch to the `local` code branch. That will deploy a limited subset of Docker containers needed to run Arches on a `localhost` in `DEBUG` mode. To switch to the local branch:
+   ```bash
+   git checkout origin/local
+   ```
+
 
 # Nginx and Let’s Encrypt with Docker Compose in less than 3 minutes
 
@@ -96,7 +101,7 @@ When you are ready to use production Let's Encrypt server, set `CERTBOT_TEST_CER
    ```
 
 ### Note:
-This approach will setup the most current stable version of Arches (now v7.4.0). If you want to deploy Arches version 6 (specifically stable version 6.2.3), please switch to the `v6` branch of this repo, with:
+This approach will setup the most current stable version of Arches (now v7.4.2). If you want to deploy Arches version 6 (specifically stable version 6.2.4), please switch to the `v6` branch of this repo, with:
    ```bash
    git checkout origin/v6
    ```
