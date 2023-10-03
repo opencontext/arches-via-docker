@@ -1,5 +1,5 @@
 # Build a working Arches for Open Context deployment from a dockerfile
-FROM ubuntu:20.04 as base
+FROM ubuntu:22.04 as base
 USER root
 
 ## Setting default environment variables
@@ -23,7 +23,6 @@ RUN mkdir ${ARCHES_ROOT} && mkdir /var/log/supervisor && mkdir /var/log/celery
 
 # Get ready to do some code installation
 RUN apt-get update && apt-get install -y make software-properties-common
-RUN add-apt-repository ppa:deadsnakes/ppa
 
 # Install packages required to run Arches
 # Note that the ubuntu/debian package for libgdal1-dev pulls in libgdal1i, which is built
@@ -33,14 +32,19 @@ RUN add-apt-repository ppa:deadsnakes/ppa
 RUN set -ex \
     && RUN_DEPS=" \
         build-essential \
-        python3.9 \
-        python3.9-dev \
-        python3.9-distutils \
-        python3.9-venv \
+        python3.10 \
+        python3.10-dev \
+        python3.10-distutils \
+        python3.10-venv \
         python3-pip \
         mime-support \
+        libxml2-dev \
+        libproj-dev \
+        libjson-c-dev \
         libgdal-dev \
         libpq-dev \
+        docbook-xsl \
+        docbook-mathml \
         python3-dev \
         postgresql-client-14 \
         dos2unix \
@@ -63,7 +67,7 @@ RUN rm -rf /root/.cache/pip/*
 
 RUN pip install --upgrade pip
 # Install the Arches application and make an Arches project.
-RUN pip install psycopg2==2.9.6 && pip install supervisor && pip install pytz --upgrade && pip install tzdata --upgrade && pip install Redis && pip install gunicorn && pip install arches && arches-project create ${ARCHES_PROJECT}
+RUN pip install supervisor && pip install pytz --upgrade && pip install tzdata --upgrade && pip install Redis && pip install gunicorn && pip install arches && arches-project create ${ARCHES_PROJECT}
 
 # Make sure we have the environment variables in the python app?
 
