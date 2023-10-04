@@ -3,23 +3,28 @@ FROM ubuntu:22.04 as base
 USER root
 
 ## Setting default environment variables
-ARG ARCHES_ROOT
+ARG ARCHES_GIT_BRANCH
+# the directory where we will clone arches into
+ARG ALL_ARCHES_ROOT
+# the directory where the arches repo will exist once cloned
+ARG ARCHES_REPO
 # The name of the arches project
 ARG ARCHES_PROJECT
 # Project specific paths
 ARG APP_ROOT
 ARG APP_COMP_FOLDER
+
 # settings_local.py provides the DB credentials, etc. to the Arches project.
 ENV SETTINGS_LOCAL_PATH=${APP_COMP_FOLDER}/settings_local.py
 ENV CELERY_PATH=${APP_COMP_FOLDER}/celery.py
 ENV URLS_PATH=${APP_COMP_FOLDER}/urls.py
-ENV ARCHES_DATA=${ARCHES_ROOT}/arches_data
+ENV ARCHES_DATA=${ALL_ARCHES_ROOT}/arches_data
 ENV WHEELS=/wheels
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE 1
 
 # Setup needed directories
-RUN mkdir ${ARCHES_ROOT} && mkdir /var/log/supervisor && mkdir /var/log/celery
+RUN mkdir ${ALL_ARCHES_ROOT} && mkdir /var/log/supervisor && mkdir /var/log/celery
 
 # Get ready to do some code installation
 RUN apt-get update && apt-get install -y make software-properties-common
@@ -58,18 +63,30 @@ RUN set -ex \
     && apt-get install -y nano \
     && apt-get install -y --no-install-recommends $RUN_DEPS \
     && apt-get install -y nodejs \
+    && apt-get install -y git \
     && npm install -g yarn
 
 
-WORKDIR ${ARCHES_ROOT}
+WORKDIR ${ALL_ARCHES_ROOT}
+RUN git clone https://github.com/archesproject/arches.git
+
+WORKDIR ${ARCHES_REPO}
+RUN echo "git checkout ${ARCHES_GIT_BRANCH}";
+RUN git checkout ${ARCHES_GIT_BRANCH};
 
 RUN rm -rf /root/.cache/pip/*
-
 RUN pip install --upgrade pip
-# Install the Arches application and make an Arches project.
-RUN pip install supervisor && pip install pytz --upgrade && pip install tzdata --upgrade && pip install Redis && pip install gunicorn && pip install arches && arches-project create ${ARCHES_PROJECT}
 
-# Make sure we have the environment variables in the python app?
+RUN pip install -e . --user --no-use-pep517 && pip install -r arches/install/requirements.txt && pip install -r arches/install/requirements_dev.txt
+
+
+# Install the Arches application and make an Arches project.
+RUN pip install supervisor && pip install pytz --upgrade && pip install tzdata --upgrade && pip install Redis && pip install gunicorn
+
+WORKDIR ${ALL_ARCHES_ROOT}
+# Try to install the project
+RUN python3 ${ARCHES_REPO}/arches/install/arches-project create ${ARCHES_PROJECT}
+
 
 # copy in local settings to our newly created Arches project.
 WORKDIR ${APP_ROOT}
@@ -80,13 +97,13 @@ COPY ./arches/celery.py ${CELERY_PATH}
 RUN sed -i 's/\r$//g' ${CELERY_PATH}
 # copy the urls.py into our new Arches project. This is part of
 # customization for internationalization
-COPY ./arches/urls.py ${URLS_PATH}
-RUN sed -i 's/\r$//g' ${URLS_PATH}
+# COPY ./arches/urls.py ${URLS_PATH}
+# RUN sed -i 's/\r$//g' ${URLS_PATH}
 
 # copy the celery supervisor
 COPY /arches/conf.d/ ${APP_ROOT}/conf.d/
-COPY /arches/arches_proj-supervisor.conf ${APP_ROOT}/arches_proj-supervisor.conf
-RUN chmod -R 700 ${APP_ROOT}/arches_proj-supervisor.conf
+COPY /arches/arches_plocal-supervisor.conf ${APP_ROOT}/${ARCHES_PROJECT}-supervisor.conf
+RUN chmod -R 700 ${APP_ROOT}/${ARCHES_PROJECT}-supervisor.conf
 RUN mkdir -p /var/log/supervisor
 RUN mkdir -p /var/log/celery
 
@@ -96,6 +113,9 @@ COPY /arches/entrypoint.sh ${APP_ROOT}/entrypoint.sh
 RUN chmod -R 700 ${APP_ROOT}/entrypoint.sh &&\
   dos2unix ${APP_ROOT}/entrypoint.sh
 
+# A major security issue, but this is meant for a local deployment
+WORKDIR ${APP_ROOT}
+RUN chmod +x entrypoint.sh
 
 # Set default workdir
 WORKDIR ${APP_ROOT}

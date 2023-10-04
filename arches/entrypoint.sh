@@ -62,37 +62,16 @@ db_exists() {
 #### Install
 init_arches() {
 	echo "Checking if Arches project "${ARCHES_PROJECT}" exists..."
-	if [[ ! -d ${APP_FOLDER} ]] || [[ ! "$(ls ${APP_FOLDER})" ]]; then
-		echo ""
-		echo "----- Custom Arches project '${ARCHES_PROJECT}' does not exist. -----"
-		echo "----- Creating '${ARCHES_PROJECT}'... -----"
-		echo ""
-
-		cd ${ALL_ARCHES_ROOT}
-		echo "Sleep for a 45 seconds because elastic search seems to need the wait (a total hack)..."
-		sleep 45s;
-		python3 ${ALL_ARCHES_ROOT}/install/arches-project create ${ARCHES_PROJECT}
-		run_setup_db
-		setup_couchdb
-
-		exit_code=$?
-		if [[ ${exit_code} != 0 ]]; then
-			echo "Something went wrong when creating your Arches project: ${ARCHES_PROJECT}."
-			echo "Exiting..."
-			exit ${exit_code}
-		fi
+	echo "Custom Arches project '${ARCHES_PROJECT}' exists."
+	wait_for_db
+	if db_exists; then
+		echo "Database ${PGDBNAME} already exists."
+		echo "Skipping Package Loading"
 	else
-		echo "Custom Arches project '${ARCHES_PROJECT}' exists."
-		wait_for_db
-		if db_exists; then
-			echo "Database ${PGDBNAME} already exists."
-			echo "Skipping Package Loading"
-		else
-			echo "Database ${PGDBNAME} does not exists yet."
-			run_setup_db
-			run_elastic_safe_migrations
-			setup_couchdb
-		fi
+		echo "Database ${PGDBNAME} does not exists yet."
+		run_setup_db
+		run_elastic_safe_migrations
+		setup_couchdb
 	fi
 }
 
