@@ -1,13 +1,16 @@
 # Edit this file and save as ".env" for use.
 
-COMPOSE_PROJECT_NAME=arches_proj
+COMPOSE_PROJECT_NAME=arches_plocal
 TZ=PST
 
 #arches project and paths
-ARCHES_PROJECT=arches_proj
-ARCHES_ROOT=/arches_app
-APP_ROOT=$ARCHES_ROOT/$ARCHES_PROJECT
-APP_COMP_FOLDER=$APP_ROOT/$ARCHES_PROJECT
+ARCHES_GIT_BRANCH="dev/7.5.x"
+ARCHES_PROJECT=arches_plocal
+ALL_ARCHES_ROOT=/arches_app
+ARCHES_REPO=$ALL_ARCHES_ROOT/arches
+
+APP_ROOT=$ALL_ARCHES_ROOT/$ARCHES_PROJECT
+APP_COMP_FOLDER=$ALL_ARCHES_ROOT/$ARCHES_PROJECT/$ARCHES_PROJECT
 
 #Arches configs
 # NOTE: the ARCHES_NAMESPACE needs to look like a URL, ending in a '/',
@@ -23,7 +26,7 @@ INSTALL_DEFAULT_CONCEPTS=True
 # value in the docker-compse.yml for the Postgres container.
 PGUSERNAME=postgres
 PGPASSWORD=postgis
-PGDBNAME=arches_proj
+PGDBNAME=arches_plocal
 PGHOST=arches_db
 PGPORT=5432
 ESHOST=arches_elasticsearch
@@ -32,7 +35,7 @@ DJANGO_MODE=DEV
 DJANGO_DEBUG=True
 # Don't change the port, since it's pretty hard-coded.
 DJANGO_PORT=8000
-DOMAIN_NAMES=localhost 0.0.0.0 127.0.0.1
+DOMAIN_NAMES=$DOMAINS localhost 0.0.0.0 127.0.0.1
 # NOTE: Only set BUILD_PRODUCTION=True if you have well over
 # 8GB of system RAM. Otherwise, yarn will likely error out.
 BUILD_PRODUCTION=False
