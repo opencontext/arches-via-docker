@@ -5,8 +5,16 @@ Deployment of Arches (archesproject.org) via Docker. We initially developed this
 
 # Public Web Server and Localhost Deployments
 
-This main goal of this repo is to offer a simple, turnkey approach to deploying HTTPS secured Arches on the Web. However, this branch provides a simple approach to deploying the current stable version of Arches for use on a `localhost` without starting Docker related to Web hosting (Nginx, SSL, etc.). Be sure to leave Arches with the Django `DEBUG` setting as `True`. See below for instructions on creating and editing an `.env` file.
+This main goal of this repo is to offer a simple, turnkey approach to deploying HTTPS secured Arches on the Web. However, this branch provides a simple approach to deploying Arches for use on a `localhost` without starting Docker related to Web hosting (Nginx, SSL, etc.). Be sure to leave Arches with the Django `DEBUG` setting as `True`. See below for instructions on creating and editing an `.env` file.
 
+This branch has only partial support for installing arbitary versions of Arches. Configure the `.env` file to name the branch you'd like to deploy as so:
+
+   ```
+   ARCHES_GIT_BRANCH="dev/7.5.x"
+   ```
+
+# Caveats
+The Arches docker container will git-clone the Arches repository and switch to the desired branch and then install the various Python dependencies. However, installation of other dependencies outside of Python are still "hard-coded" in the Arches Dockerfile. So you may need to manually edit that file if the version of Arches you wish to install has different non-Python dependencies.
 
 # The directories and files
 The following lists some information about the contents of this repo and how they fit together:
@@ -37,7 +45,7 @@ The following lists some information about the contents of this repo and how the
    ```
 
 ### Note:
-This approach will setup the most current stable version of Arches (now v7.4.2) suitable for running on a localhost for testing purposes. If you want to deploy Arches version 6 (specifically stable version 6.2.4), please switch to the `v6` branch of this repo, with:
+This branch can set up a desired version of Arches (with caveats, see above) suitable for running on a localhost for testing purposes. If you want to locally deploy the latest stable version of Arches witch to the `local` branch of this repo. If you want Arches version 6 (specifically stable version 6.2.4), please switch to the `v6` branch of this repo, with:
    ```bash
    git checkout origin/v6
    ```
