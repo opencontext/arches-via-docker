@@ -3,6 +3,7 @@
 # APP and YARN folder locations
 APP_FOLDER=${APP_ROOT}
 APP_COMP_FOLDER=${APP_COMP_FOLDER}
+ARCHES_PROJECT=${ARCHES_PROJECT}
 GUNICORN_CONFIG_PATH=${APP_COMP_FOLDER}/media/node_modules/arches/docker/gunicorn_config.py
 STATIC_ROOT=/static_root
 STATIC_JS=${STATIC_ROOT}/js
@@ -122,7 +123,7 @@ start_celery_supervisor() {
 	else
 		echo "The celery supervisor has yet to start, so we'll start it.."
 		cd ${APP_FOLDER}
-		wait-for-it arches_redis:6379 -t 120 && supervisord -c arches_proj-supervisor.conf
+		wait-for-it arches_redis:6379 -t 120 && supervisord -c arches_plocal-supervisor.conf
 	fi
 }
 
