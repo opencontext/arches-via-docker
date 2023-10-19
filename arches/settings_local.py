@@ -70,7 +70,6 @@ if USER_SECRET_KEY:
     # Make this unique, and don't share it with anybody.
     SECRET_KEY = USER_SECRET_KEY
 
-STATIC_ROOT = "/static_root"
 
 LANGUAGE_CODE = 'en'
 # Added for v7 internationalization demo

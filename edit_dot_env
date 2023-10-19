@@ -1,12 +1,15 @@
 # Edit this file and save as ".env" for use.
 
-COMPOSE_PROJECT_NAME=arches_plocal
+COMPOSE_PROJECT_NAME=afs_plocal
 TZ=PST
 
 #arches project and paths
+AFS_GIT_BRANCH="dev/1.1.x"
 ARCHES_GIT_BRANCH="dev/7.5.x"
-ARCHES_PROJECT=arches_plocal
+ARCHES_PROJECT=afs_plocal
 ALL_ARCHES_ROOT=/arches_app
+
+AFS_REPO = $ALL_ARCHES_ROOT/arches-for-science
 ARCHES_REPO=$ALL_ARCHES_ROOT/arches
 
 APP_ROOT=$ALL_ARCHES_ROOT/$ARCHES_PROJECT
@@ -15,7 +18,7 @@ APP_COMP_FOLDER=$ALL_ARCHES_ROOT/$ARCHES_PROJECT/$ARCHES_PROJECT
 #Arches configs
 # NOTE: the ARCHES_NAMESPACE needs to look like a URL, ending in a '/',
 # with the same port as used by the Arches Django APP.
-ARCHES_NAMESPACE='http://arches:8000/'
+ARCHES_NAMESPACE='http://$ARCHES_PROJECT:8000/'
 # This will hopefully make the yarn build not fail.
 NODE_OPTIONS='--max-old-space-size=1024'
 INSTALL_DEFAULT_GRAPHS=True
@@ -26,7 +29,7 @@ INSTALL_DEFAULT_CONCEPTS=True
 # value in the docker-compse.yml for the Postgres container.
 PGUSERNAME=postgres
 PGPASSWORD=postgis
-PGDBNAME=arches_plocal
+PGDBNAME=$ARCHES_PROJECT
 PGHOST=arches_db
 PGPORT=5432
 ESHOST=arches_elasticsearch

@@ -4,7 +4,9 @@ from django.conf.urls.static import static
 # from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
-    re_path((r'^', include('arches.urls')),
+    url(r'^', include('arches.urls')),
+    url(r"^", include("arches_for_science.urls")),
+    path("reports/", include("arches_templating.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # The language URL patterns with i18n_patterns seem a little buggy,

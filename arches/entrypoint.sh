@@ -72,6 +72,7 @@ init_arches() {
 		run_setup_db
 		run_elastic_safe_migrations
 		setup_couchdb
+		run_afs_package
 	fi
 }
 
@@ -122,7 +123,7 @@ start_celery_supervisor() {
 	else
 		echo "The celery supervisor has yet to start, so we'll start it.."
 		cd ${APP_FOLDER}
-		wait-for-it arches_redis:6379 -t 120 && supervisord -c arches_proj-supervisor.conf
+		wait-for-it arches_redis:6379 -t 120 && supervisord -c afs_plocal-supervisor.conf
 	fi
 }
 
@@ -176,6 +177,14 @@ run_es_reindex() {
 	echo ""
 	cd ${APP_FOLDER}
 	python3 manage.py es reindex_database
+}
+
+run_afs_package() {
+	echo ""
+	echo "----- RUNNING PACKAGE LOAD FOR AFS -----"
+	echo ""
+	cd ${APP_FOLDER}
+	python3 manage.py packages -o load_package -a arches_for_science -dev -y
 }
 
 
@@ -288,14 +297,6 @@ run_setup_db() {
 	python3 manage.py setup_db --force
 }
 
-run_load_package() {
-	echo ""
-	echo "----- *** LOADING PACKAGE: ${ARCHES_PROJECT} *** -----"
-	echo ""
-	cd ${APP_FOLDER}
-	python3 manage.py packages -o load_package -s ${ARCHES_PROJECT}/pkg -db -dev -y
-}
-
 run_django_server() {
 	echo ""
 	echo "----- *** RUNNING DJANGO DEVELOPMENT SERVER *** -----"
@@ -390,6 +391,10 @@ do
 		run_es_reindex)
 			wait_for_db
 			run_es_reindex
+		;;
+		run_afs_package)
+			wait_for_db
+			run_afs_package
 		;;
 		install_yarn_components)
 			install_yarn_components
