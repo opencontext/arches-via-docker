@@ -26,7 +26,7 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - arches_plocal_net
+      - afs_plocal_net
 
   arches_elasticsearch:
     container_name: arches_elasticsearch
@@ -50,7 +50,7 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - arches_plocal_net
+      - afs_plocal_net
 
   arches_redis:
     container_name: arches_redis
@@ -67,11 +67,11 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - arches_plocal_net
+      - afs_plocal_net
 
   arches:
     container_name: arches
-    image: arches
+    image: arches_afs
     env_file:
       - ./.env
     build:
@@ -114,7 +114,7 @@ services:
         max-size: "10m"
         max-file: "10"
     networks:
-      - arches_plocal_net
+      - afs_plocal_net
 
   arches_webpack:
     container_name: arches_webpack
@@ -140,12 +140,12 @@ services:
         max-size: "1k"
         max-file: "3"
     networks:
-      - arches_plocal_net
+      - afs_plocal_net
 
 networks:
-  arches_plocal_net:
+  afs_plocal_net:
     driver: bridge
-    name: arches_plocal_net
+    name: afs_plocal_net
 
 volumes:
   redisdata:
