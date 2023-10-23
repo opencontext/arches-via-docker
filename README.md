@@ -1,20 +1,21 @@
 # arches-via-docker
-Deployment of Arches (archesproject.org) via Docker. We initially developed this repo to simplify and streamline deployment of Arches for use in archaeology and related instruction.
+Deployment of [Arches for Science](https://www.archesproject.org/arches-for-science/) via Docker. We initially developed this repo to simplify and streamline deployment of Arches for Science (AfS) to make testing of development branches easier.
 
 
 
 # Public Web Server and Localhost Deployments
 
-This main goal of this repo is to offer a simple, turnkey approach to deploying HTTPS secured Arches on the Web. However, this branch provides a simple approach to deploying Arches for use on a `localhost` without starting Docker related to Web hosting (Nginx, SSL, etc.). Be sure to leave Arches with the Django `DEBUG` setting as `True`. See below for instructions on creating and editing an `.env` file.
+This branch provides a simple approach to deploying AfS for use on a `localhost` without starting Docker related to Web hosting (Nginx, SSL, etc.). Be sure to leave Arches with the Django `DEBUG` setting as `True`. See below for instructions on creating and editing an `.env` file.
 
-This branch has only partial support for installing arbitary versions of Arches. Configure the `.env` file to name the branch you'd like to deploy as so:
+This branch has only partial support for installing arbitary versions of AfS. Configure the `.env` file to name the branch you'd like to deploy as so:
 
    ```
+   AFS_GIT_BRANCH="dev/1.1.x"
    ARCHES_GIT_BRANCH="dev/7.5.x"
    ```
 
 # Caveats
-The Arches docker container will git-clone the Arches repository and switch to the desired branch and then install the various Python dependencies. However, installation of other dependencies outside of Python are still "hard-coded" in the Arches Dockerfile. So you may need to manually edit that file if the version of Arches you wish to install has different non-Python dependencies.
+The Arches docker container will git-clone the Arches for Science and the Arches repositories and switch to the desired branch and then install the various Python dependencies. However, installation of other dependencies outside of Python are still "hard-coded" in the Arches Dockerfile. So you may need to manually edit that file if the version of AfS and Arches you wish to install has different non-Python dependencies.
 
 # The directories and files
 The following lists some information about the contents of this repo and how they fit together:
@@ -25,11 +26,12 @@ The following lists some information about the contents of this repo and how the
     * `Dockerfile`
     * `arches_data` - A directory on your host machine that gets attached to the Arches container. This makes it convenient to pass data (like packages or exports) in and out of your Arches container.
     * `conf.d/` - A directory of Supervisord configurations for the celery worker and celery beat processes. This gets copied into the Arches container.
-    * `celery.py` - Editable file if you want to modify your Arches project use of celery
-    * `arches_proj-supervisor.conf` - Supervisord configurations for the celery worker and celery beat processes
+    * `celery.py` - Editable file if you want to modify your AfS project use of celery
+    * `afs_plocal-supervisor.conf` - Supervisord configurations for the celery worker and celery beat processes
     * `entrypoint.sh` - entrypoint script. This has some handy utility functions for some routine administration of the Arches container.
-    * `settings_local.py` - Editable python file to define project specific settings for your Arches instance. Many of the environment variables that you assign in your `.env` file
-    * `settings_local.py` - Editable python file configuring URLs in your Arches instance
+    * `settings.py` - Editable python file to define project specific settings for your AfS instance. Many of the environment variables that you assign in your `.env` file
+    * `settings_local.py` - Another editable python file to define project specific settings for your AfS instance. Many of the environment variables that you assign in your `.env` file
+    * `urls.py` - Editable python file configuring URLs in your AfS instance
 * `webpack/`
     * `Dockerfile`
     * `webpack_entrypoint.sh` - The `webpack` container is a minimalist container that invokes a docker command on the `arches` container. This command prepares static assets for the Arches frontend by running webpack and collectstatic.
