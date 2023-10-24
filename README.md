@@ -1,5 +1,5 @@
 # arches-via-docker
-Deployment of [Arches for Science](https://www.archesproject.org/arches-for-science/) via Docker. We initially developed this repo to simplify and streamline deployment of Arches for Science (AfS) to make testing of development branches easier.
+Deployment of [Arches for Science](https://www.archesproject.org/arches-for-science/) via Docker. We initially developed this repo to simplify and streamline deployment of Arches for Science (AfS) to make testing of development branches easier. This deployment attempts to implement, using Docker, instructions for deploying AfS version dev/1.1.x as documented here: https://github.com/archesproject/arches-for-science/tree/dev/1.1.x#readme
 
 
 
