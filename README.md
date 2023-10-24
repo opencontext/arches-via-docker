@@ -43,10 +43,10 @@ The following lists some information about the contents of this repo and how the
 ## Prerequisites
 
 1. [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/) are installed.
-2. You have cloned this repository, and if deployting to a localhost only you use the `local` branch:
+2. You have cloned this repository, and if deployting to a localhost only you use the `local-afs-dev-1-1-x` branch:
    ```bash
    git clone https://github.com/opencontext/arches-via-docker.git
-   git checkout origin/local
+   git checkout origin/local-afs-dev-1-1-x
    ```
 
 ### Note:
