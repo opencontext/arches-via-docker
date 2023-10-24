@@ -16,6 +16,7 @@ ARG ARCHES_PROJECT
 # Project specific paths
 ARG APP_ROOT
 ARG APP_COMP_FOLDER
+ARG UPLOADED_FILES_FOLDER
 
 # settings_local.py provides the DB credentials, etc. to the Arches project.
 ENV SETTINGS_PATH=${APP_COMP_FOLDER}/settings.py
@@ -95,7 +96,7 @@ WORKDIR ${ALL_ARCHES_ROOT}
 # Try to install the project
 RUN echo "Create a new Arches project: ${ARCHES_PROJECT}";
 RUN python3 ${ARCHES_REPO}/arches/install/arches-project create ${ARCHES_PROJECT}
-
+RUN mkdir -p ${UPLOADED_FILES_FOLDER}
 
 # Install our desired branch of Arches for Science
 WORKDIR ${ALL_ARCHES_ROOT}
