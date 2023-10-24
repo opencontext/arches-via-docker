@@ -48,6 +48,11 @@ CELERY_BROKER_URL = "amqp://{}:{}@arches_rabbitmq:5672".format(
 )
 """
 
+# Cantaloupe configs
+
+CANTALOUPE_HTTP_ENDPOINT = "http://{}:{}".format(get_env_variable("CANTALOUPE_HOST"), get_env_variable("CANTALOUPE_PORT"))
+
+
 CELERY_BROKER_URL = "redis://@arches_redis:6379/0"
 
 # NOTE: If you want to disable celery and workers, leave a blank string fo

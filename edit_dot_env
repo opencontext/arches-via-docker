@@ -15,7 +15,10 @@ ARCHES_REPO=$ALL_ARCHES_ROOT/arches
 APP_ROOT=$ALL_ARCHES_ROOT/$ARCHES_PROJECT
 APP_COMP_FOLDER=$ALL_ARCHES_ROOT/$ARCHES_PROJECT/$ARCHES_PROJECT
 
-#Arches configs
+# Cantaloupe
+UPLOADED_FILES_FOLDER=$APP_COMP_FOLDER/uploadedfiles
+
+# Arches configs
 # NOTE: the ARCHES_NAMESPACE needs to look like a URL, ending in a '/',
 # with the same port as used by the Arches Django APP.
 ARCHES_NAMESPACE='http://$ARCHES_PROJECT:8000/'
@@ -49,6 +52,15 @@ ELASTICSEARCH_PREFIX=$ARCHES_PROJECT
 # broker, not RabbitMQ, so these are commented out.
 # RABBITMQ_USER=guest
 # RABBITMQ_PASS=guest
+
+#cantaloupe
+CANTALOUPE_ENDPOINT_ADMIN_ENABLED=true
+CANTALOUPE_ENDPOINT_ADMIN_USERNAME=admin
+CANTALOUPE_ENDPOINT_ADMIN_SECRET=admin
+CANTALOUPE_HOST=cantaloupe_afs_plocal
+CANTALOUPE_PORT=8182
+CANTALOUPE_FILESYSTEMSOURCE_BASICLOOKUPSTRATEGY_PATH_PREFIX=/imageroot/
+
 
 # couchdb for arches. Not needed for V7+, but config exists incase it
 # reappears.

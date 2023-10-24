@@ -128,10 +128,10 @@ INSTALLED_APPS = (
     "django_celery_results",
     "compressor",
     # "silk",
-    "afs_plocal",
     # Added for Arches for Science
     "arches_templating",
     "arches_for_science",
+    "afs_plocal",
 )
 
 # Added for Arches for Science
@@ -357,7 +357,7 @@ LANGUAGES = [
 SHOW_LANGUAGE_SWITCH = len(LANGUAGES) > 1
 
 # Added for Arches for Science
-TEMPLATES[0]["OPTIONS"]["context_processors"].append("arches_for_science_package.utils.context_processors.project_settings")
+TEMPLATES[0]["OPTIONS"]["context_processors"].append("arches_for_science.utils.context_processors.project_settings")
 
 # A hack to see if this exists.
 try:
