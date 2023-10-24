@@ -17,6 +17,9 @@ This branch has only partial support for installing arbitary versions of AfS. Co
 # Caveats
 The Arches docker container will git-clone the Arches for Science and the Arches repositories and switch to the desired branch and then install the various Python dependencies. However, installation of other dependencies outside of Python are still "hard-coded" in the Arches Dockerfile. So you may need to manually edit that file if the version of AfS and Arches you wish to install has different non-Python dependencies.
 
+Another caveat to note is that the name of the Arches/AfS project should be treated as hardcoded. It seems like a heavy lift to make it easy to configure in Docker.
+
+
 # The directories and files
 The following lists some information about the contents of this repo and how they fit together:
 
@@ -47,7 +50,7 @@ The following lists some information about the contents of this repo and how the
    ```
 
 ### Note:
-This branch can set up a desired version of Arches (with caveats, see above) suitable for running on a localhost for testing purposes. If you want to locally deploy the latest stable version of Arches witch to the `local` branch of this repo. If you want Arches version 6 (specifically stable version 6.2.4), please switch to the `v6` branch of this repo, with:
+This branch can set up a desired version of AfS / Arches (with caveats, see above) suitable for running on a localhost for testing purposes. If you want to locally deploy the latest stable version of Arches witch to the `local` branch of this repo. If you want Arches version 6 (specifically stable version 6.2.4), please switch to the `v6` branch of this repo, with:
    ```bash
    git checkout origin/v6
    ```
