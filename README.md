@@ -5,7 +5,7 @@ Deployment of [Arches for Science](https://www.archesproject.org/arches-for-scie
 
 # Public Web Server and Localhost Deployments
 
-This branch provides a simple approach to deploying AfS for use on a `localhost` without starting Docker related to Web hosting (Nginx, SSL, etc.). Be sure to leave Arches with the Django `DEBUG` setting as `True`. See below for instructions on creating and editing an `.env` file.
+This branch provides a simple approach to deploying AfS for use on a `localhost`. It does not start other Docker containers related to Web hosting (Nginx, SSL, etc.). Be sure to leave Arches with the Django `DEBUG` setting as `True`. See below for instructions on creating and editing an `.env` file.
 
 This branch has only partial support for installing arbitary versions of AfS. Configure the `.env` file to name the branch you'd like to deploy as so:
 
@@ -17,7 +17,7 @@ This branch has only partial support for installing arbitary versions of AfS. Co
 # Caveats
 The Arches docker container will git-clone the Arches for Science and the Arches repositories and switch to the desired branch and then install the various Python dependencies. However, installation of other dependencies outside of Python are still "hard-coded" in the Arches Dockerfile. So you may need to manually edit that file if the version of AfS and Arches you wish to install has different non-Python dependencies.
 
-Another caveat to note is that the name of the Arches/AfS project should be treated as hardcoded. It seems like a heavy lift to make it easy to configure in Docker.
+Another caveat to note is that the name of the Arches/AfS project (`afs_plocal`) should be treated as *hardcoded*. It seems like a heavy lift to make it easy to configure the project name in Docker.
 
 
 # The directories and files
