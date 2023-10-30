@@ -11,6 +11,10 @@ If you're interested in deploying Arches to a `localhost` (not the public Web), 
    ```bash
    git checkout origin/local
    ```
+If you're interested in testing a `localhost` (only) deployment of Arches for Science (AfS), switch to the `local-dev-1-1-x` code branch. That will deploy a limited subset of Docker containers needed to run AfS on a `localhost` in `DEBUG` mode:
+   ```bash
+   git checkout origin/local-afs-dev-1-1-x
+   ```
 
 
 # Nginx and Let’s Encrypt with Docker Compose in less than 3 minutes
