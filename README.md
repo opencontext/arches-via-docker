@@ -35,6 +35,9 @@ The sequence of actions:
 * The Nginx container uses updates symbolic links that point to either "dummy" certificates or Let's Encrypt certificates.
 
 
+
+
+
 # The directories and files
 The following lists some information about the contents of this repo and how they fit together:
 
@@ -94,6 +97,16 @@ When you are ready to use production Let's Encrypt server, set `CERTBOT_TEST_CER
 4. You have cloned this repository
    ```bash
    git clone https://github.com/opencontext/arches-via-docker.git
+   git checkout origin/v6
+   ```
+
+
+### Note:
+This approach will setup version of Arches (now v6.2.6) suitable for testing purposes.
+
+If you want to deploy the latest stable version of Arches to a public (or organizational) Web server, use the `main` branch:
+   ```bash
+   git checkout origin/main
    ```
 
 ## Step 0 - Point your domain to server with DNS A records
