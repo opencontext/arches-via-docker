@@ -94,6 +94,7 @@ When you are ready to use production Let's Encrypt server, set `CERTBOT_TEST_CER
 4. You have cloned this repository
    ```bash
    git clone https://github.com/opencontext/arches-via-docker.git
+   git checkout origin/v6-local
    ```
 
 ## Step 0 - Point your domain to server with DNS A records

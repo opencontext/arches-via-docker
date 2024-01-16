@@ -1,6 +1,6 @@
 # Edit this file and save as ".env" for use.
 
-COMPOSE_PROJECT_NAME=arches_her
+COMPOSE_PROJECT_NAME=arches_v6local
 DOMAINS=arches.opencontext.org
 DEPLOY_HOST=arches.opencontext.org
 NGINX_HTML_PATH=/var/www/html/$DEPLOY_HOST
@@ -11,7 +11,7 @@ CERTBOT_RSA_KEY_SIZE=4096
 TZ=PST
 
 #arches project and paths
-ARCHES_PROJECT=arches_her
+ARCHES_PROJECT=arches_v6local
 ARCHES_ROOT=/arches_app
 APP_ROOT=$ARCHES_ROOT/$ARCHES_PROJECT
 APP_COMP_FOLDER=$APP_ROOT/$ARCHES_PROJECT

@@ -2,7 +2,9 @@ from __future__ import absolute_import, unicode_literals
 import os
 from celery import Celery
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'arches_proj.settings')
-app = Celery('arches_proj')
+ARCHES_PROJECT = os.getenv('ARCHES_PROJECT')
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', f'{ARCHES_PROJECT}.settings')
+app = Celery(ARCHES_PROJECT)
 app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()

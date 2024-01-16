@@ -26,7 +26,7 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - arches_net_avd_her_6_2
+      - arches_net_local_6_2
 
   arches_elasticsearch:
     container_name: arches_elasticsearch
@@ -50,7 +50,7 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - arches_net_avd_her_6_2
+      - arches_net_local_6_2
 
   arches_redis:
     container_name: arches_redis
@@ -67,7 +67,7 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - arches_net_avd_her_6_2
+      - arches_net_local_6_2
 
   arches:
     container_name: arches
@@ -111,7 +111,7 @@ services:
         max-size: "10m"
         max-file: "10"
     networks:
-      - arches_net_avd_her_6_2
+      - arches_net_local_6_2
 
   arches_webpack:
     container_name: arches_webpack
@@ -137,12 +137,12 @@ services:
         max-size: "1k"
         max-file: "3"
     networks:
-      - arches_net_avd_her_6_2
+      - arches_net_local_6_2
 
 networks:
-  arches_net_avd_her_6_2:
+  arches_net_local_6_2:
     driver: bridge
-    name: arches_net_avd_her_6_2
+    name: arches_net_local_6_2
 
 volumes:
   redisdata-avd-her-6-2:

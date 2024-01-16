@@ -67,28 +67,24 @@ RUN rm -rf /root/.cache/pip/*
 
 RUN pip install --upgrade pip
 # Install the Arches application and make an Arches project.
-RUN pip install supervisor && pip install Redis && pip install gunicorn && pip install arches==6.2.4 && arches-project create ${ARCHES_PROJECT}
+RUN pip install supervisor && pip install Redis && pip install gunicorn && pip install arches==6.2.6 && arches-project create ${ARCHES_PROJECT}
 
-# Clone the arches-her repo
-RUN mkdir -p ${HER_REPO_PATH}
-RUN git clone https://github.com/archesproject/arches-her.git ${HER_REPO_PATH}
-WORKDIR ${HER_REPO_PATH}
-RUN echo "Use the arches-her dev/6.2.x branch";
-RUN echo "git checkout dev/6.2.x";
-RUN git checkout dev/6.2.x;
+# Make sure we have the environment variables in the python app?
 
 # copy in local settings to our newly created Arches project.
 WORKDIR ${APP_ROOT}
-
-# Now copy the cloned arches-her files into our app.
-RUN yes | cp -rf ${HER_REPO_PATH}/arches_her/ ${APP_ROOT}
-RUN yes | cp -rf ${HER_REPO_PATH}/arches_her/* ${APP_COMP_FOLDER}
-# remove the arches-her settings_docker
-RUN rm ${APP_COMP_FOLDER}/settings_docker.py
-# remove the arches-her celery.py, it has configs that don't work for this
-RUN rm ${CELERY_PATH}
-# remove the settings from the arches-her package
-RUN rm ${SETTINGS_PATH}
+COPY ./arches/settings_local.py ${SETTINGS_LOCAL_PATH}
+RUN sed -i 's/\r$//g' ${SETTINGS_LOCAL_PATH}
+# copy the celery.py file into our archaes project. This hopefully makes the workers and beat work:
+COPY ./arches/celery.py ${CELERY_PATH}
+RUN sed -i 's/\r$//g' ${CELERY_PATH}
+# copy the gunicorn_config.py file into our archaes project. This hopefully enables gunicorn work:
+COPY ./arches/gunicorn_config.py ${GUNICORN_PATH}
+RUN sed -i 's/\r$//g' ${GUNICORN_PATH}
+# copy the urls.py into our new Arches project. This is part of
+# customization for internationalization
+COPY ./arches/urls.py ${URLS_PATH}
+RUN sed -i 's/\r$//g' ${URLS_PATH}
 
 # copy the settings from our host.
 COPY ./arches/settings.py ${SETTINGS_PATH}
@@ -105,8 +101,9 @@ RUN sed -i 's/\r$//g' ${GUNICORN_PATH}
 
 # copy the celery supervisor
 COPY /arches/conf.d/ ${APP_ROOT}/conf.d/
-COPY /arches/arches_proj-supervisor.conf ${APP_ROOT}/arches_proj-supervisor.conf
-RUN chmod -R 700 ${APP_ROOT}/arches_proj-supervisor.conf
+RUN chmod -R 700 ${APP_ROOT}/conf.d/
+COPY /arches/arches_v6local-supervisor.conf ${APP_ROOT}/arches_v6local-supervisor.conf
+RUN chmod -R 700 ${APP_ROOT}/arches_v6local-supervisor.conf
 RUN mkdir -p /var/log/supervisor
 RUN mkdir -p /var/log/celery
 
