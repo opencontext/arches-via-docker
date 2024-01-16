@@ -50,7 +50,7 @@ RUN set -ex \
         dos2unix \
     " \
     && apt-get install -y --no-install-recommends curl \
-    && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
+    && curl -sL https://deb.nodesource.com/setup_18.x | bash - \
     && curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
     && add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -sc)-pgdg main" \
     && apt-get update -y \
@@ -80,13 +80,15 @@ COPY ./arches/celery.py ${CELERY_PATH}
 RUN sed -i 's/\r$//g' ${CELERY_PATH}
 # copy the urls.py into our new Arches project. This is part of
 # customization for internationalization
+RUN echo "copied urls to ${URLS_PATH}";
 COPY ./arches/urls.py ${URLS_PATH}
 RUN sed -i 's/\r$//g' ${URLS_PATH}
 
 # copy the celery supervisor
 COPY /arches/conf.d/ ${APP_ROOT}/conf.d/
-COPY /arches/arches_proj-supervisor.conf ${APP_ROOT}/arches_proj-supervisor.conf
-RUN chmod -R 700 ${APP_ROOT}/arches_proj-supervisor.conf
+RUN chmod -R 700 ${APP_ROOT}/conf.d/
+COPY /arches/arches_slocal-supervisor.conf ${APP_ROOT}/arches_slocal-supervisor.conf
+RUN chmod -R 700 ${APP_ROOT}/arches_slocal-supervisor.conf
 RUN mkdir -p /var/log/supervisor
 RUN mkdir -p /var/log/celery
 

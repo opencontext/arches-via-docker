@@ -4,7 +4,7 @@ COMPOSE_PROJECT_NAME=arches_proj
 TZ=PST
 
 #arches project and paths
-ARCHES_PROJECT=arches_proj
+ARCHES_PROJECT=arches_slocal
 ARCHES_ROOT=/arches_app
 APP_ROOT=$ARCHES_ROOT/$ARCHES_PROJECT
 APP_COMP_FOLDER=$APP_ROOT/$ARCHES_PROJECT
@@ -23,7 +23,7 @@ INSTALL_DEFAULT_CONCEPTS=True
 # value in the docker-compse.yml for the Postgres container.
 PGUSERNAME=postgres
 PGPASSWORD=postgis
-PGDBNAME=arches_proj
+PGDBNAME=arches_slocal
 PGHOST=arches_db
 PGPORT=5432
 ESHOST=arches_elasticsearch
