@@ -32,10 +32,10 @@ RUN apt-get update && apt-get install -y make software-properties-common
 RUN set -ex \
     && RUN_DEPS=" \
         build-essential \
-        python3.10 \
-        python3.10-dev \
-        python3.10-distutils \
-        python3.10-venv \
+        python3.11 \
+        python3.11-dev \
+        python3.11-distutils \
+        python3.11-venv \
         python3-pip \
         mime-support \
         libxml2-dev \
@@ -58,6 +58,7 @@ RUN set -ex \
     && apt-get install -y nano \
     && apt-get install -y --no-install-recommends $RUN_DEPS \
     && apt-get install -y nodejs \
+    && apt-get install -y git \
     && npm install -g yarn
 
 
@@ -80,11 +81,13 @@ COPY ./arches/celery.py ${CELERY_PATH}
 RUN sed -i 's/\r$//g' ${CELERY_PATH}
 # copy the urls.py into our new Arches project. This is part of
 # customization for internationalization
+RUN echo "copied urls to ${URLS_PATH}";
 COPY ./arches/urls.py ${URLS_PATH}
 RUN sed -i 's/\r$//g' ${URLS_PATH}
 
 # copy the celery supervisor
 COPY /arches/conf.d/ ${APP_ROOT}/conf.d/
+RUN chmod -R 700 ${APP_ROOT}/conf.d/
 COPY /arches/arches_proj-supervisor.conf ${APP_ROOT}/arches_proj-supervisor.conf
 RUN chmod -R 700 ${APP_ROOT}/arches_proj-supervisor.conf
 RUN mkdir -p /var/log/supervisor
