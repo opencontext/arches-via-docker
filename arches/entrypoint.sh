@@ -143,7 +143,7 @@ start_celery_supervisor() {
 	else
 		echo "The celery supervisor has yet to start, so we'll start it.."
 		cd ${APP_FOLDER}
-		wait-for-it arches_redis:6379 -t 120 && supervisord -c arches_proj-supervisor.conf
+		wait-for-it arches_redis:6379 -t 120 && supervisord -c arches_slocal-supervisor.conf
 	fi
 }
 
