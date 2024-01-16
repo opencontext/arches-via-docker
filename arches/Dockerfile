@@ -32,10 +32,10 @@ RUN apt-get update && apt-get install -y make software-properties-common
 RUN set -ex \
     && RUN_DEPS=" \
         build-essential \
-        python3.10 \
-        python3.10-dev \
-        python3.10-distutils \
-        python3.10-venv \
+        python3.11 \
+        python3.11-dev \
+        python3.11-distutils \
+        python3.11-venv \
         python3-pip \
         mime-support \
         libxml2-dev \
