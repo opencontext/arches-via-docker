@@ -105,7 +105,7 @@ When you are ready to use production Let's Encrypt server, set `CERTBOT_TEST_CER
    ```
 
 ### Note:
-This approach will setup the most current stable version of Arches (now v7.4.2). If you want to deploy Arches version 6 (specifically stable version 6.2.4), please switch to the `v6` branch of this repo, with:
+This approach will setup the most current stable version of Arches (now v7.5.0). If you want to deploy Arches version 6 (specifically stable version 6.2.6), please switch to the `v6` branch of this repo, with:
    ```bash
    git checkout origin/v6
    ```
