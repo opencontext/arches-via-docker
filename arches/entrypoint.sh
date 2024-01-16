@@ -320,10 +320,10 @@ run_setup_db() {
 
 run_load_package() {
 	echo ""
-	echo "----- *** LOADING PACKAGE: ${ARCHES_PROJECT} *** -----"
+	echo "----- *** SKIP LOADING PACKAGE: ${ARCHES_PROJECT} *** -----"
 	echo ""
 	cd ${APP_FOLDER}
-	python3 manage.py packages -o load_package -s ${ARCHES_PROJECT}/pkg -db -dev -y
+	# python3 manage.py packages -o load_package -s ${ARCHES_PROJECT}/pkg -db -dev -y
 }
 
 run_django_server() {

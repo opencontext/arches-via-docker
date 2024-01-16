@@ -19,7 +19,7 @@ APP_COMP_FOLDER=$APP_ROOT/$ARCHES_PROJECT
 #Arches configs
 # NOTE: the ARCHES_NAMESPACE needs to look like a URL, ending in a '/',
 # with the same port as used by the Arches Django APP.
-ARCHES_NAMESPACE='http://arches:8000/'
+ARCHES_NAMESPACE='http://arches_v6local:8000/'
 # This will hopefully make the yarn build not fail.
 NODE_OPTIONS='--max-old-space-size=1024'
 INSTALL_DEFAULT_GRAPHS=True
@@ -36,7 +36,7 @@ PGPORT=5432
 ESHOST=arches_elasticsearch
 ESPORT=9200
 DJANGO_MODE=DEV
-DJANGO_DEBUG=False
+DJANGO_DEBUG=True
 # Don't change the port, since it's pretty hard-coded.
 DJANGO_PORT=8000
 DOMAIN_NAMES=$DOMAINS localhost 0.0.0.0 127.0.0.1
