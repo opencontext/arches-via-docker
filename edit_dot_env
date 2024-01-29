@@ -1,6 +1,6 @@
 # Edit this file and save as ".env" for use.
 
-COMPOSE_PROJECT_NAME=arches_proj
+COMPOSE_PROJECT_NAME=arches_slocal
 TZ=PST
 
 #arches project and paths
@@ -12,7 +12,7 @@ APP_COMP_FOLDER=$APP_ROOT/$ARCHES_PROJECT
 #Arches configs
 # NOTE: the ARCHES_NAMESPACE needs to look like a URL, ending in a '/',
 # with the same port as used by the Arches Django APP.
-ARCHES_NAMESPACE='http://arches:8000/'
+ARCHES_NAMESPACE='http://arches_slocal:8000/'
 # This will hopefully make the yarn build not fail.
 NODE_OPTIONS='--max-old-space-size=1024'
 INSTALL_DEFAULT_GRAPHS=True
