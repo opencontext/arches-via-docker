@@ -65,6 +65,9 @@ if USER_ELASTICSEARCH_PREFIX:
 
 ALLOWED_HOSTS = get_env_variable("DOMAIN_NAMES").split() + ['*']
 
+# Use the first allowed host as a trusted CSRF origin
+CSRF_TRUSTED_ORIGINS = [f"https://{ALLOWED_HOSTS[0]}", f"https://www.{ALLOWED_HOSTS[0]}"]
+
 USER_SECRET_KEY = get_optional_env_variable("DJANGO_SECRET_KEY")
 if USER_SECRET_KEY:
     # Make this unique, and don't share it with anybody.
