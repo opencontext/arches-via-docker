@@ -11,7 +11,7 @@ This branch has only partial support for installing arbitary versions of AfS. Co
 
    ```
    AFS_GIT_BRANCH="dev/1.1.x"
-   ARCHES_GIT_BRANCH="dev/7.5.x"
+   ARCHES_GIT_BRANCH="dev/7.6.x"
    ```
 
 # Caveats
