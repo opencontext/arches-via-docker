@@ -358,7 +358,10 @@ LANGUAGES = [
 SHOW_LANGUAGE_SWITCH = len(LANGUAGES) > 1
 
 # Added for Arches for Science
+# See: https://github.com/archesproject/arches-for-science/blob/dev/1.1.x/README.md
+
 TEMPLATES[0]["OPTIONS"]["context_processors"].append("arches_for_science.utils.context_processors.project_settings")
+FUNCTION_LOCATIONS.append("arches_for_science.pkg.extensions.functions")
 
 # See: https://github.com/archesproject/arches/pull/10171/files
 RENDERERS = [

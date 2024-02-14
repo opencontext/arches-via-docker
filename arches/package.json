@@ -7,10 +7,10 @@
         "start": "./media/node_modules/.bin/cross-env NODE_PATH=./media/node_modules NODE_OPTIONS=--max-old-space-size=2048 ./media/node_modules/.bin/webpack serve --config webpack/webpack.config.dev.js"
     },
     "devDependencies": {
-        "arches-dev-dependencies": "archesproject/arches-dev-dependencies#dev/7.5.x"
+        "arches-dev-dependencies": "archesproject/arches-dev-dependencies#dev/7.6.x"
     },
     "dependencies": {
-        "arches": "archesproject/arches#dev/7.5.x",
+        "arches": "archesproject/arches#dev/7.6.x",
         "arches_for_science": "archesproject/arches-for-science#dev/1.1.x"
     },
     "nodeModulesPaths": {
