@@ -5,7 +5,7 @@ TZ=PST
 
 #arches project and paths
 AFS_GIT_BRANCH="dev/1.1.x"
-ARCHES_GIT_BRANCH="dev/7.5.x"
+ARCHES_GIT_BRANCH="dev/7.6.x"
 ARCHES_PROJECT=afs_plocal
 ALL_ARCHES_ROOT=/arches_app
 
