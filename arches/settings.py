@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     # Added for Arches for Science
     "arches_templating",
     "arches_for_science",
+    "pgtrigger",
     "afs_plocal",
 )
 
