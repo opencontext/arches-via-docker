@@ -1,28 +1,68 @@
-# Build a working Arches for Open Context deployment from a dockerfile
-FROM ubuntu:22.04 as base
+FROM ubuntu:22.04
+# Start with Ubuntu 22
+
 USER root
 
+# Do the apt installation also install git
+RUN apt-get update && && apt-get install -y --no-install-recommends \
+    python3.11 \
+    python3.11-dev \
+    python3.11-venv \
+    python3-pip \
+    make software-properties-common \
+    curl \
+    gcc \
+    build-essential \
+    mime-support \
+    libgdal-dev \
+    dos2unix \
+    nano
+RUN apt-get update --fix-missing && apt-get install -y git
+
+
+# Install the postgres client
+RUN apt-get update
+RUN apt-get install -y postgresql-client-14
+
+FROM python:3.11
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+RUN python -m venv venv \
+    && . venv/bin/activate \
+    && pip install --upgrade pip
+# Make sure we use the virtualenv:
+ENV PATH="/opt/venv/bin:$PATH"
+
+
+
 ## Setting default environment variables
-ARG ARCHES_ROOT
+ARG ARCHES_GIT_BRANCH
+# the directory where we will clone arches into
+ARG ALL_ARCHES_ROOT
+# the directory where the arches repo will exist once cloned
+ARG ARCHES_REPO
 # The name of the arches project
 ARG ARCHES_PROJECT
 # Project specific paths
 ARG APP_ROOT
 ARG APP_COMP_FOLDER
+
 # settings_local.py provides the DB credentials, etc. to the Arches project.
 ENV SETTINGS_LOCAL_PATH=${APP_COMP_FOLDER}/settings_local.py
 ENV CELERY_PATH=${APP_COMP_FOLDER}/celery.py
 ENV URLS_PATH=${APP_COMP_FOLDER}/urls.py
-ENV ARCHES_DATA=${ARCHES_ROOT}/arches_data
+ENV ARCHES_DATA=${ALL_ARCHES_ROOT}/arches_data
 ENV WHEELS=/wheels
-ENV PYTHONUNBUFFERED=1
-ENV PYTHONDONTWRITEBYTECODE 1
 
 # Setup needed directories
-RUN mkdir ${ARCHES_ROOT} && mkdir /var/log/supervisor && mkdir /var/log/celery
+RUN mkdir ${ALL_ARCHES_ROOT} && mkdir /var/log/supervisor && mkdir /var/log/celery
 
 # Get ready to do some code installation
 RUN apt-get update && apt-get install -y make software-properties-common
+
+
 
 # Install packages required to run Arches
 # Note that the ubuntu/debian package for libgdal1-dev pulls in libgdal1i, which is built
@@ -32,19 +72,15 @@ RUN apt-get update && apt-get install -y make software-properties-common
 RUN set -ex \
     && RUN_DEPS=" \
         build-essential \
-        python3.11 \
-        python3.11-dev \
-        python3.11-distutils \
-        python3.11-venv \
-        python3-pip \
-        mime-support \
         libxml2-dev \
         libproj-dev \
         libjson-c-dev \
-        libgdal-dev \
-        libpq-dev \
+        xsltproc \
         docbook-xsl \
         docbook-mathml \
+        libgdal-dev \
+        libpq-dev \
+        mime-support \
         python3-dev \
         postgresql-client-14 \
         dos2unix \
@@ -56,21 +92,72 @@ RUN set -ex \
     && apt-get update -y \
     && apt-get install -y "wait-for-it" \
     && apt-get install -y nano \
-    && apt-get install -y --no-install-recommends $RUN_DEPS \
-    && apt-get install -y nodejs \
-    && apt-get install -y git \
-    && npm install -g yarn
+    && apt-get install -y --no-install-recommends $RUN_DEPS
 
 
-WORKDIR ${ARCHES_ROOT}
+# ----------------------------------------------
+# Do installs relating to yarn
+# ----------------------------------------------
 
-RUN rm -rf /root/.cache/pip/*
+# Set environment variables
+ENV NODE_MAJOR=18
+
+# Update package lists and install necessary packages
+RUN apt-get update \
+    && apt-get install -y \
+        ca-certificates \
+        curl \
+        gnupg \
+    && mkdir -p /etc/apt/keyrings
+
+# Add nodesource GPG key
+RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+
+# Add nodesource repository
+RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list \
+    && apt-get update
+
+# Install Node.js
+RUN apt-get install -y nodejs
+
+# Add yarn GPG key
+RUN curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | tee /usr/share/keyrings/yarnkey.gpg >/dev/null
+
+# Add yarn repository
+RUN echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | tee /etc/apt/sources.list.d/yarn.list \
+    && apt-get update
+
+# Install yarn
+RUN apt-get install -y yarn
+
+# Clean up
+RUN apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+
+# ----------------------------------------------
+# Clone and install Arches, setup a project, etc.
+# ----------------------------------------------
+
+WORKDIR ${ALL_ARCHES_ROOT}
+RUN git clone https://github.com/archesproject/arches.git
+
+WORKDIR ${ARCHES_REPO}
+RUN echo "git checkout ${ARCHES_GIT_BRANCH}";
+RUN git checkout ${ARCHES_GIT_BRANCH};
+
 
 RUN pip install --upgrade pip
-# Install the Arches application and make an Arches project.
-RUN pip install supervisor && pip install pytz --upgrade && pip install tzdata --upgrade && pip install Redis && pip install gunicorn && pip install arches && arches-project create ${ARCHES_PROJECT}
+RUN pip install -r arches/install/requirements.txt && pip install -r arches/install/requirements_dev.txt
+RUN pip install .
 
-# Make sure we have the environment variables in the python app?
+# Install the Arches application and make an Arches project.
+RUN pip install supervisor && pip install pytz --upgrade && pip install tzdata --upgrade && pip install Redis && pip install gunicorn
+
+WORKDIR ${ALL_ARCHES_ROOT}
+# Try to install the project
+RUN python ${ARCHES_REPO}/arches/install/arches-project create ${ARCHES_PROJECT}
+
 
 # copy in local settings to our newly created Arches project.
 WORKDIR ${APP_ROOT}
@@ -81,15 +168,13 @@ COPY ./arches/celery.py ${CELERY_PATH}
 RUN sed -i 's/\r$//g' ${CELERY_PATH}
 # copy the urls.py into our new Arches project. This is part of
 # customization for internationalization
-RUN echo "copied urls to ${URLS_PATH}";
-COPY ./arches/urls.py ${URLS_PATH}
-RUN sed -i 's/\r$//g' ${URLS_PATH}
+# COPY ./arches/urls.py ${URLS_PATH}
+# RUN sed -i 's/\r$//g' ${URLS_PATH}
 
 # copy the celery supervisor
 COPY /arches/conf.d/ ${APP_ROOT}/conf.d/
-RUN chmod -R 700 ${APP_ROOT}/conf.d/
-COPY /arches/arches_slocal-supervisor.conf ${APP_ROOT}/arches_slocal-supervisor.conf
-RUN chmod -R 700 ${APP_ROOT}/arches_slocal-supervisor.conf
+COPY /arches/${ARCHES_PROJECT}-supervisor.conf ${APP_ROOT}/${ARCHES_PROJECT}-supervisor.conf
+RUN chmod -R 700 ${APP_ROOT}/${ARCHES_PROJECT}-supervisor.conf
 RUN mkdir -p /var/log/supervisor
 RUN mkdir -p /var/log/celery
 
@@ -99,6 +184,9 @@ COPY /arches/entrypoint.sh ${APP_ROOT}/entrypoint.sh
 RUN chmod -R 700 ${APP_ROOT}/entrypoint.sh &&\
   dos2unix ${APP_ROOT}/entrypoint.sh
 
+# A major security issue, but this is meant for a local deployment
+WORKDIR ${APP_ROOT}
+RUN chmod +x entrypoint.sh
 
 # Set default workdir
 WORKDIR ${APP_ROOT}

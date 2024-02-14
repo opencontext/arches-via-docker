@@ -152,7 +152,7 @@ run_createcachetable() {
 	echo "----- RUNNING CREATE CACHETABLE -----"
 	echo ""
 	cd ${APP_FOLDER}
-	python3 manage.py createcachetable
+	python manage.py createcachetable
 }
 
 run_elastic_safe_migrations() {
@@ -172,7 +172,7 @@ run_elastic_safe_migrations() {
 	echo "We're running migrations in case the initial db setup failed because elasticsearch was still not quite ready"
 	sleep 20s;
 	echo "Now do Migrations..."
-	python3 manage.py migrate
+	python manage.py migrate
 }
 
 run_make_migrations() {
@@ -180,7 +180,7 @@ run_make_migrations() {
 	echo "----- RUNNING DATABASE MAKE MIGRATIONS -----"
 	echo ""
 	cd ${APP_FOLDER}
-	python3 manage.py makemigrations
+	python manage.py makemigrations
 }
 
 run_migrations() {
@@ -188,7 +188,7 @@ run_migrations() {
 	echo "----- RUNNING DATABASE MIGRATIONS -----"
 	echo ""
 	cd ${APP_FOLDER}
-	python3 manage.py migrate
+	python manage.py migrate
 }
 
 run_es_reindex() {
@@ -196,7 +196,7 @@ run_es_reindex() {
 	echo "----- RUNNING ELASTIC SEARCH (ES) REINDEX DATABASE -----"
 	echo ""
 	cd ${APP_FOLDER}
-	python3 manage.py es reindex_database
+	python manage.py es reindex_database
 }
 
 
@@ -208,7 +208,7 @@ run_collect_static() {
 		echo "Skipping collectstatic, hopefully buildproduction will do the trick..."
 	else
 		cd ${APP_FOLDER}
-		python3 manage.py collectstatic --noinput
+		python manage.py collectstatic --noinput
 	fi
 	echo "---------------------------------------------------------------"
 }
@@ -218,7 +218,7 @@ run_collect_static_nocheck() {
 	echo "----- RUNNING COLLECT STATIC -----"
 	echo ""
 	cd ${APP_FOLDER}
-	python3 manage.py collectstatic --noinput
+	python manage.py collectstatic --noinput
 	echo "---------------------------------------------------------------"
 }
 
@@ -230,7 +230,7 @@ run_build_production() {
 		# NOTE: Only do this if you have more than 8GB of system RAM. This will likely error out
 		# otherwise.
 		cd ${APP_FOLDER}
-		python3 manage.py build_production
+		python manage.py build_production
 	else
 		echo "Skipping buildproduction because BUILD_PRODUCTION is not 'True' "
 	fi
@@ -251,11 +251,11 @@ run_setup_webpack() {
 			# otherwise.
 			echo "Running Webpack, hopefully the build_production thing will work!"
 			cd ${APP_FOLDER}
-			exec sh -c "yarn install && python3 manage.py build_production"
+			exec sh -c "yarn install && python manage.py build_production"
 		else
 			cd ${APP_COMP_FOLDER}
 			echo "Running Webpack to do the yarn build_development thing."
-			exec sh -c "yarn install && yarn add jquery-validation && yarn build_development && python3 $APP_FOLDER/manage.py collectstatic --noinput"
+			exec sh -c "yarn install && yarn add jquery-validation && yarn build_development && python $APP_FOLDER/manage.py collectstatic --noinput"
 		fi
 
 	else
@@ -273,11 +273,11 @@ run_webpack() {
 		# otherwise.
 		echo "Running Webpack, hopefully the build_production thing will work!"
 		cd ${APP_FOLDER}
-		exec sh -c "yarn install && python3 manage.py build_production"
+		exec sh -c "yarn install && python manage.py build_production"
 	else
 		cd ${APP_COMP_FOLDER}
 		echo "Running Webpack to do the yarn build_development thing."
-		exec sh -c "yarn install && yarn build_development && python3 $APP_FOLDER/manage.py collectstatic --noinput"
+		exec sh -c "yarn install && yarn build_development && python $APP_FOLDER/manage.py collectstatic --noinput"
 	fi
 }
 
@@ -306,7 +306,7 @@ run_setup_db() {
 	sleep 10s;
 	echo "Now we should be safe to setup the database"
 	cd ${APP_FOLDER}
-	python3 manage.py setup_db --force
+	python manage.py setup_db --force
 }
 
 run_load_package() {
@@ -314,7 +314,7 @@ run_load_package() {
 	echo "----- *** LOADING PACKAGE: ${ARCHES_PROJECT} *** -----"
 	echo ""
 	cd ${APP_FOLDER}
-	python3 manage.py packages -o load_package -s ${ARCHES_PROJECT}/pkg -db -dev -y
+	python manage.py packages -o load_package -s ${ARCHES_PROJECT}/pkg -db -dev -y
 }
 
 run_django_server() {
@@ -324,7 +324,7 @@ run_django_server() {
 	cd ${APP_FOLDER}
 	if [[ ${DJANGO_DEBUG} == 'True' ]]; then
 		echo "Running DEBUG mode Django"
-		exec sh -c "python3 manage.py runserver 0.0.0.0:${DJANGO_PORT}"
+		exec sh -c "python manage.py runserver 0.0.0.0:${DJANGO_PORT}"
 	else
 		echo "Should run the production mode Arches Django via gunicorn via:"
 		echo "gunicorn ${ARCHES_PROJECT}.wsgi:application --config ${GUNICORN_CONFIG_PATH}"

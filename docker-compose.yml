@@ -26,7 +26,7 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - arches_slocal_net
+      - arches_local_7_6_net
 
   arches_elasticsearch:
     container_name: arches_elasticsearch
@@ -50,7 +50,7 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - arches_slocal_net
+      - arches_local_7_6_net
 
   arches_redis:
     container_name: arches_redis
@@ -67,7 +67,7 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - arches_slocal_net
+      - arches_local_7_6_net
 
   arches:
     container_name: arches
@@ -78,7 +78,10 @@ services:
       context: .
       dockerfile: arches/Dockerfile
       args:
+        ARCHES_GIT_BRANCH: ${ARCHES_GIT_BRANCH}
         ARCHES_PROJECT: ${ARCHES_PROJECT}
+        ALL_ARCHES_ROOT: ${ALL_ARCHES_ROOT}
+        ARCHES_REPO: ${ARCHES_REPO}
         ARCHES_ROOT: ${ARCHES_ROOT}
         APP_ROOT: ${APP_ROOT}
         APP_COMP_FOLDER: ${APP_COMP_FOLDER}
@@ -103,7 +106,6 @@ services:
     volumes:
       - arches-log:/web_root/logs
       - arches-static:/static_root
-      - arches-app:/arches_app
       - ../arches_data/:/arches_data
     logging:
       driver: "json-file"
@@ -111,7 +113,7 @@ services:
         max-size: "10m"
         max-file: "10"
     networks:
-      - arches_slocal_net
+      - arches_local_7_6_net
 
   arches_webpack:
     container_name: arches_webpack
@@ -137,12 +139,12 @@ services:
         max-size: "1k"
         max-file: "3"
     networks:
-      - arches_slocal_net
+      - arches_local_7_6_net
 
 networks:
-  arches_slocal_net:
+  arches_local_7_6_net:
     driver: bridge
-    name: arches_slocal_net
+    name: arches_local_7_6_net
 
 volumes:
   redisdata:
