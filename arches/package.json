@@ -11,7 +11,8 @@
     },
     "dependencies": {
         "arches": "archesproject/arches#dev/7.6.x",
-        "arches_for_science": "archesproject/arches-for-science#dev/1.1.x"
+        "arches_for_science": "archesproject/arches-for-science#dev/1.1.x",
+        "datatables.net": "1.12.1"
     },
     "nodeModulesPaths": {
     }

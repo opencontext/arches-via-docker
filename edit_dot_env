@@ -9,7 +9,8 @@ ARCHES_GIT_BRANCH="dev/7.6.x"
 ARCHES_PROJECT=afs_plocal
 ALL_ARCHES_ROOT=/arches_app
 
-AFS_REPO = $ALL_ARCHES_ROOT/arches-for-science
+AFS_CLONE = 'https://github.com/ekansa/arches-for-science-help.git'
+AFS_REPO = $ALL_ARCHES_ROOT/arches-for-science-help
 ARCHES_REPO=$ALL_ARCHES_ROOT/arches
 
 APP_ROOT=$ALL_ARCHES_ROOT/$ARCHES_PROJECT

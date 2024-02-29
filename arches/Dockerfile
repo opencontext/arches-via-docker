@@ -167,8 +167,10 @@ RUN mkdir -p ${UPLOADED_FILES_FOLDER}
 
 # Install our desired branch of Arches for Science
 WORKDIR ${ALL_ARCHES_ROOT}
+ARG AFS_CLONE
 RUN echo "Install Arches for Science..."
-RUN git clone https://github.com/archesproject/arches-for-science.git
+# RUN git clone https://github.com/archesproject/arches-for-science.git
+RUN git clone ${AFS_CLONE};
 
 WORKDIR ${AFS_REPO}
 RUN echo "git checkout ${AFS_GIT_BRANCH}";
