@@ -1,6 +1,39 @@
-# Build a working Arches for Open Context deployment from a dockerfile
-FROM ubuntu:22.04 as base
+FROM ubuntu:22.04
+# Start with Ubuntu 22
+
 USER root
+
+# Do the apt installation also install git
+RUN apt-get update && && apt-get install -y --no-install-recommends \
+    python3.11 \
+    python3.11-dev \
+    python3.11-venv \
+    python3-pip \
+    make software-properties-common \
+    curl \
+    gcc \
+    build-essential \
+    mime-support \
+    libgdal-dev \
+    dos2unix \
+    nano
+RUN apt-get update --fix-missing && apt-get install -y git
+
+
+# Install the postgres client
+RUN apt-get update
+RUN apt-get install -y postgresql-client-14
+
+FROM python:3.11
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+RUN python -m venv venv \
+    && . venv/bin/activate \
+    && pip install --upgrade pip
+# Make sure we use the virtualenv:
+ENV PATH="/opt/venv/bin:$PATH"
 
 ## Setting default environment variables
 ARG ARCHES_ROOT
@@ -14,6 +47,7 @@ ENV SETTINGS_LOCAL_PATH=${APP_COMP_FOLDER}/settings_local.py
 ENV CELERY_PATH=${APP_COMP_FOLDER}/celery.py
 ENV URLS_PATH=${APP_COMP_FOLDER}/urls.py
 ENV ARCHES_DATA=${ARCHES_ROOT}/arches_data
+ENV PACKAGE_PATH=${APP_COMP_FOLDER}/package.json
 ENV WHEELS=/wheels
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -32,19 +66,15 @@ RUN apt-get update && apt-get install -y make software-properties-common
 RUN set -ex \
     && RUN_DEPS=" \
         build-essential \
-        python3.11 \
-        python3.11-dev \
-        python3.11-distutils \
-        python3.11-venv \
-        python3-pip \
-        mime-support \
         libxml2-dev \
         libproj-dev \
         libjson-c-dev \
-        libgdal-dev \
-        libpq-dev \
+        xsltproc \
         docbook-xsl \
         docbook-mathml \
+        libgdal-dev \
+        libpq-dev \
+        mime-support \
         python3-dev \
         postgresql-client-14 \
         dos2unix \
@@ -56,10 +86,50 @@ RUN set -ex \
     && apt-get update -y \
     && apt-get install -y "wait-for-it" \
     && apt-get install -y nano \
-    && apt-get install -y --no-install-recommends $RUN_DEPS \
-    && apt-get install -y nodejs \
-    && apt-get install -y git \
-    && npm install -g yarn
+    && apt-get install -y --no-install-recommends $RUN_DEPS
+
+
+
+# ----------------------------------------------
+# Do installs relating to yarn
+# ----------------------------------------------
+
+# Set environment variables
+ENV NODE_MAJOR=18
+
+# Update package lists and install necessary packages
+RUN apt-get update \
+    && apt-get install -y \
+        ca-certificates \
+        curl \
+        gnupg \
+    && mkdir -p /etc/apt/keyrings
+
+# Add nodesource GPG key
+RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+
+# Add nodesource repository
+RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list \
+    && apt-get update
+
+# Install Node.js
+RUN apt-get install -y nodejs
+
+# Add yarn GPG key
+RUN curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | tee /usr/share/keyrings/yarnkey.gpg >/dev/null
+
+# Add yarn repository
+RUN echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | tee /etc/apt/sources.list.d/yarn.list \
+    && apt-get update
+
+# Install yarn
+RUN apt-get install -y yarn
+
+# Clean up
+RUN apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+
 
 
 WORKDIR ${ARCHES_ROOT}
@@ -84,6 +154,9 @@ RUN sed -i 's/\r$//g' ${CELERY_PATH}
 RUN echo "copied urls to ${URLS_PATH}";
 COPY ./arches/urls.py ${URLS_PATH}
 RUN sed -i 's/\r$//g' ${URLS_PATH}
+
+# Copy customized package until the issue with datatables.net is resolved.
+COPY ./arches/package.json ${PACKAGE_PATH}
 
 # copy the celery supervisor
 COPY /arches/conf.d/ ${APP_ROOT}/conf.d/
