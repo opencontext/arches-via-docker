@@ -36,7 +36,7 @@ PGPORT=5432
 ESHOST=arches_elasticsearch
 ESPORT=9200
 DJANGO_MODE=DEV
-DJANGO_DEBUG=False
+DJANGO_DEBUG=True
 # Don't change the port, since it's pretty hard-coded.
 DJANGO_PORT=8000
 DOMAIN_NAMES=$DOMAINS localhost 0.0.0.0 127.0.0.1
