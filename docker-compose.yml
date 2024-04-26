@@ -14,8 +14,8 @@ services:
       - POSTGRES_MULTIPLE_EXTENSIONS=postgis,postgis_topology
     restart: always
     volumes:
-        - postgres-data:/var/lib/postgresql/data/
-        - postgres-log:/var/log/postgresql
+        - postgres-data-her-v7:/var/lib/postgresql/data/
+        - postgres-log-her-v7:/var/log/postgresql
         - ./init-unix.sql:/docker-entrypoint-initdb.d/init.sql # to set up the DB template
         - ../arches_data/:/arches_data
     ports:
@@ -26,7 +26,7 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - arches_slocal_net
+      - arches_local_her_v7_net
 
   arches_elasticsearch:
     container_name: arches_elasticsearch
@@ -40,7 +40,7 @@ services:
       - discovery.type=single-node
       - "ES_JAVA_OPTS=-Xms400m -Xmx400m"
     volumes:
-      - elasticsearch-data:/usr/share/elasticsearch/data
+      - elasticsearch-data-her-v7:/usr/share/elasticsearch/data
     ports:
       - "9202:9200"
       - "9302:9300"
@@ -50,7 +50,7 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - arches_slocal_net
+      - arches_local_her_v7_net
 
   arches_redis:
     container_name: arches_redis
@@ -59,7 +59,7 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - "redisdata:/data"
+      - "redisdata-her-v7:/data"
     command: "redis-server"
     logging:
       driver: "json-file"
@@ -67,7 +67,7 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - arches_slocal_net
+      - arches_local_her_v7_net
 
   arches:
     container_name: arches
@@ -101,9 +101,9 @@ services:
     expose:
       - 8004:8000
     volumes:
-      - arches-log:/web_root/logs
-      - arches-static:/static_root
-      - arches-app:/arches_app
+      - arches-log-her-v7:/web_root/logs
+      - arches-static-her-v7:/static_root
+      - arches-app-her-v7:/arches_app
       - ../arches_data/:/arches_data
     logging:
       driver: "json-file"
@@ -111,7 +111,7 @@ services:
         max-size: "10m"
         max-file: "10"
     networks:
-      - arches_slocal_net
+      - arches_local_her_v7_net
 
   arches_webpack:
     container_name: arches_webpack
@@ -137,20 +137,20 @@ services:
         max-size: "1k"
         max-file: "3"
     networks:
-      - arches_slocal_net
+      - arches_local_her_v7_net
 
 networks:
-  arches_slocal_net:
+  arches_local_her_v7_net:
     driver: bridge
-    name: arches_slocal_net
+    name: arches_local_her_v7_net
 
 volumes:
-  redisdata:
-  couchdb-data:
-  couchdb-log:
-  postgres-data:
-  postgres-log:
-  elasticsearch-data:
-  arches-log:
-  arches-static:
-  arches-app:
+  redisdata-her-v7:
+  couchdb-data-her-v7:
+  couchdb-log-her-v7:
+  postgres-data-her-v7:
+  postgres-log-her-v7:
+  elasticsearch-data-her-v7:
+  arches-log-her-v7:
+  arches-static-her-v7:
+  arches-app-her-v7:

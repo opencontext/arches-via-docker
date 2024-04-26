@@ -42,6 +42,8 @@ ARG ARCHES_PROJECT
 # Project specific paths
 ARG APP_ROOT
 ARG APP_COMP_FOLDER
+# for the Arches HER repo
+ENV HER_REPO_PATH=${ARCHES_ROOT}/arches_her_repo
 # settings_local.py provides the DB credentials, etc. to the Arches project.
 ENV SETTINGS_LOCAL_PATH=${APP_COMP_FOLDER}/settings_local.py
 ENV CELERY_PATH=${APP_COMP_FOLDER}/celery.py
@@ -140,10 +142,24 @@ RUN pip install --upgrade pip
 # Install the Arches application and make an Arches project.
 RUN pip install supervisor && pip install pytz --upgrade && pip install tzdata --upgrade && pip install Redis && pip install gunicorn && pip install arches && arches-project create ${ARCHES_PROJECT}
 
-# Make sure we have the environment variables in the python app?
+# Install the HER software and the working v7 branch
+RUN mkdir -p ${HER_REPO_PATH}
+RUN git clone https://github.com/archesproject/arches-her.git ${HER_REPO_PATH}
+WORKDIR ${HER_REPO_PATH}
+RUN echo "Use the arches-her 1077_upgrade_to_v75_core_arches branch";
+RUN echo "git checkout 1077_upgrade_to_v75_core_arches";
+RUN git checkout 1077_upgrade_to_v75_core_arches;
+
+
 
 # copy in local settings to our newly created Arches project.
 WORKDIR ${APP_ROOT}
+
+# Now copy the cloned arches-her files into our app.
+RUN yes | cp -rf ${HER_REPO_PATH}/arches_her/ ${APP_ROOT}
+RUN yes | cp -rf ${HER_REPO_PATH}/arches_her/* ${APP_COMP_FOLDER}
+
+
 COPY ./arches/settings_local.py ${SETTINGS_LOCAL_PATH}
 RUN sed -i 's/\r$//g' ${SETTINGS_LOCAL_PATH}
 # copy the celery.py file into out archaes project. This hopefully makes the workers and beat work:
@@ -161,8 +177,8 @@ COPY ./arches/package.json ${PACKAGE_PATH}
 # copy the celery supervisor
 COPY /arches/conf.d/ ${APP_ROOT}/conf.d/
 RUN chmod -R 700 ${APP_ROOT}/conf.d/
-COPY /arches/arches_slocal-supervisor.conf ${APP_ROOT}/arches_slocal-supervisor.conf
-RUN chmod -R 700 ${APP_ROOT}/arches_slocal-supervisor.conf
+COPY /arches/arches_local_her_v7-supervisor.conf ${APP_ROOT}/arches_local_her_v7-supervisor.conf
+RUN chmod -R 700 ${APP_ROOT}/arches_local_her_v7-supervisor.conf
 RUN mkdir -p /var/log/supervisor
 RUN mkdir -p /var/log/celery
 
