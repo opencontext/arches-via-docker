@@ -156,7 +156,7 @@ COPY ./arches/urls.py ${URLS_PATH}
 RUN sed -i 's/\r$//g' ${URLS_PATH}
 
 # Copy customized package until the issue with datatables.net is resolved.
-COPY ./arches/package.json ${PACKAGE_PATH}
+# COPY ./arches/package.json ${PACKAGE_PATH}
 
 # copy the celery supervisor
 COPY /arches/conf.d/ ${APP_ROOT}/conf.d/
