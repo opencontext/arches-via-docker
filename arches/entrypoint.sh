@@ -241,6 +241,14 @@ run_setup_webpack() {
 	echo ""
 	echo "----- *** RUNNING WEBPACK SERVER FOR SETUP *** -----"
 	echo ""
+	echo "Check if the Arches app responds to http requests..."
+	while [[ ! ${return_code} == 0 ]]
+    do
+        curl -s "http://arches:8000" >&/dev/null
+        return_code=$?
+        sleep 5
+    done
+	echo "Arches app is now responding to http requests!"
 	# We're going to first check to see if we have anythin in the static_root/js folder.
 	# If we do, then we've run this already and can skip webpack and collect static.
 	if [[ ! -d ${STATIC_JS} ]] || [[ ! "$(ls ${STATIC_JS})" ]]; then
