@@ -50,8 +50,8 @@ CELERY_BROKER_URL = "amqp://{}:{}@arches_rabbitmq:5672".format(
 
 CACHES = {
     "default": {
-        "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": "redis://arches_redis:6379/1",
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "unique-snowflake",
     }
 }
 
