@@ -78,10 +78,8 @@ services:
       context: .
       dockerfile: arches/Dockerfile
       args:
-        ARCHES_GIT_BRANCH: ${ARCHES_GIT_BRANCH}
+        ARCHES_PIP_VERSION: ${ARCHES_PIP_VERSION}
         ARCHES_PROJECT: ${ARCHES_PROJECT}
-        ALL_ARCHES_ROOT: ${ALL_ARCHES_ROOT}
-        ARCHES_REPO: ${ARCHES_REPO}
         ARCHES_ROOT: ${ARCHES_ROOT}
         APP_ROOT: ${APP_ROOT}
         APP_COMP_FOLDER: ${APP_COMP_FOLDER}
