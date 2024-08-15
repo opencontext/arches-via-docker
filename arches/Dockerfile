@@ -169,6 +169,28 @@ RUN chmod -R 700 ${APP_ROOT}/entrypoint.sh &&\
 
 # Set default workdir
 WORKDIR ${APP_ROOT}
+
+# This is a hack to install SSH keys inside the container. Don't use
+# these for anything other than cloning public git repos, since they
+# are not secure within the docker image. But we seem to need this to
+# access github in the npm install process.
+RUN apt -y install openssh-client
+RUN mkdir -p /root/.ssh/ && \
+    ssh-keygen -q -t rsa -N '' -f /root/.ssh/id_rsa && \
+    chmod -R 600 /root/.ssh/ && \
+    ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+
+
+RUN git config --global url."https://github.com/".insteadOf git@github.com:
+RUN git config --global url."https://".insteadOf git://
+RUN git config --global url."https://github.com/".insteadOf ssh@github.com:
+RUN git config --global url."https://".insteadOf ssh://
+RUN git config --global http.postBuffer 524288000
+RUN git config --global http.lowSpeedLimit 0
+RUN git config --global http.lowSpeedTime 999999 
+RUN npm install
+
+# Now set up the entrypoint and run it.
 ENTRYPOINT ["./entrypoint.sh"]
 CMD ["run_arches"]
 

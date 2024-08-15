@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # APP and YARN folder locations
+ARCHES_PROJECT=${ARCHES_PROJECT}
 APP_FOLDER=${APP_ROOT}
 APP_COMP_FOLDER=${APP_COMP_FOLDER}
 GUNICORN_CONFIG_PATH=${APP_COMP_FOLDER}/media/node_modules/arches/docker/gunicorn_config.py
@@ -127,7 +128,7 @@ start_celery_supervisor() {
 	else
 		echo "The celery supervisor has yet to start, so we'll start it.."
 		cd ${APP_FOLDER}
-		wait-for-it arches_redis:6379 -t 120 && supervisord -c arches_slocal-supervisor.conf
+		wait-for-it arches_redis:6379 -t 120 && supervisord -c ${ARCHES_PROJECT}-supervisor.conf
 	fi
 }
 
@@ -243,7 +244,7 @@ run_setup_webpack() {
 			# otherwise.
 			echo "Running Webpack, hopefully the build_production thing will work!"
 			cd ${APP_FOLDER}
-			exec sh -c "npm run build_development"
+			exec sh -c "npm run build_production"
 		else
 			cd ${APP_COMP_FOLDER}
 			echo "Running Webpack to do the yarn build_development thing."
@@ -265,11 +266,11 @@ run_webpack() {
 		# otherwise.
 		echo "Running Webpack, hopefully the build_production thing will work!"
 		cd ${APP_FOLDER}
-		exec sh -c "yarn install && python3 manage.py build_production"
+		exec sh -c "npm run build_production"
 	else
 		cd ${APP_COMP_FOLDER}
-		echo "Running Webpack to do the yarn build_development thing."
-		exec sh -c "yarn install && yarn build_development && python3 $APP_FOLDER/manage.py collectstatic --noinput"
+			echo "Running Webpack to do the yarn build_development thing."
+			exec sh -c "npm run build_development && python3 $APP_FOLDER/manage.py collectstatic --noinput"
 	fi
 }
 
