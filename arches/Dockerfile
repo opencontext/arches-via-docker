@@ -101,7 +101,7 @@ RUN set -ex \
 
 
 # ----------------------------------------------
-# Do installs relating to yarn
+# Do installs relating to Node
 # ----------------------------------------------
 
 # Set environment variables
