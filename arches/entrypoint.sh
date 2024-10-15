@@ -86,21 +86,6 @@ setup_couchdb() {
     # curl -X PUT ${COUCHDB_URL}/_replicator
 }
 
-# Yarn
-install_yarn_components() {
-	echo "Check to see if Yarn modules exist..."
-	if [[ ! -d ${YARN_MODULES_FOLDER} ]] || [[ ! "$(ls ${YARN_MODULES_FOLDER})" ]]; then
-		echo "Yarn modules do not exist, installing..."
-		cd ${APP_COMP_FOLDER}
-		yarn build_development
-	else
-		echo "Yarn modules seem to exist:"
-		echo "---------------------------------------------------------------"
-		cd ${YARN_MODULES_FOLDER}
-		ls
-		echo "---------------------------------------------------------------"
-	fi
-}
 
 #### Misc
 check_settings_local() {
@@ -218,7 +203,7 @@ run_build_production() {
 		# NOTE: Only do this if you have more than 8GB of system RAM. This will likely error out
 		# otherwise.
 		cd ${APP_FOLDER}
-		python3 manage.py build_production
+		exec sh -c "npm run build_development"
 	else
 		echo "Skipping buildproduction because BUILD_PRODUCTION is not 'True' "
 	fi
@@ -226,9 +211,17 @@ run_build_production() {
 }
 
 run_setup_webpack() {
-	echo ""
+		echo ""
 	echo "----- *** RUNNING WEBPACK SERVER FOR SETUP *** -----"
 	echo ""
+	echo "Check if the Arches app responds to http requests..."
+	while [[ ! ${return_code} == 0 ]]
+    do
+        curl -s "http://arches:8000" >&/dev/null
+        return_code=$?
+        sleep 5
+    done
+	echo "Arches app is now responding to http requests!"
 	# We're going to first check to see if we have anythin in the static_root/js folder.
 	# If we do, then we've run this already and can skip webpack and collect static.
 	if [[ ! -d ${STATIC_JS} ]] || [[ ! "$(ls ${STATIC_JS})" ]]; then
@@ -239,11 +232,11 @@ run_setup_webpack() {
 			# otherwise.
 			echo "Running Webpack, hopefully the build_production thing will work!"
 			cd ${APP_FOLDER}
-			exec sh -c "yarn install && python3 manage.py build_production"
+			exec sh -c "npm run build_production"
 		else
 			cd ${APP_COMP_FOLDER}
 			echo "Running Webpack to do the yarn build_development thing."
-			exec sh -c "yarn install && yarn add jquery-validation && yarn build_development && python3 $APP_FOLDER/manage.py collectstatic --noinput"
+			exec sh -c "npm run build_development && python3 $APP_FOLDER/manage.py collectstatic --noinput"
 		fi
 
 	else
@@ -261,11 +254,11 @@ run_webpack() {
 		# otherwise.
 		echo "Running Webpack, hopefully the build_production thing will work!"
 		cd ${APP_FOLDER}
-		exec sh -c "yarn install && python3 manage.py build_production"
+		exec sh -c "npm run build_production"
 	else
 		cd ${APP_COMP_FOLDER}
-		echo "Running Webpack to do the yarn build_development thing."
-		exec sh -c "yarn install && yarn build_development && python3 $APP_FOLDER/manage.py collectstatic --noinput"
+			echo "Running Webpack to do the yarn build_development thing."
+			exec sh -c "npm run build_development && python3 $APP_FOLDER/manage.py collectstatic --noinput"
 	fi
 }
 
@@ -306,7 +299,7 @@ run_django_server() {
 		echo "Running DEBUG mode Django"
 		exec sh -c "python3 manage.py runserver 0.0.0.0:${DJANGO_PORT}"
 	else
-		echo "Should run the production mode Arches Django via gunicorn via:"
+		echo "DJANGO_DEBUG: ${DJANGO_DEBUG} should run the production mode Arches Django via gunicorn via:"
 		echo "gunicorn ${ARCHES_PROJECT}.wsgi:application --config ${GUNICORN_CONFIG_PATH}"
 		exec sh -c "gunicorn ${ARCHES_PROJECT}.wsgi:application --config ${GUNICORN_CONFIG_PATH}"
 	fi
@@ -395,9 +388,6 @@ do
 		run_afs_package)
 			wait_for_db
 			run_afs_package
-		;;
-		install_yarn_components)
-			install_yarn_components
 		;;
 		help|-h)
 			display_help

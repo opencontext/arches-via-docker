@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
 
   arches_db:
@@ -90,19 +88,26 @@ services:
       context: .
       dockerfile: arches/Dockerfile
       args:
-        AFS_GIT_BRANCH: ${AFS_GIT_BRANCH}
-        ARCHES_GIT_BRANCH: ${ARCHES_GIT_BRANCH}
+        ARCHES_PIP_VERSION: ${ARCHES_PIP_VERSION}
         ARCHES_PROJECT: ${ARCHES_PROJECT}
-        ALL_ARCHES_ROOT: ${ALL_ARCHES_ROOT}
-        AFS_CLONE: ${AFS_CLONE}
-        AFS_REPO: ${AFS_REPO}
-        ARCHES_REPO: ${ARCHES_REPO}
+        ARCHES_ROOT: ${ARCHES_ROOT}
         APP_ROOT: ${APP_ROOT}
+        AFS_CLONE: ${AFS_CLONE}
+        AFS_GIT_BRANCH: ${AFS_GIT_BRANCH}
+        AFS_REPO_DIR: ${AFS_REPO_DIR}
         APP_COMP_FOLDER: ${APP_COMP_FOLDER}
         UPLOADED_FILES_FOLDER: ${UPLOADED_FILES_FOLDER}
     environment:
       - DEBUG="${DJANGO_DEBUG}"
+      - DJANGO_DEBUG=${DJANGO_DEBUG}
+      - DJANGO_MODE=${DJANGO_MODE}
       - ARCHES_PROJECT=${ARCHES_PROJECT}
+      - PGDBNAME=${PGDBNAME}
+      - PGUSERNAME=${PGUSERNAME}
+      - PGPASSWORD=${PGPASSWORD}
+      - PGHOST=${PGHOST}
+      - PGPORT=${PGPORT}
+      - ARCHES_NAMESPACE=${ARCHES_NAMESPACE}
     stdin_open: true # docker run -i
     tty: true        # docker run -t
     ports:

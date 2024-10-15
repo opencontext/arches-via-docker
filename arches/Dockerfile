@@ -35,38 +35,38 @@ RUN python -m venv venv \
 # Make sure we use the virtualenv:
 ENV PATH="/opt/venv/bin:$PATH"
 
-
-
 ## Setting default environment variables
-ARG AFS_GIT_BRANCH
-ARG ARCHES_GIT_BRANCH
-# the directory where we will clone arches into
-ARG ALL_ARCHES_ROOT
-# the directory where the AFS repo will exist once cloned
-ARG AFS_REPO
-# the directory where the Arches repo will exist once cloned
-ARG ARCHES_REPO
+ARG ARCHES_ROOT
 # The name of the arches project
 ARG ARCHES_PROJECT
 # Project specific paths
 ARG APP_ROOT
 ARG APP_COMP_FOLDER
+
+
+# AfS Settings
+ARG AFS_CLONE
+ARG AFS_GIT_BRANCH
+ARG AFS_REPO_DIR
 ARG UPLOADED_FILES_FOLDER
+
 
 # settings_local.py provides the DB credentials, etc. to the Arches project.
 ENV SETTINGS_PATH=${APP_COMP_FOLDER}/settings.py
 ENV SETTINGS_LOCAL_PATH=${APP_COMP_FOLDER}/settings_local.py
-ENV SETTINGS_UTILS_PATH=${APP_COMP_FOLDER}/settings_utils.py
 ENV CELERY_PATH=${APP_COMP_FOLDER}/celery.py
 ENV URLS_PATH=${APP_COMP_FOLDER}/urls.py
+ENV ARCHES_DATA=${ARCHES_ROOT}/arches_data
 ENV PACKAGE_PATH=${APP_COMP_FOLDER}/package.json
-ENV ARCHES_DATA=${ALL_ARCHES_ROOT}/arches_data
+ENV WHEELS=/wheels
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE 1
 
+# Setup needed directories
+RUN mkdir ${ARCHES_ROOT} && mkdir /var/log/supervisor && mkdir /var/log/celery
 
 # Get ready to do some code installation
 RUN apt-get update && apt-get install -y make software-properties-common
-
-
 
 # Install packages required to run Arches
 # Note that the ubuntu/debian package for libgdal1-dev pulls in libgdal1i, which is built
@@ -99,6 +99,7 @@ RUN set -ex \
     && apt-get install -y --no-install-recommends $RUN_DEPS
 
 
+
 # ----------------------------------------------
 # Do installs relating to yarn
 # ----------------------------------------------
@@ -124,55 +125,63 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesourc
 # Install Node.js
 RUN apt-get install -y nodejs
 
-# Add yarn GPG key
-RUN curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | tee /usr/share/keyrings/yarnkey.gpg >/dev/null
-
-# Add yarn repository
-RUN echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | tee /etc/apt/sources.list.d/yarn.list \
-    && apt-get update
-
-# Install yarn
-RUN apt-get install -y yarn
-
 # Clean up
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
-# ----------------------------------------------
-# Clone and install Arches, setup a project, etc.
-# ----------------------------------------------
 
-WORKDIR ${ALL_ARCHES_ROOT}
-RUN git clone https://github.com/archesproject/arches.git
 
-WORKDIR ${ARCHES_REPO}
-RUN echo "git checkout ${ARCHES_GIT_BRANCH}";
-RUN git checkout ${ARCHES_GIT_BRANCH};
+WORKDIR ${ARCHES_ROOT}
 
+RUN rm -rf /root/.cache/pip/*
 
 RUN pip install --upgrade pip
-RUN pip install -r arches/install/requirements.txt && pip install -r arches/install/requirements_dev.txt
-RUN pip install .
 
-# Install the Arches application and make an Arches project.
-RUN pip install supervisor && pip install pytz --upgrade && pip install tzdata --upgrade && pip install Redis && pip install gunicorn
+# Install the current stable release of the Arches application and make an Arches project.
+RUN pip install supervisor && pip install pytz --upgrade && pip install tzdata --upgrade && pip install Redis && pip install gunicorn && pip install arches && arches-admin startproject ${ARCHES_PROJECT}
 
 
-WORKDIR ${ALL_ARCHES_ROOT}
-# Try to install the project
-RUN echo "Create a new Arches project: ${ARCHES_PROJECT}";
-RUN python ${ARCHES_REPO}/arches/install/arches-project create ${ARCHES_PROJECT}
+WORKDIR ${ARCHES_ROOT}
+
 RUN mkdir -p ${UPLOADED_FILES_FOLDER}
 
+
+# This is a hack to install SSH keys inside the container. Don't use
+# these for anything other than cloning public git repos, since they
+# are not secure within the docker image. But we seem to need this to
+# access github in the npm install process.
+
+# We also need to do this to install arches-for-science from the git repo.
+
+WORKDIR ${APP_ROOT}
+
+RUN apt -y install openssh-client
+RUN mkdir -p /root/.ssh/ && \
+    ssh-keygen -q -t rsa -N '' -f /root/.ssh/id_rsa && \
+    chmod -R 600 /root/.ssh/ && \
+    ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+
+
+RUN git config --global url."https://github.com/".insteadOf git@github.com:
+RUN git config --global url."https://".insteadOf git://
+RUN git config --global url."https://github.com/".insteadOf ssh@github.com:
+RUN git config --global url."https://".insteadOf ssh://
+RUN git config --global http.postBuffer 524288000
+RUN git config --global http.lowSpeedLimit 0
+RUN git config --global http.lowSpeedTime 999999 
+
+
+
 # Install our desired branch of Arches for Science
-WORKDIR ${ALL_ARCHES_ROOT}
+
+WORKDIR ${ARCHES_ROOT}
 ARG AFS_CLONE
 RUN echo "Install Arches for Science..."
 # RUN git clone https://github.com/archesproject/arches-for-science.git
 RUN git clone ${AFS_CLONE};
 
-WORKDIR ${AFS_REPO}
+WORKDIR ${AFS_REPO_DIR}
 RUN echo "git checkout ${AFS_GIT_BRANCH}";
 RUN git checkout ${AFS_GIT_BRANCH};
 RUN pip install -e .
@@ -180,7 +189,7 @@ RUN pip install -e .
 # copy in settings with AFS special stuff to our newly created Arches project.
 WORKDIR ${APP_ROOT}
 # This is a hack to get settings_utils.py into the correct spot
-RUN cp ${ARCHES_REPO}/arches/settings_utils.py $SETTINGS_UTILS_PATH
+# RUN cp ${ARCHES_REPO}/arches/settings_utils.py $SETTINGS_UTILS_PATH
 
 COPY ./arches/settings.py ${SETTINGS_PATH}
 RUN sed -i 's/\r$//g' ${SETTINGS_PATH}
@@ -203,6 +212,11 @@ COPY /arches/afs_plocal-supervisor.conf ${APP_ROOT}/${ARCHES_PROJECT}-supervisor
 RUN chmod -R 700 ${APP_ROOT}/${ARCHES_PROJECT}-supervisor.conf
 RUN mkdir -p /var/log/supervisor
 RUN mkdir -p /var/log/celery
+
+
+WORKDIR ${APP_ROOT}
+RUN echo "NPM install....";
+RUN npm install
 
 # Make sure the entry point is available and lacks weird characters
 # that don't work in a Linux OS

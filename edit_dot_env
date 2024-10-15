@@ -4,19 +4,17 @@ COMPOSE_PROJECT_NAME=afs_plocal
 TZ=PST
 
 #arches project and paths
-AFS_GIT_BRANCH="dev/1.1.x"
-ARCHES_GIT_BRANCH="dev/7.6.x"
 ARCHES_PROJECT=afs_plocal
-ALL_ARCHES_ROOT=/arches_app
+ARCHES_ROOT=/arches_app
+APP_ROOT=$ARCHES_ROOT/$ARCHES_PROJECT
+APP_COMP_FOLDER=$APP_ROOT/$ARCHES_PROJECT
 
-AFS_CLONE = 'https://github.com/ekansa/arches-for-science-help.git'
-AFS_REPO = $ALL_ARCHES_ROOT/arches-for-science-help
-ARCHES_REPO=$ALL_ARCHES_ROOT/arches
+# AfS specific settings
+AFS_CLONE = 'https://github.com/archesproject/arches-for-science.git'
+AFS_GIT_BRANCH = 'dev/1.1.x'
+AFS_REPO_DIR = $ARCHES_ROOT/arches-for-science
 
-APP_ROOT=$ALL_ARCHES_ROOT/$ARCHES_PROJECT
-APP_COMP_FOLDER=$ALL_ARCHES_ROOT/$ARCHES_PROJECT/$ARCHES_PROJECT
-
-# Cantaloupe
+# AfS Cantaloupe
 UPLOADED_FILES_FOLDER=$APP_COMP_FOLDER/uploadedfiles
 
 # Arches configs
