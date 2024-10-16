@@ -106,21 +106,6 @@ setup_couchdb() {
     # curl -X PUT ${COUCHDB_URL}/_replicator
 }
 
-# Yarn
-install_yarn_components() {
-	echo "Check to see if Yarn modules exist..."
-	if [[ ! -d ${YARN_MODULES_FOLDER} ]] || [[ ! "$(ls ${YARN_MODULES_FOLDER})" ]]; then
-		echo "Yarn modules do not exist, installing..."
-		cd ${APP_COMP_FOLDER}
-		yarn build_development
-	else
-		echo "Yarn modules seem to exist:"
-		echo "---------------------------------------------------------------"
-		cd ${YARN_MODULES_FOLDER}
-		ls
-		echo "---------------------------------------------------------------"
-	fi
-}
 
 #### Misc
 check_settings_local() {
@@ -180,7 +165,7 @@ run_make_migrations() {
 	echo "----- RUNNING DATABASE MAKE MIGRATIONS -----"
 	echo ""
 	cd ${APP_FOLDER}
-	python3 manage.py makemigrations
+	python manage.py makemigrations
 }
 
 run_migrations() {
@@ -188,7 +173,7 @@ run_migrations() {
 	echo "----- RUNNING DATABASE MIGRATIONS -----"
 	echo ""
 	cd ${APP_FOLDER}
-	python3 manage.py migrate
+	python manage.py migrate
 }
 
 run_es_reindex() {
@@ -230,7 +215,7 @@ run_build_production() {
 		# NOTE: Only do this if you have more than 8GB of system RAM. This will likely error out
 		# otherwise.
 		cd ${APP_FOLDER}
-		python3 manage.py build_production
+		exec sh -c "npm run build_development"
 	else
 		echo "Skipping buildproduction because BUILD_PRODUCTION is not 'True' "
 	fi
@@ -238,7 +223,7 @@ run_build_production() {
 }
 
 run_setup_webpack() {
-	echo ""
+		echo ""
 	echo "----- *** RUNNING WEBPACK SERVER FOR SETUP *** -----"
 	echo ""
 	echo "Check if the Arches app responds to http requests..."
@@ -259,11 +244,12 @@ run_setup_webpack() {
 			# otherwise.
 			echo "Running Webpack, hopefully the build_production thing will work!"
 			cd ${APP_FOLDER}
-			exec sh -c "yarn install && python3 manage.py build_production"
+			exec sh -c "npm run build_production"
 		else
-			cd ${APP_COMP_FOLDER}
-			echo "Running Webpack to do the yarn build_development thing."
-			exec sh -c "yarn install && yarn add jquery-validation && yarn build_development && python3 $APP_FOLDER/manage.py collectstatic --noinput"
+			cd ${APP_FOLDER}
+			echo "Do build_development."
+			echo "Running Webpack to do the NPM build_development thing."
+			exec sh -c "npm run build_development && python manage.py collectstatic --noinput"
 		fi
 
 	else
@@ -281,11 +267,12 @@ run_webpack() {
 		# otherwise.
 		echo "Running Webpack, hopefully the build_production thing will work!"
 		cd ${APP_FOLDER}
-		exec sh -c "yarn install && python3 manage.py build_production"
+		exec sh -c "npm run build_production"
 	else
-		cd ${APP_COMP_FOLDER}
-		echo "Running Webpack to do the yarn build_development thing."
-		exec sh -c "yarn install && yarn build_development && python3 $APP_FOLDER/manage.py collectstatic --noinput"
+		cd ${APP_FOLDER}
+		echo "Do build_development."
+		echo "Running Webpack to do the NPM build_development thing."
+		exec sh -c "npm run build_development && python manage.py collectstatic --noinput"
 	fi
 }
 
@@ -419,9 +406,6 @@ do
 		run_es_reindex)
 			wait_for_db
 			run_es_reindex
-		;;
-		install_yarn_components)
-			install_yarn_components
 		;;
 		help|-h)
 			display_help
