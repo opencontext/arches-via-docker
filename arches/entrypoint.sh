@@ -234,9 +234,10 @@ run_setup_webpack() {
 			cd ${APP_FOLDER}
 			exec sh -c "npm run build_production"
 		else
-			cd ${APP_COMP_FOLDER}
-			echo "Running Webpack to do the yarn build_development thing."
-			exec sh -c "npm run build_development && python3 $APP_FOLDER/manage.py collectstatic --noinput"
+			cd ${APP_FOLDER}
+			echo "Do build_development."
+			echo "Running Webpack to do the NPM build_development thing."
+			exec sh -c "npm run build_development && python manage.py collectstatic --noinput"
 		fi
 
 	else
@@ -256,9 +257,10 @@ run_webpack() {
 		cd ${APP_FOLDER}
 		exec sh -c "npm run build_production"
 	else
-		cd ${APP_COMP_FOLDER}
-			echo "Running Webpack to do the yarn build_development thing."
-			exec sh -c "npm run build_development && python3 $APP_FOLDER/manage.py collectstatic --noinput"
+		cd ${APP_FOLDER}
+		echo "Do build_development."
+		echo "Running Webpack to do the NPM build_development thing."
+		exec sh -c "npm run build_development && python manage.py collectstatic --noinput"
 	fi
 }
 

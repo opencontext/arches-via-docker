@@ -105,7 +105,7 @@ RUN set -ex \
 # ----------------------------------------------
 
 # Set environment variables
-ENV NODE_MAJOR=18
+ENV NODE_MAJOR=20
 
 # Update package lists and install necessary packages
 RUN apt-get update \
@@ -145,31 +145,6 @@ RUN pip install supervisor && pip install pytz --upgrade && pip install tzdata -
 WORKDIR ${ARCHES_ROOT}
 
 RUN mkdir -p ${UPLOADED_FILES_FOLDER}
-
-
-# This is a hack to install SSH keys inside the container. Don't use
-# these for anything other than cloning public git repos, since they
-# are not secure within the docker image. But we seem to need this to
-# access github in the npm install process.
-
-# We also need to do this to install arches-for-science from the git repo.
-
-WORKDIR ${APP_ROOT}
-
-RUN apt -y install openssh-client
-RUN mkdir -p /root/.ssh/ && \
-    ssh-keygen -q -t rsa -N '' -f /root/.ssh/id_rsa && \
-    chmod -R 600 /root/.ssh/ && \
-    ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-
-
-RUN git config --global url."https://github.com/".insteadOf git@github.com:
-RUN git config --global url."https://".insteadOf git://
-RUN git config --global url."https://github.com/".insteadOf ssh@github.com:
-RUN git config --global url."https://".insteadOf ssh://
-RUN git config --global http.postBuffer 524288000
-RUN git config --global http.lowSpeedLimit 0
-RUN git config --global http.lowSpeedTime 999999 
 
 
 
@@ -214,8 +189,14 @@ RUN mkdir -p /var/log/supervisor
 RUN mkdir -p /var/log/celery
 
 
-WORKDIR ${APP_ROOT}
-RUN echo "NPM install....";
+# Set some settings to make NPM less fussy
+RUN npm config set cafile null
+RUN npm config set strict-ssl false
+
+# remove any node_modules that might have been installed by the arches install
+RUN rm -rf ${APP_ROOT}/node_modules
+RUN rm -f ${APP_ROOT}/package-lock.json
+# Now do the NPM install
 RUN npm install
 
 # Make sure the entry point is available and lacks weird characters
