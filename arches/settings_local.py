@@ -39,6 +39,17 @@ DATABASES = {
 
 ARCHES_NAMESPACE_FOR_DATA_EXPORT = get_env_variable("ARCHES_NAMESPACE")
 
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "redis://arches_redis:6379/1",
+    },
+    "user_permission": {
+        "BACKEND": "django.core.cache.backends.db.DatabaseCache",
+        "LOCATION": "user_permission_cache",
+    },
+}
+
 """
 Since we're using Docker, we can use Redis (even on a Windows OS). So, we
 will comment out the RabbitMQ connection in favor of a Redis connection.
