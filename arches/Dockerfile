@@ -151,8 +151,8 @@ RUN sed -i 's/\r$//g' ${URLS_PATH}
 # copy the celery supervisor
 COPY /arches/conf.d/ ${APP_ROOT}/conf.d/
 RUN chmod -R 700 ${APP_ROOT}/conf.d/
-COPY /arches/arches_slocal-supervisor.conf ${APP_ROOT}/arches_slocal-supervisor.conf
-RUN chmod -R 700 ${APP_ROOT}/arches_slocal-supervisor.conf
+COPY /arches/arches_proj-supervisor.conf ${APP_ROOT}/arches_proj-supervisor.conf
+RUN chmod -R 700 ${APP_ROOT}/arches_proj-supervisor.conf
 RUN mkdir -p /var/log/supervisor
 RUN mkdir -p /var/log/celery
 
