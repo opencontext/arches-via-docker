@@ -91,11 +91,11 @@ RUN set -ex \
 
 
 # ----------------------------------------------
-# Do installs relating to yarn
+# Do installs relating to Node
 # ----------------------------------------------
 
 # Set environment variables
-ENV NODE_MAJOR=18
+ENV NODE_MAJOR=20
 
 # Update package lists and install necessary packages
 RUN apt-get update \
@@ -115,16 +115,6 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesourc
 # Install Node.js
 RUN apt-get install -y nodejs
 
-# Add yarn GPG key
-RUN curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | tee /usr/share/keyrings/yarnkey.gpg >/dev/null
-
-# Add yarn repository
-RUN echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | tee /etc/apt/sources.list.d/yarn.list \
-    && apt-get update
-
-# Install yarn
-RUN apt-get install -y yarn
-
 # Clean up
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -137,8 +127,8 @@ WORKDIR ${ARCHES_ROOT}
 RUN rm -rf /root/.cache/pip/*
 
 RUN pip install --upgrade pip
-# Install the most current stable release of the Arches application and make an Arches project.
-RUN pip install supervisor && pip install pytz --upgrade && pip install tzdata --upgrade && pip install Redis && pip install gunicorn && pip install arches && arches-project create ${ARCHES_PROJECT}
+# Install the current stable release of the Arches application and make an Arches project.
+RUN pip install supervisor && pip install pytz --upgrade && pip install tzdata --upgrade && pip install Redis && pip install gunicorn && pip install arches && arches-admin startproject ${ARCHES_PROJECT}
 
 # Make sure we have the environment variables in the python app?
 
@@ -161,10 +151,25 @@ RUN sed -i 's/\r$//g' ${URLS_PATH}
 # copy the celery supervisor
 COPY /arches/conf.d/ ${APP_ROOT}/conf.d/
 RUN chmod -R 700 ${APP_ROOT}/conf.d/
-COPY /arches/arches_proj-supervisor.conf ${APP_ROOT}/arches_proj-supervisor.conf
-RUN chmod -R 700 ${APP_ROOT}/arches_proj-supervisor.conf
+COPY /arches/arches_slocal-supervisor.conf ${APP_ROOT}/arches_slocal-supervisor.conf
+RUN chmod -R 700 ${APP_ROOT}/arches_slocal-supervisor.conf
 RUN mkdir -p /var/log/supervisor
 RUN mkdir -p /var/log/celery
+
+# Now install NPM
+WORKDIR ${APP_ROOT}
+# RUN echo "NPM install....";
+# RUN npm install
+
+# Set some settings to make NPM less fussy
+RUN npm config set cafile null
+RUN npm config set strict-ssl false
+
+# remove any node_modules that might have been installed by the arches install
+RUN rm -rf ${APP_ROOT}/node_modules
+RUN rm -f ${APP_ROOT}/package-lock.json
+# Now do the NPM install
+RUN npm install
 
 # Make sure the entry point is available and lacks weird characters
 # that don't work in a Linux OS
