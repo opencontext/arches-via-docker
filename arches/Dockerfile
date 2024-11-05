@@ -46,6 +46,7 @@ ARG APP_COMP_FOLDER
 ENV SETTINGS_LOCAL_PATH=${APP_COMP_FOLDER}/settings_local.py
 ENV CELERY_PATH=${APP_COMP_FOLDER}/celery.py
 ENV URLS_PATH=${APP_COMP_FOLDER}/urls.py
+ENV GUNICORN_CONFIG_PATH=${APP_COMP_FOLDER}/gunicorn_config.py
 ENV ARCHES_DATA=${ARCHES_ROOT}/arches_data
 ENV PACKAGE_PATH=${APP_COMP_FOLDER}/package.json
 ENV WHEELS=/wheels
@@ -144,6 +145,11 @@ RUN sed -i 's/\r$//g' ${CELERY_PATH}
 RUN echo "copied urls to ${URLS_PATH}";
 COPY ./arches/urls.py ${URLS_PATH}
 RUN sed -i 's/\r$//g' ${URLS_PATH}
+# Copy the gunicorn_config.py file into our new Arches project. This is used
+# for running Arches in production (not DEBUG mode)
+RUN echo "copy gunicorn_config.py to ${GUNICORN_CONFIG_PATH}";
+COPY ./arches/gunicorn_config.py ${GUNICORN_CONFIG_PATH}
+RUN sed -i 's/\r$//g' ${GUNICORN_CONFIG_PATH}
 
 # Copy customized package until the issue with datatables.net is resolved.
 # COPY ./arches/package.json ${PACKAGE_PATH}
