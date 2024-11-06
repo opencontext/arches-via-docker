@@ -81,3 +81,6 @@ LANGUAGES = [
 ]
 # This will be true for this deployment
 SHOW_LANGUAGE_SWITCH = len(LANGUAGES) > 1
+
+ARCHES_PROJECT = get_env_variable("ARCHES_PROJECT")
+WSGI_APPLICATION = f'{ARCHES_PROJECT}.wsgi.application'
