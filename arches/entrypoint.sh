@@ -7,13 +7,6 @@ GUNICORN_CONFIG_PATH=${APP_COMP_FOLDER}/gunicorn_config.py
 STATIC_ROOT=/static_root
 STATIC_JS=${STATIC_ROOT}/js
 
-YARN_MODULES_FOLDER=${APP_COMP_FOLDER}/$(awk \
-	-F '--install.modules-folder' '{print $2}' ${APP_COMP_FOLDER}/.yarnrc \
-	| awk '{print $1}' \
-	| tr -d $'\r' \
-	| tr -d '"' \
-	| sed -e "s/^\.\///g")
-
 # Environmental Variables
 export DJANGO_PORT=${DJANGO_PORT:-8000}
 COUCHDB_URL=${COUCHDB_URL}
@@ -322,8 +315,11 @@ run_django_server() {
 		exec sh -c "python3 manage.py runserver 0.0.0.0:${DJANGO_PORT}"
 	else
 		echo "Should run the production mode Arches Django via gunicorn via:"
-		echo "gunicorn ${ARCHES_PROJECT}.wsgi:application --config ${GUNICORN_CONFIG_PATH}"
-		exec sh -c "gunicorn ${ARCHES_PROJECT}.wsgi:application --config ${GUNICORN_CONFIG_PATH}"
+		# The GUNICORN_CONFIG_PATH breaks this, (errors in urls.py) so we'll just run it directly
+		# echo "gunicorn ${ARCHES_PROJECT}.wsgi:application --config ${GUNICORN_CONFIG_PATH}"
+		# exec sh -c "gunicorn ${ARCHES_PROJECT}.wsgi:application --config ${GUNICORN_CONFIG_PATH}"
+		echo "gunicorn ${ARCHES_PROJECT}.wsgi:application"
+		exec sh -c "gunicorn ${ARCHES_PROJECT}.wsgi:application"
 	fi
 }
 

@@ -81,7 +81,6 @@ RUN set -ex \
         dos2unix \
     " \
     && apt-get install -y --no-install-recommends curl \
-    && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
     && curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
     && add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -sc)-pgdg main" \
     && apt-get update -y \
@@ -148,6 +147,9 @@ RUN sed -i 's/\r$//g' ${URLS_PATH}
 
 # Copy the gunicorn_config.py file into our new Arches project. This is used
 # for running Arches in production (not DEBUG mode)
+# NOTE: We're NOT actually using this, because it will throw an error with urls.py 
+# So this is here for reference only in case someone wants to edit gunicorn_config.py
+# and figure out how to make it work.
 RUN echo "copy gunicorn_config.py to ${GUNICORN_CONFIG_PATH}";
 COPY ./arches/gunicorn_config.py ${GUNICORN_CONFIG_PATH}
 RUN sed -i 's/\r$//g' ${GUNICORN_CONFIG_PATH}
