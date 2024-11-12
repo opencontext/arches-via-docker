@@ -1,5 +1,7 @@
 # Copied from:
 # https://github.com/archesproject/arches/blob/dev/7.6.x/docker/gunicorn_config.py
+# 
+# NOTE: This does NOT work and will throw errors with urls.py if used as is.
 # Edit this to customize Gunicorn settings
 
 

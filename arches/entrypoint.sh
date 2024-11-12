@@ -322,8 +322,11 @@ run_django_server() {
 		exec sh -c "python3 manage.py runserver 0.0.0.0:${DJANGO_PORT}"
 	else
 		echo "Should run the production mode Arches Django via gunicorn via:"
-		echo "gunicorn ${ARCHES_PROJECT}.wsgi:application --config ${GUNICORN_CONFIG_PATH}"
-		exec sh -c "gunicorn ${ARCHES_PROJECT}.wsgi:application --config ${GUNICORN_CONFIG_PATH}"
+		# The GUNICORN_CONFIG_PATH breaks this, (errors in urls.py) so we'll just run it directly
+		# echo "gunicorn ${ARCHES_PROJECT}.wsgi:application --config ${GUNICORN_CONFIG_PATH}"
+		# exec sh -c "gunicorn ${ARCHES_PROJECT}.wsgi:application --config ${GUNICORN_CONFIG_PATH}"
+		echo "gunicorn ${ARCHES_PROJECT}.wsgi:application"
+		exec sh -c "gunicorn ${ARCHES_PROJECT}.wsgi:application"
 	fi
 }
 
