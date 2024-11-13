@@ -7,13 +7,6 @@ GUNICORN_CONFIG_PATH=${APP_COMP_FOLDER}/gunicorn_config.py
 STATIC_ROOT=/static_root
 STATIC_JS=${STATIC_ROOT}/js
 
-YARN_MODULES_FOLDER=${APP_COMP_FOLDER}/$(awk \
-	-F '--install.modules-folder' '{print $2}' ${APP_COMP_FOLDER}/.yarnrc \
-	| awk '{print $1}' \
-	| tr -d $'\r' \
-	| tr -d '"' \
-	| sed -e "s/^\.\///g")
-
 # Environmental Variables
 export DJANGO_PORT=${DJANGO_PORT:-8000}
 COUCHDB_URL=${COUCHDB_URL}
