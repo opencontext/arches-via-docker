@@ -227,6 +227,7 @@ run_setup_webpack() {
         sleep 5
     done
 	echo "Arches app is now responding to http requests!"
+	sleep 5
 	# We're going to first check to see if we have anythin in the static_root/js folder.
 	# If we do, then we've run this already and can skip webpack and collect static.
 	if [[ ! -d ${STATIC_JS} ]] || [[ ! "$(ls ${STATIC_JS})" ]]; then
@@ -247,6 +248,7 @@ run_setup_webpack() {
 
 	else
 		echo "Webpack and Collectstatic for setup already completed.";
+		# exec sh -c "python manage.py collectstatic --noinput"
 	fi
 }
 
@@ -318,8 +320,10 @@ run_django_server() {
 		# The GUNICORN_CONFIG_PATH breaks this, (errors in urls.py) so we'll just run it directly
 		# echo "gunicorn ${ARCHES_PROJECT}.wsgi:application --config ${GUNICORN_CONFIG_PATH}"
 		# exec sh -c "gunicorn ${ARCHES_PROJECT}.wsgi:application --config ${GUNICORN_CONFIG_PATH}"
-		echo "gunicorn -w 2 -b 0.0.0.0:${DJANGO_PORT} ${ARCHES_PROJECT}.wsgi:application --reload --timeout 3600"
-		exec sh -c "gunicorn -w 2 -b 0.0.0.0:${DJANGO_PORT} ${ARCHES_PROJECT}.wsgi:application --reload --timeout 3600"
+		# echo "gunicorn -w 2 -b 0.0.0.0:${DJANGO_PORT} ${ARCHES_PROJECT}.wsgi:application --reload --timeout 3600"
+		# exec sh -c "gunicorn -w 2 -b 0.0.0.0:${DJANGO_PORT} ${ARCHES_PROJECT}.wsgi:application --reload --timeout 3600"
+		echo "gunicorn -b 0.0.0.0:${DJANGO_PORT} ${ARCHES_PROJECT}.wsgi:application"
+		exec sh -c "gunicorn -b 0.0.0.0:${DJANGO_PORT} ${ARCHES_PROJECT}.wsgi:application"
 	fi
 }
 
