@@ -96,7 +96,7 @@ RUN set -ex \
 # ----------------------------------------------
 
 # Set environment variables
-ENV NODE_MAJOR=20
+ENV NODE_MAJOR=18
 
 # Update package lists and install necessary packages
 RUN apt-get update \
