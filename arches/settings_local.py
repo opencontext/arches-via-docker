@@ -90,5 +90,6 @@ LANGUAGES = [
     ('ar', ('Arabic')),
     ('he', ('Hebrew')),
 ]
-# This will be true for this deployment
-SHOW_LANGUAGE_SWITCH = len(LANGUAGES) > 1
+# This seems not to work.
+# SHOW_LANGUAGE_SWITCH = len(LANGUAGES) > 1
+SHOW_LANGUAGE_SWITCH = False

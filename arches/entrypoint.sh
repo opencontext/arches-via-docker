@@ -325,8 +325,8 @@ run_django_server() {
 		# The GUNICORN_CONFIG_PATH breaks this, (errors in urls.py) so we'll just run it directly
 		# echo "gunicorn ${ARCHES_PROJECT}.wsgi:application --config ${GUNICORN_CONFIG_PATH}"
 		# exec sh -c "gunicorn ${ARCHES_PROJECT}.wsgi:application --config ${GUNICORN_CONFIG_PATH}"
-		echo "gunicorn ${ARCHES_PROJECT}.wsgi:application"
-		exec sh -c "gunicorn ${ARCHES_PROJECT}.wsgi:application"
+		echo "gunicorn -w 2 -b 0.0.0.0:${DJANGO_PORT} ${ARCHES_PROJECT}.wsgi:application --reload --timeout 3600"
+		exec sh -c "gunicorn -w 2 -b 0.0.0.0:${DJANGO_PORT} ${ARCHES_PROJECT}.wsgi:application --reload --timeout 3600"
 	fi
 }
 
