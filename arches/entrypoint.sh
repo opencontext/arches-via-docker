@@ -6,6 +6,7 @@ APP_COMP_FOLDER=${APP_COMP_FOLDER}
 GUNICORN_CONFIG_PATH=${APP_COMP_FOLDER}/gunicorn_config.py
 STATIC_ROOT=/static_root
 STATIC_JS=${STATIC_ROOT}/js
+WEBPACK_STATS_PATH=${APP_FOLDER}/webpack-stats.json 
 
 # Environmental Variables
 export DJANGO_PORT=${DJANGO_PORT:-8000}
@@ -215,8 +216,34 @@ run_build_production() {
 	echo "---------------------------------------------------------------"
 }
 
+
+run_setup_arches_setup_webpack() {
+	if [[ ! -d ${STATIC_JS} ]] || [[ ! "$(ls ${STATIC_JS})" ]]; then
+		cd ${APP_FOLDER}
+		echo "Starting Django development server" 
+		python manage.py runserver 0.0.0.0:8000 &
+		DJANGO_PID=$!
+		echo "Running npm build and collectstatic" 
+		npm run build_development && python manage.py collectstatic --noinput
+		echo "Stopping initial Django development server: $DJANGO_PID" 
+		kill -9 $DJANGO_PID
+	else
+		echo "Webpack and Collectstatic for setup already completed.";
+	fi
+
+	RUNSERVER_PID=$(pgrep -f "manage.py runserver") 
+	if [ -n "$RUNSERVER_PID" ]; then 
+		echo "Killing manage.py runserver process with PID $RUNSERVER_PID" 
+		kill -9 $RUNSERVER_PID
+		echo "Process $RUNSERVER_PID killed" 
+	else 
+		echo "No manage.py runserver process found"
+	fi
+	
+}
+
 run_setup_webpack() {
-		echo ""
+	echo ""
 	echo "----- *** RUNNING WEBPACK SERVER FOR SETUP *** -----"
 	echo ""
 	echo "Check if the Arches app responds to http requests..."
@@ -311,6 +338,7 @@ run_django_server() {
 	echo ""
 	echo "----- *** RUNNING DJANGO DEVELOPMENT SERVER *** -----"
 	echo ""
+	sleep 5
 	cd ${APP_FOLDER}
 	if [[ ${DJANGO_DEBUG} == 'True' ]]; then
 		echo "Running DEBUG mode Django"
@@ -333,6 +361,7 @@ run_arches() {
 	init_arches
 	run_elastic_safe_migrations
 	run_createcachetable
+	run_setup_arches_setup_webpack
 	run_django_server
 }
 
