@@ -312,14 +312,14 @@ run_django_server() {
 	cd ${APP_FOLDER}
 	if [[ ${DJANGO_DEBUG} == 'True' ]]; then
 		echo "Running DEBUG mode Django"
-		exec sh -c "python3 manage.py runserver 0.0.0.0:${DJANGO_PORT}"
+		exec sh -c "python manage.py runserver 0.0.0.0:${DJANGO_PORT}"
 	else
 		echo "Should run the production mode Arches Django via gunicorn via:"
 		# The GUNICORN_CONFIG_PATH breaks this, (errors in urls.py) so we'll just run it directly
 		# echo "gunicorn ${ARCHES_PROJECT}.wsgi:application --config ${GUNICORN_CONFIG_PATH}"
 		# exec sh -c "gunicorn ${ARCHES_PROJECT}.wsgi:application --config ${GUNICORN_CONFIG_PATH}"
-		echo "gunicorn ${ARCHES_PROJECT}.wsgi:application"
-		exec sh -c "gunicorn ${ARCHES_PROJECT}.wsgi:application"
+		echo "gunicorn -w 2 -b 0.0.0.0:${DJANGO_PORT} ${ARCHES_PROJECT}.wsgi:application --reload --timeout 3600"
+		exec sh -c "gunicorn -w 2 -b 0.0.0.0:${DJANGO_PORT} ${ARCHES_PROJECT}.wsgi:application --reload --timeout 3600"
 	fi
 }
 

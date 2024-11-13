@@ -25,6 +25,19 @@ MODE = get_env_variable("DJANGO_MODE")
 
 DEBUG = ast.literal_eval(get_env_variable("DJANGO_DEBUG"))
 
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "redis://arches_redis:6379/1",
+    },
+    "user_permission": {
+        "BACKEND": "django.core.cache.backends.db.DatabaseCache",
+        "LOCATION": "user_permission_cache",
+    },
+}
+
+
+
 DATABASES = {
     "default": {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
@@ -80,7 +93,7 @@ LANGUAGES = [
     ('he', ('Hebrew')),
 ]
 # This will be true for this deployment
-SHOW_LANGUAGE_SWITCH = len(LANGUAGES) > 1
+SHOW_LANGUAGE_SWITCH = False and (len(LANGUAGES) > 1)
 
 ARCHES_PROJECT = get_env_variable("ARCHES_PROJECT")
 WSGI_APPLICATION = f'{ARCHES_PROJECT}.wsgi.application'
