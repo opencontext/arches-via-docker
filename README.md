@@ -1,9 +1,6 @@
 # arches-via-docker
 Deployment of Arches (archesproject.org) via Docker. We initially developed this repo to simplify and streamline deployment of Arches for use in archaeology and related instruction.
 
-# NOTE about Arches v7.6
-Arches version 7.6, released at the end of September 2024 uses a somewhat different installation process. I have yet to make the corresponding updates to this repo, and until these updates are made, Arches-via-Docker will not succeed in installing Arches. I will try to get these updates done as quickly as possible! In the mean time, please accept my appologies!
-
 
 # Public Web Server and Localhost Deployments
 
