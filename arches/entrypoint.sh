@@ -122,7 +122,7 @@ start_celery_supervisor() {
 	else
 		echo "The celery supervisor has yet to start, so we'll start it.."
 		cd ${APP_FOLDER}
-		wait-for-it arches_redis:6379 -t 120 && supervisord -c arches_slocal-supervisor.conf
+		wait-for-it arches_redis:6379 -t 120 && supervisord -c arches_proj-supervisor.conf
 	fi
 }
 
@@ -340,10 +340,10 @@ run_django_server() {
 
 #### Main commands
 run_arches() {
-	start_celery_supervisor
 	init_arches
 	run_elastic_safe_migrations
 	run_createcachetable
+	start_celery_supervisor
 	run_setup_arches_setup_webpack
 	run_django_server
 }
