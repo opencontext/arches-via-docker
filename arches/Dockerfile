@@ -5,9 +5,9 @@ USER root
 
 # Do the apt installation also install git
 RUN apt-get update && && apt-get install -y --no-install-recommends \
-    python3.11 \
-    python3.11-dev \
-    python3.11-venv \
+    python3.12 \
+    python3.12-dev \
+    python3.12-venv \
     python3-pip \
     make software-properties-common \
     curl \
@@ -24,16 +24,16 @@ RUN apt-get update --fix-missing && apt-get install -y git
 RUN apt-get update
 RUN apt-get install -y postgresql-client-14
 
-FROM python:3.11
+FROM python:3.12
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN python -m venv venv \
-    && . venv/bin/activate \
-    && pip install --upgrade pip
-# Make sure we use the virtualenv:
-ENV PATH="/opt/venv/bin:$PATH"
+# Set up a virual environment to use for all later commands.
+ENV VIRTUAL_ENV=/opt/venv
+RUN python3 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+RUN pip install --upgrade pip
 
 ## Setting default environment variables
 ARG ARCHES_ROOT
