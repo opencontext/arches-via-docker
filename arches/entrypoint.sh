@@ -344,10 +344,10 @@ run_django_server() {
 
 #### Main commands
 run_arches() {
-	start_celery_supervisor
 	init_arches
 	run_elastic_safe_migrations
 	run_createcachetable
+	start_celery_supervisor
 	run_setup_arches_setup_webpack
 	run_django_server
 }
