@@ -222,11 +222,8 @@ run_setup_arches_setup_webpack() {
 		cd ${APP_FOLDER}
 		echo "Starting Django development server" 
 		python manage.py runserver 0.0.0.0:8000 &
-		DJANGO_PID=$!
 		echo "Running npm build and collectstatic" 
 		npm run build_development && python manage.py collectstatic --noinput
-		echo "Stopping initial Django development server: $DJANGO_PID" 
-		kill -9 $DJANGO_PID
 	else
 		echo "Webpack and Collectstatic for setup already completed.";
 	fi
