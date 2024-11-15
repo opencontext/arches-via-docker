@@ -1,8 +1,11 @@
 # Edit this file and save as ".env" for use.
 
 COMPOSE_PROJECT_NAME=arches_proj
+
+# Not supporting multiple domains yet, so just make sure there's only
+# one here.
 DOMAINS=arches.opencontext.org
-DEPLOY_HOST=arches.opencontext.org
+DEPLOY_HOST=$DOMAINS
 NGINX_HTML_PATH=/var/www/html/$DEPLOY_HOST
 CERT_PATH=/var/www/certbot/$DEPLOY_HOST
 CERTBOT_EMAILS=eric@opencontext.org
