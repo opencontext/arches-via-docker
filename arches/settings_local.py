@@ -25,6 +25,23 @@ MODE = get_env_variable("DJANGO_MODE")
 
 DEBUG = ast.literal_eval(get_env_variable("DJANGO_DEBUG"))
 
+if not DEBUG:
+    # Some extra security settings for production deployments
+
+    SESSION_COOKIE_SECURE = True
+    # We could use the DOMAINS envinronment variable here, but
+    # since we're only supporting one domain and that's the same
+    # has DEPLOY_HOST that is used for the SSL CERT_PATH.
+    DEPLOY_HOST = get_env_variable("DEPLOY_HOST")
+    CSRF_TRUSTED_ORIGINS = [
+        f"https://{DEPLOY_HOST}", 
+    ]
+
+# Set the APP_NAME here too, it may be useful for making the URLs
+# work correctly when running gunicorn.
+APP_NAME = get_env_variable("ARCHES_PROJECT")
+
+
 DATABASES = {
     "default": {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
@@ -68,7 +85,13 @@ CELERY_BROKER_URL = "redis://@arches_redis:6379/0"
 
 # CANTALOUPE_HTTP_ENDPOINT = "http://{}:{}".format(get_env_variable("CANTALOUPE_HOST"), get_env_variable("CANTALOUPE_PORT"))
 ELASTICSEARCH_HTTP_PORT = get_env_variable("ESPORT")
-ELASTICSEARCH_HOSTS = [{"scheme": "http", "host": get_env_variable("ESHOST"), "port": int(ELASTICSEARCH_HTTP_PORT)}]
+ELASTICSEARCH_HOSTS = [
+    {
+        "scheme": "http", 
+        "host": get_env_variable("ESHOST"), 
+        "port": int(ELASTICSEARCH_HTTP_PORT),
+    }
+]
 
 USER_ELASTICSEARCH_PREFIX = get_optional_env_variable("ELASTICSEARCH_PREFIX")
 if USER_ELASTICSEARCH_PREFIX:

@@ -22,7 +22,7 @@ APP_COMP_FOLDER=$APP_ROOT/$ARCHES_PROJECT
 #Arches configs
 # NOTE: the ARCHES_NAMESPACE needs to look like a URL, ending in a '/',
 # with the same port as used by the Arches Django APP.
-ARCHES_NAMESPACE='http://arches_proj:8000/'
+ARCHES_NAMESPACE=http://$ARCHES_PROJECT:8000/
 # This will hopefully make the yarn build not fail.
 NODE_OPTIONS='--max-old-space-size=1024'
 INSTALL_DEFAULT_GRAPHS=True
@@ -33,7 +33,7 @@ INSTALL_DEFAULT_CONCEPTS=True
 # value in the docker-compse.yml for the Postgres container.
 PGUSERNAME=postgres
 PGPASSWORD=postgis
-PGDBNAME=arches_proj
+PGDBNAME=$ARCHES_PROJECT
 PGHOST=arches_db
 PGPORT=5432
 ESHOST=arches_elasticsearch
