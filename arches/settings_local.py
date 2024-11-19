@@ -25,17 +25,21 @@ MODE = get_env_variable("DJANGO_MODE")
 
 DEBUG = ast.literal_eval(get_env_variable("DJANGO_DEBUG"))
 
-CACHES = {
-    "default": {
-        "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": "redis://arches_redis:6379/1",
-    },
-    "user_permission": {
-        "BACKEND": "django.core.cache.backends.db.DatabaseCache",
-        "LOCATION": "user_permission_cache",
-    },
-}
+if not DEBUG:
+    # Some extra security settings for production deployments
 
+    SESSION_COOKIE_SECURE = True
+    # We could use the DOMAINS envinronment variable here, but
+    # since we're only supporting one domain and that's the same
+    # has DEPLOY_HOST that is used for the SSL CERT_PATH.
+    DEPLOY_HOST = get_env_variable("DEPLOY_HOST")
+    CSRF_TRUSTED_ORIGINS = [
+        f"https://{DEPLOY_HOST}", 
+    ]
+
+# Set the APP_NAME here too, it may be useful for making the URLs
+# work correctly when running gunicorn.
+APP_NAME = get_env_variable("ARCHES_PROJECT")
 
 
 DATABASES = {
@@ -51,6 +55,17 @@ DATABASES = {
 }
 
 ARCHES_NAMESPACE_FOR_DATA_EXPORT = get_env_variable("ARCHES_NAMESPACE")
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "redis://arches_redis:6379/1",
+    },
+    "user_permission": {
+        "BACKEND": "django.core.cache.backends.db.DatabaseCache",
+        "LOCATION": "user_permission_cache",
+    },
+}
 
 """
 Since we're using Docker, we can use Redis (even on a Windows OS). So, we
@@ -70,7 +85,13 @@ CELERY_BROKER_URL = "redis://@arches_redis:6379/0"
 
 # CANTALOUPE_HTTP_ENDPOINT = "http://{}:{}".format(get_env_variable("CANTALOUPE_HOST"), get_env_variable("CANTALOUPE_PORT"))
 ELASTICSEARCH_HTTP_PORT = get_env_variable("ESPORT")
-ELASTICSEARCH_HOSTS = [{"scheme": "http", "host": get_env_variable("ESHOST"), "port": int(ELASTICSEARCH_HTTP_PORT)}]
+ELASTICSEARCH_HOSTS = [
+    {
+        "scheme": "http", 
+        "host": get_env_variable("ESHOST"), 
+        "port": int(ELASTICSEARCH_HTTP_PORT),
+    }
+]
 
 USER_ELASTICSEARCH_PREFIX = get_optional_env_variable("ELASTICSEARCH_PREFIX")
 if USER_ELASTICSEARCH_PREFIX:
@@ -87,13 +108,12 @@ STATIC_ROOT = "/static_root"
 
 LANGUAGE_CODE = 'en'
 # Added for v7 internationalization demo
+# Change these to match the languages you want to support
 LANGUAGES = [
     ('en', ('English')),
     ('ar', ('Arabic')),
     ('he', ('Hebrew')),
 ]
-# This will be true for this deployment
-SHOW_LANGUAGE_SWITCH = False and (len(LANGUAGES) > 1)
-
-ARCHES_PROJECT = get_env_variable("ARCHES_PROJECT")
-WSGI_APPLICATION = f'{ARCHES_PROJECT}.wsgi.application'
+# This does not work when using gunicorn
+# SHOW_LANGUAGE_SWITCH = len(LANGUAGES) > 1
+SHOW_LANGUAGE_SWITCH = False
