@@ -108,11 +108,12 @@ STATIC_ROOT = "/static_root"
 
 LANGUAGE_CODE = 'en'
 # Added for v7 internationalization demo
+# Change these to match the languages you want to support
 LANGUAGES = [
     ('en', ('English')),
     ('ar', ('Arabic')),
     ('he', ('Hebrew')),
 ]
-# This seems not to work.
+# This does not work when using gunicorn
 # SHOW_LANGUAGE_SWITCH = len(LANGUAGES) > 1
 SHOW_LANGUAGE_SWITCH = False
