@@ -65,7 +65,7 @@ RUN rm -rf /root/.cache/pip/*
 
 RUN pip install --upgrade pip
 # Install the Arches application and make an Arches project.
-RUN pip install supervisor && pip install Redis && pip install gunicorn && pip install arches==6.2.7 && arches-project create ${ARCHES_PROJECT}
+RUN pip install supervisor && pip install Redis && pip install gunicorn && pip install arches==6.2.6 && arches-project create ${ARCHES_PROJECT}
 
 # Make sure we have the environment variables in the python app?
 
