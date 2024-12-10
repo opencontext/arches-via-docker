@@ -188,7 +188,22 @@ STATICFILES_DIRS = build_staticfiles_dirs(app_root=APP_ROOT)
 TEMPLATES = build_templates_config(
     debug=DEBUG,
     app_root=APP_ROOT,
+    context_processors=[
+        "django.contrib.auth.context_processors.auth",
+        "django.template.context_processors.debug",
+        "django.template.context_processors.i18n",
+        "django.template.context_processors.media",
+        "django.template.context_processors.static",
+        "django.template.context_processors.tz",
+        "django.template.context_processors.request",
+        "django.contrib.messages.context_processors.messages",
+        "arches.app.utils.context_processors.livereload",
+        "arches.app.utils.context_processors.map_info",
+        "arches.app.utils.context_processors.app_settings",
+        "arches_for_science.utils.context_processors.project_settings",
+    ],
 )
+
 
 ALLOWED_HOSTS = []
 
@@ -421,8 +436,11 @@ SHOW_LANGUAGE_SWITCH = len(LANGUAGES) > 1
 
 # Added for AfS (Arches for Science) project
 FUNCTION_LOCATIONS.append("arches_for_science.pkg.extensions.functions")
+FUNCTION_LOCATIONS.append("arches_for_science.functions")
 
-TEMPLATES[0]["OPTIONS"]["context_processors"].append("arches_for_science.utils.context_processors.project_settings")
+TEMPLATES[0]["OPTIONS"]["context_processors"].append(
+    "arches_for_science.utils.context_processors.project_settings"
+)
 
 RENDERERS += [
     {

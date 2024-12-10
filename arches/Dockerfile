@@ -5,9 +5,9 @@ USER root
 
 # Do the apt installation also install git
 RUN apt-get update && && apt-get install -y --no-install-recommends \
-    python3.11 \
-    python3.11-dev \
-    python3.11-venv \
+    python3.12 \
+    python3.12-dev \
+    python3.12-venv \
     python3-pip \
     make software-properties-common \
     curl \
@@ -24,16 +24,16 @@ RUN apt-get update --fix-missing && apt-get install -y git
 RUN apt-get update
 RUN apt-get install -y postgresql-client-14
 
-FROM python:3.11
+FROM python:3.12
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN python -m venv venv \
-    && . venv/bin/activate \
-    && pip install --upgrade pip
-# Make sure we use the virtualenv:
-ENV PATH="/opt/venv/bin:$PATH"
+# Set up a virual environment to use for all later commands.
+ENV VIRTUAL_ENV=/opt/venv
+RUN python3 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+RUN pip install --upgrade pip
 
 ## Setting default environment variables
 ARG ARCHES_ROOT
@@ -42,22 +42,18 @@ ARG ARCHES_PROJECT
 # Project specific paths
 ARG APP_ROOT
 ARG APP_COMP_FOLDER
-
-
-# AfS Settings
-ARG AFS_CLONE
-ARG AFS_GIT_BRANCH
-ARG AFS_REPO_DIR
 ARG UPLOADED_FILES_FOLDER
-
 
 # settings_local.py provides the DB credentials, etc. to the Arches project.
 ENV SETTINGS_PATH=${APP_COMP_FOLDER}/settings.py
 ENV SETTINGS_LOCAL_PATH=${APP_COMP_FOLDER}/settings_local.py
 ENV CELERY_PATH=${APP_COMP_FOLDER}/celery.py
 ENV URLS_PATH=${APP_COMP_FOLDER}/urls.py
+ENV GUNICORN_CONFIG_PATH=${APP_COMP_FOLDER}/gunicorn_config.py
 ENV ARCHES_DATA=${ARCHES_ROOT}/arches_data
-ENV PACKAGE_PATH=${APP_COMP_FOLDER}/package.json
+ENV PACKAGE_PATH_USE=${APP_ROOT}/package.json
+ENV PACKAGE_PATH_DEEP=${APP_COMP_FOLDER}/package.json
+ENV UPLOADED_FILES_FOLDER=${UPLOADED_FILES_FOLDER}
 ENV WHEELS=/wheels
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -105,7 +101,7 @@ RUN set -ex \
 # ----------------------------------------------
 
 # Set environment variables
-ENV NODE_MAJOR=20
+ENV NODE_MAJOR=18
 
 # Update package lists and install necessary packages
 RUN apt-get update \
@@ -137,16 +133,7 @@ WORKDIR ${ARCHES_ROOT}
 RUN rm -rf /root/.cache/pip/*
 
 RUN pip install --upgrade pip
-
-# Install the current stable release of the Arches application and make an Arches project.
-RUN pip install supervisor && pip install pytz --upgrade && pip install tzdata --upgrade && pip install Redis && pip install gunicorn && pip install arches && arches-admin startproject ${ARCHES_PROJECT}
-
-
-WORKDIR ${ARCHES_ROOT}
-
-RUN mkdir -p ${UPLOADED_FILES_FOLDER}
-
-
+RUN pip install --force-reinstall -U setuptools
 
 # Install our desired branch of Arches for Science
 
@@ -156,10 +143,33 @@ RUN echo "Install Arches for Science..."
 # RUN git clone https://github.com/archesproject/arches-for-science.git
 RUN git clone ${AFS_CLONE};
 
+ARG AFS_REPO_DIR
 WORKDIR ${AFS_REPO_DIR}
+ARG AFS_GIT_BRANCH
+ENV AFS_GIT_BRANCH=${AFS_GIT_BRANCH}
 RUN echo "git checkout ${AFS_GIT_BRANCH}";
 RUN git checkout ${AFS_GIT_BRANCH};
-RUN pip install -e .
+RUN pip install -e '.[dev]'
+
+WORKDIR ${ARCHES_ROOT}
+# Install the current stable release of the Arches application and make an Arches project.
+RUN pip install supervisor==4.2.1 \ 
+    && pip install django-pgtrigger==4.9.0 \
+    && pip install django-storages==1.13.2 \
+    && pip install arches-templating==0.1.2 \
+    && pip install pytz --upgrade \
+    && pip install tzdata --upgrade \
+    && pip install Redis \
+    && pip install gunicorn \
+    && pip install arches \
+    && pip install pyasynchat \
+    && pip install pyasyncore \
+    && arches-admin startproject ${ARCHES_PROJECT}
+
+WORKDIR ${ARCHES_ROOT}
+
+RUN mkdir -p ${UPLOADED_FILES_FOLDER}
+
 
 # copy in settings with AFS special stuff to our newly created Arches project.
 WORKDIR ${APP_ROOT}
@@ -179,7 +189,8 @@ RUN sed -i 's/\r$//g' ${CELERY_PATH}
 COPY ./arches/urls.py ${URLS_PATH}
 RUN sed -i 's/\r$//g' ${URLS_PATH}
 # Copy customized package information to the new Arches/AFS
-COPY ./arches/package.json ${PACKAGE_PATH}
+COPY ./arches/package.json ${PACKAGE_PATH_USE}
+COPY ./arches/package.json ${PACKAGE_PATH_DEEP}
 
 # copy the celery supervisor
 COPY /arches/conf.d/ ${APP_ROOT}/conf.d/
