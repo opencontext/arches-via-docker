@@ -7,11 +7,10 @@ Deployment of [Arches for Science](https://www.archesproject.org/arches-for-scie
 
 This branch provides a simple approach to deploying AfS for use on a `localhost`. It does not start other Docker containers related to Web hosting (Nginx, SSL, etc.). Be sure to leave Arches with the Django `DEBUG` setting as `True`. See below for instructions on creating and editing an `.env` file.
 
-This branch has only partial support for installing arbitary versions of AfS. Configure the `.env` file to name the branch you'd like to deploy as so:
+This branch has only partial support for installing arbitrary versions of AfS. Configure the `.env` file to name the branch you'd like to deploy as so:
 
    ```
-   AFS_GIT_BRANCH="dev/1.1.x"
-   ARCHES_GIT_BRANCH="dev/7.6.x"
+   AFS_GIT_BRANCH="dev/2.0.x"
    ```
 
 # Caveats
@@ -37,7 +36,7 @@ The following lists some information about the contents of this repo and how the
     * `urls.py` - Editable python file configuring URLs in your AfS instance
 * `webpack/`
     * `Dockerfile`
-    * `webpack_entrypoint.sh` - The `webpack` container is a minimalist container that invokes a docker command on the `arches` container. This command prepares static assets for the Arches frontend by running webpack and collectstatic.
+    * `package.json` - This specifies frontend components that get installed via `npm`.
 
 
 ## Prerequisites
@@ -107,7 +106,7 @@ docker compose down
 Currently this will setup an "empty" Arches instance. You'll need to load it with your own data by loading a package or some other approach. Once you deploy Arches, you can use normal Arches management commands as so:
 
 ```bash
-docker exec -it arches python3 manage.py [Arches management commands and arguments here]
+docker exec -it arches python manage.py [Arches management commands and arguments here]
 ```
 
 
