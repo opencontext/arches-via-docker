@@ -52,7 +52,6 @@ ENV URLS_PATH=${APP_COMP_FOLDER}/urls.py
 ENV GUNICORN_CONFIG_PATH=${APP_COMP_FOLDER}/gunicorn_config.py
 ENV ARCHES_DATA=${ARCHES_ROOT}/arches_data
 ENV PACKAGE_PATH_USE=${APP_ROOT}/package.json
-ENV PACKAGE_PATH_DEEP=${APP_COMP_FOLDER}/package.json
 ENV UPLOADED_FILES_FOLDER=${UPLOADED_FILES_FOLDER}
 ENV WHEELS=/wheels
 ENV PYTHONUNBUFFERED=1
@@ -190,7 +189,6 @@ COPY ./arches/urls.py ${URLS_PATH}
 RUN sed -i 's/\r$//g' ${URLS_PATH}
 # Copy customized package information to the new Arches/AFS
 COPY ./arches/package.json ${PACKAGE_PATH_USE}
-COPY ./arches/package.json ${PACKAGE_PATH_DEEP}
 
 # copy the celery supervisor
 COPY /arches/conf.d/ ${APP_ROOT}/conf.d/
