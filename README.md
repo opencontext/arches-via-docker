@@ -49,12 +49,7 @@ The following lists some information about the contents of this repo and how the
    ```
 
 ### Note:
-This branch can set up a desired version of AfS / Arches (with caveats, see above) suitable for running on a localhost for testing purposes. If you want to locally deploy the latest stable version of Arches witch to the `local` branch of this repo. If you want Arches version 6 (specifically stable version 6.2.4), please switch to the `v6` branch of this repo, with:
-   ```bash
-   git checkout origin/v6
-   ```
-
-If you want to deploy the latest stable version of (core) Arches to a public (or organizational) Web server, use the `main` branch:
+This branch can set up a desired version of AfS / Arches (with caveats, see above) suitable for running on a localhost for testing purposes. If you want to deploy the latest stable version of (core) Arches to a public (or organizational) Web server, use the `main` branch:
    ```bash
    git checkout origin/main
    ```
