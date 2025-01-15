@@ -45,7 +45,7 @@ The following lists some information about the contents of this repo and how the
 2. You have cloned this repository, and if deployting to a localhost only you use the `local-afs-dev-1-1-x` branch:
    ```bash
    git clone https://github.com/opencontext/arches-via-docker.git
-   git checkout origin/local-afs-dev-1-1-x
+   git checkout origin/local-afs-dev-2-x
    ```
 
 ### Note:
@@ -54,7 +54,7 @@ This branch can set up a desired version of AfS / Arches (with caveats, see abov
    git checkout origin/v6
    ```
 
-If you want to deploy the latest stable version of Arches to a public (or organizational) Web server, use the `main` branch:
+If you want to deploy the latest stable version of (core) Arches to a public (or organizational) Web server, use the `main` branch:
    ```bash
    git checkout origin/main
    ```
@@ -77,7 +77,6 @@ nano .env
 
 Below are properties to edit to change how Arches deploy. If you want to deploy this on your own machine (localhost), setting `DJANGO_DEBUG=True` is useful to see and diagnose useful error messages in the Arches Django application. Be sure to set `DJANGO_DEBUG=False` for deployments on the public Web. *NOTE* if you run this on your localhost, this Docker build will currently make your Arches application available to your browser via [http://127.0.0.1:8004/](http://127.0.0.1:8004/) *on port 8004*, not the usual 8000. This nonstandard port was chosen in case your local host has other applications already running on port 8000.
 
-If you set `BUILD_PRODUCTION=True`, be sure you have well over 8GB of system RAM. `BUILD_PRODUCTION=True` will invoke the Arches `manage.py build_production` command, and this command is *very* resource intensive and time consuming. You will likely get errors that will cause your build to fail if you do a production build on a server with only 8GB of RAM.
 
 ```properties
 DJANGO_MODE=DEV
