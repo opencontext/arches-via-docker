@@ -1,11 +1,11 @@
 # Edit this file and save as ".env" for use.
 
-COMPOSE_PROJECT_NAME=arches_plocal
+COMPOSE_PROJECT_NAME=arches_slocal
 TZ=PST
 
 #arches project and paths
-ARCHES_GIT_BRANCH="dev/7.5.x"
-ARCHES_PROJECT=arches_plocal
+ARCHES_GIT_BRANCH="stable/7.5.5"
+ARCHES_PROJECT=arches_slocal
 ALL_ARCHES_ROOT=/arches_app
 ARCHES_REPO=$ALL_ARCHES_ROOT/arches
 
@@ -26,7 +26,7 @@ INSTALL_DEFAULT_CONCEPTS=True
 # value in the docker-compse.yml for the Postgres container.
 PGUSERNAME=postgres
 PGPASSWORD=postgis
-PGDBNAME=arches_plocal
+PGDBNAME=arches_slocal
 PGHOST=arches_db
 PGPORT=5432
 ESHOST=arches_elasticsearch
@@ -49,7 +49,7 @@ ELASTICSEARCH_PREFIX=$ARCHES_PROJECT
 
 # couchdb for arches. Not needed for V7+, but config exists incase it
 # reappears.
-COUCHDB_HOST=arches
+COUCHDB_HOST=arches_7_5_local
 COUCHDB_PORT=5984
 COUCHDB_USER=admin
 COUCHDB_PASS=password
