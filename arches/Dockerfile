@@ -137,17 +137,16 @@ RUN pip install --force-reinstall -U setuptools
 # Install our desired branch of Arches for Science
 
 WORKDIR ${ARCHES_ROOT}
-ARG AFS_CLONE
+ARG AFRC_CLONE
 RUN echo "Install Arches for Reference and Sample Collections..."
-# RUN git clone https://github.com/archesproject/arches-for-science.git
-RUN git clone ${AFS_CLONE};
+RUN git clone ${AFRC_CLONE};
 
-ARG AFS_REPO_DIR
-WORKDIR ${AFS_REPO_DIR}
-ARG AFS_GIT_BRANCH
-ENV AFS_GIT_BRANCH=${AFS_GIT_BRANCH}
-RUN echo "git checkout ${AFS_GIT_BRANCH}";
-RUN git checkout ${AFS_GIT_BRANCH};
+ARG AFRC_REPO_DIR
+WORKDIR ${AFRC_REPO_DIR}
+ARG AFRC_GIT_BRANCH
+ENV AFRC_GIT_BRANCH=${AFRC_GIT_BRANCH}
+RUN echo "git checkout ${AFRC_GIT_BRANCH}";
+RUN git checkout ${AFRC_GIT_BRANCH};
 RUN pip install -e '.[dev]'
 
 WORKDIR ${ARCHES_ROOT}

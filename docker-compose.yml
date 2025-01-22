@@ -67,11 +67,11 @@ services:
     networks:
       - afrc_net
 
-  cantaloupe_afs_plocal:
-    container_name: cantaloupe_afs_plocal
+  cantaloupe_AFRC_plocal:
+    container_name: cantaloupe_AFRC_plocal
     image: uclalibrary/cantaloupe:5.0.3-0
     volumes:
-      - cantaloupe_afs_plocal:/imageroot
+      - cantaloupe_AFRC_plocal:/imageroot
     ports:
       - 8183:8182
     env_file:
@@ -92,9 +92,9 @@ services:
         ARCHES_PROJECT: ${ARCHES_PROJECT}
         ARCHES_ROOT: ${ARCHES_ROOT}
         APP_ROOT: ${APP_ROOT}
-        AFS_CLONE: ${AFS_CLONE}
-        AFS_GIT_BRANCH: ${AFS_GIT_BRANCH}
-        AFS_REPO_DIR: ${AFS_REPO_DIR}
+        AFRC_CLONE: ${AFRC_CLONE}
+        AFRC_GIT_BRANCH: ${AFRC_GIT_BRANCH}
+        AFRC_REPO_DIR: ${AFRC_REPO_DIR}
         APP_COMP_FOLDER: ${APP_COMP_FOLDER}
         UPLOADED_FILES_FOLDER: ${UPLOADED_FILES_FOLDER}
     environment:
@@ -127,7 +127,7 @@ services:
       - arches-log:/web_root/logs
       - arches-static:/static_root
       - ../arches_data/:/arches_data
-      - cantaloupe_afs_plocal:${UPLOADED_FILES_FOLDER}
+      - cantaloupe_AFRC_plocal:${UPLOADED_FILES_FOLDER}
     logging:
       driver: "json-file"
       options:
@@ -150,4 +150,4 @@ volumes:
   elasticsearch-data:
   arches-log:
   arches-static:
-  cantaloupe_afs_plocal:
+  cantaloupe_AFRC_plocal:

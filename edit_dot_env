@@ -9,10 +9,10 @@ ARCHES_ROOT=/arches_app
 APP_ROOT=$ARCHES_ROOT/$ARCHES_PROJECT
 APP_COMP_FOLDER=$APP_ROOT/$ARCHES_PROJECT
 
-# AfS specific settings
-AFS_CLONE = 'https://github.com/archesproject/arches-for-reference-and-sample-collection.git'
-AFS_GIT_BRANCH = 'main'
-AFS_REPO_DIR = $ARCHES_ROOT/arches-for-reference-and-sample-collection
+# AfRC specific settings
+AFRC_CLONE = 'https://github.com/archesproject/arches-for-reference-and-sample-collection.git'
+AFRC_GIT_BRANCH = 'main'
+AFRC_REPO_DIR = $ARCHES_ROOT/arches-for-reference-and-sample-collection
 
 # AfS Cantaloupe
 UPLOADED_FILES_FOLDER=$APP_COMP_FOLDER/uploadedfiles

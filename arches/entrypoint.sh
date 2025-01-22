@@ -1,8 +1,11 @@
 #!/bin/bash
 
 # APP and YARN folder locations
+APP_NAME=${ARCHES_PROJECT}
 APP_FOLDER=${APP_ROOT}
 APP_COMP_FOLDER=${APP_COMP_FOLDER}
+AFRC_REPO_DIR=${AFRC_REPO_DIR}
+AFRC_PKG_DIR=${AFRC_REPO_DIR}/pkg 
 GUNICORN_CONFIG_PATH=${APP_COMP_FOLDER}/media/node_modules/arches/docker/gunicorn_config.py
 STATIC_ROOT=/static_root
 STATIC_JS=${STATIC_ROOT}/js
@@ -72,7 +75,7 @@ init_arches() {
 		run_setup_db
 		run_elastic_safe_migrations
 		setup_couchdb
-		run_afs_package
+		run_AFRC_package
 	fi
 }
 
@@ -108,7 +111,7 @@ start_celery_supervisor() {
 	else
 		echo "The celery supervisor has yet to start, so we'll start it.."
 		cd ${APP_FOLDER}
-		wait-for-it arches_redis:6379 -t 120 && supervisord -c afs_plocal-supervisor.conf
+		wait-for-it arches_redis:6379 -t 120 && supervisord -c ${APP_NAME}-supervisor.conf
 	fi
 }
 
@@ -164,12 +167,12 @@ run_es_reindex() {
 	python3 manage.py es reindex_database
 }
 
-run_afs_package() {
+run_AFRC_package() {
 	echo ""
 	echo "----- RUNNING PACKAGE LOAD FOR AFS -----"
 	echo ""
 	cd ${APP_FOLDER}
-	python3 manage.py packages -o load_package -a afrc -dev -y
+	python3 manage.py packages -o load_package -a ${AFRC_PKG_DIR} -dev -y
 }
 
 
@@ -407,9 +410,9 @@ do
 			wait_for_db
 			run_es_reindex
 		;;
-		run_afs_package)
+		run_AFRC_package)
 			wait_for_db
-			run_afs_package
+			run_AFRC_package
 		;;
 		help|-h)
 			display_help
