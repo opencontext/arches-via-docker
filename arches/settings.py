@@ -211,7 +211,7 @@ TEMPLATES = build_templates_config(
         "arches.app.utils.context_processors.livereload",
         "arches.app.utils.context_processors.map_info",
         "arches.app.utils.context_processors.app_settings",
-        "afrc.utils.context_processors.project_settings",
+        # "afrc.utils.context_processors.project_settings",
     ],
 )
 
@@ -449,9 +449,10 @@ SHOW_LANGUAGE_SWITCH = len(LANGUAGES) > 1
 FUNCTION_LOCATIONS.append("afrc.pkg.extensions.functions")
 FUNCTION_LOCATIONS.append("afrc.functions")
 
-TEMPLATES[0]["OPTIONS"]["context_processors"].append(
-    "afrc.utils.context_processors.project_settings"
-)
+if False:
+    TEMPLATES[0]["OPTIONS"]["context_processors"].append(
+        "afrc.utils.context_processors.project_settings"
+    )
 
 RENDERERS += [
     {
