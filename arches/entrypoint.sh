@@ -172,7 +172,7 @@ run_AFRC_package() {
 	echo "----- RUNNING PACKAGE LOAD FOR AFS -----"
 	echo ""
 	cd ${APP_FOLDER}
-	python3 manage.py packages -o load_package -a ${AFRC_PKG_DIR} -dev -y
+	python3 manage.py packages -o load_package -s ${AFRC_PKG_DIR} -dev -y
 }
 
 
