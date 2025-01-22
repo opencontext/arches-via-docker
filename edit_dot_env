@@ -1,18 +1,18 @@
 # Edit this file and save as ".env" for use.
 
-COMPOSE_PROJECT_NAME=afs_plocal
+COMPOSE_PROJECT_NAME=rascoll
 TZ=PST
 
 #arches project and paths
-ARCHES_PROJECT=afs_plocal
+ARCHES_PROJECT=rascoll
 ARCHES_ROOT=/arches_app
 APP_ROOT=$ARCHES_ROOT/$ARCHES_PROJECT
 APP_COMP_FOLDER=$APP_ROOT/$ARCHES_PROJECT
 
 # AfS specific settings
-AFS_CLONE = 'https://github.com/archesproject/arches-for-science.git'
-AFS_GIT_BRANCH = 'dev/2.0.x'
-AFS_REPO_DIR = $ARCHES_ROOT/arches-for-science
+AFS_CLONE = 'https://github.com/archesproject/arches-for-reference-and-sample-collection.git'
+AFS_GIT_BRANCH = 'main'
+AFS_REPO_DIR = $ARCHES_ROOT/arches-for-reference-and-sample-collection
 
 # AfS Cantaloupe
 UPLOADED_FILES_FOLDER=$APP_COMP_FOLDER/uploadedfiles

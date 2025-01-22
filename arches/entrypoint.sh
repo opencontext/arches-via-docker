@@ -169,7 +169,7 @@ run_afs_package() {
 	echo "----- RUNNING PACKAGE LOAD FOR AFS -----"
 	echo ""
 	cd ${APP_FOLDER}
-	python3 manage.py packages -o load_package -a arches_for_science -dev -y
+	python3 manage.py packages -o load_package -a afrc -dev -y
 }
 
 

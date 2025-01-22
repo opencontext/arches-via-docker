@@ -138,7 +138,7 @@ RUN pip install --force-reinstall -U setuptools
 
 WORKDIR ${ARCHES_ROOT}
 ARG AFS_CLONE
-RUN echo "Install Arches for Science..."
+RUN echo "Install Arches for Reference and Sample Collections..."
 # RUN git clone https://github.com/archesproject/arches-for-science.git
 RUN git clone ${AFS_CLONE};
 
@@ -192,7 +192,7 @@ COPY ./arches/package.json ${PACKAGE_PATH_USE}
 
 # copy the celery supervisor
 COPY /arches/conf.d/ ${APP_ROOT}/conf.d/
-COPY /arches/afs_plocal-supervisor.conf ${APP_ROOT}/${ARCHES_PROJECT}-supervisor.conf
+COPY /arches/${ARCHES_PROJECT}-supervisor.conf ${APP_ROOT}/${ARCHES_PROJECT}-supervisor.conf
 RUN chmod -R 700 ${APP_ROOT}/${ARCHES_PROJECT}-supervisor.conf
 RUN mkdir -p /var/log/supervisor
 RUN mkdir -p /var/log/celery

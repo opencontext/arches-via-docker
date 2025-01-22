@@ -1,22 +1,22 @@
 # arches-via-docker
-Deployment of [Arches for Science](https://www.archesproject.org/arches-for-science/) via Docker. We initially developed this repo to simplify and streamline deployment of Arches for Science (AfS) to make testing of development branches easier. This deployment attempts to implement, using Docker, instructions for deploying AfS version dev/2.0.x as documented here: [https://github.com/archesproject/arches-for-science/tree/dev/2.0.x#readme](https://github.com/archesproject/arches-for-science/tree/dev/2.0.x#readme)
+Deployment of [Arches for Reference and Sample Collections](https://github.com/archesproject/arches-for-reference-and-sample-collection/) via Docker. We initially developed this repo to simplify and streamline deployment of Arches for Science (AfS) to make testing of development branches easier. We then created this branch to support deployment of the closely related Arches application, *Arches for Reference and Sample Collections* (AfRC). This deployment attempts to implement, using Docker, instructions for deploying AfRC version main as documented here: [https://github.com/archesproject/arches-for-reference-and-sample-collection](https://github.com/archesproject/arches-for-reference-and-sample-collection)
 
 
 
 # Public Web Server and Localhost Deployments
 
-This branch provides a simple approach to deploying AfS for use on a `localhost`. It does not start other Docker containers related to Web hosting (Nginx, SSL, etc.). Be sure to leave Arches with the Django `DEBUG` setting as `True`. See below for instructions on creating and editing an `.env` file.
+This branch provides a simple approach to deploying AfRC for use on a `localhost`. It does not start other Docker containers related to Web hosting (Nginx, SSL, etc.). Be sure to leave Arches with the Django `DEBUG` setting as `True`. See below for instructions on creating and editing an `.env` file.
 
-This branch has only partial support for installing arbitrary versions of AfS. Configure the `.env` file to name the branch you'd like to deploy as so:
+This branch has only partial support for installing arbitrary versions of AfRC. Configure the `.env` file to name the branch you'd like to deploy as so:
 
    ```
-   AFS_GIT_BRANCH="dev/2.0.x"
+   AFS_GIT_BRANCH="main"
    ```
 
 # Caveats
 The Arches docker container will git-clone the Arches for Science and the Arches repositories and switch to the desired branch and then install the various Python dependencies. However, installation of other dependencies outside of Python are still "hard-coded" in the Arches Dockerfile. So you may need to manually edit that file if the version of AfS and Arches you wish to install has different non-Python dependencies.
 
-Another caveat to note is that the name of the Arches/AfS project (`afs_plocal`) should be treated as *hardcoded*. It seems like a heavy lift to make it easy to configure the project name in Docker.
+Another caveat to note is that the name of the Arches/AfRC project (`rascoll`) should be treated as *hardcoded*. It seems like a heavy lift to make it easy to configure the project name in Docker.
 
 
 # The directories and files
@@ -28,12 +28,12 @@ The following lists some information about the contents of this repo and how the
     * `Dockerfile`
     * `arches_data` - A directory on your host machine that gets attached to the Arches container. This makes it convenient to pass data (like packages or exports) in and out of your Arches container.
     * `conf.d/` - A directory of Supervisord configurations for the celery worker and celery beat processes. This gets copied into the Arches container.
-    * `celery.py` - Editable file if you want to modify your AfS project use of celery
+    * `celery.py` - Editable file if you want to modify your AfRC project use of celery
     * `afs_plocal-supervisor.conf` - Supervisord configurations for the celery worker and celery beat processes
     * `entrypoint.sh` - entrypoint script. This has some handy utility functions for some routine administration of the Arches container.
-    * `settings.py` - Editable python file to define project specific settings for your AfS instance. Many of the environment variables that you assign in your `.env` file
-    * `settings_local.py` - Another editable python file to define project specific settings for your AfS instance. Many of the environment variables that you assign in your `.env` file
-    * `urls.py` - Editable python file configuring URLs in your AfS instance
+    * `settings.py` - Editable python file to define project specific settings for your AfRC instance. Many of the environment variables that you assign in your `.env` file
+    * `settings_local.py` - Another editable python file to define project specific settings for your AfRC instance. Many of the environment variables that you assign in your `.env` file
+    * `urls.py` - Editable python file configuring URLs in your AfRC instance
 * `webpack/`
     * `Dockerfile`
     * `package.json` - This specifies frontend components that get installed via `npm`.
@@ -42,14 +42,14 @@ The following lists some information about the contents of this repo and how the
 ## Prerequisites
 
 1. [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/) are installed.
-2. You have cloned this repository, and if deployting to a localhost only you use the `local-afs-dev-1-1-x` branch:
+2. You have cloned this repository, and if deployting to a localhost only you use the `local-rascoll-dev-2-x` branch:
    ```bash
    git clone https://github.com/opencontext/arches-via-docker.git
-   git checkout origin/local-afs-dev-2-x
+   git checkout origin/local-rascoll-dev-2-x
    ```
 
 ### Note:
-This branch can set up a desired version of AfS / Arches (with caveats, see above) suitable for running on a localhost for testing purposes. If you want to deploy the latest stable version of (core) Arches to a public (or organizational) Web server, use the `main` branch:
+This branch can set up a desired version of AfRC / Arches (with caveats, see above) suitable for running on a localhost for testing purposes. If you want to deploy the latest stable version of (core) Arches to a public (or organizational) Web server, use the `main` branch:
    ```bash
    git checkout origin/main
    ```
