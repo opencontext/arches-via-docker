@@ -155,7 +155,7 @@ INSTALLED_APPS = (
     "django_celery_results",
     # Added for AfS (Arches for Science) project
     "arches_templating",
-    "arches_for_science",
+    "afrc",
     "pgtrigger",
 
     f"{APP_NAME}",  # Ensure the project is listed before any other arches applications
@@ -450,7 +450,7 @@ FUNCTION_LOCATIONS.append("afrc.pkg.extensions.functions")
 FUNCTION_LOCATIONS.append("afrc.functions")
 
 TEMPLATES[0]["OPTIONS"]["context_processors"].append(
-    "arches_for_science.utils.context_processors.project_settings"
+    "afrc.utils.context_processors.project_settings"
 )
 
 RENDERERS += [

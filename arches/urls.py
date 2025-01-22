@@ -13,7 +13,7 @@ urlpatterns.append(path('', include('arches.urls')))
 # Adds URL pattern to serve media files during development
 urlpatterns = [
     path("", include("arches.urls")),
-    path("", include("arches_for_science.urls")),
+    path("", include("afrc.urls")),
     path("reports/", include("arches_templating.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
