@@ -24,7 +24,7 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - afs_plocal_net
+      - afrc_net
 
   arches_elasticsearch:
     container_name: arches_elasticsearch
@@ -48,7 +48,7 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - afs_plocal_net
+      - afrc_net
 
   arches_redis:
     container_name: arches_redis
@@ -65,7 +65,7 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - afs_plocal_net
+      - afrc_net
 
   cantaloupe_afs_plocal:
     container_name: cantaloupe_afs_plocal
@@ -77,11 +77,11 @@ services:
     env_file:
     - ./.env
     networks:
-    - afs_plocal_net
+    - afrc_net
 
   arches:
     container_name: arches
-    image: arches_afs
+    image: arches_afrc
     env_file:
       - ./.env
     build:
@@ -134,12 +134,12 @@ services:
         max-size: "10m"
         max-file: "10"
     networks:
-      - afs_plocal_net
+      - afrc_net
 
 networks:
-  afs_plocal_net:
+  afrc_net:
     driver: bridge
-    name: afs_plocal_net
+    name: afrc_net
 
 volumes:
   redisdata:

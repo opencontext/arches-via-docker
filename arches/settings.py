@@ -13,7 +13,18 @@ try:
 except ImportError:
     pass
 
-APP_NAME = 'afs_plocal'
+
+def get_os_env_variable(var_name):
+    msg = "Set the %s environment variable"
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        error_msg = msg % var_name
+        raise ImproperlyConfigured(error_msg)
+
+
+
+APP_NAME = get_os_env_variable('ARCHES_PROJECT')
 APP_VERSION = semantic_version.Version(major=0, minor=0, patch=0)
 APP_ROOT = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 
@@ -23,10 +34,10 @@ WEBPACK_LOADER = {
     },
 }
 
-DATATYPE_LOCATIONS.append('afs_plocal.datatypes')
-FUNCTION_LOCATIONS.append('afs_plocal.functions')
-ETL_MODULE_LOCATIONS.append('afs_plocal.etl_modules')
-SEARCH_COMPONENT_LOCATIONS.append('afs_plocal.search_components')
+DATATYPE_LOCATIONS.append(f'{APP_NAME}.datatypes')
+FUNCTION_LOCATIONS.append(f'{APP_NAME}.functions')
+ETL_MODULE_LOCATIONS.append(f'{APP_NAME}.etl_modules')
+SEARCH_COMPONENT_LOCATIONS.append(f'{APP_NAME}.search_components')
 
 LOCALE_PATHS.insert(0, os.path.join(APP_ROOT, 'locale'))
 
@@ -56,10 +67,10 @@ SECRET_KEY = 'django-insecure-v3unx9@idz8)k@x=ajfr1k_qu+xiq+sg8z_!w_agj3pg9^gqno
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ROOT_URLCONF = "afs_plocal.urls"
-ROOT_HOSTCONF = "afs_plocal.hosts"
+ROOT_URLCONF = f"{APP_NAME}.urls"
+ROOT_HOSTCONF = f"{APP_NAME}.hosts"
 
-DEFAULT_HOST = "afs_plocal"
+DEFAULT_HOST = f"{APP_NAME}"
 
 # Modify this line as needed for your project to connect to elasticsearch with a password that you generate
 ELASTICSEARCH_CONNECTION_OPTIONS = {"request_timeout": 30, "verify_certs": False, "basic_auth": ("elastic", "E1asticSearchforArche5")}
@@ -77,7 +88,7 @@ ELASTICSEARCH_CONNECTION_OPTIONS = {"request_timeout": 30, "verify_certs": False
 # Or Kibana: https://www.elastic.co/guide/en/kibana/current/api-keys.html
 
 # a prefix to append to all elasticsearch indexes, note: must be lower case
-ELASTICSEARCH_PREFIX = 'afs_plocal'
+ELASTICSEARCH_PREFIX = f"{APP_NAME}"
 
 ELASTICSEARCH_CUSTOM_INDEXES = []
 # [{
@@ -105,7 +116,7 @@ DATABASES = {
         "CONN_MAX_AGE": 0,
         "ENGINE": "django.contrib.gis.db.backends.postgis",
         "HOST": "localhost",
-        "NAME": "afs_plocal",
+        "NAME": f"{APP_NAME}",
         "OPTIONS": {},
         "PASSWORD": "postgis",
         "PORT": "5432",
@@ -147,11 +158,11 @@ INSTALLED_APPS = (
     "arches_for_science",
     "pgtrigger",
 
-    "afs_plocal",  # Ensure the project is listed before any other arches applications
+    f"{APP_NAME}",  # Ensure the project is listed before any other arches applications
 )
 
-# Added for AfS (Arches for Science) project
-ARCHES_APPLICATIONS = ('arches_for_science',)
+# Added for AfRC (Arches for Reference and Sample Collections) project
+ARCHES_APPLICATIONS = ('afrc',)
 
 # Placing this last ensures any templates provided by Arches Applications
 # take precedence over core arches templates in arches/app/templates.
@@ -200,7 +211,7 @@ TEMPLATES = build_templates_config(
         "arches.app.utils.context_processors.livereload",
         "arches.app.utils.context_processors.map_info",
         "arches.app.utils.context_processors.app_settings",
-        "arches_for_science.utils.context_processors.project_settings",
+        "afrc.utils.context_processors.project_settings",
     ],
 )
 
@@ -208,7 +219,7 @@ TEMPLATES = build_templates_config(
 ALLOWED_HOSTS = []
 
 SYSTEM_SETTINGS_LOCAL_PATH = os.path.join(APP_ROOT, 'system_settings', 'System_Settings.json')
-WSGI_APPLICATION = 'afs_plocal.wsgi.application'
+WSGI_APPLICATION = f'{APP_NAME}.wsgi.application'
 
 # URL that handles the media served from MEDIA_ROOT, used for managing stored files.
 # It must end in a slash if set to a non-empty value.
@@ -272,7 +283,7 @@ RATE_LIMIT = "5/m"
 DATA_UPLOAD_MAX_MEMORY_SIZE = 15728640
 
 # Unique session cookie ensures that logins are treated separately for each app
-SESSION_COOKIE_NAME = 'afs_plocal'
+SESSION_COOKIE_NAME = f"{APP_NAME}_sessionid"
 
 # For more info on configuring your cache: https://docs.djangoproject.com/en/2.2/topics/cache/
 CACHES = {
@@ -435,8 +446,8 @@ SHOW_LANGUAGE_SWITCH = len(LANGUAGES) > 1
 
 
 # Added for AfS (Arches for Science) project
-FUNCTION_LOCATIONS.append("arches_for_science.pkg.extensions.functions")
-FUNCTION_LOCATIONS.append("arches_for_science.functions")
+FUNCTION_LOCATIONS.append("afrc.pkg.extensions.functions")
+FUNCTION_LOCATIONS.append("afrc.functions")
 
 TEMPLATES[0]["OPTIONS"]["context_processors"].append(
     "arches_for_science.utils.context_processors.project_settings"
