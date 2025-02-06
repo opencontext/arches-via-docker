@@ -135,6 +135,7 @@ DOMAINS=teach-with-arches.org
 CERTBOT_EMAILS=info@teach-with-arches.org
 ```
 
+### Note: Non-Standard Port (8004, not 8000)
 Below are properties to edit to change how Arches deploy. If you want to deploy this on your own machine (localhost), setting `DJANGO_DEBUG=True` is useful to see and diagnose useful error messages in the Arches Django application, but be sure to set `DJANGO_DEBUG=False` for deployments on the public Web. *NOTE* if you run this on your localhost, this Docker build will currently make your Arches application available to your browser via [http://127.0.0.1:8004/](http://127.0.0.1:8004/) *on port 8004*, not the usual 8000. This nonstandard port was chosen in case your local host has other applications already running on port 8000.
 
 
