@@ -104,7 +104,7 @@ When you are ready to use production Let's Encrypt server, set `CERTBOT_TEST_CER
    ```
 
 ### Note:
-This approach will setup the most current stable version of Arches (now v7.5.0). If you want to deploy Arches version 6 (specifically stable version 6.2.6), please switch to the `v6` branch of this repo, with:
+This approach will setup the most current stable version of Arches (now v7.6.x). If you want to deploy Arches version 6 (specifically stable version 6.2), please switch to the `v6` branch of this repo, with:
    ```bash
    git checkout origin/v6
    ```
@@ -137,7 +137,6 @@ CERTBOT_EMAILS=info@teach-with-arches.org
 
 Below are properties to edit to change how Arches deploy. If you want to deploy this on your own machine (localhost), setting `DJANGO_DEBUG=True` is useful to see and diagnose useful error messages in the Arches Django application, but be sure to set `DJANGO_DEBUG=False` for deployments on the public Web. *NOTE* if you run this on your localhost, this Docker build will currently make your Arches application available to your browser via [http://127.0.0.1:8004/](http://127.0.0.1:8004/) *on port 8004*, not the usual 8000. This nonstandard port was chosen in case your local host has other applications already running on port 8000.
 
-If you set `BUILD_PRODUCTION=True`, be sure you have well over 8GB of system RAM. `BUILD_PRODUCTION=True` will invoke the Arches `manage.py build_production` command, and this command is *very* resource intensive and time consuming. You will likely get errors that will cause your build to fail if you do a production build on a server with only 8GB of RAM.
 
 ```properties
 DJANGO_MODE=DEV
