@@ -294,6 +294,9 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
         'LOCATION': 'user_permission_cache',
     },
+    "searchresults": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+    },
 }
 
 # Hide nodes and cards in a report that have no data
