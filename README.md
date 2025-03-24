@@ -127,3 +127,12 @@ https://github.com/archesproject/arches-dependency-containers
 and finally
 
 https://github.com/archesproject/arches-her
+
+
+
+
+Copy stuff:
+
+Inside the Arches docker container:
+cp -r /arches_data/eamena-master/eamena/templates /arches_app/arches_slocal/arches_slocal/
+cp -r /arches_data/eamena-master/eamena/media /arches_app/arches_slocal/arches_slocal/
