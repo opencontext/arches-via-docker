@@ -137,15 +137,26 @@ RUN pip install --force-reinstall -U setuptools
 # Install our desired branch of Arches for Science
 
 WORKDIR ${ARCHES_ROOT}
+ENV ARCHES_REPO=${ARCHES_ROOT}/arches
+ENV ARCHES_GIT_BRANCH=dev/8.0.x
 ARG AFRC_CLONE
-RUN echo "Install Arches for Reference and Sample Collections..."
+RUN echo "Clone Arches for Reference and Sample Collections..."
 RUN git clone ${AFRC_CLONE};
+RUN echo "Clone Arches (core) git repo"
+RUN git clone https://github.com/archesproject/arches.git
+
+WORKDIR ${ARCHES_REPO}
+RUN echo "git checkout ${ARCHES_GIT_BRANCH}";
+RUN git checkout ${ARCHES_GIT_BRANCH};
+RUN echo "Pip install Arches requirements..."
+# RUN pip install -e '.[dev]' --no-binary :all:
+RUN pip install -e '.[dev]'
 
 ARG AFRC_REPO_DIR
 WORKDIR ${AFRC_REPO_DIR}
 ARG AFRC_GIT_BRANCH
 ENV AFRC_GIT_BRANCH=${AFRC_GIT_BRANCH}
-RUN echo "Do: git checkout ${AFRC_GIT_BRANCH}";
+RUN echo "Do: git checkout ${AFRC_GIT_BRANCH} for RASColls";
 RUN git fetch --all;
 RUN git checkout ${AFRC_GIT_BRANCH};
 RUN git pull origin ${AFRC_GIT_BRANCH};
@@ -161,7 +172,6 @@ RUN pip install supervisor==4.2.1 \
     && pip install tzdata --upgrade \
     && pip install Redis \
     && pip install gunicorn \
-    && pip install arches==8.0.0a3 \
     && pip install pyasynchat \
     && pip install pyasyncore \
     && arches-admin startproject ${ARCHES_PROJECT}
