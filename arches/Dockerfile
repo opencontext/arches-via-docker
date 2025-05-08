@@ -79,6 +79,7 @@ RUN set -ex \
         python3-dev \
         postgresql-client-14 \
         dos2unix \
+        gettext \
     " \
     && apt-get install -y --no-install-recommends curl \
     && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
