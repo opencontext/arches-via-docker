@@ -1,10 +1,10 @@
 # Edit this file and save as ".env" for use.
 
-COMPOSE_PROJECT_NAME=rascoll_dev
+COMPOSE_PROJECT_NAME=rascoll
 TZ=PST
 
 #arches project and paths
-ARCHES_PROJECT=rascoll_dev
+ARCHES_PROJECT=rascoll
 ARCHES_ROOT=/arches_app
 APP_ROOT=$ARCHES_ROOT/$ARCHES_PROJECT
 APP_COMP_FOLDER=$APP_ROOT/$ARCHES_PROJECT
