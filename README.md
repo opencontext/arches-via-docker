@@ -10,11 +10,11 @@ This branch provides a simple approach to deploying AfRC for use on a `localhost
 This branch has only partial support for installing arbitrary versions of AfRC. Configure the `.env` file to name the branch you'd like to deploy as so:
 
    ```
-   AFS_GIT_BRANCH="main"
+   AFRC_GIT_BRANCH="main"
    ```
 
 # Caveats
-The Arches docker container will git-clone the Arches for Science and the Arches repositories and switch to the desired branch and then install the various Python dependencies. However, installation of other dependencies outside of Python are still "hard-coded" in the Arches Dockerfile. So you may need to manually edit that file if the version of AfS and Arches you wish to install has different non-Python dependencies.
+The Arches docker container will git-clone the *Arches for Reference and Sample Collections* and the Arches repositories and switch to the desired branch and then install the various Python dependencies. Currently, this hardcodes deployment of version *dev/8.0.x* of (core) Arches. Similarly, installation of other dependencies outside of Python are still "hard-coded" in the Arches Dockerfile. So you may need to manually edit the Arches `Dockerfile` if you wish to install different versions of AfRC, Arches, or different non-Python dependencies.
 
 Another caveat to note is that the name of the Arches/AfRC project (`rascoll`) should be treated as *hardcoded*. It seems like a heavy lift to make it easy to configure the project name in Docker.
 
