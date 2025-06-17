@@ -1,10 +1,11 @@
-from django.urls import include, re_path
+from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
 # from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
-    re_path(r'^', include('arches.urls')),
+   path("", include("arches.urls")),
+   path("", include("arches_her.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # The language URL patterns with i18n_patterns seem a little buggy,

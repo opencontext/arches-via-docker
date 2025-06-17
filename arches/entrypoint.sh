@@ -314,7 +314,7 @@ run_load_package() {
 	echo "----- *** LOADING PACKAGE: ${ARCHES_PROJECT} *** -----"
 	echo ""
 	cd ${APP_FOLDER}
-	python3 manage.py packages -o load_package -s ${ARCHES_PROJECT}/pkg -db -dev -y
+	python3 manage.py packages -o load_package -a arches_her -db -y
 }
 
 run_django_server() {

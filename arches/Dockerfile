@@ -5,9 +5,9 @@ USER root
 
 # Do the apt installation also install git
 RUN apt-get update && && apt-get install -y --no-install-recommends \
-    python3.11 \
-    python3.11-dev \
-    python3.11-venv \
+    python3.12 \
+    python3.12-dev \
+    python3.12-venv \
     python3-pip \
     make software-properties-common \
     curl \
@@ -24,7 +24,7 @@ RUN apt-get update --fix-missing && apt-get install -y git
 RUN apt-get update
 RUN apt-get install -y postgresql-client-14
 
-FROM python:3.11
+FROM python:3.12
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
@@ -140,15 +140,26 @@ RUN rm -rf /root/.cache/pip/*
 
 RUN pip install --upgrade pip
 # Install the Arches application and make an Arches project.
-RUN pip install supervisor && pip install pytz --upgrade && pip install tzdata --upgrade && pip install Redis && pip install gunicorn && pip install arches && arches-project create ${ARCHES_PROJECT}
+RUN pip install supervisor==4.2.1 \ 
+    && pip install django-pgtrigger==4.9.0 \
+    && pip install django-storages==1.13.2 \
+    && pip install arches-templating>=0.1.2 \
+    && pip install pytz --upgrade \
+    && pip install tzdata --upgrade \
+    && pip install Redis \
+    && pip install gunicorn \
+    && pip install pyasynchat \
+    && pip install pyasyncore \
+    && pip install arches_her \
+    && arches-admin startproject ${ARCHES_PROJECT}
 
 # Install the HER software and the working v7 branch
-RUN mkdir -p ${HER_REPO_PATH}
-RUN git clone https://github.com/archesproject/arches-her.git ${HER_REPO_PATH}
-WORKDIR ${HER_REPO_PATH}
-RUN echo "Use the arches-her 1077_upgrade_to_v75_core_arches branch";
-RUN echo "git checkout 1077_upgrade_to_v75_core_arches";
-RUN git checkout 1077_upgrade_to_v75_core_arches;
+# RUN mkdir -p ${HER_REPO_PATH}
+# RUN git clone https://github.com/archesproject/arches-her.git ${HER_REPO_PATH}
+# WORKDIR ${HER_REPO_PATH}
+# RUN echo "Use the arches-her dev/1.1.x branch";
+# RUN echo "git checkout dev/1.1.x";
+# RUN git checkout dev/1.1.x;
 
 
 

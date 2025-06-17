@@ -3,7 +3,7 @@ version: "3.9"
 services:
 
   arches_db:
-    container_name: arches_db
+    container_name: arches_db_her
     image: postgis/postgis:14-3.2
     env_file:
       - ./.env
@@ -29,7 +29,7 @@ services:
       - arches_local_her_v7_net
 
   arches_elasticsearch:
-    container_name: arches_elasticsearch
+    container_name: arches_elasticsearch_her
     image: elasticsearch:8.5.3
     restart: always
     env_file:
@@ -53,7 +53,7 @@ services:
       - arches_local_her_v7_net
 
   arches_redis:
-    container_name: arches_redis
+    container_name: arches_redis_her
     image: "redis:6-alpine"
     restart: always
     ports:
@@ -70,8 +70,8 @@ services:
       - arches_local_her_v7_net
 
   arches:
-    container_name: arches
-    image: arches
+    container_name: arches_her
+    image: arches_her
     env_file:
       - ./.env
     build:
@@ -114,8 +114,8 @@ services:
       - arches_local_her_v7_net
 
   arches_webpack:
-    container_name: arches_webpack
-    image: arches/arches_webpack
+    container_name: arches_webpack_her
+    image: arches/arches_webpack_her
     build: ./webpack
     environment:
       COMPOSE_PROJECT_NAME: "${COMPOSE_PROJECT_NAME}"
