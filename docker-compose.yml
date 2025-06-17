@@ -85,6 +85,7 @@ services:
     environment:
       - DEBUG="${DJANGO_DEBUG}"
       - ARCHES_PROJECT=${ARCHES_PROJECT}
+      - ARCHES_NAMESPACE=${ARCHES_NAMESPACE}
     stdin_open: true # docker run -i
     tty: true        # docker run -t
     ports:

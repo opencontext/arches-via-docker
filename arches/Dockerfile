@@ -24,6 +24,7 @@ RUN apt-get update --fix-missing && apt-get install -y git
 RUN apt-get update
 RUN apt-get install -y postgresql-client-14
 
+
 FROM python:3.12
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -45,6 +46,7 @@ ARG APP_COMP_FOLDER
 # for the Arches HER repo
 ENV HER_REPO_PATH=${ARCHES_ROOT}/arches_her_repo
 # settings_local.py provides the DB credentials, etc. to the Arches project.
+ENV SETTINGS_PATH=${APP_COMP_FOLDER}/settings.py
 ENV SETTINGS_LOCAL_PATH=${APP_COMP_FOLDER}/settings_local.py
 ENV CELERY_PATH=${APP_COMP_FOLDER}/celery.py
 ENV URLS_PATH=${APP_COMP_FOLDER}/urls.py
@@ -150,16 +152,16 @@ RUN pip install supervisor==4.2.1 \
     && pip install gunicorn \
     && pip install pyasynchat \
     && pip install pyasyncore \
-    && pip install arches_her \
+    && pip install arches==7.5.5 \
     && arches-admin startproject ${ARCHES_PROJECT}
 
 # Install the HER software and the working v7 branch
-# RUN mkdir -p ${HER_REPO_PATH}
-# RUN git clone https://github.com/archesproject/arches-her.git ${HER_REPO_PATH}
-# WORKDIR ${HER_REPO_PATH}
-# RUN echo "Use the arches-her dev/1.1.x branch";
-# RUN echo "git checkout dev/1.1.x";
-# RUN git checkout dev/1.1.x;
+RUN mkdir -p ${HER_REPO_PATH}
+RUN git clone https://github.com/archesproject/arches-her.git ${HER_REPO_PATH}
+WORKDIR ${HER_REPO_PATH}
+RUN echo "Use the arches-her dev/1.1.x branch";
+RUN echo "git checkout dev/1.1.x";
+RUN git checkout dev/1.1.x;
 
 
 
@@ -170,7 +172,8 @@ WORKDIR ${APP_ROOT}
 RUN yes | cp -rf ${HER_REPO_PATH}/arches_her/ ${APP_ROOT}
 RUN yes | cp -rf ${HER_REPO_PATH}/arches_her/* ${APP_COMP_FOLDER}
 
-
+COPY ./arches/settings.py ${SETTINGS_PATH}
+RUN sed -i 's/\r$//g' ${SETTINGS_PATH}
 COPY ./arches/settings_local.py ${SETTINGS_LOCAL_PATH}
 RUN sed -i 's/\r$//g' ${SETTINGS_LOCAL_PATH}
 # copy the celery.py file into out archaes project. This hopefully makes the workers and beat work:
