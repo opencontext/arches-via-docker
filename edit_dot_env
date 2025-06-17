@@ -11,7 +11,7 @@ APP_COMP_FOLDER=$APP_ROOT/$ARCHES_PROJECT
 
 # AfS specific settings
 AFS_CLONE = 'https://github.com/archesproject/arches-for-science.git'
-AFS_GIT_BRANCH = 'dev/2.0.x'
+AFS_GIT_BRANCH = 'dev/2.1.x'
 AFS_REPO_DIR = $ARCHES_ROOT/arches-for-science
 
 # AfS Cantaloupe

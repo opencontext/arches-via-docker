@@ -5,9 +5,9 @@ USER root
 
 # Do the apt installation also install git
 RUN apt-get update && && apt-get install -y --no-install-recommends \
-    python3.12 \
-    python3.12-dev \
-    python3.12-venv \
+    python3.13 \
+    python3.13-dev \
+    python3.13-venv \
     python3-pip \
     make software-properties-common \
     curl \
@@ -24,7 +24,7 @@ RUN apt-get update --fix-missing && apt-get install -y git
 RUN apt-get update
 RUN apt-get install -y postgresql-client-14
 
-FROM python:3.12
+FROM python:3.13
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
@@ -153,14 +153,16 @@ RUN pip install -e '.[dev]'
 WORKDIR ${ARCHES_ROOT}
 # Install the current stable release of the Arches application and make an Arches project.
 RUN pip install supervisor==4.2.1 \ 
+    && pip install legacy-cgi \
     && pip install django-pgtrigger==4.9.0 \
     && pip install django-storages==1.13.2 \
-    && pip install arches-templating==0.1.2 \
+    && pip install arches-templating>=0.1.2 \
+    && pip install boto3==1.25.3 \
     && pip install pytz --upgrade \
     && pip install tzdata --upgrade \
     && pip install Redis \
     && pip install gunicorn \
-    && pip install arches \
+    && pip install arches==7.6.11 \
     && pip install pyasynchat \
     && pip install pyasyncore \
     && arches-admin startproject ${ARCHES_PROJECT}
