@@ -44,7 +44,7 @@ ARG ARCHES_PROJECT
 ARG APP_ROOT
 ARG APP_COMP_FOLDER
 # for the Arches HER repo
-ENV HER_REPO_PATH=${ARCHES_ROOT}/arches_her_repo
+ENV HER_REPO_PATH=${ARCHES_ROOT}/arches_her
 # settings_local.py provides the DB credentials, etc. to the Arches project.
 ENV SETTINGS_PATH=${APP_COMP_FOLDER}/settings.py
 ENV SETTINGS_LOCAL_PATH=${APP_COMP_FOLDER}/settings_local.py
@@ -101,8 +101,8 @@ RUN set -ex \
 
 # Install yarn
 # Install Node.js
-RUN apt-get install -y nodejs \
-    && npm install -g yarn
+# RUN apt-get install -y nodejs \
+#     && npm install -g yarn
 
 # Clean up
 RUN apt-get clean \
@@ -186,6 +186,9 @@ RUN mkdir -p /var/log/celery
 
 
 
+
+
+
 # Make sure the entry point is available and lacks weird characters
 # that don't work in a Linux OS
 COPY /arches/entrypoint.sh ${APP_ROOT}/entrypoint.sh
@@ -193,10 +196,27 @@ RUN chmod -R 700 ${APP_ROOT}/entrypoint.sh &&\
   dos2unix ${APP_ROOT}/entrypoint.sh
 
 WORKDIR ${APP_ROOT}
-RUN mkdir -p ${APP_COMP_FOLDER}/media/build
+RUN mkdir -p ${APP_COMP_FOLDER}/media
+RUN chmod -R 744 ${APP_COMP_FOLDER}/media
 
+# install nvm
+ENV NODE_VERSION 16.20.1
+ENV NVM_DIR /usr/local/nvm
+RUN mkdir $NVM_DIR
+# https://github.com/nvm-sh/nvm#install-script
+RUN curl --silent -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash -
+# install node and npm
 WORKDIR ${APP_COMP_FOLDER}
-RUN yarn install
+RUN echo "source $NVM_DIR/nvm.sh \
+  && nvm install $NODE_VERSION \
+  && nvm alias default $NODE_VERSION \
+  && nvm use default" | bash -
+
+# add node and npm to path so the commands are available
+ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+
+RUN npm install -g yarn && apt install wait-for-it
 
 # Set default workdir
 WORKDIR ${APP_ROOT}

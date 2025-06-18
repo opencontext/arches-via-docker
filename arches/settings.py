@@ -27,7 +27,7 @@ ARCHES_V = '7.5.5'
 APP_NAME = get_os_env_variable('ARCHES_PROJECT')
 APP_VERSION = semantic_version.Version(major=0, minor=0, patch=0)
 APP_ROOT = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-APP_PATHNAME = "arches_her"
+# APP_PATHNAME = "arches_her"
 
 
 WEBPACK_LOADER = {
@@ -58,7 +58,9 @@ SECRET_KEY = 'z23n6ot1_fsturw_gor66k^d#tl9h8*8*_e7qb)tyoucdo-z+x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ROOT_URLCONF = 'arches_her.urls'
+ROOT_URLCONF = f'{APP_NAME}.urls'
+ROOT_HOSTCONF = f"{APP_NAME}.hosts"
+
 
 # Modify this line as needed for your project to connect to elasticsearch with a password that you generate
 ELASTICSEARCH_CONNECTION_OPTIONS = {"request_timeout": 30, "verify_certs": False, "basic_auth": ("elastic", "E1asticSearchforArche5")}
@@ -76,7 +78,7 @@ ELASTICSEARCH_CONNECTION_OPTIONS = {"request_timeout": 30, "verify_certs": False
 # Or Kibana: https://www.elastic.co/guide/en/kibana/current/api-keys.html
 
 # a prefix to append to all elasticsearch indexes, note: must be lower case
-ELASTICSEARCH_PREFIX = 'arches_her'
+ELASTICSEARCH_PREFIX = f"{APP_NAME}"
 
 ELASTICSEARCH_CUSTOM_INDEXES = []
 # [{
@@ -203,6 +205,8 @@ MIDDLEWARE = [
     "arches.app.utils.middleware.SetAnonymousUser",
     # "silk.middleware.SilkyMiddleware",
 ]
+
+
 if ARCHES_V == '7.5.5':
     STATICFILES_DIRS = build_staticfiles_dirs(
         root_dir=ROOT_DIR,
@@ -227,7 +231,7 @@ else:
 ALLOWED_HOSTS = []
 
 SYSTEM_SETTINGS_LOCAL_PATH = os.path.join(APP_ROOT, 'system_settings', 'System_Settings.json')
-WSGI_APPLICATION = 'arches_her.wsgi.application'
+WSGI_APPLICATION = f'{APP_NAME}.wsgi.application'
 
 # URL that handles the media served from MEDIA_ROOT, used for managing stored files.
 # It must end in a slash if set to a non-empty value.
@@ -244,7 +248,7 @@ STATIC_URL = '/static/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = os.path.join(APP_ROOT, "staticfiles")
+STATIC_ROOT = "/static_root"
 
 # when hosting Arches under a sub path set this value to the sub path eg : "/{sub_path}/"
 FORCE_SCRIPT_NAME = None
