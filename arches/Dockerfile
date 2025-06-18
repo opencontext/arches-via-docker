@@ -5,9 +5,9 @@ USER root
 
 # Do the apt installation also install git
 RUN apt-get update && && apt-get install -y --no-install-recommends \
-    python3.12 \
-    python3.12-dev \
-    python3.12-venv \
+    python3.13 \
+    python3.13-dev \
+    python3.13-venv \
     python3-pip \
     make software-properties-common \
     curl \
@@ -24,7 +24,7 @@ RUN apt-get update --fix-missing && apt-get install -y git
 RUN apt-get update
 RUN apt-get install -y postgresql-client-14
 
-FROM python:3.12
+FROM python:3.13
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
@@ -35,7 +35,6 @@ RUN python3 -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 RUN pip install --upgrade pip
 
-
 ## Setting default environment variables
 ARG ARCHES_ROOT
 # The name of the arches project
@@ -43,13 +42,18 @@ ARG ARCHES_PROJECT
 # Project specific paths
 ARG APP_ROOT
 ARG APP_COMP_FOLDER
+ARG UPLOADED_FILES_FOLDER
+
 # settings_local.py provides the DB credentials, etc. to the Arches project.
+ENV SETTINGS_PATH=${APP_COMP_FOLDER}/settings.py
 ENV SETTINGS_LOCAL_PATH=${APP_COMP_FOLDER}/settings_local.py
 ENV CELERY_PATH=${APP_COMP_FOLDER}/celery.py
 ENV URLS_PATH=${APP_COMP_FOLDER}/urls.py
 ENV GUNICORN_CONFIG_PATH=${APP_COMP_FOLDER}/gunicorn_config.py
 ENV ARCHES_DATA=${ARCHES_ROOT}/arches_data
-ENV PACKAGE_PATH=${APP_COMP_FOLDER}/package.json
+ENV PACKAGE_PATH_USE=${APP_ROOT}/package.json
+ENV ESLINT_CONFIG_MJS_PATH_USE=${APP_ROOT}/eslint.config.mjs
+ENV UPLOADED_FILES_FOLDER=${UPLOADED_FILES_FOLDER}
 ENV WHEELS=/wheels
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -98,7 +102,7 @@ RUN set -ex \
 # ----------------------------------------------
 
 # Set environment variables
-ENV NODE_MAJOR=20
+ENV NODE_MAJOR=18
 
 # Update package lists and install necessary packages
 RUN apt-get update \
@@ -130,10 +134,23 @@ WORKDIR ${ARCHES_ROOT}
 RUN rm -rf /root/.cache/pip/*
 
 RUN pip install --upgrade pip
-# Install the current stable release of the Arches application and make an Arches project.
-RUN pip install supervisor && pip install pytz --upgrade && pip install tzdata --upgrade && pip install Redis && pip install gunicorn && pip install arches && arches-admin startproject ${ARCHES_PROJECT}
+RUN pip install --force-reinstall -U setuptools
 
-# Make sure we have the environment variables in the python app?
+# Install the current stable release of the Arches application and make an Arches project.
+RUN pip install supervisor \
+    && pip install pytz --upgrade \
+    && pip install tzdata --upgrade \
+    && pip install Redis \
+    && pip install gunicorn \
+    && pip install arches
+
+# create a new Arches project
+RUN mkdir -p /new_arches_proj
+RUN arches-admin startproject ${ARCHES_PROJECT} --directory /new_arches_proj
+RUN mv /new_arches_proj ${APP_ROOT}
+
+# create the uploaded files folder
+RUN mkdir -p ${UPLOADED_FILES_FOLDER}
 
 # copy in local settings to our newly created Arches project.
 WORKDIR ${APP_ROOT}

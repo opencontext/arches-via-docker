@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
-from django.urls import include, re_path, path
+from django.urls import include, path
 
 urlpatterns = [
     # project-level urls
@@ -9,9 +9,7 @@ urlpatterns = [
 
 
 # Ensure Arches core urls are superseded by project-level urls
-urlpatterns += [
-    re_path(r"^", include("arches.urls")),
-]
+urlpatterns.append(path("", include("arches.urls")))
 
 
 # Adds URL pattern to serve media files during development

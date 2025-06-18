@@ -9,6 +9,9 @@ ARCHES_ROOT=/arches_app
 APP_ROOT=$ARCHES_ROOT/$ARCHES_PROJECT
 APP_COMP_FOLDER=$APP_ROOT/$ARCHES_PROJECT
 
+# for file uploads
+UPLOADED_FILES_FOLDER=$APP_COMP_FOLDER/uploadedfiles
+
 #Arches configs
 # NOTE: the ARCHES_NAMESPACE needs to look like a URL, ending in a '/',
 # with the same port as used by the Arches Django APP.
