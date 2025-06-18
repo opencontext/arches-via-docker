@@ -146,7 +146,10 @@ RUN pip install -e '.[dev]'
 # copy in local settings to our newly created Arches project.
 WORKDIR ${ARCHES_ROOT}
 
-RUN arches-admin startproject ${ARCHES_PROJECT}
+# create a new Arches project
+RUN mkdir -p /new_arches_proj
+RUN arches-admin startproject ${ARCHES_PROJECT} --directory /new_arches_proj
+RUN mv /new_arches_proj ${APP_ROOT}
 
 WORKDIR ${APP_ROOT}
 COPY ./arches/settings.py ${SETTINGS_PATH}
