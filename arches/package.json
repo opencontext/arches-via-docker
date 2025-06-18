@@ -1,5 +1,5 @@
 {
-    "name": "afs_slocal",
+    "name": "arches_her_local",
     "scripts": {
         "build_production": "./media/node_modules/.bin/cross-env NODE_PATH=./media/node_modules NODE_OPTIONS=--max-old-space-size=2048 NODE_ENV=production ./media/node_modules/.bin/webpack --config webpack/webpack.config.prod.js",
         "build_development": "./media/node_modules/.bin/cross-env NODE_PATH=./media/node_modules NODE_OPTIONS=--max-old-space-size=2048 ./media/node_modules/.bin/webpack --config webpack/webpack.config.dev.js",
@@ -7,7 +7,7 @@
         "start": "./media/node_modules/.bin/cross-env NODE_PATH=./media/node_modules NODE_OPTIONS=--max-old-space-size=2048 ./media/node_modules/.bin/webpack serve --config webpack/webpack.config.dev.js"
     },
     "devDependencies": {
-        "arches-dev-dependencies": "archesproject/arches-dev-dependencies#stable/7.5.1"
+        "arches-dev-dependencies": "archesproject/arches-dev-dependencies#stable/7.5.5"
     },
     "dependencies": {
         "arches": "archesproject/arches#stable/7.5.5",

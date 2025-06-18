@@ -23,60 +23,49 @@ def get_os_env_variable(var_name):
         raise ImproperlyConfigured(error_msg)
 
 
-
+ARCHES_V = '7.5.5'
 APP_NAME = get_os_env_variable('ARCHES_PROJECT')
 APP_VERSION = semantic_version.Version(major=0, minor=0, patch=0)
 APP_ROOT = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+APP_PATHNAME = "arches_her"
+
 
 WEBPACK_LOADER = {
     "DEFAULT": {
-        "STATS_FILE": os.path.join(APP_ROOT, '..', 'webpack/webpack-stats.json'),
+        "STATS_FILE": os.path.join(APP_ROOT, 'webpack/webpack-stats.json'),
     },
 }
 
 DATATYPE_LOCATIONS.append('arches_her.datatypes')
 FUNCTION_LOCATIONS.append('arches_her.functions')
+ETL_MODULE_LOCATIONS.append('arches_her.etl_modules')
 SEARCH_COMPONENT_LOCATIONS.append('arches_her.search.components')
 
-LOCALE_PATHS.insert(0, os.path.join(APP_ROOT, 'locale'))
+LOCALE_PATHS.append(os.path.join(APP_ROOT, 'locale'))
 
-FILE_TYPE_CHECKING = "lenient"
-FILE_TYPES = [
-    "bmp",
-    "gif",
-    "jpg",
-    "jpeg",
-    "json",
-    "pdf",
-    "png",
-    "psd",
-    "rtf",
-    "tif",
-    "tiff",
-    "xlsx",
-    "csv",
-    "zip",
-]
+TEMPLATES[0]["OPTIONS"]["context_processors"].append(
+    "arches_her.utils.context_processors.project_settings"
+)
+
+FILE_TYPE_CHECKING = False
+FILE_TYPES = ["bmp", "gif", "jpg", "jpeg", "pdf", "png", "psd", "rtf", "tif", "tiff", "xlsx", "csv", "zip"]
 FILENAME_GENERATOR = "arches.app.utils.storage_filename_generator.generate_filename"
 UPLOADED_FILES_DIR = "uploadedfiles"
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-v3unx9@idz8)k@x=ajfr1k_qu+xiq+sg8z_!w_agj3pg9^gqno'
+SECRET_KEY = 'z23n6ot1_fsturw_gor66k^d#tl9h8*8*_e7qb)tyoucdo-z+x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ROOT_URLCONF = f"{APP_NAME}.urls"
-ROOT_HOSTCONF = f"{APP_NAME}.hosts"
-
-DEFAULT_HOST = f"{APP_NAME}"
+ROOT_URLCONF = 'arches_her.urls'
 
 # Modify this line as needed for your project to connect to elasticsearch with a password that you generate
 ELASTICSEARCH_CONNECTION_OPTIONS = {"request_timeout": 30, "verify_certs": False, "basic_auth": ("elastic", "E1asticSearchforArche5")}
 
 # If you need to connect to Elasticsearch via an API key instead of username/password, use the syntax below:
-# ELASTICSEARCH_CONNECTION_OPTIONS = {"request_timeout": 30, "verify_certs": False, "api_key": "<ENCODED_API_KEY>"}
-# ELASTICSEARCH_CONNECTION_OPTIONS = {"request_timeout": 30, "verify_certs": False, "api_key": ("<ID>", "<API_KEY>")}
+# ELASTICSEARCH_CONNECTION_OPTIONS = {"timeout": 30, "verify_certs": False, "api_key": "<ENCODED_API_KEY>"}
+# ELASTICSEARCH_CONNECTION_OPTIONS = {"timeout": 30, "verify_certs": False, "api_key": ("<ID>", "<API_KEY>")}
 
 # Your Elasticsearch instance needs to be configured with xpack.security.enabled=true to use API keys - update elasticsearch.yml or .env file and restart.
 
@@ -87,11 +76,11 @@ ELASTICSEARCH_CONNECTION_OPTIONS = {"request_timeout": 30, "verify_certs": False
 # Or Kibana: https://www.elastic.co/guide/en/kibana/current/api-keys.html
 
 # a prefix to append to all elasticsearch indexes, note: must be lower case
-ELASTICSEARCH_PREFIX = f"{APP_NAME}"
+ELASTICSEARCH_PREFIX = 'arches_her'
 
 ELASTICSEARCH_CUSTOM_INDEXES = []
 # [{
-#     'module': 'afs_plocal.search_indexes.sample_index.SampleIndex',
+#     'module': 'arches_her.search_indexes.sample_index.SampleIndex',
 #     'name': 'my_new_custom_index', <-- follow ES index naming rules
 #     'should_update_asynchronously': False  <-- denotes if asynchronously updating the index would affect custom functionality within the project.
 # }]
@@ -115,7 +104,7 @@ DATABASES = {
         "CONN_MAX_AGE": 0,
         "ENGINE": "django.contrib.gis.db.backends.postgis",
         "HOST": "localhost",
-        "NAME": f"{APP_NAME}",
+        "NAME": "arches_her",
         "OPTIONS": {},
         "PASSWORD": "postgis",
         "PORT": "5432",
@@ -131,37 +120,68 @@ DATABASES = {
     }
 }
 
+# The maximum number of instances a user can download from search export without celery
+SEARCH_EXPORT_IMMEDIATE_DOWNLOAD_THRESHOLD = 2000
+
+# The maximum number of instances a user can download using HTML format from search export without celery
+SEARCH_EXPORT_IMMEDIATE_DOWNLOAD_THRESHOLD_HTML_FORMAT = 10
+
+# The maximum documents ElasticSearch will return in an export - **System Settings**
+SEARCH_EXPORT_LIMIT = 15000
+
 SEARCH_THUMBNAILS = False
 
-INSTALLED_APPS = (
-    "webpack_loader",
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-    "django.contrib.gis",
-    "arches",
-    "arches.app.models",
-    "arches.management",
-    "guardian",
-    "captcha",
-    "revproxy",
-    "corsheaders",
-    "oauth2_provider",
-    "django_celery_results",
-    "compressor",
-    "arches_her",
+if ARCHES_V == '7.5.5':
+    INSTALLED_APPS = (
+        "webpack_loader",
+        "django.contrib.admin",
+        "django.contrib.auth",
+        "django.contrib.contenttypes",
+        "django.contrib.sessions",
+        "django.contrib.messages",
+        "django.contrib.staticfiles",
+        "django.contrib.gis",
+        "arches",
+        "arches.app.models",
+        "arches.management",
+        "guardian",
+        "captcha",
+        "revproxy",
+        "corsheaders",
+        "oauth2_provider",
+        "django_celery_results",
+        "compressor",
+        # "silk",
+        "arches_her",
+        f"{APP_NAME}",
+    )
 
-    f"{APP_NAME}",  # Ensure the project is listed before any other arches applications
-)
+else:
+    INSTALLED_APPS = (
+        "webpack_loader",
+        "django.contrib.admin",
+        "django.contrib.auth",
+        "django.contrib.contenttypes",
+        "django.contrib.sessions",
+        "django.contrib.messages",
+        "django.contrib.staticfiles",
+        "django.contrib.gis",
+        "arches",
+        "arches.app.models",
+        "arches.management",
+        "guardian",
+        "captcha",
+        "revproxy",
+        "corsheaders",
+        "oauth2_provider",
+        "django_celery_results",
+        "django_hosts",
+        # "silk",
+        "arches_her",
+        f"{APP_NAME}",
+    )
 
-# Added for HER project
 ARCHES_APPLICATIONS = ("arches_her",)
-
-HER_ROOT = os.path.join(os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()) + '../../../')), 'arches-her', 'arches_her')
-
 
 # Placing this last ensures any templates provided by Arches Applications
 # take precedence over core arches templates in arches/app/templates.
@@ -179,46 +199,35 @@ MIDDLEWARE = [
     "oauth2_provider.middleware.OAuth2TokenMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "arches.app.utils.middleware.SetAnonymousUser",
     # "silk.middleware.SilkyMiddleware",
 ]
+if ARCHES_V == '7.5.5':
+    STATICFILES_DIRS = build_staticfiles_dirs(
+        root_dir=ROOT_DIR,
+        app_root=APP_ROOT,
+        arches_applications=ARCHES_APPLICATIONS,
+    )
 
-MIDDLEWARE.insert(  # this must resolve to first MIDDLEWARE entry
-    0,
-    "django_hosts.middleware.HostsRequestMiddleware"
-)
+    TEMPLATES = build_templates_config(
+        root_dir=ROOT_DIR,
+        debug=DEBUG,
+        app_root=APP_ROOT,
+        arches_applications=ARCHES_APPLICATIONS,
+    )
+else:
+    STATICFILES_DIRS = build_staticfiles_dirs(app_root=APP_ROOT)
 
-MIDDLEWARE.append(  # this must resolve last MIDDLEWARE entry
-    "django_hosts.middleware.HostsResponseMiddleware"
-)
-
-STATICFILES_DIRS = build_staticfiles_dirs(app_root=APP_ROOT)
-
-TEMPLATES = build_templates_config(
-    debug=DEBUG,
-    app_root=APP_ROOT,
-    context_processors=[
-        "django.contrib.auth.context_processors.auth",
-        "django.template.context_processors.debug",
-        "django.template.context_processors.i18n",
-        "django.template.context_processors.media",
-        "django.template.context_processors.static",
-        "django.template.context_processors.tz",
-        "django.template.context_processors.request",
-        "django.contrib.messages.context_processors.messages",
-        "arches.app.utils.context_processors.livereload",
-        "arches.app.utils.context_processors.map_info",
-        "arches.app.utils.context_processors.app_settings",
-        # "afrc.utils.context_processors.project_settings",
-    ],
-)
-
+    TEMPLATES = build_templates_config(
+        debug=DEBUG,
+        app_root=APP_ROOT,
+    )
 
 ALLOWED_HOSTS = []
 
 SYSTEM_SETTINGS_LOCAL_PATH = os.path.join(APP_ROOT, 'system_settings', 'System_Settings.json')
-WSGI_APPLICATION = f'{APP_NAME}.wsgi.application'
+WSGI_APPLICATION = 'arches_her.wsgi.application'
 
 # URL that handles the media served from MEDIA_ROOT, used for managing stored files.
 # It must end in a slash if set to a non-empty value.
@@ -282,7 +291,7 @@ RATE_LIMIT = "5/m"
 DATA_UPLOAD_MAX_MEMORY_SIZE = 15728640
 
 # Unique session cookie ensures that logins are treated separately for each app
-SESSION_COOKIE_NAME = f"{APP_NAME}_sessionid"
+SESSION_COOKIE_NAME = f"{APP_NAME}_{APP_VERSION}"
 
 # For more info on configuring your cache: https://docs.djangoproject.com/en/2.2/topics/cache/
 CACHES = {
@@ -292,9 +301,6 @@ CACHES = {
     'user_permission': {
         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
         'LOCATION': 'user_permission_cache',
-    },
-    "searchresults": {
-        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
     },
 }
 
@@ -310,6 +316,25 @@ DATE_IMPORT_EXPORT_FORMAT = "%Y-%m-%d" # Custom date format for dates imported f
 # ordered as seen in the resource cards or not.
 EXPORT_DATA_FIELDS_IN_CARD_ORDER = False
 
+
+# British National Grid (BNG) and Latitude/Longitude set as preferred coordinate systems.  To revert to 
+# Geographic as the preferred coordinate system, comment out the preferred coordinate system setting below
+
+PREFERRED_COORDINATE_SYSTEMS = (
+    {
+        "name": "BNG",
+        "srid": "27700",
+        "proj4": "+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +datum=OSGB36 +units=m +no_defs",
+        "default": True,
+    },
+    {"name": "LatLong", "srid": "4326", "proj4": "+proj=longlat +datum=WGS84 +no_defs", "default": False},  # Required
+)
+ANALYSIS_COORDINATE_SYSTEM_SRID=27700 # Comment out if using LatLong/WGS84
+
+# Europe/London set as the default time zone.  To revert to "America/Chicago," comment out the time zone setting below
+
+TIME_ZONE = "Europe/London"
+
 #Identify the usernames and duration (seconds) for which you want to cache the time wheel
 CACHE_BY_USER = {
     "default": 3600 * 24, #24hrs
@@ -322,9 +347,9 @@ GRAPH_MODEL_CACHE_TIMEOUT = None
 
 OAUTH_CLIENT_ID = ''  #'9JCibwrWQ4hwuGn5fu2u1oRZSs9V6gK8Vu8hpRC4'
 
-APP_TITLE = 'Arches | Heritage Data Management'
+APP_TITLE = 'Arches for Historic Environment Records'
 COPYRIGHT_TEXT = 'All Rights Reserved.'
-COPYRIGHT_YEAR = '2019'
+COPYRIGHT_YEAR = '2024'
 
 ENABLE_CAPTCHA = False
 # RECAPTCHA_PUBLIC_KEY = ''
@@ -332,6 +357,9 @@ ENABLE_CAPTCHA = False
 # RECAPTCHA_USE_SSL = False
 NOCAPTCHA = True
 # RECAPTCHA_PROXY = 'http://127.0.0.1:8000'
+if DEBUG is True:
+    SILENCED_SYSTEM_CHECKS = ["captcha.recaptcha_test_key_error"]
+
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  #<-- Only need to uncomment this for testing without an actual email server
 # EMAIL_USE_TLS = True
@@ -342,7 +370,7 @@ EMAIL_HOST_USER = "xxxx@xxx.com"
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-CELERY_BROKER_URL = "" # RabbitMQ --> "amqp://guest:guest@localhost",  Redis --> "redis://localhost:6379/0"
+CELERY_BROKER_URL = "amqp://guest:guest@localhost" # RabbitMQ --> "amqp://guest:guest@localhost",  Redis --> "redis://localhost:6379/0"
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_RESULT_BACKEND = 'django-db' # Use 'django-cache' if you want to use your cache as your backend
 CELERY_TASK_SERIALIZER = 'json'
@@ -352,8 +380,15 @@ CELERY_SEARCH_EXPORT_EXPIRES = 24 * 3600  # seconds
 CELERY_SEARCH_EXPORT_CHECK = 3600  # seconds
 
 CELERY_BEAT_SCHEDULE = {
-    "delete-expired-search-export": {"task": "arches.app.tasks.delete_file", "schedule": CELERY_SEARCH_EXPORT_CHECK,},
-    "notification": {"task": "arches.app.tasks.message", "schedule": CELERY_SEARCH_EXPORT_CHECK, "args": ("Celery Beat is Running",),},
+    "delete-expired-search-export": {
+        "task": "arches.app.tasks.delete_file",
+        "schedule": CELERY_SEARCH_EXPORT_CHECK,
+    },
+    "notification": {
+        "task": "arches.app.tasks.message",
+        "schedule": CELERY_SEARCH_EXPORT_CHECK,
+        "args": ("Celery Beat is Running",),
+    },
 }
 
 # Set to True if you want to send celery tasks to the broker without being able to detect celery.
@@ -442,57 +477,6 @@ LANGUAGES = [
 
 # override this to permenantly display/hide the language switcher
 SHOW_LANGUAGE_SWITCH = len(LANGUAGES) > 1
-
-
-COLLECTIONS_GRAPHID = "bda239c6-d376-11ef-a239-0275dc2ded29"
-
-
-
-# Added for AfS (Arches for Science) project
-FUNCTION_LOCATIONS.append("afrc.pkg.extensions.functions")
-FUNCTION_LOCATIONS.append("afrc.functions")
-
-if False:
-    TEMPLATES[0]["OPTIONS"]["context_processors"].append(
-        "afrc.utils.context_processors.project_settings"
-    )
-
-RENDERERS += [
-    {
-        "name": "xy-reader",
-        "title": "XY Data File Reader",
-        "description": "Use for all instrument outputs with x-y data",
-        "id": "e93b7b27-40d8-4141-996e-e59ff08742f3",
-        "iconclass": "fa fa-bolt",
-        "component": "views/components/cards/file-renderers/xy-reader",
-        "ext": "txt",
-        "type": "text/plain",   
-        "exclude": "",
-    },
-]
-
-XY_TEXT_FILE_FORMATS = ["txt"]
-
-X_FRAME_OPTIONS = "SAMEORIGIN"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

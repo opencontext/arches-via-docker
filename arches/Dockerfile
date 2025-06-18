@@ -98,36 +98,11 @@ RUN set -ex \
 # Do installs relating to yarn
 # ----------------------------------------------
 
-# Set environment variables
-ENV NODE_MAJOR=18
-
-# Update package lists and install necessary packages
-RUN apt-get update \
-    && apt-get install -y \
-        ca-certificates \
-        curl \
-        gnupg \
-    && mkdir -p /etc/apt/keyrings
-
-# Add nodesource GPG key
-RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
-
-# Add nodesource repository
-RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list \
-    && apt-get update
-
-# Install Node.js
-RUN apt-get install -y nodejs
-
-# Add yarn GPG key
-RUN curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | tee /usr/share/keyrings/yarnkey.gpg >/dev/null
-
-# Add yarn repository
-RUN echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | tee /etc/apt/sources.list.d/yarn.list \
-    && apt-get update
 
 # Install yarn
-RUN apt-get install -y yarn
+# Install Node.js
+RUN apt-get install -y nodejs \
+    && npm install -g yarn
 
 # Clean up
 RUN apt-get clean \
@@ -153,25 +128,27 @@ RUN pip install supervisor==4.2.1 \
     && pip install pyasynchat \
     && pip install pyasyncore \
     && pip install arches==7.5.5 \
-    && arches-admin startproject ${ARCHES_PROJECT}
+    && pip install python-docx==1.1.0
 
 # Install the HER software and the working v7 branch
 RUN mkdir -p ${HER_REPO_PATH}
+
+WORKDIR ${ARCHES_ROOT}
 RUN git clone https://github.com/archesproject/arches-her.git ${HER_REPO_PATH}
 WORKDIR ${HER_REPO_PATH}
-RUN echo "Use the arches-her dev/1.1.x branch";
+RUN echo "Use the arches-her dev/1.1.x";
 RUN echo "git checkout dev/1.1.x";
 RUN git checkout dev/1.1.x;
+RUN pip install -e '.[dev]'
 
 
 
 # copy in local settings to our newly created Arches project.
+WORKDIR ${ARCHES_ROOT}
+
+RUN arches-admin startproject ${ARCHES_PROJECT}
+
 WORKDIR ${APP_ROOT}
-
-# Now copy the cloned arches-her files into our app.
-RUN yes | cp -rf ${HER_REPO_PATH}/arches_her/ ${APP_ROOT}
-RUN yes | cp -rf ${HER_REPO_PATH}/arches_her/* ${APP_COMP_FOLDER}
-
 COPY ./arches/settings.py ${SETTINGS_PATH}
 RUN sed -i 's/\r$//g' ${SETTINGS_PATH}
 COPY ./arches/settings_local.py ${SETTINGS_LOCAL_PATH}
@@ -191,10 +168,23 @@ COPY ./arches/package.json ${PACKAGE_PATH}
 # copy the celery supervisor
 COPY /arches/conf.d/ ${APP_ROOT}/conf.d/
 RUN chmod -R 700 ${APP_ROOT}/conf.d/
-COPY /arches/arches_local_her_v7-supervisor.conf ${APP_ROOT}/arches_local_her_v7-supervisor.conf
-RUN chmod -R 700 ${APP_ROOT}/arches_local_her_v7-supervisor.conf
+COPY /arches/arches_her_local-supervisor.conf ${APP_ROOT}/arches_her_local-supervisor.conf
+RUN chmod -R 700 ${APP_ROOT}/arches_her_local-supervisor.conf
 RUN mkdir -p /var/log/supervisor
 RUN mkdir -p /var/log/celery
+
+
+# Set some settings to make NPM less fussy
+# RUN npm config set cafile null
+# RUN npm config set strict-ssl false
+
+# remove any node_modules that might have been installed by the arches install
+# RUN rm -rf ${APP_ROOT}/node_modules
+# RUN rm -f ${APP_ROOT}/package-lock.json
+# Now do the NPM install
+# RUN npm install
+
+
 
 # Make sure the entry point is available and lacks weird characters
 # that don't work in a Linux OS
@@ -202,6 +192,11 @@ COPY /arches/entrypoint.sh ${APP_ROOT}/entrypoint.sh
 RUN chmod -R 700 ${APP_ROOT}/entrypoint.sh &&\
   dos2unix ${APP_ROOT}/entrypoint.sh
 
+WORKDIR ${APP_ROOT}
+RUN mkdir -p ${APP_COMP_FOLDER}/media/build
+
+WORKDIR ${APP_COMP_FOLDER}
+RUN yarn install
 
 # Set default workdir
 WORKDIR ${APP_ROOT}

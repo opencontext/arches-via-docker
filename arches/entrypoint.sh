@@ -71,7 +71,6 @@ init_arches() {
 		cd ${APP_FOLDER}
 		echo "Sleep for a 45 seconds because elastic search seems to need the wait (a total hack)..."
 		sleep 45s;
-		arches-project create ${ARCHES_PROJECT}
 		run_setup_db
 		setup_couchdb
 
@@ -91,10 +90,21 @@ init_arches() {
 			echo "Database ${PGDBNAME} does not exists yet."
 			run_setup_db
 			run_elastic_safe_migrations
+			run_her_package
 			setup_couchdb
 		fi
 	fi
 }
+
+
+run_her_package() {
+	echo ""
+	echo "----- RUNNING PACKAGE LOAD FOR HER -----"
+	echo ""
+	cd ${APP_FOLDER}
+	python manage.py packages -o load_package -a arches_her -db -y
+}
+
 
 # Setup Couchdb
 setup_couchdb() {
@@ -222,6 +232,30 @@ run_collect_static_nocheck() {
 	echo "---------------------------------------------------------------"
 }
 
+
+run_setup_arches_setup_webpack() {
+	if [[ ! -d ${STATIC_JS} ]] || [[ ! "$(ls ${STATIC_JS})" ]]; then
+		cd ${APP_FOLDER}
+		echo "Starting Django development server" 
+		python manage.py runserver 0.0.0.0:8000 &
+		echo "Running npm build and collectstatic" 
+		npm i typescript@5.6.3 && npm i && npm run build_development && python manage.py collectstatic --noinput
+	else
+		echo "Webpack and Collectstatic for setup already completed.";
+	fi
+
+	RUNSERVER_PID=$(pgrep -f "manage.py runserver") 
+	if [ -n "$RUNSERVER_PID" ]; then 
+		echo "Killing manage.py runserver process with PID $RUNSERVER_PID" 
+		kill -9 $RUNSERVER_PID
+		echo "Process $RUNSERVER_PID killed" 
+	else 
+		echo "No manage.py runserver process found"
+	fi
+	
+}
+
+
 run_build_production() {
 	echo ""
 	echo "----- RUNNING BUILD PRODUCTION -----"
@@ -338,6 +372,7 @@ run_arches() {
 	init_arches
 	run_elastic_safe_migrations
 	run_createcachetable
+	# run_setup_arches_setup_webpack
 	run_django_server
 }
 
@@ -377,6 +412,9 @@ do
 		run_livereload)
 			run_livereload_server
 		;;
+		run_her_package)
+			run_her_package
+		;;
 		run_collect_static)
 			run_collect_static
 		;;
@@ -385,6 +423,9 @@ do
 		;;
 		run_list_static)
 			run_list_static
+		;;
+		run_setup_arches_setup_webpack)
+			run_setup_arches_setup_webpack
 		;;
 		run_setup_webpack)
 			run_setup_webpack
