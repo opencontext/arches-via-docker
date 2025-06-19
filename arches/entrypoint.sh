@@ -2,6 +2,7 @@
 
 # APP and YARN folder locations
 APP_FOLDER=${APP_ROOT}
+DEMO_PKG_DIR=${DEMO_PKG_DIR}
 APP_COMP_FOLDER=${APP_COMP_FOLDER}
 GUNICORN_CONFIG_PATH=${APP_COMP_FOLDER}/media/node_modules/arches/docker/gunicorn_config.py
 STATIC_ROOT=/static_root
@@ -73,6 +74,7 @@ init_arches() {
 		run_elastic_safe_migrations
 		setup_couchdb
 		run_afs_package
+		run_afs_demo_package
 	fi
 }
 
@@ -108,7 +110,7 @@ start_celery_supervisor() {
 	else
 		echo "The celery supervisor has yet to start, so we'll start it.."
 		cd ${APP_FOLDER}
-		wait-for-it arches_redis:6379 -t 120 && supervisord -c afs_plocal-supervisor.conf
+		wait-for-it arches_redis:6379 -t 120 && supervisord -c afs_demo-supervisor.conf
 	fi
 }
 
@@ -169,7 +171,15 @@ run_afs_package() {
 	echo "----- RUNNING PACKAGE LOAD FOR AFS -----"
 	echo ""
 	cd ${APP_FOLDER}
-	python3 manage.py packages -o load_package -a arches_for_science -dev -y
+	python manage.py packages -o load_package -a arches_for_science -dev -y
+}
+
+run_afs_demo_package() {
+	echo ""
+	echo "----- RUNNING PACKAGE LOAD FOR AFS DEMO -----"
+	echo ""
+	cd ${APP_FOLDER}
+	python manage.py packages -o load_package -s ${DEMO_PKG_DIR} -y
 }
 
 
@@ -410,6 +420,10 @@ do
 		run_afs_package)
 			wait_for_db
 			run_afs_package
+		;;
+		run_afs_demo_package)
+			wait_for_db
+			run_afs_demo_package
 		;;
 		help|-h)
 			display_help

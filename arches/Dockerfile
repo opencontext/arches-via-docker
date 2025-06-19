@@ -43,6 +43,7 @@ ARG ARCHES_PROJECT
 ARG APP_ROOT
 ARG APP_COMP_FOLDER
 ARG UPLOADED_FILES_FOLDER
+ARG DEMO_PKG_DIR
 
 # settings_local.py provides the DB credentials, etc. to the Arches project.
 ENV SETTINGS_PATH=${APP_COMP_FOLDER}/settings.py
@@ -172,6 +173,27 @@ WORKDIR ${ARCHES_ROOT}
 RUN mkdir -p ${UPLOADED_FILES_FOLDER}
 
 
+# Clone the Arches AFS demo pkg
+WORKDIR ${ARCHES_ROOT}
+ENV AFS_DEMO_PKG_URL='https://github.com/archesproject/afs-demo-pkg.git'
+ENV AFS_DEMO_PKG_BRANCH='main'
+RUN git clone ${AFS_DEMO_PKG_URL};
+WORKDIR ${DEMO_PKG_DIR}
+RUN echo "AFS demo pkg git checkout ${AFS_DEMO_PKG_BRANCH}";
+RUN git checkout ${AFS_DEMO_PKG_BRANCH};
+
+
+
+# Clone the Arches project into the arches root directory
+WORKDIR ${ARCHES_ROOT}
+# ENV AFS_DEMO_PROJ_URL='https://github.com/archesproject/afs-demo.git'
+# ENV AFS_DEMO_PROJ_BRANCH='main'
+# RUN git clone ${AFS_DEMO_PROJ_URL};
+# RUN echo "AFS demo proj git checkout ${AFS_DEMO_PROJ_BRANCH}";
+# RUN git -C ${ARCHES_ROOT}/afs-demo checkout ${AFS_DEMO_PROJ_BRANCH};
+# RUN mv ${ARCHES_ROOT}/afs-demo/afs-demo ${APP_ROOT}
+
+
 # copy in settings with AFS special stuff to our newly created Arches project.
 WORKDIR ${APP_ROOT}
 # This is a hack to get settings_utils.py into the correct spot
@@ -194,7 +216,7 @@ COPY ./arches/package.json ${PACKAGE_PATH_USE}
 
 # copy the celery supervisor
 COPY /arches/conf.d/ ${APP_ROOT}/conf.d/
-COPY /arches/afs_plocal-supervisor.conf ${APP_ROOT}/${ARCHES_PROJECT}-supervisor.conf
+COPY /arches/${ARCHES_PROJECT}-supervisor.conf ${APP_ROOT}/${ARCHES_PROJECT}-supervisor.conf
 RUN chmod -R 700 ${APP_ROOT}/${ARCHES_PROJECT}-supervisor.conf
 RUN mkdir -p /var/log/supervisor
 RUN mkdir -p /var/log/celery

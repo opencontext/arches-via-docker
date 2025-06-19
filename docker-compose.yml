@@ -97,6 +97,7 @@ services:
         AFS_REPO_DIR: ${AFS_REPO_DIR}
         APP_COMP_FOLDER: ${APP_COMP_FOLDER}
         UPLOADED_FILES_FOLDER: ${UPLOADED_FILES_FOLDER}
+        DEMO_PKG_DIR: ${DEMO_PKG_DIR}
     environment:
       - DEBUG="${DJANGO_DEBUG}"
       - DJANGO_DEBUG=${DJANGO_DEBUG}
