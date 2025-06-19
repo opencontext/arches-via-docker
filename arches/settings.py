@@ -27,7 +27,6 @@ ARCHES_V = '7.5.5'
 APP_NAME = get_os_env_variable('ARCHES_PROJECT')
 APP_VERSION = semantic_version.Version(major=0, minor=0, patch=0)
 APP_ROOT = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-# APP_PATHNAME = "arches_her"
 
 
 WEBPACK_LOADER = {
@@ -61,6 +60,8 @@ DEBUG = True
 ROOT_URLCONF = f'{APP_NAME}.urls'
 ROOT_HOSTCONF = f"{APP_NAME}.hosts"
 
+WEBPACK_DEVELOPMENT_SERVER_PORT = 9000
+PUBLIC_SERVER_ADDRESS = "http://127.0.0.1:8000"
 
 # Modify this line as needed for your project to connect to elasticsearch with a password that you generate
 ELASTICSEARCH_CONNECTION_OPTIONS = {"request_timeout": 30, "verify_certs": False, "basic_auth": ("elastic", "E1asticSearchforArche5")}
@@ -504,3 +505,13 @@ except ImportError as e:
         from settings_local import *
     except ImportError as e:
         pass
+
+# returns an output that can be read by NODEJS
+if __name__ == "__main__":
+    transmit_webpack_django_config(
+        root_dir=ROOT_DIR,
+        app_root=APP_ROOT,
+        public_server_address=PUBLIC_SERVER_ADDRESS,
+        static_url=STATIC_URL,
+        webpack_development_server_port=WEBPACK_DEVELOPMENT_SERVER_PORT,
+    )

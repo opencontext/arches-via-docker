@@ -141,15 +141,9 @@ RUN echo "git checkout dev/1.1.x";
 RUN git checkout dev/1.1.x;
 RUN pip install -e '.[dev]'
 
-
-
-# copy in local settings to our newly created Arches project.
-WORKDIR ${ARCHES_ROOT}
-
 # create a new Arches project
-RUN mkdir -p /new_arches_proj
-RUN arches-admin startproject ${ARCHES_PROJECT} --directory /new_arches_proj
-RUN mv /new_arches_proj ${APP_ROOT}
+WORKDIR ${ARCHES_ROOT}
+RUN arches-admin startproject ${ARCHES_PROJECT}
 
 WORKDIR ${APP_ROOT}
 COPY ./arches/settings.py ${SETTINGS_PATH}
@@ -220,6 +214,7 @@ ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
 RUN npm install -g yarn && apt install wait-for-it
+RUN yarn install
 
 # Set default workdir
 WORKDIR ${APP_ROOT}
