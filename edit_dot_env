@@ -20,7 +20,7 @@ DEMO_PKG_DIR=$ARCHES_ROOT/afs-demo-pkg
 
 
 # AfS Cantaloupe
-UPLOADED_FILES_FOLDER=$APP_COMP_FOLDER/uploadedfiles
+UPLOADED_FILES_FOLDER=/arches_data/uploadedfiles
 
 # Arches configs
 # NOTE: the ARCHES_NAMESPACE needs to look like a URL, ending in a '/',
