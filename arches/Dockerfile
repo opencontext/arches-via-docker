@@ -176,7 +176,7 @@ RUN mkdir -p ${UPLOADED_FILES_FOLDER}
 # Clone the Arches AFS demo pkg
 WORKDIR ${ARCHES_ROOT}
 ENV AFS_DEMO_PKG_URL='https://github.com/archesproject/afs-demo-pkg.git'
-ENV AFS_DEMO_PKG_BRANCH='main'
+ENV AFS_DEMO_PKG_BRANCH='sherds'
 RUN git clone ${AFS_DEMO_PKG_URL};
 WORKDIR ${DEMO_PKG_DIR}
 RUN echo "AFS demo pkg git checkout ${AFS_DEMO_PKG_BRANCH}";
