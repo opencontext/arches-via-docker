@@ -1,5 +1,5 @@
 # arches-via-docker
-Deployment of Arches (archesproject.org) via Docker. We initially developed this repo to simplify and streamline deployment of Arches for use in archaeology and related instruction.
+Deployment of Arches (archesproject.org) via Docker. We initially developed this repo to simplify and streamline deployment of Arches for use in archaeology and related instruction. This specific branch is used for testing Arches-HER (https://www.archesproject.org/arches-for-hers/).
 
 
 
@@ -33,16 +33,11 @@ The following lists some information about the contents of this repo and how the
 2. You have cloned this repository, and if deployting to a localhost only you use the `local` branch:
    ```bash
    git clone https://github.com/opencontext/arches-via-docker.git
-   git checkout origin/local
+   git checkout origin/local-her-v7
    ```
 
 ### Note:
-This approach will setup the most current stable version of Arches (now v7.4.2) suitable for running on a localhost for testing purposes. If you want to deploy Arches version 6 (specifically stable version 6.2.4), please switch to the `v6` branch of this repo, with:
-   ```bash
-   git checkout origin/v6
-   ```
-
-If you want to deploy the latest stable version of Arches to a public (or organizational) Web server, use the `main` branch:
+This will setup the most current release of Arches-HER (which uses Arches 7.5.5) for running on a localhost for testing purposes. If you want to deploy other versions of Arches and / or other Arches applications, please switch branches. For example, if you want to deploy the latest stable version of Arches to a public (or organizational) Web server, use the `main` branch:
    ```bash
    git checkout origin/main
    ```
@@ -94,7 +89,7 @@ docker compose down
 Currently this will setup an "empty" Arches instance. You'll need to load it with your own data by loading a package or some other approach. Once you deploy Arches, you can use normal Arches management commands as so:
 
 ```bash
-docker exec -it arches python3 manage.py [Arches management commands and arguments here]
+docker exec -it arches python manage.py [Arches management commands and arguments here]
 ```
 
 
