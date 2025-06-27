@@ -35,10 +35,13 @@ WEBPACK_LOADER = {
 
 DATATYPE_LOCATIONS.append(f'{APP_NAME}.datatypes')
 FUNCTION_LOCATIONS.append(f'{APP_NAME}.functions')
+FUNCTION_LOCATIONS.append("arches_for_science.functions")
 ETL_MODULE_LOCATIONS.append(f'{APP_NAME}.etl_modules')
 SEARCH_COMPONENT_LOCATIONS.append(f'{APP_NAME}.search_components')
 
 LOCALE_PATHS.insert(0, os.path.join(APP_ROOT, 'locale'))
+
+SAVED_SEARCHES = None
 
 FILE_TYPE_CHECKING = "lenient"
 FILE_TYPES = [

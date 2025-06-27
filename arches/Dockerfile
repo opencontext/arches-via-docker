@@ -173,10 +173,25 @@ WORKDIR ${ARCHES_ROOT}
 RUN mkdir -p ${UPLOADED_FILES_FOLDER}
 
 
+WORKDIR ${APP_ROOT}
+# Set some settings to make NPM less fussy
+RUN npm config set cafile null
+RUN npm config set strict-ssl false
+
+# remove any node_modules that might have been installed by the arches install
+RUN rm -rf ${APP_ROOT}/node_modules
+RUN rm -f ${APP_ROOT}/package-lock.json
+# Now do the NPM install
+RUN npm install
+
+
+
+
 # Clone the Arches AFS demo pkg
 WORKDIR ${ARCHES_ROOT}
 ENV AFS_DEMO_PKG_URL='https://github.com/archesproject/afs-demo-pkg.git'
-ENV AFS_DEMO_PKG_BRANCH='sherds'
+ENV AFS_DEMO_PKG_BRANCH='added_naa'
+# ENV AFS_DEMO_PKG_BRANCH='main'
 RUN git clone ${AFS_DEMO_PKG_URL};
 WORKDIR ${DEMO_PKG_DIR}
 RUN echo "AFS demo pkg git checkout ${AFS_DEMO_PKG_BRANCH}";
@@ -221,22 +236,17 @@ RUN chmod -R 700 ${APP_ROOT}/${ARCHES_PROJECT}-supervisor.conf
 RUN mkdir -p /var/log/supervisor
 RUN mkdir -p /var/log/celery
 
-
-# Set some settings to make NPM less fussy
-RUN npm config set cafile null
-RUN npm config set strict-ssl false
-
-# remove any node_modules that might have been installed by the arches install
-RUN rm -rf ${APP_ROOT}/node_modules
-RUN rm -f ${APP_ROOT}/package-lock.json
-# Now do the NPM install
-RUN npm install
-
 # Make sure the entry point is available and lacks weird characters
 # that don't work in a Linux OS
 COPY /arches/entrypoint.sh ${APP_ROOT}/entrypoint.sh
 RUN chmod -R 700 ${APP_ROOT}/entrypoint.sh &&\
   dos2unix ${APP_ROOT}/entrypoint.sh
+
+# Added to fix concept id issues
+WORKDIR ${APP_ROOT}
+# RUN python manage.py migrate arches_for_science 0007_update_observation_types 
+# RUN python manage.py migrate arches_for_science 
+
 
 # A major security issue, but this is meant for a local deployment
 WORKDIR ${APP_ROOT}

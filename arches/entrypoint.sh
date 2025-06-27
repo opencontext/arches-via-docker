@@ -179,6 +179,8 @@ run_afs_demo_package() {
 	echo "----- RUNNING PACKAGE LOAD FOR AFS DEMO -----"
 	echo ""
 	cd ${APP_FOLDER}
+	python manage.py migrate arches_for_science 0007_update_observation_types
+	python manage.py migrate arches_for_science
 	python manage.py packages -o load_package -s ${DEMO_PKG_DIR} -y
 }
 
