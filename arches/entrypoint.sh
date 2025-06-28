@@ -181,7 +181,20 @@ run_afs_demo_package() {
 	cd ${APP_FOLDER}
 	python manage.py migrate arches_for_science 0007_update_observation_types
 	python manage.py migrate arches_for_science
-	python manage.py packages -o load_package -s ${DEMO_PKG_DIR} -y
+	# python manage.py packages -o import_business_data -ow append -s ${DEMO_PKG_DIR} -y
+	python manage.py packages -o import_business_data -ow append -s ${DEMO_PKG_DIR}/business_data/Collection_or_Set.json -y
+	python manage.py packages -o import_business_data -ow append -s ${DEMO_PKG_DIR}/business_data/Digital_Resources.json -y
+	python manage.py packages -o import_business_data -ow append -s ${DEMO_PKG_DIR}/business_data/Group.json -y
+	python manage.py packages -o import_business_data -ow append -s ${DEMO_PKG_DIR}/business_data/Instrument.json -y
+	python manage.py packages -o import_business_data -ow append -s ${DEMO_PKG_DIR}/business_data/Modification.json -y
+	python manage.py packages -o import_business_data -ow append -s ${DEMO_PKG_DIR}/business_data/Observation.json -y
+	python manage.py packages -o import_business_data -ow append -s ${DEMO_PKG_DIR}/business_data/Person.json -y
+	python manage.py packages -o import_business_data -ow append -s ${DEMO_PKG_DIR}/business_data/Physical_Thing.json -y
+	python manage.py packages -o import_business_data -ow append -s ${DEMO_PKG_DIR}/business_data/Place.json -y
+	python manage.py packages -o import_business_data -ow append -s ${DEMO_PKG_DIR}/business_data/Project.json -y
+	python manage.py packages -o import_business_data -ow append -s ${DEMO_PKG_DIR}/business_data/Sampling_Activity.json -y
+	python manage.py packages -o import_business_data -ow append -s ${DEMO_PKG_DIR}/business_data/Textual_Work.json -y
+
 }
 
 
