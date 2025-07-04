@@ -120,6 +120,8 @@ setup_couchdb() {
 install_yarn_components() {
 	echo "Check to see if Yarn modules exist..."
 	if [[ ! -d ${YARN_MODULES_FOLDER} ]] || [[ ! "$(ls ${YARN_MODULES_FOLDER})" ]]; then
+		
+		cp -r  /arches_app/arches_her/arches_her/templates/* ${APP_COMP_FOLDER}/templates/
 		echo "Yarn modules do not exist, installing..."
 		cd ${APP_COMP_FOLDER}
 		yarn build_development
