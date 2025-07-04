@@ -197,7 +197,7 @@ RUN mkdir -p ${APP_COMP_FOLDER}/media
 RUN chmod -R 744 ${APP_COMP_FOLDER}/media
 
 # install nvm
-ENV NODE_VERSION 16.20.1
+ENV NODE_VERSION 20.19.3
 ENV NVM_DIR /usr/local/nvm
 RUN mkdir $NVM_DIR
 # https://github.com/nvm-sh/nvm#install-script
