@@ -196,6 +196,12 @@ WORKDIR ${APP_ROOT}
 RUN mkdir -p ${APP_COMP_FOLDER}/media
 RUN chmod -R 744 ${APP_COMP_FOLDER}/media
 
+
+# Copy template files from the package
+RUN echo "Copy HER templates and media to project";
+RUN	cp -rn  ${HER_REPO_PATH}/arches_her/templates/* ${APP_COMP_FOLDER}/templates/
+RUN	cp -rn  ${HER_REPO_PATH}/arches_her/media/* ${APP_COMP_FOLDER}/media/
+
 # install nvm
 ENV NODE_VERSION 20.19.3
 ENV NVM_DIR /usr/local/nvm

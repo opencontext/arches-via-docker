@@ -121,7 +121,9 @@ install_yarn_components() {
 	echo "Check to see if Yarn modules exist..."
 	if [[ ! -d ${YARN_MODULES_FOLDER} ]] || [[ ! "$(ls ${YARN_MODULES_FOLDER})" ]]; then
 		
-		cp -r  /arches_app/arches_her/arches_her/templates/* ${APP_COMP_FOLDER}/templates/
+		cp -rn  /arches_app/arches_her/arches_her/templates/* ${APP_COMP_FOLDER}/templates/
+		cp -rn  /arches_app/arches_her/media/* ${APP_COMP_FOLDER}/media/
+
 		echo "Yarn modules do not exist, installing..."
 		cd ${APP_COMP_FOLDER}
 		yarn build_development
@@ -236,7 +238,12 @@ run_collect_static_nocheck() {
 
 
 run_setup_arches_setup_webpack() {
+	
 	if [[ ! -d ${STATIC_JS} ]] || [[ ! "$(ls ${STATIC_JS})" ]]; then
+	    echo "Copy HER templates to project";
+	    cp -rn /arches_app/arches_her/arches_her/templates/* ${APP_COMP_FOLDER}/templates/
+		cp -rn  /arches_app/arches_her/media/* ${APP_COMP_FOLDER}/media/
+
 		cd ${APP_FOLDER}
 		echo "Starting Django development server" 
 		python manage.py runserver 0.0.0.0:8000 &
@@ -280,15 +287,28 @@ run_setup_webpack() {
 	# We're going to first check to see if we have anythin in the static_root/js folder.
 	# If we do, then we've run this already and can skip webpack and collect static.
 	if [[ ! -d ${STATIC_JS} ]] || [[ ! "$(ls ${STATIC_JS})" ]]; then
+
+		echo "Copy HER templates to project";
+	    cp -rn  /arches_app/arches_her/arches_her/templates/* ${APP_COMP_FOLDER}/templates/
+		cp -rn  /arches_app/arches_her/media/* ${APP_COMP_FOLDER}/media/
+
 		echo "We (apparently) have yet to run webpack and collectstatic. Do it now!";
 
 		if [[ ${BUILD_PRODUCTION} == 'True' ]]; then
 			# NOTE: Only do this if you have more than 8GB of system RAM. This will likely error out
 			# otherwise.
+			echo "Copy HER templates to project";
+	    	cp -rn  /arches_app/arches_her/arches_her/templates/* ${APP_COMP_FOLDER}/templates/
+			cp -rn  /arches_app/arches_her/media/* ${APP_COMP_FOLDER}/media/
+
 			echo "Running Webpack, hopefully the build_production thing will work!"
 			cd ${APP_FOLDER}
 			exec sh -c "yarn install && python3 manage.py build_production"
 		else
+			echo "Copy HER templates to project";
+	    	cp -rn  /arches_app/arches_her/arches_her/templates/* ${APP_COMP_FOLDER}/templates/
+			cp -rn  /arches_app/arches_her/media/* ${APP_COMP_FOLDER}/media/
+
 			cd ${APP_COMP_FOLDER}
 			echo "Running Webpack to do the yarn build_development thing."
 			exec sh -c "yarn install && yarn add jquery-validation && yarn build_development && python3 $APP_FOLDER/manage.py collectstatic --noinput"
@@ -304,13 +324,26 @@ run_webpack() {
 	echo ""
 	echo "----- *** RUNNING WEBPACK SERVER *** -----"
 	echo ""
+	
+	echo "Copy HER templates to project";
+	cp -rn  /arches_app/arches_her/arches_her/templates/* ${APP_COMP_FOLDER}/templates/
+	cp -rn  /arches_app/arches_her/media/* ${APP_COMP_FOLDER}/media/
+	
 	if [[ ${BUILD_PRODUCTION} == 'True' ]]; then
 		# NOTE: Only do this if you have more than 8GB of system RAM. This will likely error out
 		# otherwise.
+		echo "Copy HER templates to project";
+	    cp -rn  /arches_app/arches_her/arches_her/templates/* ${APP_COMP_FOLDER}/templates/
+		cp -rn  /arches_app/arches_her/media/* ${APP_COMP_FOLDER}/media/
+
 		echo "Running Webpack, hopefully the build_production thing will work!"
 		cd ${APP_FOLDER}
 		exec sh -c "yarn install && python3 manage.py build_production"
 	else
+		echo "Copy HER templates to project";
+	    cp -rn  /arches_app/arches_her/arches_her/templates/* ${APP_COMP_FOLDER}/templates/
+		cp -rn  /arches_app/arches_her/media/* ${APP_COMP_FOLDER}/media/
+
 		cd ${APP_COMP_FOLDER}
 		echo "Running Webpack to do the yarn build_development thing."
 		exec sh -c "yarn install && yarn build_development && python3 $APP_FOLDER/manage.py collectstatic --noinput"
