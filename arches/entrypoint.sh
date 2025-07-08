@@ -122,7 +122,7 @@ install_yarn_components() {
 	if [[ ! -d ${YARN_MODULES_FOLDER} ]] || [[ ! "$(ls ${YARN_MODULES_FOLDER})" ]]; then
 		
 		cp -rn  /arches_app/arches_her/arches_her/templates/* ${APP_COMP_FOLDER}/templates/
-		cp -rn  /arches_app/arches_her/media/* ${APP_COMP_FOLDER}/media/
+		cp -rn  /arches_app/arches_her/arches_her/media/* ${APP_COMP_FOLDER}/media/
 
 		echo "Yarn modules do not exist, installing..."
 		cd ${APP_COMP_FOLDER}
@@ -242,7 +242,7 @@ run_setup_arches_setup_webpack() {
 	if [[ ! -d ${STATIC_JS} ]] || [[ ! "$(ls ${STATIC_JS})" ]]; then
 	    echo "Copy HER templates to project";
 	    cp -rn /arches_app/arches_her/arches_her/templates/* ${APP_COMP_FOLDER}/templates/
-		cp -rn  /arches_app/arches_her/media/* ${APP_COMP_FOLDER}/media/
+		cp -rn  /arches_app/arches_her/arches_her/media/* ${APP_COMP_FOLDER}/media/
 
 		cd ${APP_FOLDER}
 		echo "Starting Django development server" 
@@ -290,7 +290,7 @@ run_setup_webpack() {
 
 		echo "Copy HER templates to project";
 	    cp -rn  /arches_app/arches_her/arches_her/templates/* ${APP_COMP_FOLDER}/templates/
-		cp -rn  /arches_app/arches_her/media/* ${APP_COMP_FOLDER}/media/
+		cp -rn  /arches_app/arches_her/arches_her/media/* ${APP_COMP_FOLDER}/media/
 
 		echo "We (apparently) have yet to run webpack and collectstatic. Do it now!";
 
@@ -299,7 +299,7 @@ run_setup_webpack() {
 			# otherwise.
 			echo "Copy HER templates to project";
 	    	cp -rn  /arches_app/arches_her/arches_her/templates/* ${APP_COMP_FOLDER}/templates/
-			cp -rn  /arches_app/arches_her/media/* ${APP_COMP_FOLDER}/media/
+			cp -rn  /arches_app/arches_her/arches_her/media/* ${APP_COMP_FOLDER}/media/
 
 			echo "Running Webpack, hopefully the build_production thing will work!"
 			cd ${APP_FOLDER}
@@ -307,7 +307,7 @@ run_setup_webpack() {
 		else
 			echo "Copy HER templates to project";
 	    	cp -rn  /arches_app/arches_her/arches_her/templates/* ${APP_COMP_FOLDER}/templates/
-			cp -rn  /arches_app/arches_her/media/* ${APP_COMP_FOLDER}/media/
+			cp -rn  /arches_app/arches_her/arches_her/media/* ${APP_COMP_FOLDER}/media/
 
 			cd ${APP_COMP_FOLDER}
 			echo "Running Webpack to do the yarn build_development thing."
@@ -327,14 +327,14 @@ run_webpack() {
 	
 	echo "Copy HER templates to project";
 	cp -rn  /arches_app/arches_her/arches_her/templates/* ${APP_COMP_FOLDER}/templates/
-	cp -rn  /arches_app/arches_her/media/* ${APP_COMP_FOLDER}/media/
+	cp -rn  /arches_app/arches_her/arches_her/media/* ${APP_COMP_FOLDER}/media/
 	
 	if [[ ${BUILD_PRODUCTION} == 'True' ]]; then
 		# NOTE: Only do this if you have more than 8GB of system RAM. This will likely error out
 		# otherwise.
 		echo "Copy HER templates to project";
 	    cp -rn  /arches_app/arches_her/arches_her/templates/* ${APP_COMP_FOLDER}/templates/
-		cp -rn  /arches_app/arches_her/media/* ${APP_COMP_FOLDER}/media/
+		cp -rn  /arches_app/arches_her/arches_her/media/* ${APP_COMP_FOLDER}/media/
 
 		echo "Running Webpack, hopefully the build_production thing will work!"
 		cd ${APP_FOLDER}
@@ -342,7 +342,7 @@ run_webpack() {
 	else
 		echo "Copy HER templates to project";
 	    cp -rn  /arches_app/arches_her/arches_her/templates/* ${APP_COMP_FOLDER}/templates/
-		cp -rn  /arches_app/arches_her/media/* ${APP_COMP_FOLDER}/media/
+		cp -rn  /arches_app/arches_her/arches_her/media/* ${APP_COMP_FOLDER}/media/
 
 		cd ${APP_COMP_FOLDER}
 		echo "Running Webpack to do the yarn build_development thing."
