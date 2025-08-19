@@ -3,35 +3,52 @@ FROM ubuntu:22.04
 
 USER root
 
-# Do the apt installation also install git
-RUN apt-get update && && apt-get install -y --no-install-recommends \
+# Set environment variables to make installations non-interactive
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=UTC
+
+# Update package lists and install basic packages first
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    wget \
+    gnupg \
+    lsb-release \
+    software-properties-common \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Add Python 3.12 repository and install Python packages
+RUN add-apt-repository ppa:deadsnakes/ppa \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
     python3.12 \
     python3.12-dev \
     python3.12-venv \
     python3-pip \
-    make software-properties-common \
-    curl \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install system dependencies
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+    make \
     gcc \
     build-essential \
     mime-support \
     libgdal-dev \
     dos2unix \
-    nano
-RUN apt-get update --fix-missing && apt-get install -y git
+    nano \
+    git \
+    postgresql-client-14 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-
-# Install the postgres client
-RUN apt-get update
-RUN apt-get install -y postgresql-client-14
-
-
-FROM python:3.12
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN python -m venv venv \
-    && . venv/bin/activate \
+RUN python3.12 -m venv /opt/venv \
+    && . /opt/venv/bin/activate \
     && pip install --upgrade pip
 # Make sure we use the virtualenv:
 ENV PATH="/opt/venv/bin:$PATH"
@@ -59,9 +76,6 @@ ENV PYTHONDONTWRITEBYTECODE 1
 # Setup needed directories
 RUN mkdir ${ARCHES_ROOT} && mkdir /var/log/supervisor && mkdir /var/log/celery
 
-# Get ready to do some code installation
-RUN apt-get update && apt-get install -y make software-properties-common
-
 # Install packages required to run Arches
 # Note that the ubuntu/debian package for libgdal1-dev pulls in libgdal1i, which is built
 # with everything enabled, and so, it has a huge amount of dependancies (everything that GDAL
@@ -82,22 +96,20 @@ RUN set -ex \
         python3-dev \
         postgresql-client-14 \
         dos2unix \
+        wait-for-it \
+        nano \
     " \
-    && apt-get install -y --no-install-recommends curl \
     && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
-    && curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
-    && add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -sc)-pgdg main" \
+    && curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /usr/share/keyrings/postgresql-keyring.gpg \
+    && echo "deb [signed-by=/usr/share/keyrings/postgresql-keyring.gpg] http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" | tee /etc/apt/sources.list.d/postgresql.list \
     && apt-get update -y \
-    && apt-get install -y "wait-for-it" \
-    && apt-get install -y nano \
-    && apt-get install -y --no-install-recommends $RUN_DEPS
-
-
+    && apt-get install -y --no-install-recommends $RUN_DEPS \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # ----------------------------------------------
 # Do installs relating to yarn
 # ----------------------------------------------
-
 
 # Install yarn
 # Install Node.js
@@ -105,8 +117,8 @@ RUN set -ex \
 #     && npm install -g yarn
 
 # Clean up
-RUN apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+# RUN apt-get clean \
+#     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
 
@@ -117,18 +129,18 @@ RUN rm -rf /root/.cache/pip/*
 
 RUN pip install --upgrade pip
 # Install the Arches application and make an Arches project.
-RUN pip install supervisor==4.2.1 \ 
-    && pip install django-pgtrigger==4.9.0 \
-    && pip install django-storages==1.13.2 \
-    && pip install arches-templating>=0.1.2 \
-    && pip install pytz --upgrade \
-    && pip install tzdata --upgrade \
-    && pip install Redis \
-    && pip install gunicorn \
-    && pip install pyasynchat \
-    && pip install pyasyncore \
-    && pip install arches==7.5.5 \
-    && pip install python-docx==1.1.0
+RUN pip install --no-cache-dir --no-input supervisor==4.2.1 \
+    && pip install --no-cache-dir --no-input django-pgtrigger==4.9.0 \
+    && pip install --no-cache-dir --no-input django-storages==1.13.2 \
+    && pip install --no-cache-dir --no-input arches-templating>=0.1.2 \
+    && pip install --no-cache-dir --no-input pytz --upgrade \
+    && pip install --no-cache-dir --no-input tzdata --upgrade \
+    && pip install --no-cache-dir --no-input Redis \
+    && pip install --no-cache-dir --no-input gunicorn \
+    && pip install --no-cache-dir --no-input pyasynchat \
+    && pip install --no-cache-dir --no-input pyasyncore \
+    && pip install --no-cache-dir --no-input arches==7.5.5 \
+    && pip install --no-cache-dir --no-input python-docx==1.1.0
 
 # Install the HER software and the working v7 branch
 RUN mkdir -p ${HER_REPO_PATH}
@@ -139,7 +151,7 @@ WORKDIR ${HER_REPO_PATH}
 RUN echo "Use the arches-her dev/1.1.x";
 RUN echo "git checkout dev/1.1.x";
 RUN git checkout dev/1.1.x;
-RUN pip install -e '.[dev]'
+RUN pip install --no-cache-dir --no-input -e '.[dev]'
 
 # create a new Arches project
 WORKDIR ${ARCHES_ROOT}
@@ -219,7 +231,7 @@ RUN echo "source $NVM_DIR/nvm.sh \
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
-RUN npm install -g yarn && apt install wait-for-it
+RUN npm install -g yarn
 RUN yarn install
 
 # Set default workdir
