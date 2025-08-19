@@ -77,10 +77,9 @@ LANGUAGE_CODE = 'en'
 LANGUAGES = [
     ('en', ('English')),
     ('ar', ('Arabic')),
-    ('he', ('Hebrew')),
 ]
 # This will be true for this deployment
-SHOW_LANGUAGE_SWITCH = False
+SHOW_LANGUAGE_SWITCH = True
 
 
 

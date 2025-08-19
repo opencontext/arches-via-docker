@@ -476,6 +476,7 @@ LANGUAGE_CODE = "en"
 LANGUAGES = [
 #   ('de', _('German')),
     ('en', _('English')),
+    ('ar', _('Arabic')),
 #   ('en-gb', _('British English')),
 #   ('es', _('Spanish')),
 ]
