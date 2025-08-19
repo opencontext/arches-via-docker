@@ -3,37 +3,56 @@ FROM ubuntu:22.04
 
 USER root
 
-# Do the apt installation also install git
-RUN apt-get update && && apt-get install -y --no-install-recommends \
+# Set environment variables to make installations non-interactive
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=UTC
+
+# Update package lists and install basic packages first
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    wget \
+    gnupg \
+    lsb-release \
+    software-properties-common \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Add Python 3.13 repository and install Python packages
+RUN add-apt-repository ppa:deadsnakes/ppa \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
     python3.13 \
     python3.13-dev \
     python3.13-venv \
     python3-pip \
-    make software-properties-common \
-    curl \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install system dependencies
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+    make \
     gcc \
     build-essential \
     mime-support \
     libgdal-dev \
     dos2unix \
-    nano
-RUN apt-get update --fix-missing && apt-get install -y git
+    nano \
+    git \
+    postgresql-client-14 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-
-# Install the postgres client
-RUN apt-get update
-RUN apt-get install -y postgresql-client-14
-
-FROM python:3.13
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Set up a virual environment to use for all later commands.
-ENV VIRTUAL_ENV=/opt/venv
-RUN python3 -m venv $VIRTUAL_ENV
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
-RUN pip install --upgrade pip
+# Set up a virtual environment to use for all later commands.
+RUN python3.13 -m venv /opt/venv \
+    && . /opt/venv/bin/activate \
+    && pip install --upgrade pip
+# Make sure we use the virtualenv:
+ENV PATH="/opt/venv/bin:$PATH"
 
 ## Setting default environment variables
 ARG ARCHES_ROOT
@@ -84,16 +103,17 @@ RUN set -ex \
         python3-dev \
         postgresql-client-14 \
         dos2unix \
-        gettext \
+        wait-for-it \
+        nano \
     " \
-    && apt-get install -y --no-install-recommends curl \
     && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
-    && curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
-    && add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -sc)-pgdg main" \
+    && curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /usr/share/keyrings/postgresql-keyring.gpg \
+    && echo "deb [signed-by=/usr/share/keyrings/postgresql-keyring.gpg] http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" | tee /etc/apt/sources.list.d/postgresql.list \
     && apt-get update -y \
-    && apt-get install -y "wait-for-it" \
-    && apt-get install -y nano \
-    && apt-get install -y --no-install-recommends $RUN_DEPS
+    && apt-get install -y --no-install-recommends $RUN_DEPS \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 
 
 
