@@ -485,6 +485,40 @@ LANGUAGES = [
 SHOW_LANGUAGE_SWITCH = len(LANGUAGES) > 1
 
 
+# Timewheel configs
+
+
+TIMEWHEEL_DATE_TIERS = {
+    "name": "50k",
+    "interval": 50000,
+    "root": True,
+    "child": {
+        "name": "Millennium",
+        "interval": 1000,
+        "range": {
+            "min": -10000, 
+            "max": 2000,
+        },
+        "child": {
+            "name": "Century",
+            "interval": 100,
+            "range": {
+                "min": -1500, 
+                "max": 2000,
+            },
+            "child": {
+                "name": "Decade",
+                "interval": 10,
+                "range": {
+                    "min": 1750, 
+                    "max": 2000,
+                }
+            }
+        }
+    }
+}
+
+
 
 
 # Implement this class to associate custom documents to the ES resource index
