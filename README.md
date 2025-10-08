@@ -27,6 +27,12 @@ The following lists some information about the contents of this repo and how the
     * `webpack_entrypoint.sh` - The `webpack` container is a minimalist container that invokes a docker command on the `arches` container. This command prepares static assets for the Arches frontend by running webpack and collectstatic.
 
 
+## Set up a sibling arches_data directory
+
+Docker containers are isolated from their host systems. This Docker deployment attaches a directory from your host machine to the arches_her container in order to make it easier to move data in and out of the arches_her container. You'll want to set up a `arches_data` directory as a sibling to the `arches-via-docker` directory. Files can be moved in and out of the arches_her container via the `arches_data` directory. Please note however that you may need to modify file permissions to interact with files that may be created by processes within the arches_her container.
+
+
+
 ## Prerequisites
 
 1. [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/) are installed.
@@ -86,10 +92,22 @@ docker compose down
 
 
 ## How to Make Arches (administrative) Management Commands
-Currently this will setup an "empty" Arches instance. You'll need to load it with your own data by loading a package or some other approach. Once you deploy Arches, you can use normal Arches management commands as so:
+Currently this will setup an "empty" Arches-HER instance. You'll need to load it with your own data by loading a package or some other approach. Once you deploy Arches, you can use normal Arches management commands as so:
 
 ```bash
-docker exec -it arches python manage.py [Arches management commands and arguments here]
+docker exec -it arches_her python manage.py [Arches management commands and arguments here]
+```
+
+## How to Restore a PostgreSQL database dump for Arches-HER
+Assuming you have a compatible Arches-HER PostgreSQL database dump file available in the `arches_data` (see discussion above) directory on hour host machine, you can use the following sequence of commands to drop an existing Arches-HER database and replace it with the contents of an Arches-HER PostgreSQL database dump file.
+
+```bash
+
+# Restore the Arches-HER database containing desired data
+docker exec -it arches_her psql -U postgres -tc "DROP DATABASE arches_her_local WITH (FORCE);"
+docker exec -it arches_her psql -U postgres -tc "SELECT pg_terminate_backend(pid) from pg_stat_activity where datname='arches_her_local'";
+docker exec -it arches_her psql -U postgres -tc "CREATE DATABASE arches_her_local;"
+docker exec -it arches_her bash -c "pg_restore --create --clean -U postgres -h arches_db -d postgres '/arches_data/arches_her_with_desired_data.dump'"
 ```
 
 
