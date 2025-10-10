@@ -1,6 +1,13 @@
 # Edit this file and save as ".env" for use.
 
 COMPOSE_PROJECT_NAME=arches_local_her_v7
+DOMAINS=arches.opencontext.org
+DEPLOY_HOST=$DOMAINS
+NGINX_HTML_PATH=/var/www/html/$DEPLOY_HOST
+CERT_PATH=/var/www/certbot/$DEPLOY_HOST
+CERTBOT_EMAILS=eric@opencontext.org
+CERTBOT_TEST_CERT=1
+CERTBOT_RSA_KEY_SIZE=4096
 TZ=PST
 
 #arches project and paths
@@ -29,7 +36,7 @@ PGPORT=5432
 ESHOST=arches_elasticsearch
 ESPORT=9200
 DJANGO_MODE=DEV
-DJANGO_DEBUG=True
+DJANGO_DEBUG=False
 # Don't change the port, since it's pretty hard-coded.
 DJANGO_PORT=8000
 DOMAIN_NAMES=localhost 0.0.0.0 127.0.0.1
