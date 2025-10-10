@@ -210,14 +210,16 @@ MIDDLEWARE = [
 
 if ARCHES_V == '7.5.5':
     STATICFILES_DIRS = build_staticfiles_dirs(
+        # root_dir=ROOT_DIR,
         app_root=APP_ROOT,
-        arches_applications=ARCHES_APPLICATIONS,
+        # arches_applications=ARCHES_APPLICATIONS,
     )
 
     TEMPLATES = build_templates_config(
+        # root_dir=ROOT_DIR,
         debug=DEBUG,
         app_root=APP_ROOT,
-        arches_applications=ARCHES_APPLICATIONS,
+        # arches_applications=ARCHES_APPLICATIONS,
     )
 else:
     STATICFILES_DIRS = build_staticfiles_dirs(app_root=APP_ROOT)
