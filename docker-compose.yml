@@ -205,7 +205,7 @@ services:
         max-size: "1k"
         max-file: "3"
     networks:
-      - aarches_her_v7_net
+      - arches_her_v7_net
 
 networks:
   arches_her_v7_net:
