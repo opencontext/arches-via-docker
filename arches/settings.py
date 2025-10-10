@@ -300,14 +300,16 @@ SESSION_COOKIE_NAME = f"{APP_NAME}_{APP_VERSION}"
 
 # For more info on configuring your cache: https://docs.djangoproject.com/en/2.2/topics/cache/
 CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "redis://arches_redis:6379/1",
     },
-    'user_permission': {
-        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
-        'LOCATION': 'user_permission_cache',
+    "user_permission": {
+        "BACKEND": "django.core.cache.backends.db.DatabaseCache",
+        "LOCATION": "user_permission_cache",
     },
 }
+
 
 # Hide nodes and cards in a report that have no data
 HIDE_EMPTY_NODES_IN_REPORT = False
