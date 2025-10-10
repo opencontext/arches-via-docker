@@ -177,8 +177,8 @@ COPY ./arches/package.json ${PACKAGE_PATH}
 # copy the celery supervisor
 COPY /arches/conf.d/ ${APP_ROOT}/conf.d/
 RUN chmod -R 700 ${APP_ROOT}/conf.d/
-COPY /arches/arches_her_local-supervisor.conf ${APP_ROOT}/arches_her_local-supervisor.conf
-RUN chmod -R 700 ${APP_ROOT}/arches_her_local-supervisor.conf
+COPY /arches/arches_her_remote-supervisor.conf ${APP_ROOT}/arches_her_remote-supervisor.conf
+RUN chmod -R 700 ${APP_ROOT}/arches_her_remote-supervisor.conf
 RUN mkdir -p /var/log/supervisor
 RUN mkdir -p /var/log/celery
 
