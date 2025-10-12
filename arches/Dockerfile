@@ -69,6 +69,7 @@ ENV CELERY_PATH=${APP_COMP_FOLDER}/celery.py
 ENV URLS_PATH=${APP_COMP_FOLDER}/urls.py
 ENV ARCHES_DATA=${ARCHES_ROOT}/arches_data
 ENV PACKAGE_PATH=${APP_COMP_FOLDER}/package.json
+ENV GUNICORN_CONFIG_PATH=${APP_COMP_FOLDER}/gunicorn_config.py
 ENV WHEELS=/wheels
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -181,6 +182,16 @@ COPY /arches/arches_her_remote-supervisor.conf ${APP_ROOT}/arches_her_remote-sup
 RUN chmod -R 700 ${APP_ROOT}/arches_her_remote-supervisor.conf
 RUN mkdir -p /var/log/supervisor
 RUN mkdir -p /var/log/celery
+
+
+# Copy the gunicorn_config.py file into our new Arches project. This is used
+# for running Arches in production (not DEBUG mode)
+# NOTE: We're NOT actually using this, because it will throw an error with urls.py 
+# So this is here for reference only in case someone wants to edit gunicorn_config.py
+# and figure out how to make it work.
+RUN echo "copy gunicorn_config.py to ${GUNICORN_CONFIG_PATH}";
+COPY ./arches/gunicorn_config.py ${GUNICORN_CONFIG_PATH}
+RUN sed -i 's/\r$//g' ${GUNICORN_CONFIG_PATH}
 
 
 # Set some settings to make NPM less fussy
