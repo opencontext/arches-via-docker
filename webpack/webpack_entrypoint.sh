@@ -2,7 +2,7 @@
 
 cd /workdir
 echo "Start Arches Webpack via Docker"
-echo "docker compose run arches run_webpack"
+echo "docker compose run arches run_setup_webpack"
 until nc -z arches_her 8000; do
 	echo "Waiting for the arches server application to start..."
   	sleep 5s & wait ${!}
