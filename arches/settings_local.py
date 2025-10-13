@@ -92,5 +92,6 @@ if not DEBUG:
     DEPLOY_HOST = get_env_variable("DEPLOY_HOST")
     CSRF_TRUSTED_ORIGINS = [
         f"https://{DEPLOY_HOST}", 
+        "https://127.0.0.1",
     ]
 
