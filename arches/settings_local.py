@@ -93,5 +93,9 @@ if not DEBUG:
     CSRF_TRUSTED_ORIGINS = [
         f"https://{DEPLOY_HOST}", 
         "https://127.0.0.1",
+        "https://127.0.0.1:8000",
+        "https://arches_her:8000",
+        "http://127.0.0.1:8000",
+        "http://arches_her:8000",
     ]
 
