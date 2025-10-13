@@ -140,3 +140,16 @@ https://github.com/archesproject/arches-dependency-containers
 and finally
 
 https://github.com/archesproject/arches-her
+
+
+
+# Restore a Dump of the "Local" Arches-HER database to the "Remote" container
+
+```bash
+docker exec -it arches_her psql -U postgres -tc "DROP DATABASE arches_her_remote WITH (FORCE);"
+docker exec -it arches_her psql -U postgres -tc "SELECT pg_terminate_backend(pid) from pg_stat_activity where datname='arches_her_remote'";
+# This assumes the dump file contains a database called arches_her_local
+docker exec -it arches_her psql -U postgres -tc "CREATE DATABASE arches_her_local;"
+docker exec -it arches_her bash -c "pg_restore --create --clean -U postgres -h arches_db -d postgres '/arches_data/arches_her_megaj_2025-10-08.dump'"
+docker exec -it arches_her psql -U postgres -tc "ALTER DATABASE arches_her_local RENAME TO arches_her_remote;"
+```
