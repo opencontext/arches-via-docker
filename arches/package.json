@@ -11,7 +11,7 @@
     },
     "dependencies": {
         "arches": "archesproject/arches#stable/7.5.5",
-        "arches_her": "archesproject/arches_her#dev/1.0.x"
+        "arches_her": "archesproject/arches_her#stable/1.0.0"
     },
     "nodeModulesPaths": {
     }

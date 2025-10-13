@@ -149,9 +149,9 @@ RUN mkdir -p ${HER_REPO_PATH}
 WORKDIR ${ARCHES_ROOT}
 RUN git clone https://github.com/archesproject/arches-her.git ${HER_REPO_PATH}
 WORKDIR ${HER_REPO_PATH}
-RUN echo "Use the arches-her dev/1.1.x";
-RUN echo "git checkout dev/1.1.x";
-RUN git checkout dev/1.1.x;
+RUN echo "Use the arches-her stable/1.0.0";
+RUN echo "git checkout stable/1.0.0";
+RUN git checkout stable/1.0.0;
 RUN pip install --no-cache-dir --no-input -e '.[dev]'
 
 # create a new Arches project
