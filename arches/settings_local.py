@@ -82,20 +82,23 @@ LANGUAGES = [
 SHOW_LANGUAGE_SWITCH = True
 
 
+# We could use the DOMAINS envinronment variable here, but
+# since we're only supporting one domain and that's the same
+# has DEPLOY_HOST that is used for the SSL CERT_PATH.
+DEPLOY_HOST = get_env_variable("DEPLOY_HOST")
+DEPLOY_HOST = DEPLOY_HOST.replace('"', '')
+CSRF_TRUSTED_ORIGINS = [
+    f"https://{DEPLOY_HOST}", 
+    "https://127.0.0.1",
+    "https://127.0.0.1:8000",
+    "https://arches_her:8000",
+    "http://127.0.0.1:8000",
+    "http://arches_her:8000",
+]
+
+
 if not DEBUG:
     # Some extra security settings for production deployments
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTOCOL", "https")
     SESSION_COOKIE_SECURE = True
-    # We could use the DOMAINS envinronment variable here, but
-    # since we're only supporting one domain and that's the same
-    # has DEPLOY_HOST that is used for the SSL CERT_PATH.
-    DEPLOY_HOST = get_env_variable("DEPLOY_HOST")
-    CSRF_TRUSTED_ORIGINS = [
-        f"https://{DEPLOY_HOST}", 
-        "https://127.0.0.1",
-        "https://127.0.0.1:8000",
-        "https://arches_her:8000",
-        "http://127.0.0.1:8000",
-        "http://arches_her:8000",
-    ]
 
