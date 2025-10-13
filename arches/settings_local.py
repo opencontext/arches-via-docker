@@ -84,7 +84,7 @@ SHOW_LANGUAGE_SWITCH = True
 
 if not DEBUG:
     # Some extra security settings for production deployments
-
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTOCOL", "https")
     SESSION_COOKIE_SECURE = True
     # We could use the DOMAINS envinronment variable here, but
     # since we're only supporting one domain and that's the same
