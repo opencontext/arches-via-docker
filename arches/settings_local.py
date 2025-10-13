@@ -38,6 +38,7 @@ DATABASES = {
 }
 
 ARCHES_NAMESPACE_FOR_DATA_EXPORT = get_env_variable("ARCHES_NAMESPACE")
+ARCHES_NAMESPACE_FOR_DATA_EXPORT  = ARCHES_NAMESPACE_FOR_DATA_EXPORT .replace('"', '')
 
 """
 Since we're using Docker, we can use Redis (even on a Windows OS). So, we
