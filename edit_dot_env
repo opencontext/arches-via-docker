@@ -1,18 +1,18 @@
 # Edit this file and save as ".env" for use.
 
-COMPOSE_PROJECT_NAME=rascoll
+COMPOSE_PROJECT_NAME=rascolls
 TZ=PST
 
 #arches project and paths
-ARCHES_PROJECT=rascoll
+ARCHES_PROJECT=rascolls
 ARCHES_ROOT=/arches_app
 APP_ROOT=$ARCHES_ROOT/$ARCHES_PROJECT
 APP_COMP_FOLDER=$APP_ROOT/$ARCHES_PROJECT
 
 # AfRC specific settings
-AFRC_CLONE = 'https://github.com/archesproject/arches-for-reference-and-sample-collection.git'
+AFRC_CLONE = 'https://github.com/archesproject/arches-rascolls.git'
 AFRC_GIT_BRANCH = 'main'
-AFRC_REPO_DIR = $ARCHES_ROOT/arches-for-reference-and-sample-collection
+AFRC_REPO_DIR = $ARCHES_ROOT/arches-rascolls
 
 # AfS Cantaloupe
 UPLOADED_FILES_FOLDER=$APP_COMP_FOLDER/uploadedfiles
@@ -56,7 +56,7 @@ ELASTICSEARCH_PREFIX=$ARCHES_PROJECT
 CANTALOUPE_ENDPOINT_ADMIN_ENABLED=true
 CANTALOUPE_ENDPOINT_ADMIN_USERNAME=admin
 CANTALOUPE_ENDPOINT_ADMIN_SECRET=admin
-CANTALOUPE_HOST=cantaloupe_afs_plocal
+CANTALOUPE_HOST=cantaloupe_rascolls
 CANTALOUPE_PORT=8182
 CANTALOUPE_FILESYSTEMSOURCE_BASICLOOKUPSTRATEGY_PATH_PREFIX=/imageroot/
 

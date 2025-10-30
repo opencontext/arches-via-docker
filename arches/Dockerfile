@@ -4,25 +4,43 @@ FROM ubuntu:22.04
 USER root
 
 # Do the apt installation also install git
+# Set environment variables to make installations non-interactive
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=UTC
+
+# Update package lists and install basic packages first
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    wget \
+    gnupg \
+    lsb-release \
+    software-properties-common \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN apt-get update && && apt-get install -y --no-install-recommends \
     python3.13 \
     python3.13-dev \
     python3.13-venv \
     python3-pip \
-    make software-properties-common \
-    curl \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install system dependencies
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+    make \
     gcc \
     build-essential \
     mime-support \
     libgdal-dev \
     dos2unix \
-    nano
-RUN apt-get update --fix-missing && apt-get install -y git
+    nano \
+    git \
+    postgresql-client-14 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-
-# Install the postgres client
-RUN apt-get update
-RUN apt-get install -y postgresql-client-14
 
 FROM python:3.13
 # set environment variables
@@ -62,7 +80,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 RUN mkdir ${ARCHES_ROOT} && mkdir /var/log/supervisor && mkdir /var/log/celery
 
 # Get ready to do some code installation
-RUN apt-get update && apt-get install -y make software-properties-common
+RUN apt-get update --fix-missing && apt-get install -y make software-properties-common
 
 # Install packages required to run Arches
 # Note that the ubuntu/debian package for libgdal1-dev pulls in libgdal1i, which is built
@@ -84,16 +102,16 @@ RUN set -ex \
         python3-dev \
         postgresql-client-14 \
         dos2unix \
-        gettext \
+        wait-for-it \
+        nano \
     " \
-    && apt-get install -y --no-install-recommends curl \
     && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
-    && curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
-    && add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -sc)-pgdg main" \
+    && curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /usr/share/keyrings/postgresql-keyring.gpg \
+    && echo "deb [signed-by=/usr/share/keyrings/postgresql-keyring.gpg] http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" | tee /etc/apt/sources.list.d/postgresql.list \
     && apt-get update -y \
-    && apt-get install -y "wait-for-it" \
-    && apt-get install -y nano \
-    && apt-get install -y --no-install-recommends $RUN_DEPS
+    && apt-get install -y --no-install-recommends $RUN_DEPS \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
 
@@ -140,7 +158,7 @@ RUN pip install --force-reinstall -U setuptools
 
 WORKDIR ${ARCHES_ROOT}
 ENV ARCHES_REPO=${ARCHES_ROOT}/arches
-ENV ARCHES_GIT_BRANCH=dev/8.0.x
+ENV ARCHES_GIT_BRANCH=stable/8.0.5
 ARG AFRC_CLONE
 RUN echo "Clone Arches for Reference and Sample Collections..."
 RUN git clone ${AFRC_CLONE};
@@ -153,6 +171,30 @@ RUN git checkout ${ARCHES_GIT_BRANCH};
 RUN echo "Pip install Arches requirements..."
 # RUN pip install -e '.[dev]' --no-binary :all:
 RUN pip install -e '.[dev]'
+
+# Install needed Arches modular applications
+WORKDIR ${ARCHES_ROOT}
+RUN git clone https://github.com/archesproject/arches-modular-reports.git
+RUN git clone https://github.com/archesproject/arches-querysets.git
+RUN git clone https://github.com/archesproject/arches-controlled-lists.git
+RUN git clone https://github.com/archesproject/arches-search.git
+WORKDIR ${ARCHES_ROOT}/arches-modular-report
+RUN git checkout main;
+RUN echo "Installing arches-modular-reports (main)..."
+RUN pip install -e '.[dev]'
+WORKDIR ${ARCHES_ROOT}/arches-querysets
+RUN git checkout main;
+RUN echo "Installing arches-querysets (main)..."
+RUN pip install -e '.[dev]'
+WORKDIR ${ARCHES_ROOT}/arches-controlled-lists
+RUN git checkout main;
+RUN echo "Installing arches-controlled-lists (main)..."
+RUN pip install -e '.[dev]'
+WORKDIR ${ARCHES_ROOT}/arches-search
+RUN git checkout main;
+RUN echo "Installing arches-search (main)..."
+RUN pip install -e '.[dev]'
+
 
 ARG AFRC_REPO_DIR
 WORKDIR ${AFRC_REPO_DIR}
@@ -177,6 +219,8 @@ RUN pip install supervisor==4.2.1 \
     && pip install pyasynchat \
     && pip install pyasyncore
 
+# Added for rascolls
+RUN pip install django-csp
 
 RUN mkdir -p /new_arches_proj
 RUN arches-admin startproject ${ARCHES_PROJECT} --directory /new_arches_proj
