@@ -1,8 +1,10 @@
 {
-    "name": "rascoll",
+    "name": "rascolls",
     "license": "AGPL-3.0-only",
     "scripts": {
         "build_development": "npm run eslint:check && npm run ts:check && cross-env webpack --config ./webpack/webpack.config.dev.js",
+        "build_development_unsafe": "cross-env webpack --config ./webpack/webpack.config.dev.js",
+        "build_production_unsafe": "cross-env webpack --config ./webpack/webpack.config.prod.js",
         "build_production": "npm run eslint:check && npm run ts:check && cross-env webpack --config ./webpack/webpack.config.prod.js",
         "build_test": "npm run eslint:check && npm run ts:check && cross-env webpack --config ./webpack/webpack.config.dev.js --env test=true",
         "eslint:check": "eslint **/src",
@@ -10,19 +12,23 @@
         "eslint:watch": "nodemon --watch . --ext ts,vue --exec npm run --silent eslint:check",
         "gettext:extract": "vue-gettext-extract",
         "gettext:compile": "vue-gettext-compile",
-        "prettier:check": "prettier afrc/src --check",
-        "prettier:fix": "prettier afrc/src --write",
+        "prettier:check": "prettier arches_rascolls/src --check",
+        "prettier:fix": "prettier arches_rascolls/src --write",
         "ts:check": "vue-tsc --noEmit",
         "ts:watch": "vue-tsc --watch --noEmit",
         "start": "cross-env webpack serve --config ./webpack/webpack.config.dev.js",
         "vitest": "vitest --run --coverage"
     },
     "dependencies": {
-        "arches": "archesproject/arches#dev/8.0.x",
+        "arches": "archesproject/arches#dev/8.1.x",
+        "arches-component-lab": "archesproject/arches-component-lab#main",
+        "arches-controlled-lists": "archesproject/arches-controlled-lists#main",
+        "arches-modular-reports": "archesproject/arches-modular-reports#main",
+        "arches-search": "archesproject/arches-search#main",
         "maplibre-gl": "^4.6.0"
     },
     "devDependencies": {
-        "arches-dev-dependencies": "archesproject/arches-dev-dependencies#dev/8.0.x"
+        "arches-dev-dependencies": "archesproject/arches-dev-dependencies#dev/8.1.x"
     },
     "nodeModulesPaths": {
     },
@@ -33,3 +39,4 @@
         "underscore": "^1.13.6"
     }
 }
+ 
