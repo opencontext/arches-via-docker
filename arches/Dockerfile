@@ -1,46 +1,29 @@
-FROM ubuntu:22.04
+FROM ubuntu:22.04.5
 # Start with Ubuntu 22
 
 USER root
 
 # Do the apt installation also install git
-# Set environment variables to make installations non-interactive
-ENV DEBIAN_FRONTEND=noninteractive
-ENV TZ=UTC
-
-# Update package lists and install basic packages first
+RUN apt-get update && apt-get install -y --no-install-recommends software-properties-common
+RUN add-apt-repository universe
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl \
-    wget \
-    gnupg \
-    lsb-release \
-    software-properties-common \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN apt-get update && && apt-get install -y --no-install-recommends \
     python3.13 \
     python3.13-dev \
     python3.13-venv \
     python3-pip \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install system dependencies
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-    make \
+    curl \
     gcc \
     build-essential \
     mime-support \
     libgdal-dev \
     dos2unix \
-    nano \
-    git \
-    postgresql-client-14 \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    nano
+RUN apt-get update --fix-missing && apt-get install -y git
 
+
+# Install the postgres client
+RUN apt-get update
+RUN apt-get install -y postgresql-client-14
 
 FROM python:3.13
 # set environment variables
@@ -80,7 +63,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 RUN mkdir ${ARCHES_ROOT} && mkdir /var/log/supervisor && mkdir /var/log/celery
 
 # Get ready to do some code installation
-RUN apt-get update --fix-missing && apt-get install -y make software-properties-common
+RUN apt-get update && apt-get install -y --no-install-recommends make lsb-release
 
 # Install packages required to run Arches
 # Note that the ubuntu/debian package for libgdal1-dev pulls in libgdal1i, which is built
@@ -98,20 +81,19 @@ RUN set -ex \
         docbook-mathml \
         libgdal-dev \
         libpq-dev \
-        mime-support \
         python3-dev \
         postgresql-client-14 \
         dos2unix \
-        wait-for-it \
-        nano \
+        gettext \
     " \
+    && apt-get install -y --no-install-recommends curl lsb-release gnupg \
     && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
-    && curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /usr/share/keyrings/postgresql-keyring.gpg \
-    && echo "deb [signed-by=/usr/share/keyrings/postgresql-keyring.gpg] http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" | tee /etc/apt/sources.list.d/postgresql.list \
+    && curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /usr/share/keyrings/postgresql.gpg \
+    && echo "deb [signed-by=/usr/share/keyrings/postgresql.gpg] http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -sc)-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
     && apt-get update -y \
-    && apt-get install -y --no-install-recommends $RUN_DEPS \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    && apt-get install -y "wait-for-it" \
+    && apt-get install -y nano \
+    && apt-get install -y --no-install-recommends $RUN_DEPS
 
 
 
@@ -178,7 +160,7 @@ RUN git clone https://github.com/archesproject/arches-modular-reports.git
 RUN git clone https://github.com/archesproject/arches-querysets.git
 RUN git clone https://github.com/archesproject/arches-controlled-lists.git
 RUN git clone https://github.com/archesproject/arches-search.git
-WORKDIR ${ARCHES_ROOT}/arches-modular-report
+WORKDIR ${ARCHES_ROOT}/arches-modular-reports
 RUN git checkout main;
 RUN echo "Installing arches-modular-reports (main)..."
 RUN pip install -e '.[dev]'

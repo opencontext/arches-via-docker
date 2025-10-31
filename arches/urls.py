@@ -2,10 +2,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 from django.urls import include, path, re_path
-from afrc.views.file_api import FileAPI
-from afrc.views.settings_api import SettingsAPI
-from afrc.views.search_api import SearchAPI
-from afrc.views.map_api import (
+from arches_rascolls.views.file_api import FileAPI
+from arches_rascolls.views.settings_api import SettingsAPI
+from arches_rascolls.views.search_api import SearchAPI
+from arches_rascolls.views.map_api import (
     MapDataAPI,
     FeatureBufferAPI,
     GeoJSONBoundsAPI,
@@ -14,7 +14,7 @@ from afrc.views.map_api import (
     ResourceBoundsAPI,
     ResourceGeoJSONAPI,
 )
-from afrc.views.rascoll_search import RascollSearchView
+from arches_rascolls.views.rascoll_search import RascollSearchView
 
 uuid_regex = settings.UUID_REGEX
 
@@ -49,9 +49,13 @@ urlpatterns = [
     re_path(r"^rascoll-search$", RascollSearchView.as_view(), name="rascoll-search"),
 ]
 
+urlpatterns.append(path("", include("arches_modular_reports.urls")))
+urlpatterns.append(path("", include("arches_controlled_lists.urls")))
+urlpatterns.append(path("", include("arches_component_lab.urls")))
+urlpatterns.append(path("", include("arches_search.urls")))
+
 # Ensure Arches core urls are superseded by project-level urls
 urlpatterns.append(path("", include("arches.urls")))
-
 # Adds URL pattern to serve media files during development
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -136,7 +136,6 @@ SEARCH_THUMBNAILS = False
 
 INSTALLED_APPS = (
     "webpack_loader",
-    "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -153,20 +152,35 @@ INSTALLED_APPS = (
     "corsheaders",
     "oauth2_provider",
     "django_celery_results",
+    "django_migrate_sql",
     # Added for AfS (Arches for Science) project
-    "arches_templating",
-    "afrc",
-    "pgtrigger",
-
     f"{APP_NAME}",  # Ensure the project is listed before any other arches applications
+    "arches_rascolls",  # Ensure the project is listed before any other arches applications
+    "django.contrib.postgres",
+    "arches_modular_reports",
+    "rest_framework",
+    "arches_querysets",
+    "arches_component_lab",
+    "arches_controlled_lists",
+    "arches_search",
+    "pgtrigger",
 )
 
 # Added for AfRC (Arches for Reference and Sample Collections) project
-ARCHES_APPLICATIONS = ('afrc',)
+ARCHES_APPLICATIONS = (
+    "arches_rascolls",
+    "arches_querysets",
+    "arches_component_lab",
+    "arches_controlled_lists",
+    "arches_search",
+)
 
 # Placing this last ensures any templates provided by Arches Applications
 # take precedence over core arches templates in arches/app/templates.
-INSTALLED_APPS += ("arches.app",)
+INSTALLED_APPS += (
+    "arches.app",
+    "django.contrib.admin",
+)
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",

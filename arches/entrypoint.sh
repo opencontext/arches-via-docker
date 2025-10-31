@@ -169,10 +169,11 @@ run_es_reindex() {
 
 run_AFRC_package() {
 	echo ""
-	echo "----- RUNNING PACKAGE LOAD FOR AFS -----"
+	echo "----- RUNNING PACKAGE LOAD FOR Rascolls -----"
+	echo "python3 manage.py packages -o load_package -a arches_rascolls -db -dev -y"
 	echo ""
 	cd ${APP_FOLDER}
-	python3 manage.py packages -o load_package -s ${AFRC_PKG_DIR} -dev -y
+	python3 manage.py packages -o load_package -a arches_rascolls -db -dev -y
 }
 
 
