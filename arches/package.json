@@ -22,7 +22,7 @@
     "dependencies": {
         "arches": "archesproject/arches#dev/8.1.x",
         "arches-component-lab": "archesproject/arches-component-lab#main",
-        "arches-controlled-lists": "archesproject/arches-controlled-lists#main",
+        "arches-controlled-lists": "archesproject/arches-controlled-lists#dev/1.1.x",
         "arches-modular-reports": "archesproject/arches-modular-reports#main",
         "arches-search": "archesproject/arches-search#main",
         "maplibre-gl": "^4.6.0"

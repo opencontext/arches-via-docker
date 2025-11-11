@@ -140,7 +140,7 @@ RUN pip install --force-reinstall -U setuptools
 
 WORKDIR ${ARCHES_ROOT}
 ENV ARCHES_REPO=${ARCHES_ROOT}/arches
-ENV ARCHES_GIT_BRANCH=stable/8.0.5
+ENV ARCHES_GIT_BRANCH=dev/8.1.x
 ARG AFRC_CLONE
 RUN echo "Clone Arches for Reference and Sample Collections..."
 RUN git clone ${AFRC_CLONE};
@@ -160,23 +160,32 @@ RUN git clone https://github.com/archesproject/arches-modular-reports.git
 RUN git clone https://github.com/archesproject/arches-querysets.git
 RUN git clone https://github.com/archesproject/arches-controlled-lists.git
 RUN git clone https://github.com/archesproject/arches-search.git
+RUN git clone https://github.com/archesproject/arches-component-lab.git
 WORKDIR ${ARCHES_ROOT}/arches-modular-reports
+RUN git fetch --all;
 RUN git checkout main;
 RUN echo "Installing arches-modular-reports (main)..."
 RUN pip install -e '.[dev]'
 WORKDIR ${ARCHES_ROOT}/arches-querysets
+RUN git fetch --all;
 RUN git checkout main;
 RUN echo "Installing arches-querysets (main)..."
 RUN pip install -e '.[dev]'
 WORKDIR ${ARCHES_ROOT}/arches-controlled-lists
+RUN git fetch --all;
+RUN git checkout dev/1.1.x;
+RUN echo "Installing arches-controlled-lists (dev/1.1.x)..."
+RUN pip install -e '.[dev]'
+WORKDIR ${ARCHES_ROOT}/arches-component-lab
+RUN git fetch --all;
 RUN git checkout main;
-RUN echo "Installing arches-controlled-lists (main)..."
+RUN echo "Installing arches-component-lab (main)..."
 RUN pip install -e '.[dev]'
 WORKDIR ${ARCHES_ROOT}/arches-search
+RUN git fetch --all;
 RUN git checkout main;
 RUN echo "Installing arches-search (main)..."
 RUN pip install -e '.[dev]'
-
 
 ARG AFRC_REPO_DIR
 WORKDIR ${AFRC_REPO_DIR}
