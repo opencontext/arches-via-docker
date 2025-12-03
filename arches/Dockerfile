@@ -1,15 +1,16 @@
-FROM ubuntu:22.04
+FROM ubuntu:22.04.5
 # Start with Ubuntu 22
 
 USER root
 
 # Do the apt installation also install git
-RUN apt-get update && && apt-get install -y --no-install-recommends \
-    python3.11 \
-    python3.11-dev \
-    python3.11-venv \
+RUN apt-get update && apt-get install -y --no-install-recommends software-properties-common
+RUN add-apt-repository universe
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3.13 \
+    python3.13-dev \
+    python3.13-venv \
     python3-pip \
-    make software-properties-common \
     curl \
     gcc \
     build-essential \
@@ -24,7 +25,7 @@ RUN apt-get update --fix-missing && apt-get install -y git
 RUN apt-get update
 RUN apt-get install -y postgresql-client-14
 
-FROM python:3.11
+FROM python:3.13
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
@@ -60,7 +61,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 RUN mkdir ${ARCHES_ROOT} && mkdir /var/log/supervisor && mkdir /var/log/celery
 
 # Get ready to do some code installation
-RUN apt-get update && apt-get install -y make software-properties-common
+RUN apt-get update && apt-get install -y --no-install-recommends make lsb-release
 
 # Install packages required to run Arches
 # Note that the ubuntu/debian package for libgdal1-dev pulls in libgdal1i, which is built
@@ -78,15 +79,15 @@ RUN set -ex \
         docbook-mathml \
         libgdal-dev \
         libpq-dev \
-        mime-support \
         python3-dev \
         postgresql-client-14 \
         dos2unix \
+        gettext \
     " \
-    && apt-get install -y --no-install-recommends curl \
+    && apt-get install -y --no-install-recommends curl lsb-release gnupg \
     && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
-    && curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
-    && add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -sc)-pgdg main" \
+    && curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /usr/share/keyrings/postgresql.gpg \
+    && echo "deb [signed-by=/usr/share/keyrings/postgresql.gpg] http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -sc)-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
     && apt-get update -y \
     && apt-get install -y "wait-for-it" \
     && apt-get install -y nano \
@@ -189,6 +190,10 @@ RUN git config --global http.postBuffer 524288000
 RUN git config --global http.lowSpeedLimit 0
 RUN git config --global http.lowSpeedTime 999999 
 RUN npm install
+
+# So we can load packages
+RUN mkdir -p ${APP_COMP_FOLDER}/templates/views/components/widgets
+RUN mkdir -p ${APP_COMP_FOLDER}/media/js/views/components/widgets
 
 # Now set up the entrypoint and run it.
 ENTRYPOINT ["./entrypoint.sh"]
