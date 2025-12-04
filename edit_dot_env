@@ -4,7 +4,7 @@ COMPOSE_PROJECT_NAME=arches_plocal_7_6
 TZ=PST
 
 # Arches version, project, and paths
-ARCHES_PIP_VERSION="7.6.11"
+ARCHES_PIP_VERSION="7.6.19"
 ARCHES_PROJECT=arches_plocal_7_6
 ARCHES_ROOT=/arches_app
 APP_ROOT=$ARCHES_ROOT/$ARCHES_PROJECT
