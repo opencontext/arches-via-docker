@@ -78,7 +78,7 @@ ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE 1
 
 # Setup needed directories
-RUN mkdir ${ARCHES_ROOT} && mkdir /var/log/supervisor && mkdir /var/log/celery
+RUN mkdir ${ARCHES_ROOT} && mkdir /var/log/supervisor && mkdir /var/log/celery && mkdir -p ${ARCHES_ROOT}/arches_data/ontologies
 
 # Get ready to do some code installation
 RUN apt-get update && apt-get install -y make software-properties-common
