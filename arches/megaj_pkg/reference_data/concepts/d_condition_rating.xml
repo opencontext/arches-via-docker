@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+  <skos:ConceptScheme rdf:about="urn:uuid:73abbf23-55fe-452a-b19f-a143dbf05462">
+    <dcterms:title xml:lang="en">{&quot;id&quot;: &quot;bbaaeaee-a4b0-4a57-9a5b-b660032d3a5f&quot;, &quot;value&quot;: &quot;MEGA-J Condition Rating&quot;}</dcterms:title>
+    <skos:hasTopConcept rdf:resource="urn:uuid:d403011d-c86d-475f-b467-27899ea3a94e"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:862e151c-f021-42b8-bdfa-5d6e4fc60fb7"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:c04b5c6e-374c-4967-b63c-bf2f816b9479"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:2d14ae28-36d3-4f2a-9015-4406c1ae2b95"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:47bef039-7855-42d2-95bd-d30c5cf133ae"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:8133c125-95af-425c-be1c-aca4d9f4f6d4"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:95bc9647-a9fc-469f-a39b-07ffa61b384d"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="urn:uuid:d403011d-c86d-475f-b467-27899ea3a94e">
+    <skos:prefLabel xml:lang="en">Unknown</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">غير معروف</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:73abbf23-55fe-452a-b19f-a143dbf05462"/>
+    <skos:inScheme rdf:resource="urn:uuid:73abbf23-55fe-452a-b19f-a143dbf05462"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:862e151c-f021-42b8-bdfa-5d6e4fc60fb7">
+    <skos:prefLabel xml:lang="en">Good</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">جيد</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:73abbf23-55fe-452a-b19f-a143dbf05462"/>
+    <skos:inScheme rdf:resource="urn:uuid:73abbf23-55fe-452a-b19f-a143dbf05462"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:c04b5c6e-374c-4967-b63c-bf2f816b9479">
+    <skos:prefLabel xml:lang="en">Fair</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">وسط</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:73abbf23-55fe-452a-b19f-a143dbf05462"/>
+    <skos:inScheme rdf:resource="urn:uuid:73abbf23-55fe-452a-b19f-a143dbf05462"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:2d14ae28-36d3-4f2a-9015-4406c1ae2b95">
+    <skos:prefLabel xml:lang="en">Poor</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">ضعيف</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:73abbf23-55fe-452a-b19f-a143dbf05462"/>
+    <skos:inScheme rdf:resource="urn:uuid:73abbf23-55fe-452a-b19f-a143dbf05462"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:47bef039-7855-42d2-95bd-d30c5cf133ae">
+    <skos:prefLabel xml:lang="en">Very Bad</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">سيئة جدا</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:73abbf23-55fe-452a-b19f-a143dbf05462"/>
+    <skos:inScheme rdf:resource="urn:uuid:73abbf23-55fe-452a-b19f-a143dbf05462"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:8133c125-95af-425c-be1c-aca4d9f4f6d4">
+    <skos:prefLabel xml:lang="en">Inundated</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مغمور بالماء</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:73abbf23-55fe-452a-b19f-a143dbf05462"/>
+    <skos:inScheme rdf:resource="urn:uuid:73abbf23-55fe-452a-b19f-a143dbf05462"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:95bc9647-a9fc-469f-a39b-07ffa61b384d">
+    <skos:prefLabel xml:lang="en">Destroyed</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مدمر</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:73abbf23-55fe-452a-b19f-a143dbf05462"/>
+    <skos:inScheme rdf:resource="urn:uuid:73abbf23-55fe-452a-b19f-a143dbf05462"/>
+  </skos:Concept>
+</rdf:RDF>

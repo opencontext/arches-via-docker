@@ -214,6 +214,26 @@ RUN echo "Copy HER templates and media to project";
 RUN	cp -rn  ${HER_REPO_PATH}/arches_her/templates/* ${APP_COMP_FOLDER}/templates/
 RUN	cp -rn  ${HER_REPO_PATH}/arches_her/media/* ${APP_COMP_FOLDER}/media/
 
+# Modify the HER package for MEGA-J
+RUN echo "Update the HER packagage for MEGA-J";
+RUN echo "Update the HER ontology files for MEGA-J";
+COPY /arches/megaj_pkg/ontologies/AAAo_v2.0.1.rdf ${HER_REPO_PATH}/arches_her/pkg/ontologies/cidoc_crm/AAAo_v2.0.1.rdf
+COPY /arches/megaj_pkg/ontologies/CRMsci_v2.0.rdf ${HER_REPO_PATH}/arches_her/pkg/ontologies/cidoc_crm/CRMsci_v2.0.rdf
+COPY /arches/megaj_pkg/ontologies/ontology_config.json ${HER_REPO_PATH}/arches_her/pkg/ontologies/cidoc_crm/ontology_config.json
+
+RUN echo "Update the HER RDM files for MEGA-J";
+COPY /arches/megaj_pkg/reference_data/concepts/d_activity_types.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/concepts/d_activity_types.xml
+COPY /arches/megaj_pkg/reference_data/concepts/d_condition_rating.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/concepts/d_condition_rating.xml
+COPY /arches/megaj_pkg/reference_data/concepts/d_disturbances.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/concepts/d_disturbances.xml
+COPY /arches/megaj_pkg/reference_data/concepts/d_geometry_source.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/concepts/d_geometry_source.xml
+COPY /arches/megaj_pkg/reference_data/concepts/d_site_description_type.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/concepts/d_site_description_type.xml
+COPY /arches/megaj_pkg/reference_data/concepts/d_threats.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/concepts/d_threats.xml
+COPY /arches/megaj_pkg/reference_data/collections/collections.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/collections/collections.xml
+
+RUN echo "Update the HER RDM files for MEGA-J";
+RUN rm -rf ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/*
+COPY /arches/megaj_pkg/graphs/resource_models/ ${HER_REPO_PATH}/arches_her/pkg/graphs/
+
 # install nvm
 ENV NODE_VERSION 20.19.3
 ENV NVM_DIR /usr/local/nvm

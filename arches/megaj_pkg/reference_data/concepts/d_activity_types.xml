@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+  <skos:ConceptScheme rdf:about="urn:uuid:df21681c-fa50-4cae-8771-1e67a6ac6831">
+    <dcterms:title xml:lang="en">{&quot;id&quot;: &quot;35be1c9b-cd5d-4485-b831-3ffb0846d65b&quot;, &quot;value&quot;: &quot;MEGA-J Activity Types&quot;}</dcterms:title>
+    <skos:hasTopConcept rdf:resource="urn:uuid:686c5c2a-6841-43db-84d2-30d4b20ac131"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:1316b389-6227-4486-be04-8dc7bc59d54a"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:a07245d1-76cc-4524-9633-587d4fa2661f"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:38bd612e-e8fc-4bfc-a180-29d6904e4498"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:3d960f8c-1ed0-41cc-b69f-ce23bda83cb8"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="urn:uuid:686c5c2a-6841-43db-84d2-30d4b20ac131">
+    <skos:prefLabel xml:lang="en">Excavation</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">إجراء تنقيب أثري</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:df21681c-fa50-4cae-8771-1e67a6ac6831"/>
+    <skos:inScheme rdf:resource="urn:uuid:df21681c-fa50-4cae-8771-1e67a6ac6831"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:1316b389-6227-4486-be04-8dc7bc59d54a">
+    <skos:prefLabel xml:lang="en">Documentation</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">توثيق</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:df21681c-fa50-4cae-8771-1e67a6ac6831"/>
+    <skos:inScheme rdf:resource="urn:uuid:df21681c-fa50-4cae-8771-1e67a6ac6831"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:a07245d1-76cc-4524-9633-587d4fa2661f">
+    <skos:prefLabel xml:lang="en">Reconstruction</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">اعادة بناء</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:df21681c-fa50-4cae-8771-1e67a6ac6831"/>
+    <skos:inScheme rdf:resource="urn:uuid:df21681c-fa50-4cae-8771-1e67a6ac6831"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:38bd612e-e8fc-4bfc-a180-29d6904e4498">
+    <skos:prefLabel xml:lang="en">Conservation/Restoration</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">تثبيت الحالة, حفاظ, ترميم</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:df21681c-fa50-4cae-8771-1e67a6ac6831"/>
+    <skos:inScheme rdf:resource="urn:uuid:df21681c-fa50-4cae-8771-1e67a6ac6831"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:3d960f8c-1ed0-41cc-b69f-ce23bda83cb8">
+    <skos:prefLabel xml:lang="en">Tourism Development</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">تنمية السياحة</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:df21681c-fa50-4cae-8771-1e67a6ac6831"/>
+    <skos:inScheme rdf:resource="urn:uuid:df21681c-fa50-4cae-8771-1e67a6ac6831"/>
+  </skos:Concept>
+</rdf:RDF>

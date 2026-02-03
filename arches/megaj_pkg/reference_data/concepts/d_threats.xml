@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/">
+  <skos:ConceptScheme rdf:about="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4">
+    <dcterms:title xml:lang="en">{"id": "665befa3-74f4-4d1d-982b-84f72216699b", "value": "MEGA-J Threats"}</dcterms:title>
+    <skos:hasTopConcept rdf:resource="urn:uuid:7fe1fa98-086a-46fd-9fb2-b81786020eee"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:2c311930-e5a1-401f-b36f-a8c8d0eaee3d"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:96f49046-ec73-49bf-a8b1-2a6eebef102e"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:251f0a55-5f73-425d-81f5-944e2c53684a"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:2b5232d1-627c-4b92-983d-497dc637dbf9"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:13fedd8e-d85a-4117-8200-5b8c606430fe"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="urn:uuid:7fe1fa98-086a-46fd-9fb2-b81786020eee">
+    <skos:prefLabel xml:lang="en">Agriculture &amp; Similar Impacts</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar"> التأثيرات الزراعية وما يماثلها</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+    <skos:narrower rdf:resource="urn:uuid:4f1dc8b8-6fbf-45bf-87c8-e033e8a86a58"/>
+    <skos:narrower rdf:resource="urn:uuid:aa986a23-4b3b-40b3-a9f0-efde2243bd42"/>
+    <skos:narrower rdf:resource="urn:uuid:91fa6ef3-7372-4877-948b-a58122de9b90"/>
+    <skos:narrower rdf:resource="urn:uuid:6c89650d-43f4-4f12-8619-63b840f03106"/>
+    <skos:narrower rdf:resource="urn:uuid:ef8b63d6-27d1-43c3-8df6-ddebafa95bcb"/>
+    <skos:narrower rdf:resource="urn:uuid:f89434de-2ca8-4da8-97eb-eaa81e70fc56"/>
+    <skos:narrower rdf:resource="urn:uuid:78360c3f-660d-403f-b697-9d7b13264939"/>
+    <skos:narrower rdf:resource="urn:uuid:985c0497-440d-4278-8334-aba7fe91bb80"/>
+    <skos:narrower rdf:resource="urn:uuid:446a7ced-3439-49ce-a9d5-9dc85c8ac603"/>
+    <skos:narrower rdf:resource="urn:uuid:64f52923-706c-4a7f-8f70-6cf1448f8693"/>
+    <skos:narrower rdf:resource="urn:uuid:940a52b8-05f1-47d6-8a90-9577cd0b5250"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:4f1dc8b8-6fbf-45bf-87c8-e033e8a86a58">
+    <skos:prefLabel xml:lang="en">Animal Pen/Shelter</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">حظيرة حيوانات / ملجأ</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:7fe1fa98-086a-46fd-9fb2-b81786020eee"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:aa986a23-4b3b-40b3-a9f0-efde2243bd42">
+    <skos:prefLabel xml:lang="en">Deep Plowing</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">حراثة عميقة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:7fe1fa98-086a-46fd-9fb2-b81786020eee"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:91fa6ef3-7372-4877-948b-a58122de9b90">
+    <skos:prefLabel xml:lang="en">Fruit/Olive Grove</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">بستان فواكه / زيتون</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:7fe1fa98-086a-46fd-9fb2-b81786020eee"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:6c89650d-43f4-4f12-8619-63b840f03106">
+    <skos:prefLabel xml:lang="en">Grazing</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">رعي</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:7fe1fa98-086a-46fd-9fb2-b81786020eee"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:ef8b63d6-27d1-43c3-8df6-ddebafa95bcb">
+    <skos:prefLabel xml:lang="en">Irrigation</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">ري</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:7fe1fa98-086a-46fd-9fb2-b81786020eee"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:f89434de-2ca8-4da8-97eb-eaa81e70fc56">
+    <skos:prefLabel xml:lang="en">Land Reclamation</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">استصلاح الاراضى</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:7fe1fa98-086a-46fd-9fb2-b81786020eee"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:78360c3f-660d-403f-b697-9d7b13264939">
+    <skos:prefLabel xml:lang="en">Plowing</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">حراثة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:7fe1fa98-086a-46fd-9fb2-b81786020eee"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:985c0497-440d-4278-8334-aba7fe91bb80">
+    <skos:prefLabel xml:lang="en">Reforestation</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">تحريج / زراعة حرجية</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:7fe1fa98-086a-46fd-9fb2-b81786020eee"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:446a7ced-3439-49ce-a9d5-9dc85c8ac603">
+    <skos:prefLabel xml:lang="en">Terracing</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">سلاسل / مصاطب</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:7fe1fa98-086a-46fd-9fb2-b81786020eee"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:64f52923-706c-4a7f-8f70-6cf1448f8693">
+    <skos:prefLabel xml:lang="en">Threshing Floor</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">ارضية لدرس القمح</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:7fe1fa98-086a-46fd-9fb2-b81786020eee"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:940a52b8-05f1-47d6-8a90-9577cd0b5250">
+    <skos:prefLabel xml:lang="en">Other Agricultural Impacts (Specify)</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">التأثيرات الزراعية الأخرى   (حدد)</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:7fe1fa98-086a-46fd-9fb2-b81786020eee"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:2c311930-e5a1-401f-b36f-a8c8d0eaee3d">
+    <skos:prefLabel xml:lang="en">Development &amp; Similar Impacts</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">التنمية وما يماثلها  التأثيرات</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+    <skos:narrower rdf:resource="urn:uuid:a83efcb9-fb57-4fef-acec-36ce0cd00687"/>
+    <skos:narrower rdf:resource="urn:uuid:76011cd7-3c1f-45a6-b055-8837a2a1e005"/>
+    <skos:narrower rdf:resource="urn:uuid:a00f3e8d-365e-47dc-bca9-0fcaf499dcef"/>
+    <skos:narrower rdf:resource="urn:uuid:6a679ed3-20e2-4a1e-a4b0-dc475f5e7473"/>
+    <skos:narrower rdf:resource="urn:uuid:a19c8de3-582b-4b0a-8a13-0dacc941e2a4"/>
+    <skos:narrower rdf:resource="urn:uuid:556798f3-de6c-47da-ace9-06f44ec386c1"/>
+    <skos:narrower rdf:resource="urn:uuid:eae7938a-7539-4329-a47c-5f16e28cf3b9"/>
+    <skos:narrower rdf:resource="urn:uuid:a6205a08-454e-465d-a48c-8cfe82320884"/>
+    <skos:narrower rdf:resource="urn:uuid:48f625c9-1bb7-45cb-b836-cc7865b92ae3"/>
+    <skos:narrower rdf:resource="urn:uuid:f9ef9bab-7190-45a0-ba96-6cb7c42496bb"/>
+    <skos:narrower rdf:resource="urn:uuid:2ec0d6e5-9c56-4894-8355-4e1b65bc1fe2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:a83efcb9-fb57-4fef-acec-36ce0cd00687">
+    <skos:prefLabel xml:lang="en">Bulldozing</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">تجريف بالاليات</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:2c311930-e5a1-401f-b36f-a8c8d0eaee3d"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:76011cd7-3c1f-45a6-b055-8837a2a1e005">
+    <skos:prefLabel xml:lang="en">Inundation (by Dam)</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مغمور بالماء نتيجة بناء سد</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:2c311930-e5a1-401f-b36f-a8c8d0eaee3d"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:a00f3e8d-365e-47dc-bca9-0fcaf499dcef">
+    <skos:prefLabel xml:lang="en">Mining</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">منجم</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:2c311930-e5a1-401f-b36f-a8c8d0eaee3d"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:6a679ed3-20e2-4a1e-a4b0-dc475f5e7473">
+    <skos:prefLabel xml:lang="en">Quarrying</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">محجر/مقلع</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:2c311930-e5a1-401f-b36f-a8c8d0eaee3d"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:a19c8de3-582b-4b0a-8a13-0dacc941e2a4">
+    <skos:prefLabel xml:lang="en">Road Work</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">اعمال طرق</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:2c311930-e5a1-401f-b36f-a8c8d0eaee3d"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:556798f3-de6c-47da-ace9-06f44ec386c1">
+    <skos:prefLabel xml:lang="en">Trenching, Canal</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">خندق ,قناة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:2c311930-e5a1-401f-b36f-a8c8d0eaee3d"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:eae7938a-7539-4329-a47c-5f16e28cf3b9">
+    <skos:prefLabel xml:lang="en">Trenching, Pipeline/Sewage/Aqueduct</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">خندق (مواسير / مجاري) أو شبكة مياه أو نظام قائمي</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:2c311930-e5a1-401f-b36f-a8c8d0eaee3d"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:a6205a08-454e-465d-a48c-8cfe82320884">
+    <skos:prefLabel xml:lang="en">Urbanization</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">التمدن</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:2c311930-e5a1-401f-b36f-a8c8d0eaee3d"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:48f625c9-1bb7-45cb-b836-cc7865b92ae3">
+    <skos:prefLabel xml:lang="en">Vibrations, Automobile/Truck</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">الاهتزازات , سيارة /  شاحنة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:2c311930-e5a1-401f-b36f-a8c8d0eaee3d"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:f9ef9bab-7190-45a0-ba96-6cb7c42496bb">
+    <skos:prefLabel xml:lang="en">Vibrations, Railroad</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">الاهتزازات,  خط السكة الحديدية</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:2c311930-e5a1-401f-b36f-a8c8d0eaee3d"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:2ec0d6e5-9c56-4894-8355-4e1b65bc1fe2">
+    <skos:prefLabel xml:lang="en">Other Development Impacts (Specify)</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">التأثيرات  الحضارية  الأخرى  (حدد)</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:2c311930-e5a1-401f-b36f-a8c8d0eaee3d"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:96f49046-ec73-49bf-a8b1-2a6eebef102e">
+    <skos:prefLabel xml:lang="en">Human &amp; Similar Impacts</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">التأثيرات البشرية  وما يماثلها</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+    <skos:narrower rdf:resource="urn:uuid:8c5375fa-1b4a-413c-a2fd-786bcf580c1f"/>
+    <skos:narrower rdf:resource="urn:uuid:cb83677b-5cef-48f6-b860-3bfac879d125"/>
+    <skos:narrower rdf:resource="urn:uuid:5de27b20-b67c-4708-b637-47767ad0950c"/>
+    <skos:narrower rdf:resource="urn:uuid:39ca9ecb-8867-420e-b56b-27f12436c7bb"/>
+    <skos:narrower rdf:resource="urn:uuid:111ab138-16fa-4ced-8658-53f60e6db587"/>
+    <skos:narrower rdf:resource="urn:uuid:4de49bc5-8f6e-407d-9872-c73cf97b9596"/>
+    <skos:narrower rdf:resource="urn:uuid:a25cb4ca-8663-43e2-aec1-44f4242712e1"/>
+    <skos:narrower rdf:resource="urn:uuid:bff67b67-a5a2-4614-9069-bfff7d3a1aef"/>
+    <skos:narrower rdf:resource="urn:uuid:ca5af90d-8170-4969-837c-a263338ed552"/>
+    <skos:narrower rdf:resource="urn:uuid:5bd4f214-b10e-4d6f-8b5e-ea2cada11fde"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:8c5375fa-1b4a-413c-a2fd-786bcf580c1f">
+    <skos:prefLabel xml:lang="en">Air Pollution</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">تلوث هواء</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:96f49046-ec73-49bf-a8b1-2a6eebef102e"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:cb83677b-5cef-48f6-b860-3bfac879d125">
+    <skos:prefLabel xml:lang="en">Bedouin Camp</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مخيم بدوي</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:96f49046-ec73-49bf-a8b1-2a6eebef102e"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:5de27b20-b67c-4708-b637-47767ad0950c">
+    <skos:prefLabel xml:lang="en">Dumping</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مكب / طمم</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:96f49046-ec73-49bf-a8b1-2a6eebef102e"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:39ca9ecb-8867-420e-b56b-27f12436c7bb">
+    <skos:prefLabel xml:lang="en">Looting/Theft</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">سرقة /  نهب</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:96f49046-ec73-49bf-a8b1-2a6eebef102e"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:111ab138-16fa-4ced-8658-53f60e6db587">
+    <skos:prefLabel xml:lang="en">Military Activities</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">نشاطات عسكرية</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:96f49046-ec73-49bf-a8b1-2a6eebef102e"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:4de49bc5-8f6e-407d-9872-c73cf97b9596">
+    <skos:prefLabel xml:lang="en">Modern Tombs/Cemetery</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مدافن حديثة / مقبرة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:96f49046-ec73-49bf-a8b1-2a6eebef102e"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:a25cb4ca-8663-43e2-aec1-44f4242712e1">
+    <skos:prefLabel xml:lang="en">Reuse of Ancient Masonry</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">إعادة أستعمال مباني قديمة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:96f49046-ec73-49bf-a8b1-2a6eebef102e"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:bff67b67-a5a2-4614-9069-bfff7d3a1aef">
+    <skos:prefLabel xml:lang="en">Reuse of Ancient Structure</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">إعادة أستعمال منشآت قديمة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:96f49046-ec73-49bf-a8b1-2a6eebef102e"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:ca5af90d-8170-4969-837c-a263338ed552">
+    <skos:prefLabel xml:lang="en">Vandalism</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">تخريب</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:96f49046-ec73-49bf-a8b1-2a6eebef102e"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:5bd4f214-b10e-4d6f-8b5e-ea2cada11fde">
+    <skos:prefLabel xml:lang="en">Other Human Impacts (Specify)</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">التأثيرات البشرية الأخرى (حدد)</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:96f49046-ec73-49bf-a8b1-2a6eebef102e"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:251f0a55-5f73-425d-81f5-944e2c53684a">
+    <skos:prefLabel xml:lang="en">Natural &amp; Similar Impacts &amp; Deterioration</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">التأثيرات الطبيعية وتدهور وما يماثلها</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+    <skos:narrower rdf:resource="urn:uuid:8b44ef5a-b55d-4406-b3e7-7d0ba5112292"/>
+    <skos:narrower rdf:resource="urn:uuid:43d1d59e-b689-4f85-8161-849055f349c2"/>
+    <skos:narrower rdf:resource="urn:uuid:e883a800-9514-4677-9696-3bbaf299d952"/>
+    <skos:narrower rdf:resource="urn:uuid:b23c676b-c495-49c1-ab98-ebf4fd0a4844"/>
+    <skos:narrower rdf:resource="urn:uuid:18d87708-7b43-4c07-a4cb-d0dab354f8c5"/>
+    <skos:narrower rdf:resource="urn:uuid:66904d82-319c-454a-851d-abf367db1b19"/>
+    <skos:narrower rdf:resource="urn:uuid:2280cd34-ae75-4b6a-92f0-48df1670c3c0"/>
+    <skos:narrower rdf:resource="urn:uuid:279967b1-1ce8-4e64-93f2-cc8d903994c3"/>
+    <skos:narrower rdf:resource="urn:uuid:eb5d17d4-1424-4b40-af6d-d8d6d6dd63ef"/>
+    <skos:narrower rdf:resource="urn:uuid:157af07a-f955-47da-bc4b-57e44103a90d"/>
+    <skos:narrower rdf:resource="urn:uuid:e74b808a-6cb0-48ea-a4e4-c0b49ee0b830"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:8b44ef5a-b55d-4406-b3e7-7d0ba5112292">
+    <skos:prefLabel xml:lang="en">Animal (Non-Domestic) Impact</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">أثر الحيوانات غير الداجنة (البرية)</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:251f0a55-5f73-425d-81f5-944e2c53684a"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:43d1d59e-b689-4f85-8161-849055f349c2">
+    <skos:prefLabel xml:lang="en">Collapse - Wall/Superstructure</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">انهيارات / انزلاقات</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:251f0a55-5f73-425d-81f5-944e2c53684a"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:e883a800-9514-4677-9696-3bbaf299d952">
+    <skos:prefLabel xml:lang="en">Earthquake</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">هزات أرضية / زلزال</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:251f0a55-5f73-425d-81f5-944e2c53684a"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:b23c676b-c495-49c1-ab98-ebf4fd0a4844">
+    <skos:prefLabel xml:lang="en">Erosion, Water</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">تعرية / مياه</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:251f0a55-5f73-425d-81f5-944e2c53684a"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:18d87708-7b43-4c07-a4cb-d0dab354f8c5">
+    <skos:prefLabel xml:lang="en">Erosion, Wind</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">تعرية / رياح</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:251f0a55-5f73-425d-81f5-944e2c53684a"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:66904d82-319c-454a-851d-abf367db1b19">
+    <skos:prefLabel xml:lang="en">Fire</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">حريق</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:251f0a55-5f73-425d-81f5-944e2c53684a"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:2280cd34-ae75-4b6a-92f0-48df1670c3c0">
+    <skos:prefLabel xml:lang="en">Flooding (Not by Dam)</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">الفيضانات (وليس بواسطة السد)</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:251f0a55-5f73-425d-81f5-944e2c53684a"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:279967b1-1ce8-4e64-93f2-cc8d903994c3">
+    <skos:prefLabel xml:lang="en">Land/Rock Slide</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">الانزلاقات أرضية / صخرية</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:251f0a55-5f73-425d-81f5-944e2c53684a"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:eb5d17d4-1424-4b40-af6d-d8d6d6dd63ef">
+    <skos:prefLabel xml:lang="en">Rising Damp</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">ارتفاع الرطوبه</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:251f0a55-5f73-425d-81f5-944e2c53684a"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:157af07a-f955-47da-bc4b-57e44103a90d">
+    <skos:prefLabel xml:lang="en">Vegetation (Non-Agricultural) Impact</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">تأثير الغطاء النباتي (غير الزراعية)</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:251f0a55-5f73-425d-81f5-944e2c53684a"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:e74b808a-6cb0-48ea-a4e4-c0b49ee0b830">
+    <skos:prefLabel xml:lang="en">Other Natural Impacts &amp; Deterioration (Specify)</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">التأثيرات الطبيعية الأخرى والتدهور(حدد)</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:251f0a55-5f73-425d-81f5-944e2c53684a"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:2b5232d1-627c-4b92-983d-497dc637dbf9">
+    <skos:prefLabel xml:lang="en">Site Management &amp; Similar Impacts</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">التأثيرات السلبية المتسببة عن إدارة الموقع وما يماثلها</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+    <skos:narrower rdf:resource="urn:uuid:534f87e9-9b23-4de8-a22a-23c790a6f9e9"/>
+    <skos:narrower rdf:resource="urn:uuid:450f806c-fe83-457f-9de7-dbb11eecf048"/>
+    <skos:narrower rdf:resource="urn:uuid:09d7521b-1ae3-4ce2-b854-556385a552ed"/>
+    <skos:narrower rdf:resource="urn:uuid:dc23d2e0-40d0-414f-91b8-155cd720c08e"/>
+    <skos:narrower rdf:resource="urn:uuid:744b67da-0078-4ecd-a1e7-edc6c312b8bc"/>
+    <skos:narrower rdf:resource="urn:uuid:62beda21-e00e-420d-b5f0-4c76eb920f1c"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:534f87e9-9b23-4de8-a22a-23c790a6f9e9">
+    <skos:prefLabel xml:lang="en">Inappropriate Archaeological Excavation</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">حفر اثري غير مناسب</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:2b5232d1-627c-4b92-983d-497dc637dbf9"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:450f806c-fe83-457f-9de7-dbb11eecf048">
+    <skos:prefLabel xml:lang="en">Inappropriate Conservation/Restoration</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">حفاظ / ترميم  غير مناسب</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:2b5232d1-627c-4b92-983d-497dc637dbf9"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:09d7521b-1ae3-4ce2-b854-556385a552ed">
+    <skos:prefLabel xml:lang="en">Inappropriate Maintenance</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">صيانة غير مناسبة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:2b5232d1-627c-4b92-983d-497dc637dbf9"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:dc23d2e0-40d0-414f-91b8-155cd720c08e">
+    <skos:prefLabel xml:lang="en">Tourism Concessioner Activities</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">أثر التراجع السياحي</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:2b5232d1-627c-4b92-983d-497dc637dbf9"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:744b67da-0078-4ecd-a1e7-edc6c312b8bc">
+    <skos:prefLabel xml:lang="en">Tourist/Visitor Activities</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">النشاطات السياحية  /الزائر /أثر السياحة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:2b5232d1-627c-4b92-983d-497dc637dbf9"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:62beda21-e00e-420d-b5f0-4c76eb920f1c">
+    <skos:prefLabel xml:lang="en">Other Site Management Impacts (Specify)</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">أثر القرارات الإدارية الأخرى (حدد)</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:2b5232d1-627c-4b92-983d-497dc637dbf9"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:13fedd8e-d85a-4117-8200-5b8c606430fe">
+    <skos:prefLabel xml:lang="en">Other</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">عوامل اخرى </skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+    <skos:narrower rdf:resource="urn:uuid:e5c31319-395c-4eb2-b817-77f18e314dbe"/>
+    <skos:narrower rdf:resource="urn:uuid:9ba00033-d875-43f7-9b19-6c8cacbee4ba"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:e5c31319-395c-4eb2-b817-77f18e314dbe">
+    <skos:prefLabel xml:lang="en">Other Threats (Specify)</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">تهديدات أخرى (حدد)</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:13fedd8e-d85a-4117-8200-5b8c606430fe"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:9ba00033-d875-43f7-9b19-6c8cacbee4ba">
+    <skos:prefLabel xml:lang="en">No Threats Observed</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">لا توجد تهديدات</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:13fedd8e-d85a-4117-8200-5b8c606430fe"/>
+    <skos:inScheme rdf:resource="urn:uuid:badd15af-1b07-4779-850a-ea142a2d21d4"/>
+  </skos:Concept>
+  
+
+</rdf:RDF>

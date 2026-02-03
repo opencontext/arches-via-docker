@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+  <skos:ConceptScheme rdf:about="urn:uuid:a0750242-f8d0-454e-bb36-31858b298d83">
+    <dcterms:title xml:lang="en">{&quot;id&quot;: &quot;b72e542f-9599-48b4-924b-ffbf84a9be7e&quot;, &quot;value&quot;: &quot;MEGA-J Site Description Type&quot;}</dcterms:title>
+    <skos:hasTopConcept rdf:resource="urn:uuid:00da21a8-f1b3-448e-8d25-f365c72d8a4e"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:264e8a72-2224-40d6-8acc-48a9e063caaf"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:a8cafdff-3628-4364-ac88-5f5d0701dc24"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:ad39e321-41f9-441a-a763-465e1106932a"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:fad0169f-66e7-4294-a933-57534e8a4d3b"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:013eb48a-4138-48b3-b69e-4f47b043521f"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:d77deb10-3907-4b2f-a658-fc14f95c2bb9"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="urn:uuid:00da21a8-f1b3-448e-8d25-f365c72d8a4e">
+    <skos:prefLabel xml:lang="en">Site Significance: Scientific</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a0750242-f8d0-454e-bb36-31858b298d83"/>
+    <skos:inScheme rdf:resource="urn:uuid:a0750242-f8d0-454e-bb36-31858b298d83"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:264e8a72-2224-40d6-8acc-48a9e063caaf">
+    <skos:prefLabel xml:lang="en">Site Significance: Historical</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a0750242-f8d0-454e-bb36-31858b298d83"/>
+    <skos:inScheme rdf:resource="urn:uuid:a0750242-f8d0-454e-bb36-31858b298d83"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:a8cafdff-3628-4364-ac88-5f5d0701dc24">
+    <skos:prefLabel xml:lang="en">Site Significance: Aesthetic</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a0750242-f8d0-454e-bb36-31858b298d83"/>
+    <skos:inScheme rdf:resource="urn:uuid:a0750242-f8d0-454e-bb36-31858b298d83"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:ad39e321-41f9-441a-a763-465e1106932a">
+    <skos:prefLabel xml:lang="en">Site Significance: Social</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a0750242-f8d0-454e-bb36-31858b298d83"/>
+    <skos:inScheme rdf:resource="urn:uuid:a0750242-f8d0-454e-bb36-31858b298d83"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:fad0169f-66e7-4294-a933-57534e8a4d3b">
+    <skos:prefLabel xml:lang="en">Site Significance: Spiritual</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a0750242-f8d0-454e-bb36-31858b298d83"/>
+    <skos:inScheme rdf:resource="urn:uuid:a0750242-f8d0-454e-bb36-31858b298d83"/>
+  </skos:Concept>
+    <skos:Concept rdf:about="urn:uuid:d77deb10-3907-4b2f-a658-fc14f95c2bb9">
+    <skos:prefLabel xml:lang="en">Site Significance: Evidence</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a0750242-f8d0-454e-bb36-31858b298d83"/>
+    <skos:inScheme rdf:resource="urn:uuid:a0750242-f8d0-454e-bb36-31858b298d83"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:013eb48a-4138-48b3-b69e-4f47b043521f">
+    <skos:prefLabel xml:lang="en">Directions to Site</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a0750242-f8d0-454e-bb36-31858b298d83"/>
+    <skos:inScheme rdf:resource="urn:uuid:a0750242-f8d0-454e-bb36-31858b298d83"/>
+  </skos:Concept>
+</rdf:RDF>
