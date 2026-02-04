@@ -231,8 +231,19 @@ COPY /arches/megaj_pkg/reference_data/concepts/d_threats.xml ${HER_REPO_PATH}/ar
 COPY /arches/megaj_pkg/reference_data/collections/collections.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/collections/collections.xml
 
 RUN echo "Update the HER RDM files for MEGA-J";
-RUN rm -rf ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/*
-COPY /arches/megaj_pkg/graphs/resource_models/ ${HER_REPO_PATH}/arches_her/pkg/graphs/
+COPY /arches/megaj_pkg/graphs/resource_models/Activity.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Activity.json
+COPY /arches/megaj_pkg/graphs/resource_models/Area.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Area.json
+COPY /arches/megaj_pkg/graphs/resource_models/Artefact.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Artefact.json
+COPY ["/arches/megaj_pkg/graphs/resource_models/Bibliographic Source.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Bibliographic Source.json"]
+COPY ["/arches/megaj_pkg/graphs/resource_models/Digital Object.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Digital Object.json"]
+COPY ["/arches/megaj_pkg/graphs/resource_models/Monitoring Event.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Monitoring Event.json"]
+COPY /arches/megaj_pkg/graphs/resource_models/Organization.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Organization.json
+COPY /arches/megaj_pkg/graphs/resource_models/Period.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Period.json
+COPY /arches/megaj_pkg/graphs/resource_models/Person.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Person.json
+COPY /arches/megaj_pkg/graphs/resource_models/Place.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Place.json
+COPY ["/arches/megaj_pkg/graphs/resource_models/Site Element.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Site Element.json"]
+COPY /arches/megaj_pkg/graphs/resource_models/Site.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Site.json
+COPY ["/arches/megaj_pkg/graphs/resource_models/Survey Area.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Survey Area.json"]
 
 # install nvm
 ENV NODE_VERSION 20.19.3
