@@ -1,8 +1,11 @@
 """
-Django settings for afs_plocal project.
+Django settings for arches_her project.
 """
 
+import json
 import os
+import sys
+import arches
 import inspect
 import semantic_version
 from datetime import datetime, timedelta
@@ -13,7 +16,6 @@ try:
 except ImportError:
     pass
 
-
 def get_os_env_variable(var_name):
     msg = "Set the %s environment variable"
     try:
@@ -23,22 +25,33 @@ def get_os_env_variable(var_name):
         raise ImproperlyConfigured(error_msg)
 
 
-ARCHES_V = '7.5.5'
+ARCHES_V = '7.6.20'
 APP_NAME = get_os_env_variable('ARCHES_PROJECT')
 APP_VERSION = semantic_version.Version(major=0, minor=0, patch=0)
 APP_ROOT = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+# APP_PATHNAME = APP_NAME
+APP_PARENT = os.path.abspath(os.path.join(APP_ROOT, os.pardir))
 
 
 WEBPACK_LOADER = {
     "DEFAULT": {
-        "STATS_FILE": os.path.join(APP_ROOT, 'webpack/webpack-stats.json'),
+        # NOTE: this is up a level. for some reason, see: https://github.com/archesproject/arches-her/blob/42bab051b52d5fc319f4e2645478318c0263de05/arches_her/settings.py#L26
+        # "STATS_FILE": os.path.join(APP_PARENT, 'webpack/webpack-stats.json'),
+        # "STATS_FILE": os.path.join(APP_ROOT, 'webpack/webpack-stats.json'),
+        "STATS_FILE": os.path.join(APP_ROOT, '..', 'webpack/webpack-stats.json'),
     },
 }
 
-DATATYPE_LOCATIONS.append('arches_her.datatypes')
-FUNCTION_LOCATIONS.append('arches_her.functions')
-ETL_MODULE_LOCATIONS.append('arches_her.etl_modules')
-SEARCH_COMPONENT_LOCATIONS.append('arches_her.search.components')
+if False:
+    DATATYPE_LOCATIONS.append(f'arches_her.datatypes')
+    FUNCTION_LOCATIONS.append(f'arches_her.functions')
+    # ETL_MODULE_LOCATIONS.append(f'arches_her.etl_modules')
+    SEARCH_COMPONENT_LOCATIONS.append(f'arches_her.search.components')
+
+DATATYPE_LOCATIONS.append(f'{APP_NAME}.datatypes')
+FUNCTION_LOCATIONS.append(f'{APP_NAME}.functions')
+ETL_MODULE_LOCATIONS.append(f'{APP_NAME}.etl_modules')
+SEARCH_COMPONENT_LOCATIONS.append(f'{APP_NAME}.search.components')
 
 LOCALE_PATHS.append(os.path.join(APP_ROOT, 'locale'))
 
@@ -153,7 +166,7 @@ if ARCHES_V == '7.5.5':
         "corsheaders",
         "oauth2_provider",
         "django_celery_results",
-        "compressor",
+        "django_hosts",
         # "silk",
         "arches_her",
         f"{APP_NAME}",
@@ -184,7 +197,7 @@ else:
         f"{APP_NAME}",
     )
 
-ARCHES_APPLICATIONS = ("arches_her",)
+ARCHES_APPLICATIONS = ("arches_her", )
 
 # Placing this last ensures any templates provided by Arches Applications
 # take precedence over core arches templates in arches/app/templates.
@@ -206,6 +219,8 @@ MIDDLEWARE = [
     "arches.app.utils.middleware.SetAnonymousUser",
     # "silk.middleware.SilkyMiddleware",
 ]
+
+
 
 
 if ARCHES_V == '7.5.5':
@@ -352,7 +367,7 @@ GRAPH_MODEL_CACHE_TIMEOUT = None
 
 OAUTH_CLIENT_ID = ''  #'9JCibwrWQ4hwuGn5fu2u1oRZSs9V6gK8Vu8hpRC4'
 
-APP_TITLE = 'Arches for Historic Environment Records'
+APP_TITLE = 'Arches MEGAJ, adapted from Arches for Historic Environment Records'
 COPYRIGHT_TEXT = 'All Rights Reserved.'
 COPYRIGHT_YEAR = '2024'
 
@@ -521,6 +536,22 @@ TIMEWHEEL_DATE_TIERS = {
 
 
 
+
+
+
+
+
+PREFERRED_COORDINATE_SYSTEMS = (
+    {
+        "name": "Geographic",
+        "srid": "4326",
+        "proj4": "+proj=longlat +datum=WGS84 +no_defs",
+        "default": True,
+    },  # Required
+)
+
+ANALYSIS_COORDINATE_SYSTEM_SRID = 3857  # Coord sys units must be meters
+
 # Implement this class to associate custom documents to the ES resource index
 # See tests.views.search_tests.TestEsMappingModifier class for example
 # ES_MAPPING_MODIFIER_CLASSES = ["afs_plocal.search.es_mapping_modifier.EsMappingModifier"]
@@ -544,8 +575,9 @@ except ImportError as e:
 # returns an output that can be read by NODEJS
 if __name__ == "__main__":
     transmit_webpack_django_config(
-        root_dir=ROOT_DIR,
+        root_dir=APP_ROOT,
         app_root=APP_ROOT,
+        arches_applications=ARCHES_APPLICATIONS,
         public_server_address=PUBLIC_SERVER_ADDRESS,
         static_url=STATIC_URL,
         webpack_development_server_port=WEBPACK_DEVELOPMENT_SERVER_PORT,

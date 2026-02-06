@@ -7,7 +7,11 @@ from django.urls import include, path
 
 urlpatterns = [
     path('', include('arches.urls')),
-   path("", include("arches_her.urls")),
+    path("", include("arches_her.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-settings.SHOW_LANGUAGE_SWITCH = False
+if settings.ROOT_URLCONF == __name__:
+    if settings.SHOW_LANGUAGE_SWITCH is True:
+        urlpatterns = i18n_patterns(*urlpatterns)
+
+    urlpatterns.append(path("i18n/", include("django.conf.urls.i18n")))

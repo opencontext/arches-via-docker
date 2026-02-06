@@ -1,54 +1,37 @@
-FROM ubuntu:22.04
+FROM ubuntu:22.04.5
 # Start with Ubuntu 22
 
 USER root
 
-# Set environment variables to make installations non-interactive
-ENV DEBIAN_FRONTEND=noninteractive
-ENV TZ=UTC
-
-# Update package lists and install basic packages first
+# Do the apt installation also install git
+RUN apt-get update && apt-get install -y --no-install-recommends software-properties-common
+RUN add-apt-repository universe
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl \
-    wget \
-    gnupg \
-    lsb-release \
-    software-properties-common \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-# Add Python 3.12 repository and install Python packages
-RUN add-apt-repository ppa:deadsnakes/ppa \
-    && apt-get update \
-    && apt-get install -y --no-install-recommends \
-    python3.12 \
-    python3.12-dev \
-    python3.12-venv \
+    python3.13 \
+    python3.13-dev \
+    python3.13-venv \
     python3-pip \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install system dependencies
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-    make \
+    curl \
     gcc \
     build-essential \
     mime-support \
     libgdal-dev \
     dos2unix \
-    nano \
-    git \
-    postgresql-client-14 \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    nano
+RUN apt-get update --fix-missing && apt-get install -y git
 
+
+# Install the postgres client
+RUN apt-get update
+RUN apt-get install -y postgresql-client-14
+
+FROM python:3.13
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN python3.12 -m venv /opt/venv \
-    && . /opt/venv/bin/activate \
+RUN python -m venv venv \
+    && . venv/bin/activate \
     && pip install --upgrade pip
 # Make sure we use the virtualenv:
 ENV PATH="/opt/venv/bin:$PATH"
@@ -60,21 +43,27 @@ ARG ARCHES_PROJECT
 # Project specific paths
 ARG APP_ROOT
 ARG APP_COMP_FOLDER
-# for the Arches HER repo
-ENV HER_REPO_PATH=${ARCHES_ROOT}/arches_her
+
+# Get the Arches version for pip installation
+ARG ARCHES_PIP_VERSION
+
 # settings_local.py provides the DB credentials, etc. to the Arches project.
 ENV SETTINGS_PATH=${APP_COMP_FOLDER}/settings.py
 ENV SETTINGS_LOCAL_PATH=${APP_COMP_FOLDER}/settings_local.py
 ENV CELERY_PATH=${APP_COMP_FOLDER}/celery.py
 ENV URLS_PATH=${APP_COMP_FOLDER}/urls.py
 ENV ARCHES_DATA=${ARCHES_ROOT}/arches_data
-ENV PACKAGE_PATH=${APP_COMP_FOLDER}/package.json
+ENV PACKAGE_PATH=${APP_ROOT}/package.json
+ENV PACKAGE_COMP_PATH=${APP_COMP_FOLDER}/package.json
 ENV WHEELS=/wheels
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE 1
 
 # Setup needed directories
 RUN mkdir ${ARCHES_ROOT} && mkdir /var/log/supervisor && mkdir /var/log/celery
+
+# Get ready to do some code installation
+RUN apt-get update && apt-get install -y --no-install-recommends make lsb-release
 
 # Install packages required to run Arches
 # Note that the ubuntu/debian package for libgdal1-dev pulls in libgdal1i, which is built
@@ -92,33 +81,50 @@ RUN set -ex \
         docbook-mathml \
         libgdal-dev \
         libpq-dev \
-        mime-support \
         python3-dev \
         postgresql-client-14 \
         dos2unix \
-        wait-for-it \
-        nano \
+        gettext \
     " \
+    && apt-get install -y --no-install-recommends curl lsb-release gnupg \
     && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
-    && curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /usr/share/keyrings/postgresql-keyring.gpg \
-    && echo "deb [signed-by=/usr/share/keyrings/postgresql-keyring.gpg] http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" | tee /etc/apt/sources.list.d/postgresql.list \
+    && curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /usr/share/keyrings/postgresql.gpg \
+    && echo "deb [signed-by=/usr/share/keyrings/postgresql.gpg] http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -sc)-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
     && apt-get update -y \
-    && apt-get install -y --no-install-recommends $RUN_DEPS \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    && apt-get install -y "wait-for-it" \
+    && apt-get install -y nano \
+    && apt-get install -y --no-install-recommends $RUN_DEPS
+
+
 
 # ----------------------------------------------
 # Do installs relating to yarn
 # ----------------------------------------------
 
-# Install yarn
+# Set environment variables
+ENV NODE_MAJOR=20
+
+# Update package lists and install necessary packages
+RUN apt-get update \
+    && apt-get install -y \
+        ca-certificates \
+        curl \
+        gnupg \
+    && mkdir -p /etc/apt/keyrings
+
+# Add nodesource GPG key
+RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+
+# Add nodesource repository
+RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list \
+    && apt-get update
+
 # Install Node.js
-# RUN apt-get install -y nodejs \
-#     && npm install -g yarn
+RUN apt-get install -y nodejs
 
 # Clean up
-# RUN apt-get clean \
-#     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
 
@@ -128,6 +134,7 @@ WORKDIR ${ARCHES_ROOT}
 RUN rm -rf /root/.cache/pip/*
 
 RUN pip install --upgrade pip
+
 # Install the Arches application and make an Arches project.
 RUN pip install --no-cache-dir --no-input supervisor==4.2.1 \
     && pip install --no-cache-dir --no-input django-pgtrigger==4.9.0 \
@@ -139,19 +146,23 @@ RUN pip install --no-cache-dir --no-input supervisor==4.2.1 \
     && pip install --no-cache-dir --no-input gunicorn \
     && pip install --no-cache-dir --no-input pyasynchat \
     && pip install --no-cache-dir --no-input pyasyncore \
-    && pip install --no-cache-dir --no-input arches==7.5.5 \
+    && pip install --no-cache-dir --no-input setuptools \
+    && pip install --no-cache-dir --no-input arches==7.6.20 \
     && pip install --no-cache-dir --no-input python-docx==1.1.0
 
-# Install the HER software and the working v7 branch
-RUN mkdir -p ${HER_REPO_PATH}
 
+# Install the HER software and the working v7 branch
+# for the Arches HER repo
+ENV HER_REPO_PATH=${ARCHES_ROOT}/arches_her
+RUN mkdir -p ${HER_REPO_PATH}
 WORKDIR ${ARCHES_ROOT}
 RUN git clone https://github.com/archesproject/arches-her.git ${HER_REPO_PATH}
 WORKDIR ${HER_REPO_PATH}
-RUN echo "Use the arches-her stable/1.0.0";
-RUN echo "git checkout stable/1.0.0";
-RUN git checkout stable/1.0.0;
+RUN echo "Use the arches-her dev/1.1.x";
+RUN echo "git checkout dev/1.1.x";
+RUN git checkout dev/1.1.x;
 RUN pip install --no-cache-dir --no-input -e '.[dev]'
+
 
 # create a new Arches project
 WORKDIR ${ARCHES_ROOT}
@@ -173,30 +184,15 @@ RUN sed -i 's/\r$//g' ${URLS_PATH}
 
 # Copy customized package until the issue with datatables.net is resolved.
 COPY ./arches/package.json ${PACKAGE_PATH}
+COPY ./arches/package.json ${PACKAGE_COMP_PATH}
 
 # copy the celery supervisor
 COPY /arches/conf.d/ ${APP_ROOT}/conf.d/
 RUN chmod -R 700 ${APP_ROOT}/conf.d/
-COPY /arches/arches_her_local-supervisor.conf ${APP_ROOT}/arches_her_local-supervisor.conf
-RUN chmod -R 700 ${APP_ROOT}/arches_her_local-supervisor.conf
+COPY /arches/arches_megaj-supervisor.conf ${APP_ROOT}/arches_megaj-supervisor.conf
+RUN chmod -R 700 ${APP_ROOT}/arches_megaj-supervisor.conf
 RUN mkdir -p /var/log/supervisor
 RUN mkdir -p /var/log/celery
-
-
-# Set some settings to make NPM less fussy
-# RUN npm config set cafile null
-# RUN npm config set strict-ssl false
-
-# remove any node_modules that might have been installed by the arches install
-# RUN rm -rf ${APP_ROOT}/node_modules
-# RUN rm -f ${APP_ROOT}/package-lock.json
-# Now do the NPM install
-# RUN npm install
-
-
-
-
-
 
 # Make sure the entry point is available and lacks weird characters
 # that don't work in a Linux OS
@@ -204,15 +200,35 @@ COPY /arches/entrypoint.sh ${APP_ROOT}/entrypoint.sh
 RUN chmod -R 700 ${APP_ROOT}/entrypoint.sh &&\
   dos2unix ${APP_ROOT}/entrypoint.sh
 
+
+# Set default workdir
 WORKDIR ${APP_ROOT}
+
+# So we can load packages
+RUN mkdir -p ${APP_COMP_FOLDER}/templates/views/components/cards
+RUN mkdir -p ${APP_COMP_FOLDER}/templates/views/components/datatypes
+RUN mkdir -p ${APP_COMP_FOLDER}/templates/views/components/functions
+RUN mkdir -p ${APP_COMP_FOLDER}/templates/views/components/plugins
+RUN mkdir -p ${APP_COMP_FOLDER}/templates/views/components/reports
+RUN mkdir -p ${APP_COMP_FOLDER}/templates/views/components/search
+RUN mkdir -p ${APP_COMP_FOLDER}/templates/views/components/widgets
+RUN mkdir -p ${APP_COMP_FOLDER}/templates/views/components/workflows
+RUN mkdir -p ${APP_COMP_FOLDER}/media/js/views/components/widgets
+
+WORKDIR ${APP_ROOT}
+RUN mkdir -p ${APP_COMP_FOLDER}/templates
+RUN chmod -R 744 ${APP_COMP_FOLDER}/templates
 RUN mkdir -p ${APP_COMP_FOLDER}/media
 RUN chmod -R 744 ${APP_COMP_FOLDER}/media
+# RUN mkdir -p ${APP_COMP_FOLDER}/webpack
+# RUN chmod -R 744 ${APP_COMP_FOLDER}/webpack
 
 
 # Copy template files from the package
 RUN echo "Copy HER templates and media to project";
-RUN	cp -rn  ${HER_REPO_PATH}/arches_her/templates/* ${APP_COMP_FOLDER}/templates/
+# RUN	cp -rn  ${HER_REPO_PATH}/arches_her/templates/* ${APP_COMP_FOLDER}/templates/
 RUN	cp -rn  ${HER_REPO_PATH}/arches_her/media/* ${APP_COMP_FOLDER}/media/
+# RUN	cp -rn  ${HER_REPO_PATH}/webpack/* ${APP_COMP_FOLDER}/webpack/
 
 # Modify the HER package for MEGA-J
 RUN echo "Update the HER packagage for MEGA-J";
@@ -245,28 +261,36 @@ COPY ["/arches/megaj_pkg/graphs/resource_models/Site Element.json", "${HER_REPO_
 COPY /arches/megaj_pkg/graphs/resource_models/Site.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Site.json
 COPY ["/arches/megaj_pkg/graphs/resource_models/Survey Area.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Survey Area.json"]
 
-# install nvm
-ENV NODE_VERSION 20.19.3
-ENV NVM_DIR /usr/local/nvm
-RUN mkdir $NVM_DIR
-# https://github.com/nvm-sh/nvm#install-script
-RUN curl --silent -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash -
-# install node and npm
-WORKDIR ${APP_COMP_FOLDER}
-RUN echo "source $NVM_DIR/nvm.sh \
-  && nvm install $NODE_VERSION \
-  && nvm alias default $NODE_VERSION \
-  && nvm use default" | bash -
 
-# add node and npm to path so the commands are available
-ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
-ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
-RUN npm install -g yarn
-RUN yarn install
-
-# Set default workdir
+# This is a hack to install SSH keys inside the container. Don't use
+# these for anything other than cloning public git repos, since they
+# are not secure within the docker image. But we seem to need this to
+# access github in the npm install process.
 WORKDIR ${APP_ROOT}
+
+# This is a hack to install SSH keys inside the container. Don't use
+# these for anything other than cloning public git repos, since they
+# are not secure within the docker image. But we seem to need this to
+# access github in the npm install process.
+RUN apt -y install openssh-client
+RUN mkdir -p /root/.ssh/ && \
+    ssh-keygen -q -t rsa -N '' -f /root/.ssh/id_rsa && \
+    chmod -R 600 /root/.ssh/ && \
+    ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+
+
+RUN git config --global url."https://github.com/".insteadOf git@github.com:
+RUN git config --global url."https://".insteadOf git://
+RUN git config --global url."https://github.com/".insteadOf ssh@github.com:
+RUN git config --global url."https://".insteadOf ssh://
+RUN git config --global http.postBuffer 524288000
+RUN git config --global http.lowSpeedLimit 0
+RUN git config --global http.lowSpeedTime 999999
+RUN rm -rf node_modules package-lock.json 
+RUN npm install
+
+# Now set up the entrypoint and run it.
 ENTRYPOINT ["./entrypoint.sh"]
 CMD ["run_arches"]
 

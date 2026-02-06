@@ -300,17 +300,14 @@ run_setup_webpack() {
 		if [[ ${BUILD_PRODUCTION} == 'True' ]]; then
 			# NOTE: Only do this if you have more than 8GB of system RAM. This will likely error out
 			# otherwise.
-			copy_her_template_and_media
-
 			echo "Running Webpack, hopefully the build_production thing will work!"
 			cd ${APP_FOLDER}
-			exec sh -c "yarn install && python3 manage.py build_production"
+			exec sh -c "npm run build_production"
 		else
-			copy_her_template_and_media
-
-			cd ${APP_COMP_FOLDER}
-			echo "Running Webpack to do the yarn build_development thing."
-			exec sh -c "yarn install && yarn add jquery-validation && yarn build_development && python3 $APP_FOLDER/manage.py collectstatic --noinput"
+			# cd ${APP_COMP_FOLDER}
+			cd ${APP_FOLDER}
+			echo "Running Webpack: npm run build_development"
+			exec sh -c "npm run build_development && python $APP_FOLDER/manage.py collectstatic --noinput"
 		fi
 
 	else
