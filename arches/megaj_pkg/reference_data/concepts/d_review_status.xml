@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+  <skos:ConceptScheme rdf:about="urn:uuid:247a7c38-1f14-42e4-badc-65d1cdfe9978">
+    <dcterms:title xml:lang="en">{&quot;id&quot;: &quot;4f94256e-c0b6-4faa-9743-c690a15e185c&quot;, &quot;value&quot;: &quot;MEGA-J Review Status&quot;}</dcterms:title>
+    <skos:hasTopConcept rdf:resource="urn:uuid:9262b45a-7b18-4a82-aaf5-a48b8a8d2422"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:4b663d31-dd5a-4f2f-be67-d10948ca4d84"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:f19dd526-8dfd-4d1f-bdd7-42f2c22aa198"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="urn:uuid:9262b45a-7b18-4a82-aaf5-a48b8a8d2422">
+    <skos:prefLabel xml:lang="en">Under Review</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">قيد الاستعراض</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:247a7c38-1f14-42e4-badc-65d1cdfe9978"/>
+    <skos:inScheme rdf:resource="urn:uuid:247a7c38-1f14-42e4-badc-65d1cdfe9978"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:4b663d31-dd5a-4f2f-be67-d10948ca4d84">
+    <skos:prefLabel xml:lang="en">Approved</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">وافق</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:247a7c38-1f14-42e4-badc-65d1cdfe9978"/>
+    <skos:inScheme rdf:resource="urn:uuid:247a7c38-1f14-42e4-badc-65d1cdfe9978"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:f19dd526-8dfd-4d1f-bdd7-42f2c22aa198">
+    <skos:prefLabel xml:lang="en">Disapproved</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">غير موافق</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:247a7c38-1f14-42e4-badc-65d1cdfe9978"/>
+    <skos:inScheme rdf:resource="urn:uuid:247a7c38-1f14-42e4-badc-65d1cdfe9978"/>
+  </skos:Concept>
+</rdf:RDF>

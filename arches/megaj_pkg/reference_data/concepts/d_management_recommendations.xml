@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+  <skos:ConceptScheme rdf:about="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3">
+    <dcterms:title xml:lang="en">{&quot;id&quot;: &quot;72002058-bdec-434d-a559-6c1b044018b7&quot;, &quot;value&quot;: &quot;MEGA-J Management Recommendations&quot;}</dcterms:title>
+    <skos:hasTopConcept rdf:resource="urn:uuid:8494bc11-a803-4e2d-81fe-761c78892875"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:5d44982d-1053-4dd9-b1f4-f22882f14216"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:5030b852-f9cc-403e-83c2-3fbd800227e2"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:05c52143-5b13-4006-b0bd-9d4f2149127b"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:b40a98b1-5f64-49e2-ba40-e9faefce20e4"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:7b440df8-74e8-4565-9262-c81f23843244"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:a9cc2af3-afa0-4ee2-82ac-8c2856fa7b24"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:3e522117-868f-43b3-aa33-1caa629dba39"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:5df0c572-0498-4268-9153-186e132e3225"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:e67a97b2-d4ff-4ed0-84cd-78725f06d0c3"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:7f1677cb-5f8b-4f65-8db9-5db5cc6ae53a"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:c72fe851-cf72-45f7-b1be-27823fb7e252"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:9fb0e246-6cf9-4461-a90d-80b6d857c012"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:9b2772ea-82a7-48d6-ae9c-749513cef4a2"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="urn:uuid:8494bc11-a803-4e2d-81fe-761c78892875">
+    <skos:prefLabel xml:lang="en">DoA Acquire Property</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">اٌلإستملاك  دائرة الأثار العامة</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+    <skos:inScheme rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:5d44982d-1053-4dd9-b1f4-f22882f14216">
+    <skos:prefLabel xml:lang="en">Documentation</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">توثيق</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+    <skos:inScheme rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:5030b852-f9cc-403e-83c2-3fbd800227e2">
+    <skos:prefLabel xml:lang="en">Excavation</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">إجراء تنقيب أثري</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+    <skos:inScheme rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:05c52143-5b13-4006-b0bd-9d4f2149127b">
+    <skos:prefLabel xml:lang="en">Fencing</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">تسييج</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+    <skos:inScheme rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:b40a98b1-5f64-49e2-ba40-e9faefce20e4">
+    <skos:prefLabel xml:lang="en">Intervene with Owner/Occupant/Local Inhabitants</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">المقيم / الشاغل /التدخل لدى مالك / المحتل / الساكن المحلي</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+    <skos:inScheme rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:7b440df8-74e8-4565-9262-c81f23843244">
+    <skos:prefLabel xml:lang="en">Reburial</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">إعادة دفن</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+    <skos:inScheme rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:a9cc2af3-afa0-4ee2-82ac-8c2856fa7b24">
+    <skos:prefLabel xml:lang="en">Registration</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">تسجيل الموقع</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+    <skos:inScheme rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:3e522117-868f-43b3-aa33-1caa629dba39">
+    <skos:prefLabel xml:lang="en">Relocate Development Proposal</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">نقل/ إزاحة مشاريع التنمية</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+    <skos:inScheme rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:5df0c572-0498-4268-9153-186e132e3225">
+    <skos:prefLabel xml:lang="en">Conservation/Restoration</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">تثبيت الحالة, حفاظ, ترميم</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+    <skos:inScheme rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:e67a97b2-d4ff-4ed0-84cd-78725f06d0c3">
+    <skos:prefLabel xml:lang="en">In-depth Condition Assessment</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">التعمق في تقييم الحالة</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+    <skos:inScheme rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:7f1677cb-5f8b-4f65-8db9-5db5cc6ae53a">
+    <skos:prefLabel xml:lang="en">Intervene with Other Government Authorities</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">التنسيق مع جهات حكومية أخرى</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+    <skos:inScheme rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:c72fe851-cf72-45f7-b1be-27823fb7e252">
+    <skos:prefLabel xml:lang="en">Mitigate Fire Threat</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">معالجة  تهديد الحريق</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+    <skos:inScheme rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:9fb0e246-6cf9-4461-a90d-80b6d857c012">
+    <skos:prefLabel xml:lang="en">No Action Recommended</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">عدم وجود إجراءات  الموصى بها</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+    <skos:inScheme rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:9b2772ea-82a7-48d6-ae9c-749513cef4a2">
+    <skos:prefLabel xml:lang="en">Other Action Recommended (Specify)</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">إجراءات أخرى (حدد)</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+    <skos:inScheme rdf:resource="urn:uuid:888e5821-75f6-4f40-9936-d5cef8d951b3"/>
+  </skos:Concept>
+</rdf:RDF>

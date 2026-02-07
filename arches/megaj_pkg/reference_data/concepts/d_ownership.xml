@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+  <skos:ConceptScheme rdf:about="urn:uuid:9fbece48-951d-4865-bcb9-c48c1dca8bbe">
+    <dcterms:title xml:lang="en">{&quot;id&quot;: &quot;aec0e8e0-7e8b-427f-b726-5bbe42ae9196&quot;, &quot;value&quot;: &quot;MEGA-J Ownership&quot;}</dcterms:title>
+    <skos:hasTopConcept rdf:resource="urn:uuid:897dc485-6011-4736-8d69-510e46869c13"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:db04936d-d87b-4e30-816e-aba4610f51fe"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:cd00a377-ff31-485f-9318-b17cbd9bbd3a"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:2374d726-aa1a-4167-9041-518c0ce48821"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:bc93da22-dfa7-44d5-9a92-fad771d63027"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="urn:uuid:897dc485-6011-4736-8d69-510e46869c13">
+    <skos:prefLabel xml:lang="en">Unknown</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">غير معروف</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:9fbece48-951d-4865-bcb9-c48c1dca8bbe"/>
+    <skos:inScheme rdf:resource="urn:uuid:9fbece48-951d-4865-bcb9-c48c1dca8bbe"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:db04936d-d87b-4e30-816e-aba4610f51fe">
+    <skos:prefLabel xml:lang="en">DoA</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">دائرة الأثار العام</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:9fbece48-951d-4865-bcb9-c48c1dca8bbe"/>
+    <skos:inScheme rdf:resource="urn:uuid:9fbece48-951d-4865-bcb9-c48c1dca8bbe"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:cd00a377-ff31-485f-9318-b17cbd9bbd3a">
+    <skos:prefLabel xml:lang="en">Government</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">حكومة</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:9fbece48-951d-4865-bcb9-c48c1dca8bbe"/>
+    <skos:inScheme rdf:resource="urn:uuid:9fbece48-951d-4865-bcb9-c48c1dca8bbe"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:2374d726-aa1a-4167-9041-518c0ce48821">
+    <skos:prefLabel xml:lang="en">Private</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">ملك خاص</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:9fbece48-951d-4865-bcb9-c48c1dca8bbe"/>
+    <skos:inScheme rdf:resource="urn:uuid:9fbece48-951d-4865-bcb9-c48c1dca8bbe"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:bc93da22-dfa7-44d5-9a92-fad771d63027">
+    <skos:prefLabel xml:lang="en">DoA Acquisition in Progress</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">الإستملاك الدائرة الأثار العام فى تقدم</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:9fbece48-951d-4865-bcb9-c48c1dca8bbe"/>
+    <skos:inScheme rdf:resource="urn:uuid:9fbece48-951d-4865-bcb9-c48c1dca8bbe"/>
+  </skos:Concept>
+</rdf:RDF>

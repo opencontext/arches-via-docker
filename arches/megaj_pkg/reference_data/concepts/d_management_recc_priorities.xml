@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+  <skos:ConceptScheme rdf:about="urn:uuid:8539c42e-9ed8-4bdb-bb92-fead8b5544a9">
+    <dcterms:title xml:lang="en">{&quot;id&quot;: &quot;9f816dcf-fdc1-4455-8205-ffcafcebc154&quot;, &quot;value&quot;: &quot;MEGA-J Management Recommendation Priorities&quot;}</dcterms:title>
+    <skos:hasTopConcept rdf:resource="urn:uuid:fbe52af7-c3fd-4f43-bc1d-9654789e4202"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:f0f39c09-b6a8-4725-bcc0-b66f668a2a17"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:f9c15bdc-e223-4b59-9a56-4229ef5819da"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="urn:uuid:fbe52af7-c3fd-4f43-bc1d-9654789e4202">
+    <skos:prefLabel xml:lang="en">Low</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">منخفضة</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:8539c42e-9ed8-4bdb-bb92-fead8b5544a9"/>
+    <skos:inScheme rdf:resource="urn:uuid:8539c42e-9ed8-4bdb-bb92-fead8b5544a9"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:f0f39c09-b6a8-4725-bcc0-b66f668a2a17">
+    <skos:prefLabel xml:lang="en">Medium</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">متوسطة</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:8539c42e-9ed8-4bdb-bb92-fead8b5544a9"/>
+    <skos:inScheme rdf:resource="urn:uuid:8539c42e-9ed8-4bdb-bb92-fead8b5544a9"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:f9c15bdc-e223-4b59-9a56-4229ef5819da">
+    <skos:prefLabel xml:lang="en">High</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">عالية</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:8539c42e-9ed8-4bdb-bb92-fead8b5544a9"/>
+    <skos:inScheme rdf:resource="urn:uuid:8539c42e-9ed8-4bdb-bb92-fead8b5544a9"/>
+  </skos:Concept>
+</rdf:RDF>

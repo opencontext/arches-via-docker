@@ -1,0 +1,888 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+  <skos:ConceptScheme rdf:about="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2">
+    <dcterms:title xml:lang="en">{&quot;id&quot;: &quot;4eb72d16-98e3-4acd-91cf-8bfc26658a27&quot;, &quot;value&quot;: &quot;MEGA-J Element Types&quot;}</dcterms:title>
+    <skos:hasTopConcept rdf:resource="urn:uuid:214ebde8-b2d3-484f-a439-7b4ee536ce40"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:b87d48f4-8939-4760-a649-ec1f15a33594"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:8341ba52-594a-4c5f-a129-93e3e5d58404"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:91123f67-87ed-48a0-b4c6-a2031126fe1f"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:4d66b9ec-0fe3-42ec-9bf7-26f37dca0ae9"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:530498c4-e677-4f1a-bb79-e66617f247e0"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:5755b109-34e3-4d61-8a89-a43d5d11c6d4"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:351cb4f1-3947-4173-b48b-f0e091ee4307"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="urn:uuid:214ebde8-b2d3-484f-a439-7b4ee536ce40">
+    <skos:prefLabel xml:lang="en">Tall / Tell</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">تل</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+    <skos:narrower rdf:resource="urn:uuid:ad1aeb83-ff3a-4ea8-b233-a12df3457d1f"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:b87d48f4-8939-4760-a649-ec1f15a33594">
+    <skos:prefLabel xml:lang="en">Agricultural &amp; Similar Site Elements</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">عناصرالموقع زراعية   وما يماثلها</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+    <skos:narrower rdf:resource="urn:uuid:77e72491-08bb-40d2-9534-4299353af3f4"/>
+    <skos:narrower rdf:resource="urn:uuid:2defd361-bea6-4345-bf6b-ec96677422be"/>
+    <skos:narrower rdf:resource="urn:uuid:1a7a2eb5-fa4b-4243-8d75-cba23797050b"/>
+    <skos:narrower rdf:resource="urn:uuid:640ce102-5148-4337-a825-424f4a219a16"/>
+    <skos:narrower rdf:resource="urn:uuid:cfd02cc6-4324-462d-8c59-ffe84558e13a"/>
+    <skos:narrower rdf:resource="urn:uuid:df6b7eff-bc11-4b02-9617-299af2b9d8be"/>
+    <skos:narrower rdf:resource="urn:uuid:e329818d-5941-4dfe-9acc-8e601285df21"/>
+    <skos:narrower rdf:resource="urn:uuid:9abe11c0-06dc-4897-8fff-b3a3df0e5194"/>
+    <skos:narrower rdf:resource="urn:uuid:de467d75-9c33-4d87-93f4-d19a454b52bf"/>
+    <skos:narrower rdf:resource="urn:uuid:b316bfb1-bc04-49a1-b7ef-c7360bf7c8bc"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:8341ba52-594a-4c5f-a129-93e3e5d58404">
+    <skos:prefLabel xml:lang="en">Cultic/Religious &amp; Similar Site Elements</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">عناصرالموقع  دينية   وما يماثلها</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+    <skos:narrower rdf:resource="urn:uuid:57aa4de3-15ca-4b22-8bdd-8f11085b389e"/>
+    <skos:narrower rdf:resource="urn:uuid:c2944667-1047-4e36-8bf0-3b81c8aff833"/>
+    <skos:narrower rdf:resource="urn:uuid:08bcdea8-6dff-486d-8766-31adb0966ed3"/>
+    <skos:narrower rdf:resource="urn:uuid:7ecc93b7-b845-4703-b05d-b09712c74495"/>
+    <skos:narrower rdf:resource="urn:uuid:50af6b13-c1b4-4ec8-93d2-d1736d442ad5"/>
+    <skos:narrower rdf:resource="urn:uuid:162b7e32-9a29-4f50-955e-efda7efff420"/>
+    <skos:narrower rdf:resource="urn:uuid:1ac96c1b-39d9-4d86-bdfc-b3f1d078b447"/>
+    <skos:narrower rdf:resource="urn:uuid:946cfdb3-900a-4085-be60-c64e55935b5b"/>
+    <skos:narrower rdf:resource="urn:uuid:51a2d772-dfdf-4578-a50a-9af2fe4c93f5"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:91123f67-87ed-48a0-b4c6-a2031126fe1f">
+    <skos:prefLabel xml:lang="en">Funerary &amp; Similar Site Elements</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">عناصرالموقع   جنائزية  وما يماثلها</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+    <skos:narrower rdf:resource="urn:uuid:09ddf7ed-c484-46ea-b9b6-248534f4d049"/>
+    <skos:narrower rdf:resource="urn:uuid:20cf92ca-edae-469c-aab8-517376c31327"/>
+    <skos:narrower rdf:resource="urn:uuid:48452e9f-ddc7-4e89-b2f7-ce6844a75afd"/>
+    <skos:narrower rdf:resource="urn:uuid:e6efd82a-67d6-451e-a6e1-455e9757a750"/>
+    <skos:narrower rdf:resource="urn:uuid:e4356cc5-68fb-4e6b-9ce7-12c722a27150"/>
+    <skos:narrower rdf:resource="urn:uuid:0943044f-6ae1-46ca-a380-d0fe2dbee437"/>
+    <skos:narrower rdf:resource="urn:uuid:99312e10-996f-4c86-ade0-c1af97c4950b"/>
+    <skos:narrower rdf:resource="urn:uuid:5cdb9b53-7ac2-4e85-a114-d36f2b5f32ff"/>
+    <skos:narrower rdf:resource="urn:uuid:e5164489-0dac-4fa3-9e39-45ef71c684cc"/>
+    <skos:narrower rdf:resource="urn:uuid:938d81ac-790b-4591-9427-38b399c25c4b"/>
+    <skos:narrower rdf:resource="urn:uuid:720f84c1-42ef-4b67-b09a-03263cf503c9"/>
+    <skos:narrower rdf:resource="urn:uuid:0678756d-60f3-4d19-94b5-b1398a52fe16"/>
+    <skos:narrower rdf:resource="urn:uuid:3e0b85bc-1cb0-46c8-b65a-c5a17697bc77"/>
+    <skos:narrower rdf:resource="urn:uuid:82f4fae6-cfc9-4d5d-b3f4-84df9d07d8f5"/>
+    <skos:narrower rdf:resource="urn:uuid:b465f77e-bfe6-4913-8e2f-6651807e9e9d"/>
+    <skos:narrower rdf:resource="urn:uuid:b0b1e1e0-c9fc-42d8-8477-8289126edec0"/>
+    <skos:narrower rdf:resource="urn:uuid:061809b3-703f-412a-b540-31811e5caa71"/>
+    <skos:narrower rdf:resource="urn:uuid:c068a671-020d-4161-8c99-ec547b8c444e"/>
+    <skos:narrower rdf:resource="urn:uuid:05255504-7827-4948-95f9-6ab48f4946bf"/>
+    <skos:narrower rdf:resource="urn:uuid:9922465a-e95a-4a83-b565-4cd860f199ff"/>
+    <skos:narrower rdf:resource="urn:uuid:c64d4508-3451-4ad4-9c6a-5da24bfd32ec"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:4d66b9ec-0fe3-42ec-9bf7-26f37dca0ae9">
+    <skos:prefLabel xml:lang="en">Habitation/Military &amp; Similar Site Elements</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">عناصرالموقع عسكرية وسكنية  وما يماثلها</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+    <skos:narrower rdf:resource="urn:uuid:919560ac-9d65-4127-8770-eb5dd2f81358"/>
+    <skos:narrower rdf:resource="urn:uuid:ffd005fb-133d-496a-92d4-f6205e23aa5f"/>
+    <skos:narrower rdf:resource="urn:uuid:e415ede2-8066-4abf-ae01-a63c8b3fb6ee"/>
+    <skos:narrower rdf:resource="urn:uuid:ac39147d-ce34-4631-9c16-1c9801aaf9ed"/>
+    <skos:narrower rdf:resource="urn:uuid:77c01dd2-a3f1-48f7-b4c9-2fad4cbc84de"/>
+    <skos:narrower rdf:resource="urn:uuid:a40ecf1e-50da-48c0-b5d5-c445cf6ab581"/>
+    <skos:narrower rdf:resource="urn:uuid:cd73d74a-7bb2-4a7b-990c-6f22f57c6a6b"/>
+    <skos:narrower rdf:resource="urn:uuid:bdba87c1-11ad-4217-a94b-fe2641f36bff"/>
+    <skos:narrower rdf:resource="urn:uuid:a0f739a2-4d1c-4c10-bd92-98750ff7e8f4"/>
+    <skos:narrower rdf:resource="urn:uuid:43f3a831-cace-407f-985d-2854aa47dc9a"/>
+    <skos:narrower rdf:resource="urn:uuid:9c59092e-654d-43d7-b5f5-56c99e90ef9d"/>
+    <skos:narrower rdf:resource="urn:uuid:54942bbd-1a08-4273-aa91-b881ce5d59a4"/>
+    <skos:narrower rdf:resource="urn:uuid:7411aee7-ecee-456b-91de-385347c6100b"/>
+    <skos:narrower rdf:resource="urn:uuid:9d7b8357-0f08-42b9-8a51-c05113760a97"/>
+    <skos:narrower rdf:resource="urn:uuid:d1e809ee-1db3-4cab-99cd-657c59d196b3"/>
+    <skos:narrower rdf:resource="urn:uuid:b90e641c-3c2d-46fc-8aac-8db554a49c36"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:530498c4-e677-4f1a-bb79-e66617f247e0">
+    <skos:prefLabel xml:lang="en">Industrial/Mining &amp; Similar Site Elements</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">صناعية وما يماثلها عناصرالموقع</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+    <skos:narrower rdf:resource="urn:uuid:18cd5440-11a2-4f07-b9da-1a96227d78a6"/>
+    <skos:narrower rdf:resource="urn:uuid:458faea9-06a3-4ac5-a683-93c612c31909"/>
+    <skos:narrower rdf:resource="urn:uuid:17a1f93e-7c2d-4054-94d5-b574e6bf0c69"/>
+    <skos:narrower rdf:resource="urn:uuid:aa60d41a-bc45-4105-8acc-a0131520f47c"/>
+    <skos:narrower rdf:resource="urn:uuid:56b1858b-a5eb-47b6-93ae-15fae746dcdf"/>
+    <skos:narrower rdf:resource="urn:uuid:b0c8d8bc-b67e-4da1-8f43-de03cb1b19a9"/>
+    <skos:narrower rdf:resource="urn:uuid:626f9e12-b8ec-4734-9311-b34a661c7bf8"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a">
+    <skos:prefLabel xml:lang="en">General Site Elements</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">عناص الموقع العام</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+    <skos:narrower rdf:resource="urn:uuid:fad37be8-9ea2-42d9-87bc-2b731e3b7a50"/>
+    <skos:narrower rdf:resource="urn:uuid:d67e7313-cdd8-40b3-89a1-87957a987b48"/>
+    <skos:narrower rdf:resource="urn:uuid:c40f3607-32d2-4eda-ae8c-96d26dabccd8"/>
+    <skos:narrower rdf:resource="urn:uuid:f7bfe311-6ded-4327-9541-3e4f39f3fd22"/>
+    <skos:narrower rdf:resource="urn:uuid:57ee3979-00ff-440c-b007-9501a022e105"/>
+    <skos:narrower rdf:resource="urn:uuid:6133b640-37d5-4c7a-961c-8573d5275ea6"/>
+    <skos:narrower rdf:resource="urn:uuid:0278c3cf-8956-4dcd-8bce-66fd616722fc"/>
+    <skos:narrower rdf:resource="urn:uuid:fbfe7ede-2d42-4ef1-b3af-2835210e0572"/>
+    <skos:narrower rdf:resource="urn:uuid:411d145b-2c57-4db0-aa66-4077f84666aa"/>
+    <skos:narrower rdf:resource="urn:uuid:4d395edc-127e-4c5b-aa22-9f79ef37a0db"/>
+    <skos:narrower rdf:resource="urn:uuid:0c5143a6-e854-438d-979e-75d4d80aa07d"/>
+    <skos:narrower rdf:resource="urn:uuid:fc16391a-bf38-4e1a-9c29-28db0e4b78f9"/>
+    <skos:narrower rdf:resource="urn:uuid:109a41c5-d3a2-4ba5-962e-315d19a02239"/>
+    <skos:narrower rdf:resource="urn:uuid:4c5a77fc-1caf-451e-b6db-094cd25e2f5d"/>
+    <skos:narrower rdf:resource="urn:uuid:2a7ebbe1-e065-4a78-98d9-fe91971135c6"/>
+    <skos:narrower rdf:resource="urn:uuid:3a41034f-b19d-47ad-b144-41f3012bd407"/>
+    <skos:narrower rdf:resource="urn:uuid:61c2339d-6478-4c97-be3a-2f6e8ee20bea"/>
+    <skos:narrower rdf:resource="urn:uuid:1643fb9e-254d-4d2a-bde0-495fdb503629"/>
+    <skos:narrower rdf:resource="urn:uuid:bb220ad0-3032-48bb-b1e2-e707cea65008"/>
+    <skos:narrower rdf:resource="urn:uuid:4cfd00d3-bd4d-474c-952f-fdbb218941e7"/>
+    <skos:narrower rdf:resource="urn:uuid:b83aa337-2bec-4752-be5b-9d25dc15cb5a"/>
+    <skos:narrower rdf:resource="urn:uuid:fcb21d0a-b776-4159-9052-0767a5f1645f"/>
+    <skos:narrower rdf:resource="urn:uuid:1e1bc43b-028d-4981-a1b7-90d93d5487e4"/>
+    <skos:narrower rdf:resource="urn:uuid:c4498a16-04fb-400c-8ecd-70d967104d1e"/>
+    <skos:narrower rdf:resource="urn:uuid:45795005-28d5-41e0-a2b7-3c0162f7c815"/>
+    <skos:narrower rdf:resource="urn:uuid:5381f618-6e54-43e4-886b-432f0b15db80"/>
+    <skos:narrower rdf:resource="urn:uuid:72f7e92e-8fe1-4737-9b84-c7412fe41912"/>
+    <skos:narrower rdf:resource="urn:uuid:89daa852-b770-4896-b77a-ba7a2876b513"/>
+    <skos:narrower rdf:resource="urn:uuid:a3d0a07b-98e0-4a3a-95d1-ef07d2aec637"/>
+    <skos:narrower rdf:resource="urn:uuid:fd8986e4-31cd-4116-b388-1e74a7fa6016"/>
+    <skos:narrower rdf:resource="urn:uuid:12fcc438-cc87-4345-a7bb-498ad9d6c7bc"/>
+    <skos:narrower rdf:resource="urn:uuid:f858c890-5da8-47a3-ad0b-39a5e6367309"/>
+    <skos:narrower rdf:resource="urn:uuid:a8e884f4-a0d6-4a66-9481-c459b6b3a589"/>
+    <skos:narrower rdf:resource="urn:uuid:1c389073-ca3b-4995-8467-7ac2d9133784"/>
+    <skos:narrower rdf:resource="urn:uuid:98695a35-8835-46e8-933c-a06e9dadb38d"/>
+    <skos:narrower rdf:resource="urn:uuid:19c8f23f-b738-4c0d-bbb7-7063f276123b"/>
+    <skos:narrower rdf:resource="urn:uuid:2b72d6dc-4afa-42a4-8b28-616286951d7e"/>
+    <skos:narrower rdf:resource="urn:uuid:5ff74d90-4a1a-4ed6-aa0f-eef37e38b4d1"/>
+    <skos:narrower rdf:resource="urn:uuid:b971c20a-9b5f-48bb-81ff-e0ad18c3f70d"/>
+    <skos:narrower rdf:resource="urn:uuid:099cd140-9d26-4b77-9b95-90ed4e7336d1"/>
+    <skos:narrower rdf:resource="urn:uuid:231a9cef-1d93-48f0-8962-91d0ed34af02"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:5755b109-34e3-4d61-8a89-a43d5d11c6d4">
+    <skos:prefLabel xml:lang="en">Inscription &amp; Similar Site Elements</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">نقش وما يماثلها عناصرالموقع</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+    <skos:narrower rdf:resource="urn:uuid:a1d3d798-7e5e-4d87-a688-4637793c9f5c"/>
+    <skos:narrower rdf:resource="urn:uuid:916eef36-0a35-4cfd-a66b-01ba3c1e2e52"/>
+    <skos:narrower rdf:resource="urn:uuid:c0b922dd-eef8-4408-bcea-b36d19005f90"/>
+    <skos:narrower rdf:resource="urn:uuid:afab713d-a60e-416b-8a64-238e54cc7a0c"/>
+    <skos:narrower rdf:resource="urn:uuid:40854880-a9de-447f-a8dd-9dc798b7aed1"/>
+    <skos:narrower rdf:resource="urn:uuid:47e35f12-ec47-41b4-9046-3717983c7a2e"/>
+    <skos:narrower rdf:resource="urn:uuid:206de97a-0b54-42f6-a284-6fe8c09b0848"/>
+    <skos:narrower rdf:resource="urn:uuid:fcf624d1-3a42-4010-a125-ff1e3034597c"/>
+    <skos:narrower rdf:resource="urn:uuid:0d514833-09af-42c3-a84d-4e75bb0b98b8"/>
+    <skos:narrower rdf:resource="urn:uuid:28f9258c-5596-42c1-870f-43a3e78ec1af"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:351cb4f1-3947-4173-b48b-f0e091ee4307">
+    <skos:prefLabel xml:lang="en">Site Elements with No Structure(s) Found</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">عناصر الموقع مع لا بناء وجد</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+    <skos:narrower rdf:resource="urn:uuid:2d3cd04d-2ef2-4aef-9399-178cbb9ade63"/>
+    <skos:narrower rdf:resource="urn:uuid:31c7f08f-7edc-4409-8474-34fe5b1270fe"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:ad1aeb83-ff3a-4ea8-b233-a12df3457d1f">
+    <skos:prefLabel xml:lang="en">Tall/Tell</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">تل</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:214ebde8-b2d3-484f-a439-7b4ee536ce40"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:77e72491-08bb-40d2-9534-4299353af3f4">
+    <skos:prefLabel xml:lang="en">Agricultural Terrace</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مصطبة زراعية</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:b87d48f4-8939-4760-a649-ec1f15a33594"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:2defd361-bea6-4345-bf6b-ec96677422be">
+    <skos:prefLabel xml:lang="en">Animal Pen</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">حظيرة حيوانات</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:b87d48f4-8939-4760-a649-ec1f15a33594"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:1a7a2eb5-fa4b-4243-8d75-cba23797050b">
+    <skos:prefLabel xml:lang="en">Mill</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">طاحونة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:b87d48f4-8939-4760-a649-ec1f15a33594"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:640ce102-5148-4337-a825-424f4a219a16">
+    <skos:prefLabel xml:lang="en">Press, Oil</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">معصرة زيت</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:b87d48f4-8939-4760-a649-ec1f15a33594"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:cfd02cc6-4324-462d-8c59-ffe84558e13a">
+    <skos:prefLabel xml:lang="en">Stables</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">إصطبل</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:b87d48f4-8939-4760-a649-ec1f15a33594"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:df6b7eff-bc11-4b02-9617-299af2b9d8be">
+    <skos:prefLabel xml:lang="en">Threshing Floor</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">ارضية لدرس القمح</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:b87d48f4-8939-4760-a649-ec1f15a33594"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:57aa4de3-15ca-4b22-8bdd-8f11085b389e">
+    <skos:prefLabel xml:lang="en">Church/Chapel</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">كنيسة / مصلى</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:8341ba52-594a-4c5f-a129-93e3e5d58404"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:c2944667-1047-4e36-8bf0-3b81c8aff833">
+    <skos:prefLabel xml:lang="en">Monastery</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">دير</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:8341ba52-594a-4c5f-a129-93e3e5d58404"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:08bcdea8-6dff-486d-8766-31adb0966ed3">
+    <skos:prefLabel xml:lang="en">Mosque</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مسجد</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:8341ba52-594a-4c5f-a129-93e3e5d58404"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:7ecc93b7-b845-4703-b05d-b09712c74495">
+    <skos:prefLabel xml:lang="en">Mosque, Desert</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مسجد في الصحراء</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:8341ba52-594a-4c5f-a129-93e3e5d58404"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:50af6b13-c1b4-4ec8-93d2-d1736d442ad5">
+    <skos:prefLabel xml:lang="en">Sanctuary</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">حرم / مكان مقدس</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:8341ba52-594a-4c5f-a129-93e3e5d58404"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:162b7e32-9a29-4f50-955e-efda7efff420">
+    <skos:prefLabel xml:lang="en">Temple</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">معبد</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:8341ba52-594a-4c5f-a129-93e3e5d58404"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:09ddf7ed-c484-46ea-b9b6-248534f4d049">
+    <skos:prefLabel xml:lang="en">Burial, Cairn/Tumulus</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">قبر على شكل كوم حجارة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:91123f67-87ed-48a0-b4c6-a2031126fe1f"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:20cf92ca-edae-469c-aab8-517376c31327">
+    <skos:prefLabel xml:lang="en">Burial, in Church</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مدفن داخل كنيسة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:91123f67-87ed-48a0-b4c6-a2031126fe1f"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:48452e9f-ddc7-4e89-b2f7-ce6844a75afd">
+    <skos:prefLabel xml:lang="en">Burial, Jar</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مدفن داخل جرة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:91123f67-87ed-48a0-b4c6-a2031126fe1f"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:e6efd82a-67d6-451e-a6e1-455e9757a750">
+    <skos:prefLabel xml:lang="en">Burial, in Natural Cave</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مقبرة داخل كهف طبيعي</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:91123f67-87ed-48a0-b4c6-a2031126fe1f"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:e4356cc5-68fb-4e6b-9ce7-12c722a27150">
+    <skos:prefLabel xml:lang="en">Burial, Pit</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مدفن داخل حفرة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:91123f67-87ed-48a0-b4c6-a2031126fe1f"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:0943044f-6ae1-46ca-a380-d0fe2dbee437">
+    <skos:prefLabel xml:lang="en">Cemetery</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مقبرة / مدافن</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:91123f67-87ed-48a0-b4c6-a2031126fe1f"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:99312e10-996f-4c86-ade0-c1af97c4950b">
+    <skos:prefLabel xml:lang="en">Colombarium</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">كولومباريوم / مدافن رماد بهيئة بيوت الحمام الزاجل</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:91123f67-87ed-48a0-b4c6-a2031126fe1f"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:5cdb9b53-7ac2-4e85-a114-d36f2b5f32ff">
+    <skos:prefLabel xml:lang="en">Grave</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">قبر / مدفن</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:91123f67-87ed-48a0-b4c6-a2031126fe1f"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:e5164489-0dac-4fa3-9e39-45ef71c684cc">
+    <skos:prefLabel xml:lang="en">Hypogaeum</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">غرفة سفلية تحت الأرض (سكن / مدفن) / هايبوجايوم</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:91123f67-87ed-48a0-b4c6-a2031126fe1f"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:938d81ac-790b-4591-9427-38b399c25c4b">
+    <skos:prefLabel xml:lang="en">Mausoleum</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">ضريح</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:91123f67-87ed-48a0-b4c6-a2031126fe1f"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:720f84c1-42ef-4b67-b09a-03263cf503c9">
+    <skos:prefLabel xml:lang="en">Sarcophagus/Stone Anthropode Coffin</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">تابوت حجري  /تابوت حجري ذو وجه انثروبودية ذو هيئة آدمية</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:91123f67-87ed-48a0-b4c6-a2031126fe1f"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:0678756d-60f3-4d19-94b5-b1398a52fe16">
+    <skos:prefLabel xml:lang="en">Tomb, Cist</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">لحد</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:91123f67-87ed-48a0-b4c6-a2031126fe1f"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:3e0b85bc-1cb0-46c8-b65a-c5a17697bc77">
+    <skos:prefLabel xml:lang="en">Tomb, Rock-cut with Simple Entrance or Dromos</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">دفن في قبر حجري ذي مدخل بسـيط / قبر منحوت بالصخر  ذو مدخل بسيط</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:91123f67-87ed-48a0-b4c6-a2031126fe1f"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:82f4fae6-cfc9-4d5d-b3f4-84df9d07d8f5">
+    <skos:prefLabel xml:lang="en">Tomb, Rock-cut Shaft</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">قبر رأسي منحوت بالصخر</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:91123f67-87ed-48a0-b4c6-a2031126fe1f"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:919560ac-9d65-4127-8770-eb5dd2f81358">
+    <skos:prefLabel xml:lang="en">Camp/Nomadic Camp</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مخيّم بدوي</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4d66b9ec-0fe3-42ec-9bf7-26f37dca0ae9"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:ffd005fb-133d-496a-92d4-f6205e23aa5f">
+    <skos:prefLabel xml:lang="en">Caravanserai</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">خان</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4d66b9ec-0fe3-42ec-9bf7-26f37dca0ae9"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:e415ede2-8066-4abf-ae01-a63c8b3fb6ee">
+    <skos:prefLabel xml:lang="en">Castle</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">قلعة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4d66b9ec-0fe3-42ec-9bf7-26f37dca0ae9"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:ac39147d-ce34-4631-9c16-1c9801aaf9ed">
+    <skos:prefLabel xml:lang="en">Castrum</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مخيم عسكري روماني</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4d66b9ec-0fe3-42ec-9bf7-26f37dca0ae9"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:77c01dd2-a3f1-48f7-b4c9-2fad4cbc84de">
+    <skos:prefLabel xml:lang="en">Cave/Shelter</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">كهف / ملجأ</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4d66b9ec-0fe3-42ec-9bf7-26f37dca0ae9"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:a40ecf1e-50da-48c0-b5d5-c445cf6ab581">
+    <skos:prefLabel xml:lang="en">Fortress</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">حصن</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4d66b9ec-0fe3-42ec-9bf7-26f37dca0ae9"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:cd73d74a-7bb2-4a7b-990c-6f22f57c6a6b">
+    <skos:prefLabel xml:lang="en">Hearth</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">موقد</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4d66b9ec-0fe3-42ec-9bf7-26f37dca0ae9"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:bdba87c1-11ad-4217-a94b-fe2641f36bff">
+    <skos:prefLabel xml:lang="en">Hermitage</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">صومعة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4d66b9ec-0fe3-42ec-9bf7-26f37dca0ae9"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:a0f739a2-4d1c-4c10-bd92-98750ff7e8f4">
+    <skos:prefLabel xml:lang="en">Hut Circle</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">كوخ دائري</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4d66b9ec-0fe3-42ec-9bf7-26f37dca0ae9"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:43f3a831-cace-407f-985d-2854aa47dc9a">
+    <skos:prefLabel xml:lang="en">Latrine</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">دورة مياه / مرحاض</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4d66b9ec-0fe3-42ec-9bf7-26f37dca0ae9"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:9c59092e-654d-43d7-b5f5-56c99e90ef9d">
+    <skos:prefLabel xml:lang="en">Palace</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">قصر</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4d66b9ec-0fe3-42ec-9bf7-26f37dca0ae9"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:54942bbd-1a08-4273-aa91-b881ce5d59a4">
+    <skos:prefLabel xml:lang="en">Rujm</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">رجم</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4d66b9ec-0fe3-42ec-9bf7-26f37dca0ae9"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:7411aee7-ecee-456b-91de-385347c6100b">
+    <skos:prefLabel xml:lang="en">Settlement, Fortified</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مستقر محصن</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4d66b9ec-0fe3-42ec-9bf7-26f37dca0ae9"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:9d7b8357-0f08-42b9-8a51-c05113760a97">
+    <skos:prefLabel xml:lang="en">Tower</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">برج</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4d66b9ec-0fe3-42ec-9bf7-26f37dca0ae9"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:d1e809ee-1db3-4cab-99cd-657c59d196b3">
+    <skos:prefLabel xml:lang="en">Unspecified/ Unknown Habitation/Military</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">العسكرية والسكنية غير معروف/ غير محدد</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4d66b9ec-0fe3-42ec-9bf7-26f37dca0ae9"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:18cd5440-11a2-4f07-b9da-1a96227d78a6">
+    <skos:prefLabel xml:lang="en">Flint Knapping Site</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">موقع شحذ صوان</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:530498c4-e677-4f1a-bb79-e66617f247e0"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:458faea9-06a3-4ac5-a683-93c612c31909">
+    <skos:prefLabel xml:lang="en">Furnace</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">فرن الصهر</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:530498c4-e677-4f1a-bb79-e66617f247e0"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:17a1f93e-7c2d-4054-94d5-b574e6bf0c69">
+    <skos:prefLabel xml:lang="en">Mine</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">منجم</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:530498c4-e677-4f1a-bb79-e66617f247e0"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:aa60d41a-bc45-4105-8acc-a0131520f47c">
+    <skos:prefLabel xml:lang="en">Quarry</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">محجر</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:530498c4-e677-4f1a-bb79-e66617f247e0"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:56b1858b-a5eb-47b6-93ae-15fae746dcdf">
+    <skos:prefLabel xml:lang="en">Smelting Site/Slag Heap</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">موقع خبث , موقع صهر معادن</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:530498c4-e677-4f1a-bb79-e66617f247e0"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:fad37be8-9ea2-42d9-87bc-2b731e3b7a50">
+    <skos:prefLabel xml:lang="en">Baths</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">حمامات</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:d67e7313-cdd8-40b3-89a1-87957a987b48">
+    <skos:prefLabel xml:lang="en">Bridge</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">جسر</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:c40f3607-32d2-4eda-ae8c-96d26dabccd8">
+    <skos:prefLabel xml:lang="en">Cairn</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">كوم حجارة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:f7bfe311-6ded-4327-9541-3e4f39f3fd22">
+    <skos:prefLabel xml:lang="en">Courtyard</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">فناء</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:57ee3979-00ff-440c-b007-9501a022e105">
+    <skos:prefLabel xml:lang="en">Cupmarks/Cupholes</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">حفر في الصخر</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:6133b640-37d5-4c7a-961c-8573d5275ea6">
+    <skos:prefLabel xml:lang="en">Frescoes</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">فريسكو - لوحة جدارية</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:0278c3cf-8956-4dcd-8bce-66fd616722fc">
+    <skos:prefLabel xml:lang="en">Hippodrome</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مضمار سباق الخيل</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:fbfe7ede-2d42-4ef1-b3af-2835210e0572">
+    <skos:prefLabel xml:lang="en">Isolated Structure/House</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">بناء/ بيت</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:411d145b-2c57-4db0-aa66-4077f84666aa">
+    <skos:prefLabel xml:lang="en">Jellyfish Structure (Manyatta)</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">اكواخ دائرية مجمعة بشكل دائري ضمن سور</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:4d395edc-127e-4c5b-aa22-9f79ef37a0db">
+    <skos:prefLabel xml:lang="en">Kite</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مصيدة حيوانات</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:b0c8d8bc-b67e-4da1-8f43-de03cb1b19a9">
+    <skos:prefLabel xml:lang="en">Kiln</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">فرن لشي (فخار, زجاج, طين, جير)</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:530498c4-e677-4f1a-bb79-e66617f247e0"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:0c5143a6-e854-438d-979e-75d4d80aa07d">
+    <skos:prefLabel xml:lang="en">Monumental Gateway/Arch</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">بوابة تذكارية / قوس</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:fc16391a-bf38-4e1a-9c29-28db0e4b78f9">
+    <skos:prefLabel xml:lang="en">Mosaic</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">فسيفساء</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:109a41c5-d3a2-4ba5-962e-315d19a02239">
+    <skos:prefLabel xml:lang="en">Nymphaeum</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">سبيل الحوريات /  نيفيوم</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:4c5a77fc-1caf-451e-b6db-094cd25e2f5d">
+    <skos:prefLabel xml:lang="en">Platform</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">منصة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:2a7ebbe1-e065-4a78-98d9-fe91971135c6">
+    <skos:prefLabel xml:lang="en">Plaza/Forum</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">ساحة عامة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:3a41034f-b19d-47ad-b144-41f3012bd407">
+    <skos:prefLabel xml:lang="en">Public Building</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مبنى عام</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:61c2339d-6478-4c97-be3a-2f6e8ee20bea">
+    <skos:prefLabel xml:lang="en">Road</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">طريق</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:1643fb9e-254d-4d2a-bde0-495fdb503629">
+    <skos:prefLabel xml:lang="en">Rock Art</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">رسومات /فن صخري</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:bb220ad0-3032-48bb-b1e2-e707cea65008">
+    <skos:prefLabel xml:lang="en">Rock-cut Basin</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">حوض صخري</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:4cfd00d3-bd4d-474c-952f-fdbb218941e7">
+    <skos:prefLabel xml:lang="en">Statue/Sculpture/Bas-Relief</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">منحوتة /تمثال</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:b83aa337-2bec-4752-be5b-9d25dc15cb5a">
+    <skos:prefLabel xml:lang="en">Souk/Market</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">السوق</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:fcb21d0a-b776-4159-9052-0767a5f1645f">
+    <skos:prefLabel xml:lang="en">Stone Fences/Enclosures</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">سياج حجري</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:1e1bc43b-028d-4981-a1b7-90d93d5487e4">
+    <skos:prefLabel xml:lang="en">Tabun</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">طابون</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:c4498a16-04fb-400c-8ecd-70d967104d1e">
+    <skos:prefLabel xml:lang="en">Wall, unspecified</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">الجدار غير محدد</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:45795005-28d5-41e0-a2b7-3c0162f7c815">
+    <skos:prefLabel xml:lang="en">Water Structure, Aqueduct</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">قناة ماءمحمولة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:5381f618-6e54-43e4-886b-432f0b15db80">
+    <skos:prefLabel xml:lang="en">Water Structure, Cistern</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">خزان ماء</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:72f7e92e-8fe1-4737-9b84-c7412fe41912">
+    <skos:prefLabel xml:lang="en">Water Structure, Dam or Barrage</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">سد أو جسر</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:89daa852-b770-4896-b77a-ba7a2876b513">
+    <skos:prefLabel xml:lang="en">Water Structure, Qanat</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">قناة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:a3d0a07b-98e0-4a3a-95d1-ef07d2aec637">
+    <skos:prefLabel xml:lang="en">Water Structure, Reservoir (Birket)</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">خزان مياه/ بركة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:fd8986e4-31cd-4116-b388-1e74a7fa6016">
+    <skos:prefLabel xml:lang="en">Water Structure, Well</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">بئر</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:e329818d-5941-4dfe-9acc-8e601285df21">
+    <skos:prefLabel xml:lang="en">Press, Wine</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">معصرة عنب</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:b87d48f4-8939-4760-a649-ec1f15a33594"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:9abe11c0-06dc-4897-8fff-b3a3df0e5194">
+    <skos:prefLabel xml:lang="en">Villa</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">فيلا/ بيت مستقل</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:b87d48f4-8939-4760-a649-ec1f15a33594"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:de467d75-9c33-4d87-93f4-d19a454b52bf">
+    <skos:prefLabel xml:lang="en">Unspecified/Unknown Agricultural Structure</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">منشآات زراعية غير معروفة   /غير محددة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:b87d48f4-8939-4760-a649-ec1f15a33594"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:1ac96c1b-39d9-4d86-bdfc-b3f1d078b447">
+    <skos:prefLabel xml:lang="en">Stone Circle</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">دائرة حجرية</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:8341ba52-594a-4c5f-a129-93e3e5d58404"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:946cfdb3-900a-4085-be60-c64e55935b5b">
+    <skos:prefLabel xml:lang="en">Menhir/Standing Stone/ Cromlish</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">نصب حجري (منهر) /نصيبة/كروملش</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:8341ba52-594a-4c5f-a129-93e3e5d58404"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:51a2d772-dfdf-4578-a50a-9af2fe4c93f5">
+    <skos:prefLabel xml:lang="en">Unspecified/Unknown Religious Structures</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">منشأأت دينية  غير معروفة /غير محددة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:8341ba52-594a-4c5f-a129-93e3e5d58404"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:b465f77e-bfe6-4913-8e2f-6651807e9e9d">
+    <skos:prefLabel xml:lang="en">Burial, Cave (Loculus/Arcosolium)</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">دفن داخل كهف</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:91123f67-87ed-48a0-b4c6-a2031126fe1f"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:b0b1e1e0-c9fc-42d8-8477-8289126edec0">
+    <skos:prefLabel xml:lang="en">Burial, Sub-Floor</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مدفن تحت ارضية منزل</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:91123f67-87ed-48a0-b4c6-a2031126fe1f"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:061809b3-703f-412a-b540-31811e5caa71">
+    <skos:prefLabel xml:lang="en">Dolmen</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">دولمن</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:91123f67-87ed-48a0-b4c6-a2031126fe1f"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:c068a671-020d-4161-8c99-ec547b8c444e">
+    <skos:prefLabel xml:lang="en">Tomb, Rock-cut Monumental with Sculpted Facade</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">دفن في  قبر حجري ذي مدخل منحوت / قبر حجري منحوت الواجهة وبشكل إحتفالي</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:91123f67-87ed-48a0-b4c6-a2031126fe1f"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:05255504-7827-4948-95f9-6ab48f4946bf">
+    <skos:prefLabel xml:lang="en">Tomb, Tower</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">قبر برجي</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:91123f67-87ed-48a0-b4c6-a2031126fe1f"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:9922465a-e95a-4a83-b565-4cd860f199ff">
+    <skos:prefLabel xml:lang="en">Tombstone</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">شاهد قبر</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:91123f67-87ed-48a0-b4c6-a2031126fe1f"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:c64d4508-3451-4ad4-9c6a-5da24bfd32ec">
+    <skos:prefLabel xml:lang="en">Unspecified/Unknown Funerary</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">عنصر جنائزي غير معروف/ غير محدد</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:91123f67-87ed-48a0-b4c6-a2031126fe1f"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:626f9e12-b8ec-4734-9311-b34a661c7bf8">
+    <skos:prefLabel xml:lang="en">Unspecified/Unknown Industrial</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">منشأت صناعية  غير محددة / غير معروفة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:530498c4-e677-4f1a-bb79-e66617f247e0"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:a1d3d798-7e5e-4d87-a688-4637793c9f5c">
+    <skos:prefLabel xml:lang="en">Inscription, Arabic</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">نقش بالخط العربي</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:5755b109-34e3-4d61-8a89-a43d5d11c6d4"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:12fcc438-cc87-4345-a7bb-498ad9d6c7bc">
+    <skos:prefLabel xml:lang="en">Stele/Obelisque</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مسلة /  نصب تذكاري</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:f858c890-5da8-47a3-ad0b-39a5e6367309">
+    <skos:prefLabel xml:lang="en">Rock-cut Triclinium</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">تركلينوم (قاعة الطعام في المنزل الروماني)/غرفة محفورة بالصخر للطقوس الجنائزية</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:b316bfb1-bc04-49a1-b7ef-c7360bf7c8bc">
+    <skos:prefLabel xml:lang="en">Hamlet/Farmstead/Farmhouse</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مزرعة مع بيوتها (توابعها)</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:b87d48f4-8939-4760-a649-ec1f15a33594"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:b90e641c-3c2d-46fc-8aac-8db554a49c36">
+    <skos:prefLabel xml:lang="en">Settlement, No Fortifications (Village)</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مستقر بدون تحصينات (قرية)</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4d66b9ec-0fe3-42ec-9bf7-26f37dca0ae9"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:916eef36-0a35-4cfd-a66b-01ba3c1e2e52">
+    <skos:prefLabel xml:lang="en">Inscription, Aramaic</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">نقش باللغة الآرامية</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:5755b109-34e3-4d61-8a89-a43d5d11c6d4"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:c0b922dd-eef8-4408-bcea-b36d19005f90">
+    <skos:prefLabel xml:lang="en">Inscription, Greek</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">نقش باللغة  اليونانية</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:5755b109-34e3-4d61-8a89-a43d5d11c6d4"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:afab713d-a60e-416b-8a64-238e54cc7a0c">
+    <skos:prefLabel xml:lang="en">Inscription, Kufic</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">نقش بالخط الكوفي</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:5755b109-34e3-4d61-8a89-a43d5d11c6d4"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:40854880-a9de-447f-a8dd-9dc798b7aed1">
+    <skos:prefLabel xml:lang="en">Inscription, Latin</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">نقش باللغة اللاتينية</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:5755b109-34e3-4d61-8a89-a43d5d11c6d4"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:47e35f12-ec47-41b4-9046-3717983c7a2e">
+    <skos:prefLabel xml:lang="en">Inscription, Nabataean</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">نقش بالخط النبطي</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:5755b109-34e3-4d61-8a89-a43d5d11c6d4"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:206de97a-0b54-42f6-a284-6fe8c09b0848">
+    <skos:prefLabel xml:lang="en">Inscription, Turkish</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">نقش باللغة  التركية</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:5755b109-34e3-4d61-8a89-a43d5d11c6d4"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:fcf624d1-3a42-4010-a125-ff1e3034597c">
+    <skos:prefLabel xml:lang="en">Inscription, Safaitic</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">نقش بالخط الصفوي</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:5755b109-34e3-4d61-8a89-a43d5d11c6d4"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:0d514833-09af-42c3-a84d-4e75bb0b98b8">
+    <skos:prefLabel xml:lang="en">Inscription, Thamudic</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">نقش بالخط الثمودي</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:5755b109-34e3-4d61-8a89-a43d5d11c6d4"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:28f9258c-5596-42c1-870f-43a3e78ec1af">
+    <skos:prefLabel xml:lang="en">Unspecified/Unknown Inscription</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">نقوش كتابية  غير محددة / غير معروفة</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:5755b109-34e3-4d61-8a89-a43d5d11c6d4"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:a8e884f4-a0d6-4a66-9481-c459b6b3a589">
+    <skos:prefLabel xml:lang="en">Hijaz Railway Station</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">محطة سكة حديد الحجاز</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:1c389073-ca3b-4995-8467-7ac2d9133784">
+    <skos:prefLabel xml:lang="en">Macellum</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">ماكيلوم - سوق روماني</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:98695a35-8835-46e8-933c-a06e9dadb38d">
+    <skos:prefLabel xml:lang="en">Milestone</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">شاهد مسافات</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:19c8f23f-b738-4c0d-bbb7-7063f276123b">
+    <skos:prefLabel xml:lang="en">Storage Facility/Silo</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">صومعة خزين</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:2b72d6dc-4afa-42a4-8b28-616286951d7e">
+    <skos:prefLabel xml:lang="en">Wali/Dharih</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">ضريح / مقام / ولي</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:5ff74d90-4a1a-4ed6-aa0f-eef37e38b4d1">
+    <skos:prefLabel xml:lang="en">Water Structure, Unspecified</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">بناء للمياه  غير معروف</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:2d3cd04d-2ef2-4aef-9399-178cbb9ade63">
+    <skos:prefLabel xml:lang="en">Sherd/Flint Scatter or Other Material Culture (Excavated)</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">انتشار للصوان /للفخار أو غيرها من المخلفات المادية (منقب)</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:351cb4f1-3947-4173-b48b-f0e091ee4307"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:b971c20a-9b5f-48bb-81ff-e0ad18c3f70d">
+    <skos:prefLabel xml:lang="en">Domestic Installation (Rock-Cut or in Natural Cave)</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">منشآت منزلية (في كهف صناعي أو طبيعي)</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:099cd140-9d26-4b77-9b95-90ed4e7336d1">
+    <skos:prefLabel xml:lang="en">Theater(Odeon)</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مسرح (أوديدن)</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:231a9cef-1d93-48f0-8962-91d0ed34af02">
+    <skos:prefLabel xml:lang="en">Unspecified/Unknown General Site Element (Specify)</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">عنصر عام للموقع غير معروف/غير محدد (حدد)</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:4af37dc0-0c69-427a-8cef-cd7aed71557a"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:31c7f08f-7edc-4409-8474-34fe5b1270fe">
+    <skos:prefLabel xml:lang="en">Sherd/Flint Surface Scatter (Unexcavated)</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">انتشار للصوان /للفخار على السطح (غير منقب)</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:351cb4f1-3947-4173-b48b-f0e091ee4307"/>
+    <skos:inScheme rdf:resource="urn:uuid:0628b664-e8cb-4a71-8800-37cca46d91e2"/>
+  </skos:Concept>
+</rdf:RDF>

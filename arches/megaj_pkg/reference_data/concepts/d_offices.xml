@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+  <skos:ConceptScheme rdf:about="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede">
+    <dcterms:title xml:lang="en">{&quot;id&quot;: &quot;92001731-8edd-4fad-85c9-4a89b8d04e0a&quot;, &quot;value&quot;: &quot;MEGA-J Offices&quot;}</dcterms:title>
+    <skos:hasTopConcept rdf:resource="urn:uuid:a7ffa399-b87b-4066-8861-b8ac3daa1a99"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:1cfa8266-5418-4e8d-bbbb-0db0f3e6ac81"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:8539b65c-a336-46ca-9357-d264de651493"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:8caab3ca-c20a-45d2-85a2-040dcecb90dd"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:8a9d9192-b5e8-4e36-b936-110bef55071f"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:bb8bb155-f3b6-498c-9554-6fd8c383b08d"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:d9c1b62f-6fcc-4617-9d30-cd281f53adf9"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:0d68cb81-398c-403a-82b6-770d0220c21d"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:1e77f516-d7d6-41ab-9ae9-a83f8b680a6b"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:00c62c1a-bb4b-4110-9e21-7f6b328db734"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:090c809e-5c35-4309-9e32-92d76730d0f4"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:9231e912-277c-47ac-9d93-368e21633ea5"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:14d66bd7-b18b-4508-ac9b-834e97b95e0c"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:d4667c99-4263-47cc-a7b3-8c1f91a8b681"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="urn:uuid:a7ffa399-b87b-4066-8861-b8ac3daa1a99">
+    <skos:prefLabel xml:lang="en">Irbid Antiquities office</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مكتب آثار محافظة إربد</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+    <skos:narrower rdf:resource="urn:uuid:b4665624-f147-484c-b504-c4b250da48a4"/>
+    <skos:narrower rdf:resource="urn:uuid:91baf58a-4589-432a-a08f-a00fd59b0ac8"/>
+    <skos:narrower rdf:resource="urn:uuid:3f58c23c-2ed3-422c-83b4-98c50ada4b65"/>
+    <skos:narrower rdf:resource="urn:uuid:2f5ea12b-37fc-488e-ad87-5ee2b3d61d11"/>
+    <skos:narrower rdf:resource="urn:uuid:741c3b0a-a974-46ef-a902-588e66289a1d"/>
+    <skos:narrower rdf:resource="urn:uuid:f14a381d-329b-4ffc-a8d5-2995a54a2dc5"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:1cfa8266-5418-4e8d-bbbb-0db0f3e6ac81">
+    <skos:prefLabel xml:lang="en">Jarash Antiquities Office</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مكتب آثار محافظة جرش</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:8539b65c-a336-46ca-9357-d264de651493">
+    <skos:prefLabel xml:lang="en">Al-Mafraq Antiquities Office</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مكتب آثار محافظة المفرق</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+    <skos:narrower rdf:resource="urn:uuid:12cddf43-58af-4740-81d6-7b86c60a2452"/>
+    <skos:narrower rdf:resource="urn:uuid:b92fc5c2-6344-4ab4-972b-817f74bee2b0"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:8caab3ca-c20a-45d2-85a2-040dcecb90dd">
+    <skos:prefLabel xml:lang="en">Salt Antiquities Office</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مكتب آثار محافظة البلقاء</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+    <skos:narrower rdf:resource="urn:uuid:a17bf6d4-f6db-4458-b4e3-a02e46958f8d"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:8a9d9192-b5e8-4e36-b936-110bef55071f">
+    <skos:prefLabel xml:lang="en">Zarqa Antiquities Office</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مكتب آثار محافظة الزرقاء</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+    <skos:narrower rdf:resource="urn:uuid:fadcbde1-9108-45a4-a7cc-b7f29709a940"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:bb8bb155-f3b6-498c-9554-6fd8c383b08d">
+    <skos:prefLabel xml:lang="en">Madaba Antiquities Office</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مكتب آثار محافظة مادبا</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:d9c1b62f-6fcc-4617-9d30-cd281f53adf9">
+    <skos:prefLabel xml:lang="en">Ajlun Antiquities Office</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مكتب آثار محافظة عجلون</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:0d68cb81-398c-403a-82b6-770d0220c21d">
+    <skos:prefLabel xml:lang="en">Amman Antiquities Office</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مكتب آثار محافظة العاصمة</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:1e77f516-d7d6-41ab-9ae9-a83f8b680a6b">
+    <skos:prefLabel xml:lang="en">Department of Antiquities, Amman</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">دائرة الآثار العامة</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:00c62c1a-bb4b-4110-9e21-7f6b328db734">
+    <skos:prefLabel xml:lang="en">Karak Antiquities Office</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مكتب آثار محافظة الكرك</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+    <skos:narrower rdf:resource="urn:uuid:ab192eef-b2cb-4ce5-a33c-bc43fa687ae4"/>
+    <skos:narrower rdf:resource="urn:uuid:ec839c16-1175-43ff-8a70-d2940d935b30"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:090c809e-5c35-4309-9e32-92d76730d0f4">
+    <skos:prefLabel xml:lang="en">Ma’an Antiquities Office</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مكتب آثار محافظة معان</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:9231e912-277c-47ac-9d93-368e21633ea5">
+    <skos:prefLabel xml:lang="en">Petra Archaeological Park</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">محمية البترا الأثرية</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:14d66bd7-b18b-4508-ac9b-834e97b95e0c">
+    <skos:prefLabel xml:lang="en">Al- ‘Aqaba Antiquities Office</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مكتب آثار محافظة العقبة</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:d4667c99-4263-47cc-a7b3-8c1f91a8b681">
+    <skos:prefLabel xml:lang="en">Tafila Antiquities Office</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">Tafila Antiquities Office</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:b4665624-f147-484c-b504-c4b250da48a4">
+    <skos:prefLabel xml:lang="en">Kura (Dayr Abu Sa’id) Antiquities Office</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مكتب آثار لواء  الكورة (دير أبي سعيد)</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:a7ffa399-b87b-4066-8861-b8ac3daa1a99"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:91baf58a-4589-432a-a08f-a00fd59b0ac8">
+    <skos:prefLabel xml:lang="en">Al- Aghwar ash- Shamaliyya Antiquities office</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مكتب آثار لواء الأغوار الشمالية</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:a7ffa399-b87b-4066-8861-b8ac3daa1a99"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:3f58c23c-2ed3-422c-83b4-98c50ada4b65">
+    <skos:prefLabel xml:lang="en">Ar- Ramtha Antiquities office</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مكتب آثار لواء الرمثا</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:a7ffa399-b87b-4066-8861-b8ac3daa1a99"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:2f5ea12b-37fc-488e-ad87-5ee2b3d61d11">
+    <skos:prefLabel xml:lang="en">Umm Qays Antiquities office</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مكتب آثار أم قيس</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:a7ffa399-b87b-4066-8861-b8ac3daa1a99"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:741c3b0a-a974-46ef-a902-588e66289a1d">
+    <skos:prefLabel xml:lang="en">Dar as- Saraya Museum</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">متحف دار السرايا</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:a7ffa399-b87b-4066-8861-b8ac3daa1a99"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:f14a381d-329b-4ffc-a8d5-2995a54a2dc5">
+    <skos:prefLabel xml:lang="en">Beit Ras Project</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مشروع بيت رأس</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:a7ffa399-b87b-4066-8861-b8ac3daa1a99"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:12cddf43-58af-4740-81d6-7b86c60a2452">
+    <skos:prefLabel xml:lang="en">Rihab Project</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مشروع رحاب</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:8539b65c-a336-46ca-9357-d264de651493"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:b92fc5c2-6344-4ab4-972b-817f74bee2b0">
+    <skos:prefLabel xml:lang="en">Umm aj- Jimal Project</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مشروع أم الجمال</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:8539b65c-a336-46ca-9357-d264de651493"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:a17bf6d4-f6db-4458-b4e3-a02e46958f8d">
+    <skos:prefLabel xml:lang="en">Dayr ‘Alla Antiquities Office</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مكتب آثار لواء دير علّا</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:8caab3ca-c20a-45d2-85a2-040dcecb90dd"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:fadcbde1-9108-45a4-a7cc-b7f29709a940">
+    <skos:prefLabel xml:lang="en">Desert Castles Antiquities Office</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مكتب آثار القصور الصحراوية</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:8a9d9192-b5e8-4e36-b936-110bef55071f"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:ab192eef-b2cb-4ce5-a33c-bc43fa687ae4">
+    <skos:prefLabel xml:lang="en">Al- Qasr Antiquities Office</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مكتب آثار لواء القصر</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:00c62c1a-bb4b-4110-9e21-7f6b328db734"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:ec839c16-1175-43ff-8a70-d2940d935b30">
+    <skos:prefLabel xml:lang="en">Al- Aghwar al- Janubiyya Antiquities Office</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مكتب آثار لواء الأغوار الجنوبية</skos:prefLabel>
+    <skos:broader rdf:resource="urn:uuid:00c62c1a-bb4b-4110-9e21-7f6b328db734"/>
+    <skos:inScheme rdf:resource="urn:uuid:a513e96a-ed6a-4475-8727-f6df238deede"/>
+  </skos:Concept>
+</rdf:RDF>

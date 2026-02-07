@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+  <skos:ConceptScheme rdf:about="urn:uuid:d5fb2c12-5fd6-4386-bd23-588120fc3fa2">
+    <dcterms:title xml:lang="en">{&quot;id&quot;: &quot;bc3d1ab9-819d-46b2-8a0d-dde3bdfc8cf3&quot;, &quot;value&quot;: &quot;MEGA-J Monitoring Event Types&quot;}</dcterms:title>
+    <skos:hasTopConcept rdf:resource="urn:uuid:30646564-a918-47e6-a368-aac33469a5d6"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:58e14658-3fad-4159-8bfe-99dea8808db8"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:1d7dff57-b220-48a3-9310-4ad1d6cbe979"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="urn:uuid:30646564-a918-47e6-a368-aac33469a5d6">
+    <skos:prefLabel xml:lang="en">JADIS Import</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">جاديس الاستيراد</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:d5fb2c12-5fd6-4386-bd23-588120fc3fa2"/>
+    <skos:inScheme rdf:resource="urn:uuid:d5fb2c12-5fd6-4386-bd23-588120fc3fa2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:58e14658-3fad-4159-8bfe-99dea8808db8">
+    <skos:prefLabel xml:lang="en">Inferred</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">الاستدلال</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:d5fb2c12-5fd6-4386-bd23-588120fc3fa2"/>
+    <skos:inScheme rdf:resource="urn:uuid:d5fb2c12-5fd6-4386-bd23-588120fc3fa2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:1d7dff57-b220-48a3-9310-4ad1d6cbe979">
+    <skos:prefLabel xml:lang="en">Site Visit</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">زيارة الموقع</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:d5fb2c12-5fd6-4386-bd23-588120fc3fa2"/>
+    <skos:inScheme rdf:resource="urn:uuid:d5fb2c12-5fd6-4386-bd23-588120fc3fa2"/>
+  </skos:Concept>
+</rdf:RDF>

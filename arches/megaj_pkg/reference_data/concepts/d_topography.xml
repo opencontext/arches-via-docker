@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+  <skos:ConceptScheme rdf:about="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4">
+    <dcterms:title xml:lang="en">{&quot;id&quot;: &quot;d6bba509-ac7c-4b59-9254-c22e6a328191&quot;, &quot;value&quot;: &quot;MEGA-J Topography&quot;}</dcterms:title>
+    <skos:hasTopConcept rdf:resource="urn:uuid:95ea52e0-bc84-40f1-9b3d-2c89c6241b15"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:9370328d-3d3c-4ae7-8350-6c1fdc2672aa"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:e913a711-db8f-496f-86be-cd32cb78e7e3"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:905c24fe-f2f8-4d74-924d-3dff4d86d6d3"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:ab780652-4b2d-4df5-9201-f7f717e1e536"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:c7d323a6-f11c-420c-89e7-9743d2fa4373"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:7a18e56b-be65-471d-8d31-fe9be354608a"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:9dabc88a-a5b8-4b87-89ed-bdeb5f4b0b66"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:ac81fe58-c3e4-4d63-abd7-123c81925c97"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:5e06e9b2-cfcd-40d6-861a-e67b87849381"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:7c346d91-b3cf-436a-943d-c04697704ac0"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:ccb5fbcd-4a16-4061-aa93-91b54f95da17"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:9bd49d8c-cd0b-4097-9e64-9e00696b26f7"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:8cbcd593-3582-4bdd-a6a6-fa28683fa6dd"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:a45b6a65-7add-4a7b-b225-7271760675d2"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="urn:uuid:95ea52e0-bc84-40f1-9b3d-2c89c6241b15">
+    <skos:prefLabel xml:lang="en">Alluvial Fan</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مصب/ دلتا</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+    <skos:inScheme rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:9370328d-3d3c-4ae7-8350-6c1fdc2672aa">
+    <skos:prefLabel xml:lang="en">Cliff</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">جرف</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+    <skos:inScheme rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:e913a711-db8f-496f-86be-cd32cb78e7e3">
+    <skos:prefLabel xml:lang="en">Cutbank</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">جرف النهر</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+    <skos:inScheme rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:905c24fe-f2f8-4d74-924d-3dff4d86d6d3">
+    <skos:prefLabel xml:lang="en">Dune Field</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">كثبان رملية</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+    <skos:inScheme rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:ab780652-4b2d-4df5-9201-f7f717e1e536">
+    <skos:prefLabel xml:lang="en">Hilltop</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">قمة التلة</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+    <skos:inScheme rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:c7d323a6-f11c-420c-89e7-9743d2fa4373">
+    <skos:prefLabel xml:lang="en">Plain, Alluvial</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">سهل غريني</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+    <skos:inScheme rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:7a18e56b-be65-471d-8d31-fe9be354608a">
+    <skos:prefLabel xml:lang="en">Plateau</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">هضبة/ سهل واسع</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+    <skos:inScheme rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:9dabc88a-a5b8-4b87-89ed-bdeb5f4b0b66">
+    <skos:prefLabel xml:lang="en">Playa</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">أرض جافة</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+    <skos:inScheme rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:ac81fe58-c3e4-4d63-abd7-123c81925c97">
+    <skos:prefLabel xml:lang="en">Ridge</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">شفا/ حافة</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+    <skos:inScheme rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:5e06e9b2-cfcd-40d6-861a-e67b87849381">
+    <skos:prefLabel xml:lang="en">Slope</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">سفح/منحدر</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+    <skos:inScheme rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:7c346d91-b3cf-436a-943d-c04697704ac0">
+    <skos:prefLabel xml:lang="en">Terrace</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مصطبة</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+    <skos:inScheme rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:ccb5fbcd-4a16-4061-aa93-91b54f95da17">
+    <skos:prefLabel xml:lang="en">Valley Bottom</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">قعر الوادي</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+    <skos:inScheme rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:9bd49d8c-cd0b-4097-9e64-9e00696b26f7">
+    <skos:prefLabel xml:lang="en">Plain, Non-Alluvial</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">سهل غيرغريني</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+    <skos:inScheme rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:8cbcd593-3582-4bdd-a6a6-fa28683fa6dd">
+    <skos:prefLabel xml:lang="en">Unspecified/Unknown Topography</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">طبوغرافية غير معروفة /  غير محددة</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+    <skos:inScheme rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:a45b6a65-7add-4a7b-b225-7271760675d2">
+    <skos:prefLabel xml:lang="en">Other Topography (Specify)</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">الطبوغرافية الأخرى (حدد)</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+    <skos:inScheme rdf:resource="urn:uuid:9978c99d-b486-44cf-b38a-49155fa19ba4"/>
+  </skos:Concept>
+</rdf:RDF>

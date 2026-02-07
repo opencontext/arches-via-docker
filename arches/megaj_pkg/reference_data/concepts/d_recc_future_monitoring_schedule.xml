@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+  <skos:ConceptScheme rdf:about="urn:uuid:ced6f62c-273c-4532-87dd-975da20712f5">
+    <dcterms:title xml:lang="en">{&quot;id&quot;: &quot;737dc493-580b-40ca-9f05-9a6a2760e714&quot;, &quot;value&quot;: &quot;MEGA-J Recommended Future Monitoring Schedule&quot;}</dcterms:title>
+    <skos:hasTopConcept rdf:resource="urn:uuid:66fbfa1a-9802-4c2e-a7b6-a1552f00f4d2"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:ecd4314c-6144-4e51-8815-a783c4483446"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:72ef3f04-c379-46c2-b472-e55e4dd64472"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:b1fdf1cf-319c-419e-800d-24b9c820f5f9"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:847ae7e4-0a56-49c7-8543-ad4c1354632e"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:a6eb3067-98b2-434b-b22f-98d18c4f08c8"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="urn:uuid:66fbfa1a-9802-4c2e-a7b6-a1552f00f4d2">
+    <skos:prefLabel xml:lang="en">Every 6 months</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">كل ٦ أشهر</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:ced6f62c-273c-4532-87dd-975da20712f5"/>
+    <skos:inScheme rdf:resource="urn:uuid:ced6f62c-273c-4532-87dd-975da20712f5"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:ecd4314c-6144-4e51-8815-a783c4483446">
+    <skos:prefLabel xml:lang="en">Every Year</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">كل سنة</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:ced6f62c-273c-4532-87dd-975da20712f5"/>
+    <skos:inScheme rdf:resource="urn:uuid:ced6f62c-273c-4532-87dd-975da20712f5"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:72ef3f04-c379-46c2-b472-e55e4dd64472">
+    <skos:prefLabel xml:lang="en">Every other year</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">كل سنتين</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:ced6f62c-273c-4532-87dd-975da20712f5"/>
+    <skos:inScheme rdf:resource="urn:uuid:ced6f62c-273c-4532-87dd-975da20712f5"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:b1fdf1cf-319c-419e-800d-24b9c820f5f9">
+    <skos:prefLabel xml:lang="en">Discontinue monitoring</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">وقف مراقبة</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:ced6f62c-273c-4532-87dd-975da20712f5"/>
+    <skos:inScheme rdf:resource="urn:uuid:ced6f62c-273c-4532-87dd-975da20712f5"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:847ae7e4-0a56-49c7-8543-ad4c1354632e">
+    <skos:prefLabel xml:lang="en">Other</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">أخرى</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:ced6f62c-273c-4532-87dd-975da20712f5"/>
+    <skos:inScheme rdf:resource="urn:uuid:ced6f62c-273c-4532-87dd-975da20712f5"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:a6eb3067-98b2-434b-b22f-98d18c4f08c8">
+    <skos:prefLabel xml:lang="en">3-5 Years</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">سنوات ٣-٥</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:ced6f62c-273c-4532-87dd-975da20712f5"/>
+    <skos:inScheme rdf:resource="urn:uuid:ced6f62c-273c-4532-87dd-975da20712f5"/>
+  </skos:Concept>
+</rdf:RDF>

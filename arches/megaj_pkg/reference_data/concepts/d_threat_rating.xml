@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+  <skos:ConceptScheme rdf:about="urn:uuid:576ad569-fe0d-4125-bd5f-accc830a0972">
+    <dcterms:title xml:lang="en">{&quot;id&quot;: &quot;c7c2e99a-2d08-410f-b855-06d95bf61ee4&quot;, &quot;value&quot;: &quot;MEGA-J Threat Rating&quot;}</dcterms:title>
+    <skos:hasTopConcept rdf:resource="urn:uuid:ac26cc33-97de-4470-96f0-09cf08fdc7b0"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:3edcfd59-c7e4-406f-8015-3eab0705410e"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:c0523bbe-d4d5-45f9-a554-e9458c15eb8d"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:3b5d1fdd-9b9e-40dd-9337-99d062334c39"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:b2fdda0a-7319-4029-be2c-192494736bba"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="urn:uuid:ac26cc33-97de-4470-96f0-09cf08fdc7b0">
+    <skos:prefLabel xml:lang="en">low</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">منخفضة</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:576ad569-fe0d-4125-bd5f-accc830a0972"/>
+    <skos:inScheme rdf:resource="urn:uuid:576ad569-fe0d-4125-bd5f-accc830a0972"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:3edcfd59-c7e4-406f-8015-3eab0705410e">
+    <skos:prefLabel xml:lang="en">medium</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">متوسطة</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:576ad569-fe0d-4125-bd5f-accc830a0972"/>
+    <skos:inScheme rdf:resource="urn:uuid:576ad569-fe0d-4125-bd5f-accc830a0972"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:c0523bbe-d4d5-45f9-a554-e9458c15eb8d">
+    <skos:prefLabel xml:lang="en">high</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">عالية</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:576ad569-fe0d-4125-bd5f-accc830a0972"/>
+    <skos:inScheme rdf:resource="urn:uuid:576ad569-fe0d-4125-bd5f-accc830a0972"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:3b5d1fdd-9b9e-40dd-9337-99d062334c39">
+    <skos:prefLabel xml:lang="en">urgent</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">عاجل</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:576ad569-fe0d-4125-bd5f-accc830a0972"/>
+    <skos:inScheme rdf:resource="urn:uuid:576ad569-fe0d-4125-bd5f-accc830a0972"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:b2fdda0a-7319-4029-be2c-192494736bba">
+    <skos:prefLabel xml:lang="en">unknown</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">غير معروف</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:576ad569-fe0d-4125-bd5f-accc830a0972"/>
+    <skos:inScheme rdf:resource="urn:uuid:576ad569-fe0d-4125-bd5f-accc830a0972"/>
+  </skos:Concept>
+</rdf:RDF>

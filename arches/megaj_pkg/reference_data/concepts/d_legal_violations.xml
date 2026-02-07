@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+  <skos:ConceptScheme rdf:about="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6">
+    <dcterms:title xml:lang="en">{&quot;id&quot;: &quot;2d77dff4-942d-4f75-a53a-19a782403996&quot;, &quot;value&quot;: &quot;MEGA-J Legal Violations&quot;}</dcterms:title>
+    <skos:hasTopConcept rdf:resource="urn:uuid:bcf84c5d-3faa-4a58-aeb4-86a0f88d3d4d"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:b55f64f6-3354-42dd-b4c0-812b8f4563da"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:023e4956-0c9a-4c98-960e-294d82fae84d"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:cb5318f7-b8e2-4ce1-af9c-1aed5e187159"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:4729f478-384e-4154-8548-5417744e0c45"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:87f11577-538a-4e14-bd18-a341f1c6d73a"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:b0b35f37-0053-4a99-8593-c4a9fa971901"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:3685db68-5ca6-4468-9500-027ccda3c54b"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:a9921e22-8252-4d1f-accb-63ed3c51dbdb"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:cfac661e-c5ed-40de-87c6-08e8550c6ecb"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:2d95841f-0da8-4b63-b3e4-25da085c8d8b"/>
+    <skos:hasTopConcept rdf:resource="urn:uuid:a2058723-fd29-452d-a180-82bc0dae2cd8"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="urn:uuid:bcf84c5d-3faa-4a58-aeb4-86a0f88d3d4d">
+    <skos:prefLabel xml:lang="en">Attach Notice to Antiquities</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">وضع ملصقات على الآثار</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+    <skos:inScheme rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:b55f64f6-3354-42dd-b4c0-812b8f4563da">
+    <skos:prefLabel xml:lang="en">Bulldoze Site</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">تجريف الموقع</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+    <skos:inScheme rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:023e4956-0c9a-4c98-960e-294d82fae84d">
+    <skos:prefLabel xml:lang="en">Damage Antiquities</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">الإضرار بالآثار</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+    <skos:inScheme rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:cb5318f7-b8e2-4ce1-af9c-1aed5e187159">
+    <skos:prefLabel xml:lang="en">Encroachment by Devices</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">تأثيرات التقنيات الحديثة   تعدي بالأجهزة او بالمعدات</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+    <skos:inScheme rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:4729f478-384e-4154-8548-5417744e0c45">
+    <skos:prefLabel xml:lang="en">Illegal Excavation</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">الإعتداء بالحفر</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+    <skos:inScheme rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:87f11577-538a-4e14-bd18-a341f1c6d73a">
+    <skos:prefLabel xml:lang="en">Move or Dispose Antiquities</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">نقل الآثار و تجريفها</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+    <skos:inScheme rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:b0b35f37-0053-4a99-8593-c4a9fa971901">
+    <skos:prefLabel xml:lang="en">Plant Vegetation or Plowing</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">زراعة / حراثة</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+    <skos:inScheme rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:3685db68-5ca6-4468-9500-027ccda3c54b">
+    <skos:prefLabel xml:lang="en">Erect Construction</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">بناء المنشأت</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+    <skos:inScheme rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:a9921e22-8252-4d1f-accb-63ed3c51dbdb">
+    <skos:prefLabel xml:lang="en">Expose to Fire Risk</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">التعرض لخطر الحريق</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+    <skos:inScheme rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:cfac661e-c5ed-40de-87c6-08e8550c6ecb">
+    <skos:prefLabel xml:lang="en">Trade in Antiquities</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">الإتجار غير المشروع بالآثار</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+    <skos:inScheme rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:2d95841f-0da8-4b63-b3e4-25da085c8d8b">
+    <skos:prefLabel xml:lang="en">No Legal Violations Observed</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">لا توجد مخالفات قانونية</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+    <skos:inScheme rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="urn:uuid:a2058723-fd29-452d-a180-82bc0dae2cd8">
+    <skos:prefLabel xml:lang="en">Other Legal Violation (Specify)</skos:prefLabel>
+    <skos:prefLabel xml:lang="ar">مخالفات قانونية أخرى (حدد)</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+    <skos:inScheme rdf:resource="urn:uuid:a23c1b50-1d6c-4f17-9d47-ce61c5f9eab6"/>
+  </skos:Concept>
+</rdf:RDF>
