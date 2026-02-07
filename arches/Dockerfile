@@ -241,9 +241,21 @@ RUN echo "Update the HER RDM files for MEGA-J";
 COPY /arches/megaj_pkg/reference_data/concepts/d_activity_types.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/concepts/d_activity_types.xml
 COPY /arches/megaj_pkg/reference_data/concepts/d_condition_rating.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/concepts/d_condition_rating.xml
 COPY /arches/megaj_pkg/reference_data/concepts/d_disturbances.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/concepts/d_disturbances.xml
+COPY /arches/megaj_pkg/reference_data/concepts/d_element_types.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/concepts/d_element_types.xml
 COPY /arches/megaj_pkg/reference_data/concepts/d_geometry_source.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/concepts/d_geometry_source.xml
+COPY /arches/megaj_pkg/reference_data/concepts/d_legal_violations.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/concepts/d_legal_violations.xml
+COPY /arches/megaj_pkg/reference_data/concepts/d_management_recc_priorities.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/concepts/d_management_recc_priorities.xml
+COPY /arches/megaj_pkg/reference_data/concepts/d_management_recommendations.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/concepts/d_management_recommendations.xml
+COPY /arches/megaj_pkg/reference_data/concepts/d_monitoring_event_types.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/concepts/d_monitoring_event_types.xml
+COPY /arches/megaj_pkg/reference_data/concepts/d_offices.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/concepts/d_offices.xml
+COPY /arches/megaj_pkg/reference_data/concepts/d_ownership.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/concepts/d_ownership.xml
+COPY /arches/megaj_pkg/reference_data/concepts/d_recc_future_monitoring_schedule.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/concepts/d_recc_future_monitoring_schedule.xml
+COPY /arches/megaj_pkg/reference_data/concepts/d_review_status.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/concepts/d_review_status.xml
 COPY /arches/megaj_pkg/reference_data/concepts/d_site_description_type.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/concepts/d_site_description_type.xml
+COPY /arches/megaj_pkg/reference_data/concepts/d_threat_rating.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/concepts/d_threat_rating.xml
 COPY /arches/megaj_pkg/reference_data/concepts/d_threats.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/concepts/d_threats.xml
+COPY /arches/megaj_pkg/reference_data/concepts/d_topography.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/concepts/d_topography.xml
+
 COPY /arches/megaj_pkg/reference_data/collections/collections.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/collections/collections.xml
 
 RUN echo "Update the HER RDM files for MEGA-J";
