@@ -1,6 +1,13 @@
 # Edit this file and save as ".env" for use.
 
 COMPOSE_PROJECT_NAME=arches_megaj
+DOMAINS=arches.opencontext.org
+DEPLOY_HOST=$DOMAINS
+NGINX_HTML_PATH=/var/www/html/$DEPLOY_HOST
+CERT_PATH=/var/www/certbot/$DEPLOY_HOST
+CERTBOT_EMAILS=eric@opencontext.org
+CERTBOT_TEST_CERT=1
+CERTBOT_RSA_KEY_SIZE=4096
 TZ=PST
 
 #arches project and paths
