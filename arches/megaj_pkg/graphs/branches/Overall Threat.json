@@ -1,0 +1,447 @@
+{
+    "graph": [
+        {
+            "author": " ",
+            "cards": [
+                {
+                    "active": true,
+                    "cardid": "3a3bd650-a0da-4342-81ff-a32509ec70fb",
+                    "component_id": "f05e4d3a-53c1-11e8-b0ea-784f435179ea",
+                    "config": null,
+                    "constraints": [],
+                    "cssclass": null,
+                    "description": {
+                        "en": ""
+                    },
+                    "graph_id": "390aeb63-7867-4c42-a619-d40cb83e2478",
+                    "helpenabled": false,
+                    "helptext": {
+                        "en": null
+                    },
+                    "helptitle": {
+                        "en": null
+                    },
+                    "instructions": {
+                        "en": null
+                    },
+                    "is_editable": true,
+                    "name": {
+                        "en": "Overall Threat"
+                    },
+                    "nodegroup_id": "7a86b21a-0b39-11f1-acba-0242c0a8d007",
+                    "sortorder": null,
+                    "visible": true
+                },
+                {
+                    "active": true,
+                    "cardid": "6653c8d6-8b62-4138-b6d7-8f250fa32f5a",
+                    "component_id": "f05e4d3a-53c1-11e8-b0ea-784f435179ea",
+                    "config": null,
+                    "constraints": [],
+                    "cssclass": null,
+                    "description": null,
+                    "graph_id": "390aeb63-7867-4c42-a619-d40cb83e2478",
+                    "helpenabled": false,
+                    "helptext": {
+                        "en": ""
+                    },
+                    "helptitle": {
+                        "en": ""
+                    },
+                    "instructions": {
+                        "en": ""
+                    },
+                    "is_editable": true,
+                    "name": {
+                        "en": "Overall Threat Description"
+                    },
+                    "nodegroup_id": "1b43d14c-0b3a-11f1-af9c-0242c0a8d007",
+                    "sortorder": null,
+                    "visible": true
+                }
+            ],
+            "cards_x_nodes_x_widgets": [
+                {
+                    "card_id": "6653c8d6-8b62-4138-b6d7-8f250fa32f5a",
+                    "config": {
+                        "defaultValue": "",
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Overall Threat Description Type",
+                        "options": [],
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "048ca18e-ebe1-43e3-8330-1d888a4983b5",
+                    "label": {
+                        "en": "Overall Threat Description Type"
+                    },
+                    "node_id": "2a1ee6a2-0b3a-11f1-bc87-0242c0a8d007",
+                    "sortorder": 1,
+                    "visible": true,
+                    "widget_id": "10000000-0000-0000-0000-000000000012"
+                },
+                {
+                    "card_id": "6653c8d6-8b62-4138-b6d7-8f250fa32f5a",
+                    "config": {
+                        "defaultValue": {
+                            "en": {
+                                "direction": "ltr",
+                                "value": ""
+                            }
+                        },
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Overall Threat Description",
+                        "maxLength": null,
+                        "placeholder": {
+                            "en": "Enter text"
+                        },
+                        "uneditable": false,
+                        "width": "100%"
+                    },
+                    "id": "b79bddd5-fc93-46b2-9728-1ac3b1385dcd",
+                    "label": {
+                        "en": "Overall Threat Description"
+                    },
+                    "node_id": "37f7990e-0b3a-11f1-9cdb-0242c0a8d007",
+                    "sortorder": 0,
+                    "visible": true,
+                    "widget_id": "10000000-0000-0000-0000-000000000001"
+                }
+            ],
+            "color": null,
+            "config": {},
+            "deploymentdate": null,
+            "deploymentfile": null,
+            "description": {
+                "en": ""
+            },
+            "edges": [
+                {
+                    "description": null,
+                    "domainnode_id": "1b43d14c-0b3a-11f1-af9c-0242c0a8d007",
+                    "edgeid": "20bf7d3f-b24d-40f5-9845-c3f58c425ee7",
+                    "graph_id": "390aeb63-7867-4c42-a619-d40cb83e2478",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "rangenode_id": "2a1ee6a2-0b3a-11f1-bc87-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "7a86b21a-0b39-11f1-acba-0242c0a8d007",
+                    "edgeid": "3d253116-28bd-408f-ace5-37bf6007f452",
+                    "graph_id": "390aeb63-7867-4c42-a619-d40cb83e2478",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "rangenode_id": "903913c8-0b39-11f1-9be2-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "7a86b21a-0b39-11f1-acba-0242c0a8d007",
+                    "edgeid": "677f8480-a363-4654-a6ca-1da969ff9235",
+                    "graph_id": "390aeb63-7867-4c42-a619-d40cb83e2478",
+                    "name": null,
+                    "ontologyproperty": "https://ontology.swissartresearch.net/aaao/ZP42i_was_intentionally_initiated_by",
+                    "rangenode_id": "fbce3b7c-0b39-11f1-8c99-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "1b43d14c-0b3a-11f1-af9c-0242c0a8d007",
+                    "edgeid": "81b02cc8-3764-478e-bfed-1e40533a691f",
+                    "graph_id": "390aeb63-7867-4c42-a619-d40cb83e2478",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P3_has_note",
+                    "rangenode_id": "37f7990e-0b3a-11f1-9cdb-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "7a86b21a-0b39-11f1-acba-0242c0a8d007",
+                    "edgeid": "8b99530e-ce99-4a14-80fd-7cf9bfed100f",
+                    "graph_id": "390aeb63-7867-4c42-a619-d40cb83e2478",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by",
+                    "rangenode_id": "1b43d14c-0b3a-11f1-af9c-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "7a86b21a-0b39-11f1-acba-0242c0a8d007",
+                    "edgeid": "ac53e0ac-f747-43f7-9521-25b11a3670a4",
+                    "graph_id": "390aeb63-7867-4c42-a619-d40cb83e2478",
+                    "name": null,
+                    "ontologyproperty": "https://ontology.swissartresearch.net/aaao/ZP12_ascribes_classification",
+                    "rangenode_id": "e38f20bc-0b39-11f1-ba3c-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "7a86b21a-0b39-11f1-acba-0242c0a8d007",
+                    "edgeid": "ffe2720d-b6d5-4f9f-a95a-857c0bb083cd",
+                    "graph_id": "390aeb63-7867-4c42-a619-d40cb83e2478",
+                    "name": null,
+                    "ontologyproperty": "https://ontology.swissartresearch.net/aaao/ZP13_ascribes_classification_relation",
+                    "rangenode_id": "9fdb9580-0b39-11f1-a04f-0242c0a8d007"
+                }
+            ],
+            "functions_x_graphs": [],
+            "graphid": "390aeb63-7867-4c42-a619-d40cb83e2478",
+            "iconclass": "",
+            "is_editable": true,
+            "isresource": false,
+            "jsonldcontext": null,
+            "name": {
+                "en": "Overall Threat"
+            },
+            "nodegroups": [
+                {
+                    "cardinality": "1",
+                    "legacygroupid": null,
+                    "nodegroupid": "1b43d14c-0b3a-11f1-af9c-0242c0a8d007",
+                    "parentnodegroup_id": "7a86b21a-0b39-11f1-acba-0242c0a8d007"
+                },
+                {
+                    "cardinality": "1",
+                    "legacygroupid": null,
+                    "nodegroupid": "7a86b21a-0b39-11f1-acba-0242c0a8d007",
+                    "parentnodegroup_id": null
+                }
+            ],
+            "nodes": [
+                {
+                    "alias": "overall_threat_statement",
+                    "config": {
+                        "en": ""
+                    },
+                    "datatype": "semantic",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "390aeb63-7867-4c42-a619-d40cb83e2478",
+                    "hascustomalias": false,
+                    "is_collector": true,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Overall Threat Statement",
+                    "nodegroup_id": "1b43d14c-0b3a-11f1-af9c-0242c0a8d007",
+                    "nodeid": "1b43d14c-0b3a-11f1-af9c-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "overall_threat_statement_type",
+                    "config": {
+                        "rdmCollection": null
+                    },
+                    "datatype": "concept-list",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "390aeb63-7867-4c42-a619-d40cb83e2478",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Overall Threat Statement Type",
+                    "nodegroup_id": "1b43d14c-0b3a-11f1-af9c-0242c0a8d007",
+                    "nodeid": "2a1ee6a2-0b3a-11f1-bc87-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "overall_threat_statement_content",
+                    "config": {
+                        "en": ""
+                    },
+                    "datatype": "string",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "390aeb63-7867-4c42-a619-d40cb83e2478",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Overall Threat Statement Content",
+                    "nodegroup_id": "1b43d14c-0b3a-11f1-af9c-0242c0a8d007",
+                    "nodeid": "37f7990e-0b3a-11f1-9cdb-0242c0a8d007",
+                    "ontologyclass": "http://www.w3.org/2000/01/rdf-schema#Literal",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P3_has_note",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": null,
+                    "config": {
+                        "en": ""
+                    },
+                    "datatype": "semantic",
+                    "description": "",
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "390aeb63-7867-4c42-a619-d40cb83e2478",
+                    "hascustomalias": false,
+                    "is_collector": true,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": true,
+                    "name": "Overall Threat",
+                    "nodegroup_id": "7a86b21a-0b39-11f1-acba-0242c0a8d007",
+                    "nodeid": "7a86b21a-0b39-11f1-acba-0242c0a8d007",
+                    "ontologyclass": "https://ontology.swissartresearch.net/aaao/ZE4_Classificatory_Status",
+                    "parentproperty": "",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "overall_threat_type",
+                    "config": {
+                        "rdmCollection": null
+                    },
+                    "datatype": "concept-list",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "390aeb63-7867-4c42-a619-d40cb83e2478",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Overall Threat Type",
+                    "nodegroup_id": "7a86b21a-0b39-11f1-acba-0242c0a8d007",
+                    "nodeid": "903913c8-0b39-11f1-9be2-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "overall_threat_ascribed_relation",
+                    "config": {
+                        "rdmCollection": null
+                    },
+                    "datatype": "concept-list",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "390aeb63-7867-4c42-a619-d40cb83e2478",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Overall Threat Ascribed Relation",
+                    "nodegroup_id": "7a86b21a-0b39-11f1-acba-0242c0a8d007",
+                    "nodeid": "9fdb9580-0b39-11f1-a04f-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "https://ontology.swissartresearch.net/aaao/ZP13_ascribes_classification_relation",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "overall_threat_ascribed_classification",
+                    "config": {
+                        "rdmCollection": null
+                    },
+                    "datatype": "concept-list",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "390aeb63-7867-4c42-a619-d40cb83e2478",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Overall Threat Ascribed Classification",
+                    "nodegroup_id": "7a86b21a-0b39-11f1-acba-0242c0a8d007",
+                    "nodeid": "e38f20bc-0b39-11f1-ba3c-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "https://ontology.swissartresearch.net/aaao/ZP12_ascribes_classification",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "overall_threat_initiating_act",
+                    "config": {
+                        "graphs": [
+                            {
+                                "graphid": "109b89a3-2d76-4dfc-addf-8fc3e3a1ab47",
+                                "inverseRelationshipConcept": "ac41d9be-79db-4256-b368-2f4559cfbe55",
+                                "name": "Monitoring Event 1",
+                                "relationshipCollection": "00000000-0000-0000-0000-000000000005",
+                                "relationshipConcept": "ac41d9be-79db-4256-b368-2f4559cfbe55",
+                                "useOntologyRelationship": false
+                            }
+                        ],
+                        "searchDsl": "",
+                        "searchString": ""
+                    },
+                    "datatype": "resource-instance-list",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "390aeb63-7867-4c42-a619-d40cb83e2478",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Overall Threat Initiating Act",
+                    "nodegroup_id": "7a86b21a-0b39-11f1-acba-0242c0a8d007",
+                    "nodeid": "fbce3b7c-0b39-11f1-8c99-0242c0a8d007",
+                    "ontologyclass": "http://www.ics.forth.gr/isl/CRMsci/S4_Observation",
+                    "parentproperty": "https://ontology.swissartresearch.net/aaao/ZP42i_was_intentionally_initiated_by",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                }
+            ],
+            "ontology_id": "e6e8db47-2ccf-11e6-927e-b8f6b115d7dd",
+            "publication": {
+                "graph_id": "390aeb63-7867-4c42-a619-d40cb83e2478",
+                "notes": null,
+                "publicationid": "b3fc1766-0b42-11f1-8869-0242c0a8d007",
+                "published_time": "2026-02-16T14:20:54.058"
+            },
+            "relatable_resource_model_ids": [],
+            "resource_2_resource_constraints": [],
+            "root": {
+                "alias": null,
+                "config": {
+                    "en": ""
+                },
+                "datatype": "semantic",
+                "description": "",
+                "exportable": false,
+                "fieldname": null,
+                "graph_id": "390aeb63-7867-4c42-a619-d40cb83e2478",
+                "hascustomalias": false,
+                "is_collector": true,
+                "isrequired": false,
+                "issearchable": true,
+                "istopnode": true,
+                "name": "Overall Threat",
+                "nodegroup_id": "7a86b21a-0b39-11f1-acba-0242c0a8d007",
+                "nodeid": "7a86b21a-0b39-11f1-acba-0242c0a8d007",
+                "ontologyclass": "https://ontology.swissartresearch.net/aaao/ZE4_Classificatory_Status",
+                "sortorder": 0,
+                "sourcebranchpublication_id": null
+            },
+            "slug": null,
+            "subtitle": {
+                "en": ""
+            },
+            "template_id": "50000000-0000-0000-0000-000000000001",
+            "version": ""
+        }
+    ]
+}

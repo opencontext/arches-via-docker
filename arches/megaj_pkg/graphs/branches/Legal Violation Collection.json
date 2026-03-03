@@ -1,0 +1,688 @@
+{
+    "graph": [
+        {
+            "author": "",
+            "cards": [
+                {
+                    "active": true,
+                    "cardid": "c649380c-0cd4-11f1-b6ec-0242c0a8d007",
+                    "component_id": "f05e4d3a-53c1-11e8-b0ea-784f435179ea",
+                    "config": null,
+                    "constraints": [],
+                    "cssclass": null,
+                    "description": {
+                        "en": ""
+                    },
+                    "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                    "helpenabled": false,
+                    "helptext": {
+                        "en": ""
+                    },
+                    "helptitle": {
+                        "en": ""
+                    },
+                    "instructions": {
+                        "en": ""
+                    },
+                    "is_editable": true,
+                    "name": {
+                        "en": "Legal Violation Collection"
+                    },
+                    "nodegroup_id": "c64933de-0cd4-11f1-b6ec-0242c0a8d007",
+                    "sortorder": 12,
+                    "visible": true
+                }
+            ],
+            "cards_x_nodes_x_widgets": [
+                {
+                    "card_id": "c649380c-0cd4-11f1-b6ec-0242c0a8d007",
+                    "config": {
+                        "defaultValue": {
+                            "en": {
+                                "direction": "ltr",
+                                "value": ""
+                            }
+                        },
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Legal Violation Description",
+                        "maxLength": null,
+                        "placeholder": {
+                            "en": "Enter text"
+                        },
+                        "uneditable": false,
+                        "width": "100%"
+                    },
+                    "id": "c6494aea-0cd4-11f1-b6ec-0242c0a8d007",
+                    "label": {
+                        "en": "Legal Violation Description"
+                    },
+                    "node_id": "c6493db6-0cd4-11f1-b6ec-0242c0a8d007",
+                    "sortorder": 3,
+                    "visible": true,
+                    "widget_id": "10000000-0000-0000-0000-000000000005"
+                },
+                {
+                    "card_id": "c649380c-0cd4-11f1-b6ec-0242c0a8d007",
+                    "config": {
+                        "defaultValue": [
+                            "daa4cddc-8636-4842-b836-eb2e10aabe18"
+                        ],
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Legal Violation Description Type",
+                        "options": [],
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "c6494c0c-0cd4-11f1-b6ec-0242c0a8d007",
+                    "label": {
+                        "en": "Legal Violation Description Type"
+                    },
+                    "node_id": "c6493a46-0cd4-11f1-b6ec-0242c0a8d007",
+                    "sortorder": 4,
+                    "visible": false,
+                    "widget_id": "10000000-0000-0000-0000-000000000012"
+                },
+                {
+                    "card_id": "c649380c-0cd4-11f1-b6ec-0242c0a8d007",
+                    "config": {
+                        "defaultValue": "c92a3840-5235-4c67-8a63-a3470cb38936",
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Classification Status Metatype",
+                        "options": [],
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "c6494cde-0cd4-11f1-b6ec-0242c0a8d007",
+                    "label": {
+                        "en": "Classification Status Metatype"
+                    },
+                    "node_id": "c64941ee-0cd4-11f1-b6ec-0242c0a8d007",
+                    "sortorder": 0,
+                    "visible": false,
+                    "widget_id": "10000000-0000-0000-0000-000000000002"
+                },
+                {
+                    "card_id": "c649380c-0cd4-11f1-b6ec-0242c0a8d007",
+                    "config": {
+                        "defaultValue": "7c2f74e4-608d-444a-98cf-d7b21768637b",
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Legal Violation Ascribed Relation",
+                        "options": [],
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "c6494dba-0cd4-11f1-b6ec-0242c0a8d007",
+                    "label": {
+                        "en": "Legal Violation Ascribed Relation"
+                    },
+                    "node_id": "c649434c-0cd4-11f1-b6ec-0242c0a8d007",
+                    "sortorder": 2,
+                    "visible": false,
+                    "widget_id": "10000000-0000-0000-0000-000000000002"
+                },
+                {
+                    "card_id": "c649380c-0cd4-11f1-b6ec-0242c0a8d007",
+                    "config": {
+                        "defaultValue": "",
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Legal Violation Description Language",
+                        "options": [],
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "c6494eaa-0cd4-11f1-b6ec-0242c0a8d007",
+                    "label": {
+                        "en": "Legal Violation Description Language"
+                    },
+                    "node_id": "c64945f4-0cd4-11f1-b6ec-0242c0a8d007",
+                    "sortorder": 5,
+                    "visible": true,
+                    "widget_id": "10000000-0000-0000-0000-000000000012"
+                },
+                {
+                    "card_id": "c649380c-0cd4-11f1-b6ec-0242c0a8d007",
+                    "config": {
+                        "defaultValue": "",
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Legal Violation Currency",
+                        "options": [],
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "c6494f7c-0cd4-11f1-b6ec-0242c0a8d007",
+                    "label": {
+                        "en": "Legal Violation Currency"
+                    },
+                    "node_id": "c649475c-0cd4-11f1-b6ec-0242c0a8d007",
+                    "sortorder": 6,
+                    "visible": true,
+                    "widget_id": "10000000-0000-0000-0000-000000000012"
+                },
+                {
+                    "card_id": "c649380c-0cd4-11f1-b6ec-0242c0a8d007",
+                    "config": {
+                        "defaultValue": "5a88136a-bf3a-4b48-a830-a7f42000dd24",
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Legal Violation Status Currency Metatype",
+                        "options": [],
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "c6495044-0cd4-11f1-b6ec-0242c0a8d007",
+                    "label": {
+                        "en": "Legal Violation Status Currency Metatype"
+                    },
+                    "node_id": "c64948c4-0cd4-11f1-b6ec-0242c0a8d007",
+                    "sortorder": 7,
+                    "visible": false,
+                    "widget_id": "10000000-0000-0000-0000-000000000002"
+                },
+                {
+                    "card_id": "c649380c-0cd4-11f1-b6ec-0242c0a8d007",
+                    "config": {
+                        "en": "",
+                        "label": "Legal Violation"
+                    },
+                    "id": "c649510c-0cd4-11f1-b6ec-0242c0a8d007",
+                    "label": {
+                        "en": "Legal Violation"
+                    },
+                    "node_id": "c6493c26-0cd4-11f1-b6ec-0242c0a8d007",
+                    "sortorder": 1,
+                    "visible": true,
+                    "widget_id": "10000000-0000-0000-0000-000000000012"
+                },
+                {
+                    "card_id": "c649380c-0cd4-11f1-b6ec-0242c0a8d007",
+                    "config": {
+                        "defaultResourceInstance": [],
+                        "en": "",
+                        "label": "Related Monitoring Event"
+                    },
+                    "id": "c64951de-0cd4-11f1-b6ec-0242c0a8d007",
+                    "label": {
+                        "en": "Related Monitoring Event"
+                    },
+                    "node_id": "c6493f1e-0cd4-11f1-b6ec-0242c0a8d007",
+                    "sortorder": 8,
+                    "visible": true,
+                    "widget_id": "ff3c400a-76ec-11e7-a793-784f435179ea"
+                }
+            ],
+            "color": "rgba(59,84,33,1)",
+            "config": {
+                "basemap": "streets",
+                "bearing": 0,
+                "centerX": 1,
+                "centerY": 53,
+                "defaultValue": "",
+                "defaultValueType": 0,
+                "featureColor": "#FF0000",
+                "featureEditingDisabled": true,
+                "featureLineWidth": 1,
+                "featurePointSize": 3,
+                "geocodePlaceholder": "Search",
+                "geocodeProvider": "10000000-0000-0000-0000-010000000000",
+                "geocoderVisible": true,
+                "geometryTypes": [
+                    {
+                        "id": "Point",
+                        "text": "Point"
+                    },
+                    {
+                        "id": "Line",
+                        "text": "Line"
+                    },
+                    {
+                        "id": "Polygon",
+                        "text": "Polygon"
+                    }
+                ],
+                "mapControlsHidden": false,
+                "maxZoom": "17",
+                "minZoom": "1",
+                "overlayConfigs": [],
+                "overlayOpacity": 0,
+                "pitch": 0,
+                "zoom": 5
+            },
+            "deploymentdate": null,
+            "deploymentfile": null,
+            "description": {
+                "en": ""
+            },
+            "edges": [
+                {
+                    "description": null,
+                    "domainnode_id": "c64933de-0cd4-11f1-b6ec-0242c0a8d007",
+                    "edgeid": "c6496caa-0cd4-11f1-b6ec-0242c0a8d007",
+                    "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                    "name": null,
+                    "ontologyproperty": "https://ontology.swissartresearch.net/aaao/ZP12_ascribes_classification",
+                    "rangenode_id": "c6493c26-0cd4-11f1-b6ec-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "c64933de-0cd4-11f1-b6ec-0242c0a8d007",
+                    "edgeid": "c6496f3e-0cd4-11f1-b6ec-0242c0a8d007",
+                    "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by",
+                    "rangenode_id": "c6494086-0cd4-11f1-b6ec-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "c6494086-0cd4-11f1-b6ec-0242c0a8d007",
+                    "edgeid": "c64970ec-0cd4-11f1-b6ec-0242c0a8d007",
+                    "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "rangenode_id": "c6493a46-0cd4-11f1-b6ec-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "c6494086-0cd4-11f1-b6ec-0242c0a8d007",
+                    "edgeid": "c649727c-0cd4-11f1-b6ec-0242c0a8d007",
+                    "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P3_has_note",
+                    "rangenode_id": "c6493db6-0cd4-11f1-b6ec-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "c64933de-0cd4-11f1-b6ec-0242c0a8d007",
+                    "edgeid": "c649740c-0cd4-11f1-b6ec-0242c0a8d007",
+                    "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                    "name": null,
+                    "ontologyproperty": "https://ontology.swissartresearch.net/aaao/ZP42i_was_intentionally_initiated_by",
+                    "rangenode_id": "c6493f1e-0cd4-11f1-b6ec-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "c64933de-0cd4-11f1-b6ec-0242c0a8d007",
+                    "edgeid": "c6497592-0cd4-11f1-b6ec-0242c0a8d007",
+                    "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "rangenode_id": "c64941ee-0cd4-11f1-b6ec-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "c64933de-0cd4-11f1-b6ec-0242c0a8d007",
+                    "edgeid": "c649770e-0cd4-11f1-b6ec-0242c0a8d007",
+                    "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                    "name": null,
+                    "ontologyproperty": "https://ontology.swissartresearch.net/aaao/ZP13_ascribes_classification_relation",
+                    "rangenode_id": "c649434c-0cd4-11f1-b6ec-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "c6494086-0cd4-11f1-b6ec-0242c0a8d007",
+                    "edgeid": "c64978a8-0cd4-11f1-b6ec-0242c0a8d007",
+                    "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P72_has_language",
+                    "rangenode_id": "c64945f4-0cd4-11f1-b6ec-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "c64933de-0cd4-11f1-b6ec-0242c0a8d007",
+                    "edgeid": "c6497a38-0cd4-11f1-b6ec-0242c0a8d007",
+                    "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "rangenode_id": "c649475c-0cd4-11f1-b6ec-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "c649475c-0cd4-11f1-b6ec-0242c0a8d007",
+                    "edgeid": "c6497bbe-0cd4-11f1-b6ec-0242c0a8d007",
+                    "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "rangenode_id": "c64948c4-0cd4-11f1-b6ec-0242c0a8d007"
+                }
+            ],
+            "functions_x_graphs": [],
+            "graphid": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+            "iconclass": "fa fa-bank",
+            "is_editable": true,
+            "isresource": false,
+            "jsonldcontext": null,
+            "name": {
+                "en": "Legal Violation Collection"
+            },
+            "nodegroups": [
+                {
+                    "cardinality": "1",
+                    "legacygroupid": null,
+                    "nodegroupid": "c64933de-0cd4-11f1-b6ec-0242c0a8d007",
+                    "parentnodegroup_id": null
+                }
+            ],
+            "nodes": [
+                {
+                    "alias": "legal_violation",
+                    "config": {
+                        "en": ""
+                    },
+                    "datatype": "semantic",
+                    "description": "{\"en\": \"\"}",
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                    "hascustomalias": false,
+                    "is_collector": true,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": true,
+                    "name": "Legal Violation Collection",
+                    "nodegroup_id": "c64933de-0cd4-11f1-b6ec-0242c0a8d007",
+                    "nodeid": "c64933de-0cd4-11f1-b6ec-0242c0a8d007",
+                    "ontologyclass": "https://ontology.swissartresearch.net/aaao/ZE4_Classificatory_Status",
+                    "parentproperty": "",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "legal_violation_statement_type",
+                    "config": {
+                        "rdmCollection": "0ff39ed3-cc95-4c60-9321-6d4e65fb1f2d"
+                    },
+                    "datatype": "concept-list",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Legal Violation Statement Type",
+                    "nodegroup_id": "c64933de-0cd4-11f1-b6ec-0242c0a8d007",
+                    "nodeid": "c6493a46-0cd4-11f1-b6ec-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "legal_violation_ascribed_classification",
+                    "config": {
+                        "rdmCollection": "5656a27f-bc49-48b5-95df-7103862971f1"
+                    },
+                    "datatype": "concept-list",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Legal Violation Ascribed Classification",
+                    "nodegroup_id": "c64933de-0cd4-11f1-b6ec-0242c0a8d007",
+                    "nodeid": "c6493c26-0cd4-11f1-b6ec-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "https://ontology.swissartresearch.net/aaao/ZP12_ascribes_classification",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "legal_violation_statement_content",
+                    "config": {
+                        "en": ""
+                    },
+                    "datatype": "string",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Legal Violation Statement Content",
+                    "nodegroup_id": "c64933de-0cd4-11f1-b6ec-0242c0a8d007",
+                    "nodeid": "c6493db6-0cd4-11f1-b6ec-0242c0a8d007",
+                    "ontologyclass": "http://www.w3.org/2000/01/rdf-schema#Literal",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P3_has_note",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "legal_violation_initiating_act",
+                    "config": {
+                        "graphs": [
+                            {
+                                "graphid": "109b89a3-2d76-4dfc-addf-8fc3e3a1ab47",
+                                "inverseRelationshipConcept": "ac41d9be-79db-4256-b368-2f4559cfbe55",
+                                "name": "Monitoring Event 1",
+                                "relationshipCollection": "00000000-0000-0000-0000-000000000005",
+                                "relationshipConcept": "ac41d9be-79db-4256-b368-2f4559cfbe55",
+                                "useOntologyRelationship": false
+                            }
+                        ],
+                        "searchDsl": "",
+                        "searchString": ""
+                    },
+                    "datatype": "resource-instance-list",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Legal Violation Initiating Act",
+                    "nodegroup_id": "c64933de-0cd4-11f1-b6ec-0242c0a8d007",
+                    "nodeid": "c6493f1e-0cd4-11f1-b6ec-0242c0a8d007",
+                    "ontologyclass": "http://www.ics.forth.gr/isl/CRMsci/S4_Observation",
+                    "parentproperty": "https://ontology.swissartresearch.net/aaao/ZP42i_was_intentionally_initiated_by",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "legal_violation_statement",
+                    "config": {
+                        "en": ""
+                    },
+                    "datatype": "semantic",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Legal Violation Statement",
+                    "nodegroup_id": "c64933de-0cd4-11f1-b6ec-0242c0a8d007",
+                    "nodeid": "c6494086-0cd4-11f1-b6ec-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": "990c0696-0b42-11f1-a36c-0242c0a8d007"
+                },
+                {
+                    "alias": "legal_violation_type",
+                    "config": {
+                        "rdmCollection": "d9815c8f-0ead-4d2f-84a2-7f194638ceee"
+                    },
+                    "datatype": "concept",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Legal Violation Type",
+                    "nodegroup_id": "c64933de-0cd4-11f1-b6ec-0242c0a8d007",
+                    "nodeid": "c64941ee-0cd4-11f1-b6ec-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "legal_violation_ascribed_relation",
+                    "config": {
+                        "rdmCollection": "125b03df-2e0f-423c-8b0d-b7a35892b540"
+                    },
+                    "datatype": "concept",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Legal Violation Ascribed Relation",
+                    "nodegroup_id": "c64933de-0cd4-11f1-b6ec-0242c0a8d007",
+                    "nodeid": "c649434c-0cd4-11f1-b6ec-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "https://ontology.swissartresearch.net/aaao/ZP13_ascribes_classification_relation",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "legal_violation_statement_language",
+                    "config": {
+                        "rdmCollection": "daacadea-1454-4cf4-8b14-9ade8069f4d7"
+                    },
+                    "datatype": "concept-list",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Legal Violation Statement Language",
+                    "nodegroup_id": "c64933de-0cd4-11f1-b6ec-0242c0a8d007",
+                    "nodeid": "c64945f4-0cd4-11f1-b6ec-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E56_Language",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P72_has_language",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "legal_violation_status_currency",
+                    "config": {
+                        "rdmCollection": "a346ee99-67f6-44cd-87f7-b564ce32cdf3"
+                    },
+                    "datatype": "concept-list",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Legal Violation Status Currency",
+                    "nodegroup_id": "c64933de-0cd4-11f1-b6ec-0242c0a8d007",
+                    "nodeid": "c649475c-0cd4-11f1-b6ec-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "legal_violation_status_currency_metatype",
+                    "config": {
+                        "rdmCollection": "1e63c514-eb9d-48d3-94b5-35e060e5f368"
+                    },
+                    "datatype": "concept",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Legal Violation Status Currency Metatype",
+                    "nodegroup_id": "c64933de-0cd4-11f1-b6ec-0242c0a8d007",
+                    "nodeid": "c64948c4-0cd4-11f1-b6ec-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                }
+            ],
+            "ontology_id": "e6e8db47-2ccf-11e6-927e-b8f6b115d7dd",
+            "publication": {
+                "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                "notes": null,
+                "publicationid": "d2a73fcc-0cd4-11f1-a9b1-0242c0a8d007",
+                "published_time": "2026-02-18T14:19:23.197"
+            },
+            "relatable_resource_model_ids": [],
+            "resource_2_resource_constraints": [],
+            "root": {
+                "alias": "legal_violation",
+                "config": {
+                    "en": ""
+                },
+                "datatype": "semantic",
+                "description": "{\"en\": \"\"}",
+                "exportable": false,
+                "fieldname": null,
+                "graph_id": "c649300a-0cd4-11f1-b6ec-0242c0a8d007",
+                "hascustomalias": false,
+                "is_collector": true,
+                "isrequired": false,
+                "issearchable": true,
+                "istopnode": true,
+                "name": "Legal Violation Collection",
+                "nodegroup_id": "c64933de-0cd4-11f1-b6ec-0242c0a8d007",
+                "nodeid": "c64933de-0cd4-11f1-b6ec-0242c0a8d007",
+                "ontologyclass": "https://ontology.swissartresearch.net/aaao/ZE4_Classificatory_Status",
+                "sortorder": 0,
+                "sourcebranchpublication_id": null
+            },
+            "slug": null,
+            "subtitle": {
+                "en": ""
+            },
+            "template_id": "50000000-0000-0000-0000-000000000001",
+            "version": ""
+        }
+    ]
+}

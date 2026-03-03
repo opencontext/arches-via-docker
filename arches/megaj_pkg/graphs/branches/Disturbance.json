@@ -1,0 +1,610 @@
+{
+    "graph": [
+        {
+            "author": " ",
+            "cards": [
+                {
+                    "active": true,
+                    "cardid": "67746add-a969-41d8-8bde-02a6d6d5bcc7",
+                    "component_id": "f05e4d3a-53c1-11e8-b0ea-784f435179ea",
+                    "config": null,
+                    "constraints": [],
+                    "cssclass": null,
+                    "description": null,
+                    "graph_id": "956004fd-9780-411b-aa4f-3bd6358114a3",
+                    "helpenabled": false,
+                    "helptext": {
+                        "en": ""
+                    },
+                    "helptitle": {
+                        "en": ""
+                    },
+                    "instructions": {
+                        "en": ""
+                    },
+                    "is_editable": true,
+                    "name": {
+                        "en": "Disturbance Type"
+                    },
+                    "nodegroup_id": "fdf40fb0-0b3b-11f1-bb58-0242c0a8d007",
+                    "sortorder": null,
+                    "visible": true
+                },
+                {
+                    "active": true,
+                    "cardid": "79ce521b-3adf-4c6b-ae36-2a58e53443e1",
+                    "component_id": "f05e4d3a-53c1-11e8-b0ea-784f435179ea",
+                    "config": null,
+                    "constraints": [],
+                    "cssclass": null,
+                    "description": {
+                        "en": ""
+                    },
+                    "graph_id": "956004fd-9780-411b-aa4f-3bd6358114a3",
+                    "helpenabled": false,
+                    "helptext": {
+                        "en": ""
+                    },
+                    "helptitle": {
+                        "en": ""
+                    },
+                    "instructions": {
+                        "en": ""
+                    },
+                    "is_editable": true,
+                    "name": {
+                        "en": "Disturbance"
+                    },
+                    "nodegroup_id": "9895822a-0b3b-11f1-ab9e-0242c0a8d007",
+                    "sortorder": null,
+                    "visible": true
+                },
+                {
+                    "active": true,
+                    "cardid": "9c03cb94-597b-4f5a-968b-cc9dc2b2a6c3",
+                    "component_id": "f05e4d3a-53c1-11e8-b0ea-784f435179ea",
+                    "config": null,
+                    "constraints": [],
+                    "cssclass": null,
+                    "description": null,
+                    "graph_id": "956004fd-9780-411b-aa4f-3bd6358114a3",
+                    "helpenabled": false,
+                    "helptext": {
+                        "en": null
+                    },
+                    "helptitle": {
+                        "en": null
+                    },
+                    "instructions": {
+                        "en": null
+                    },
+                    "is_editable": true,
+                    "name": {
+                        "en": "Disturbance Group"
+                    },
+                    "nodegroup_id": "ba39ff1e-0b3b-11f1-92a9-0242c0a8d007",
+                    "sortorder": null,
+                    "visible": true
+                },
+                {
+                    "active": true,
+                    "cardid": "a318ad46-08f8-4c18-9791-aa8d8fef5d11",
+                    "component_id": "f05e4d3a-53c1-11e8-b0ea-784f435179ea",
+                    "config": null,
+                    "constraints": [],
+                    "cssclass": null,
+                    "description": null,
+                    "graph_id": "956004fd-9780-411b-aa4f-3bd6358114a3",
+                    "helpenabled": false,
+                    "helptext": {
+                        "en": ""
+                    },
+                    "helptitle": {
+                        "en": ""
+                    },
+                    "instructions": {
+                        "en": ""
+                    },
+                    "is_editable": true,
+                    "name": {
+                        "en": "Disturbance Description"
+                    },
+                    "nodegroup_id": "4cb6eca8-0b3c-11f1-af94-0242c0a8d007",
+                    "sortorder": null,
+                    "visible": true
+                }
+            ],
+            "cards_x_nodes_x_widgets": [
+                {
+                    "card_id": "a318ad46-08f8-4c18-9791-aa8d8fef5d11",
+                    "config": {
+                        "defaultValue": {
+                            "en": {
+                                "direction": "ltr",
+                                "value": ""
+                            }
+                        },
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Disturbance Description",
+                        "maxLength": null,
+                        "placeholder": {
+                            "en": "Enter text"
+                        },
+                        "uneditable": false,
+                        "width": "100%%"
+                    },
+                    "id": "07e13f06-d63f-4236-847d-7845948c28b7",
+                    "label": {
+                        "en": "Disturbance Description"
+                    },
+                    "node_id": "6289e7e2-0b3c-11f1-a70a-0242c0a8d007",
+                    "sortorder": null,
+                    "visible": true,
+                    "widget_id": "10000000-0000-0000-0000-000000000001"
+                },
+                {
+                    "card_id": "67746add-a969-41d8-8bde-02a6d6d5bcc7",
+                    "config": {
+                        "defaultValue": "",
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Disturbance",
+                        "options": [],
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "0f0e58b6-49bf-4682-b07c-e0f86c3c14d1",
+                    "label": {
+                        "en": "Disturbance"
+                    },
+                    "node_id": "fdf40fb0-0b3b-11f1-bb58-0242c0a8d007",
+                    "sortorder": null,
+                    "visible": true,
+                    "widget_id": "10000000-0000-0000-0000-000000000012"
+                },
+                {
+                    "card_id": "79ce521b-3adf-4c6b-ae36-2a58e53443e1",
+                    "config": {
+                        "defaultResourceInstance": [],
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Disturbance Observed by",
+                        "placeholder": {
+                            "en": ""
+                        }
+                    },
+                    "id": "30a1e5ba-e7f0-4675-8cca-c85ff0893231",
+                    "label": {
+                        "en": "Disturbance Observed by"
+                    },
+                    "node_id": "2a90ac86-0b3c-11f1-938b-0242c0a8d007",
+                    "sortorder": 0,
+                    "visible": true,
+                    "widget_id": "ff3c400a-76ec-11e7-a793-784f435179ea"
+                },
+                {
+                    "card_id": "67746add-a969-41d8-8bde-02a6d6d5bcc7",
+                    "config": {
+                        "defaultValue": "",
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Disturbance Type",
+                        "options": [],
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "358eef1e-363a-42c2-a861-13a95f40c29f",
+                    "label": {
+                        "en": "Disturbance Type"
+                    },
+                    "node_id": "19ecf2d6-0b3c-11f1-a6fd-0242c0a8d007",
+                    "sortorder": null,
+                    "visible": true,
+                    "widget_id": "10000000-0000-0000-0000-000000000012"
+                },
+                {
+                    "card_id": "a318ad46-08f8-4c18-9791-aa8d8fef5d11",
+                    "config": {
+                        "defaultValue": "",
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Disturbance Description Type",
+                        "options": [],
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "825ed9b0-5523-47aa-898f-51d4375c3fda",
+                    "label": {
+                        "en": "Disturbance Description Type"
+                    },
+                    "node_id": "5aa3b7e2-0b3c-11f1-8149-0242c0a8d007",
+                    "sortorder": null,
+                    "visible": true,
+                    "widget_id": "10000000-0000-0000-0000-000000000012"
+                }
+            ],
+            "color": null,
+            "config": {},
+            "deploymentdate": null,
+            "deploymentfile": null,
+            "description": {
+                "en": ""
+            },
+            "edges": [
+                {
+                    "description": null,
+                    "domainnode_id": "9895822a-0b3b-11f1-ab9e-0242c0a8d007",
+                    "edgeid": "0039d05b-273a-4b67-ac3e-7e635600ad16",
+                    "graph_id": "956004fd-9780-411b-aa4f-3bd6358114a3",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "rangenode_id": "fdf40fb0-0b3b-11f1-bb58-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "9895822a-0b3b-11f1-ab9e-0242c0a8d007",
+                    "edgeid": "1f6420d8-84ca-4402-b49d-2ecf6913f852",
+                    "graph_id": "956004fd-9780-411b-aa4f-3bd6358114a3",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "rangenode_id": "ba39ff1e-0b3b-11f1-92a9-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "4cb6eca8-0b3c-11f1-af94-0242c0a8d007",
+                    "edgeid": "3313e529-54bd-464f-90df-5803d767c97f",
+                    "graph_id": "956004fd-9780-411b-aa4f-3bd6358114a3",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "rangenode_id": "5aa3b7e2-0b3c-11f1-8149-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "9895822a-0b3b-11f1-ab9e-0242c0a8d007",
+                    "edgeid": "82abd3fc-8438-44fc-a6c3-1fd956c7fd38",
+                    "graph_id": "956004fd-9780-411b-aa4f-3bd6358114a3",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by",
+                    "rangenode_id": "4cb6eca8-0b3c-11f1-af94-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "4cb6eca8-0b3c-11f1-af94-0242c0a8d007",
+                    "edgeid": "b740005a-2821-4bf4-962d-59b0371f0080",
+                    "graph_id": "956004fd-9780-411b-aa4f-3bd6358114a3",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P3_has_note",
+                    "rangenode_id": "6289e7e2-0b3c-11f1-a70a-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "ba39ff1e-0b3b-11f1-92a9-0242c0a8d007",
+                    "edgeid": "b9c877f0-b954-4f67-af3d-3ebe594c4897",
+                    "graph_id": "956004fd-9780-411b-aa4f-3bd6358114a3",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "rangenode_id": "d311439e-0b3b-11f1-9a8a-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "fdf40fb0-0b3b-11f1-bb58-0242c0a8d007",
+                    "edgeid": "d87e82cc-50f2-4949-9ede-11e499a92a44",
+                    "graph_id": "956004fd-9780-411b-aa4f-3bd6358114a3",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "rangenode_id": "19ecf2d6-0b3c-11f1-a6fd-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "9895822a-0b3b-11f1-ab9e-0242c0a8d007",
+                    "edgeid": "dfdfd329-4cea-4912-b00a-facf79ba677b",
+                    "graph_id": "956004fd-9780-411b-aa4f-3bd6358114a3",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/extensions/crmsci/O8i_was_observed_by",
+                    "rangenode_id": "2a90ac86-0b3c-11f1-938b-0242c0a8d007"
+                }
+            ],
+            "functions_x_graphs": [],
+            "graphid": "956004fd-9780-411b-aa4f-3bd6358114a3",
+            "iconclass": "",
+            "is_editable": true,
+            "isresource": false,
+            "jsonldcontext": null,
+            "name": {
+                "en": "Disturbance"
+            },
+            "nodegroups": [
+                {
+                    "cardinality": "1",
+                    "legacygroupid": null,
+                    "nodegroupid": "4cb6eca8-0b3c-11f1-af94-0242c0a8d007",
+                    "parentnodegroup_id": "9895822a-0b3b-11f1-ab9e-0242c0a8d007"
+                },
+                {
+                    "cardinality": "1",
+                    "legacygroupid": null,
+                    "nodegroupid": "9895822a-0b3b-11f1-ab9e-0242c0a8d007",
+                    "parentnodegroup_id": null
+                },
+                {
+                    "cardinality": "1",
+                    "legacygroupid": null,
+                    "nodegroupid": "ba39ff1e-0b3b-11f1-92a9-0242c0a8d007",
+                    "parentnodegroup_id": "9895822a-0b3b-11f1-ab9e-0242c0a8d007"
+                },
+                {
+                    "cardinality": "1",
+                    "legacygroupid": null,
+                    "nodegroupid": "fdf40fb0-0b3b-11f1-bb58-0242c0a8d007",
+                    "parentnodegroup_id": "9895822a-0b3b-11f1-ab9e-0242c0a8d007"
+                }
+            ],
+            "nodes": [
+                {
+                    "alias": "disturbance_type_metatype",
+                    "config": {
+                        "rdmCollection": null
+                    },
+                    "datatype": "concept-list",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "956004fd-9780-411b-aa4f-3bd6358114a3",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Disturbance Type Metatype",
+                    "nodegroup_id": "fdf40fb0-0b3b-11f1-bb58-0242c0a8d007",
+                    "nodeid": "19ecf2d6-0b3c-11f1-a6fd-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "disturbance_observed_by",
+                    "config": {
+                        "graphs": [
+                            {
+                                "graphid": "109b89a3-2d76-4dfc-addf-8fc3e3a1ab47",
+                                "inverseRelationshipConcept": "ac41d9be-79db-4256-b368-2f4559cfbe55",
+                                "name": "Monitoring Event 1",
+                                "relationshipCollection": "00000000-0000-0000-0000-000000000005",
+                                "relationshipConcept": "ac41d9be-79db-4256-b368-2f4559cfbe55",
+                                "useOntologyRelationship": false
+                            }
+                        ],
+                        "searchDsl": "",
+                        "searchString": ""
+                    },
+                    "datatype": "resource-instance-list",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "956004fd-9780-411b-aa4f-3bd6358114a3",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Disturbance Observed by",
+                    "nodegroup_id": "9895822a-0b3b-11f1-ab9e-0242c0a8d007",
+                    "nodeid": "2a90ac86-0b3c-11f1-938b-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/extensions/crmsci/S4_Observation",
+                    "parentproperty": "http://www.cidoc-crm.org/extensions/crmsci/O8i_was_observed_by",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "disturbance_statement",
+                    "config": {
+                        "en": ""
+                    },
+                    "datatype": "semantic",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "956004fd-9780-411b-aa4f-3bd6358114a3",
+                    "hascustomalias": false,
+                    "is_collector": true,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Disturbance Statement",
+                    "nodegroup_id": "4cb6eca8-0b3c-11f1-af94-0242c0a8d007",
+                    "nodeid": "4cb6eca8-0b3c-11f1-af94-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "disturbance_statement_type",
+                    "config": {
+                        "rdmCollection": null
+                    },
+                    "datatype": "concept-list",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "956004fd-9780-411b-aa4f-3bd6358114a3",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Disturbance Statement Type",
+                    "nodegroup_id": "4cb6eca8-0b3c-11f1-af94-0242c0a8d007",
+                    "nodeid": "5aa3b7e2-0b3c-11f1-8149-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "disturbance_statement_content",
+                    "config": {
+                        "en": ""
+                    },
+                    "datatype": "string",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "956004fd-9780-411b-aa4f-3bd6358114a3",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Disturbance Statement Content",
+                    "nodegroup_id": "4cb6eca8-0b3c-11f1-af94-0242c0a8d007",
+                    "nodeid": "6289e7e2-0b3c-11f1-a70a-0242c0a8d007",
+                    "ontologyclass": "http://www.w3.org/2000/01/rdf-schema#Literal",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P3_has_note",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": null,
+                    "config": {
+                        "en": ""
+                    },
+                    "datatype": "semantic",
+                    "description": "",
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "956004fd-9780-411b-aa4f-3bd6358114a3",
+                    "hascustomalias": false,
+                    "is_collector": true,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": true,
+                    "name": "Disturbance",
+                    "nodegroup_id": "9895822a-0b3b-11f1-ab9e-0242c0a8d007",
+                    "nodeid": "9895822a-0b3b-11f1-ab9e-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/extensions/crmsci/S18_Alteration",
+                    "parentproperty": "",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "disturbance_group",
+                    "config": {
+                        "rdmCollection": null
+                    },
+                    "datatype": "concept-list",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "956004fd-9780-411b-aa4f-3bd6358114a3",
+                    "hascustomalias": false,
+                    "is_collector": true,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Disturbance Group",
+                    "nodegroup_id": "ba39ff1e-0b3b-11f1-92a9-0242c0a8d007",
+                    "nodeid": "ba39ff1e-0b3b-11f1-92a9-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "disturbance_group_type",
+                    "config": {
+                        "rdmCollection": null
+                    },
+                    "datatype": "concept-list",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "956004fd-9780-411b-aa4f-3bd6358114a3",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Disturbance Group Type",
+                    "nodegroup_id": "ba39ff1e-0b3b-11f1-92a9-0242c0a8d007",
+                    "nodeid": "d311439e-0b3b-11f1-9a8a-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "disturbance_type",
+                    "config": {
+                        "rdmCollection": null
+                    },
+                    "datatype": "concept-list",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "956004fd-9780-411b-aa4f-3bd6358114a3",
+                    "hascustomalias": false,
+                    "is_collector": true,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Disturbance Type",
+                    "nodegroup_id": "fdf40fb0-0b3b-11f1-bb58-0242c0a8d007",
+                    "nodeid": "fdf40fb0-0b3b-11f1-bb58-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                }
+            ],
+            "ontology_id": "e6e8db47-2ccf-11e6-927e-b8f6b115d7dd",
+            "publication": {
+                "graph_id": "956004fd-9780-411b-aa4f-3bd6358114a3",
+                "notes": null,
+                "publicationid": "73dc8fe4-0b42-11f1-97d9-0242c0a8d007",
+                "published_time": "2026-02-16T14:19:06.477"
+            },
+            "relatable_resource_model_ids": [],
+            "resource_2_resource_constraints": [],
+            "root": {
+                "alias": null,
+                "config": {
+                    "en": ""
+                },
+                "datatype": "semantic",
+                "description": "",
+                "exportable": false,
+                "fieldname": null,
+                "graph_id": "956004fd-9780-411b-aa4f-3bd6358114a3",
+                "hascustomalias": false,
+                "is_collector": true,
+                "isrequired": false,
+                "issearchable": true,
+                "istopnode": true,
+                "name": "Disturbance",
+                "nodegroup_id": "9895822a-0b3b-11f1-ab9e-0242c0a8d007",
+                "nodeid": "9895822a-0b3b-11f1-ab9e-0242c0a8d007",
+                "ontologyclass": "http://www.cidoc-crm.org/extensions/crmsci/S18_Alteration",
+                "sortorder": 0,
+                "sourcebranchpublication_id": null
+            },
+            "slug": null,
+            "subtitle": {
+                "en": ""
+            },
+            "template_id": "50000000-0000-0000-0000-000000000001",
+            "version": ""
+        }
+    ]
+}

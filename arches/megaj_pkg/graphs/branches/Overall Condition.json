@@ -1,0 +1,447 @@
+{
+    "graph": [
+        {
+            "author": " ",
+            "cards": [
+                {
+                    "active": true,
+                    "cardid": "2cb79fa8-0790-4f65-850c-0898ee181be5",
+                    "component_id": "f05e4d3a-53c1-11e8-b0ea-784f435179ea",
+                    "config": null,
+                    "constraints": [],
+                    "cssclass": null,
+                    "description": {
+                        "en": ""
+                    },
+                    "graph_id": "e02a5b59-9b79-4f5e-a5b8-6e848578879c",
+                    "helpenabled": false,
+                    "helptext": {
+                        "en": null
+                    },
+                    "helptitle": {
+                        "en": null
+                    },
+                    "instructions": {
+                        "en": null
+                    },
+                    "is_editable": true,
+                    "name": {
+                        "en": "Overall Condition"
+                    },
+                    "nodegroup_id": "71a95d40-0b3a-11f1-bf80-0242c0a8d007",
+                    "sortorder": null,
+                    "visible": true
+                },
+                {
+                    "active": true,
+                    "cardid": "b1fb1f08-6d9a-4ed8-8ace-6c75e0f77095",
+                    "component_id": "f05e4d3a-53c1-11e8-b0ea-784f435179ea",
+                    "config": null,
+                    "constraints": [],
+                    "cssclass": null,
+                    "description": null,
+                    "graph_id": "e02a5b59-9b79-4f5e-a5b8-6e848578879c",
+                    "helpenabled": false,
+                    "helptext": {
+                        "en": ""
+                    },
+                    "helptitle": {
+                        "en": ""
+                    },
+                    "instructions": {
+                        "en": ""
+                    },
+                    "is_editable": true,
+                    "name": {
+                        "en": "Overall Condition Description"
+                    },
+                    "nodegroup_id": "cb1ebcb2-0b3a-11f1-a3ee-0242c0a8d007",
+                    "sortorder": null,
+                    "visible": true
+                }
+            ],
+            "cards_x_nodes_x_widgets": [
+                {
+                    "card_id": "b1fb1f08-6d9a-4ed8-8ace-6c75e0f77095",
+                    "config": {
+                        "defaultValue": "",
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Overall Condition Description Type",
+                        "options": [],
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "7716c84b-5ab9-4841-99e2-54518a3d3306",
+                    "label": {
+                        "en": "Overall Condition Description Type"
+                    },
+                    "node_id": "d7e93ef4-0b3a-11f1-8d14-0242c0a8d007",
+                    "sortorder": 1,
+                    "visible": true,
+                    "widget_id": "10000000-0000-0000-0000-000000000012"
+                },
+                {
+                    "card_id": "b1fb1f08-6d9a-4ed8-8ace-6c75e0f77095",
+                    "config": {
+                        "defaultValue": {
+                            "en": {
+                                "direction": "ltr",
+                                "value": ""
+                            }
+                        },
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Overall Condition Description",
+                        "maxLength": null,
+                        "placeholder": {
+                            "en": "Enter text"
+                        },
+                        "uneditable": false,
+                        "width": "100%"
+                    },
+                    "id": "eaa8bd32-d3f1-4980-b4ef-a5c16dc8064f",
+                    "label": {
+                        "en": "Overall Condition Description"
+                    },
+                    "node_id": "e95a958e-0b3a-11f1-8e4c-0242c0a8d007",
+                    "sortorder": 0,
+                    "visible": true,
+                    "widget_id": "10000000-0000-0000-0000-000000000001"
+                }
+            ],
+            "color": null,
+            "config": {},
+            "deploymentdate": null,
+            "deploymentfile": null,
+            "description": {
+                "en": ""
+            },
+            "edges": [
+                {
+                    "description": null,
+                    "domainnode_id": "71a95d40-0b3a-11f1-bf80-0242c0a8d007",
+                    "edgeid": "090a9969-2850-4a6e-8446-d1feb2c8f306",
+                    "graph_id": "e02a5b59-9b79-4f5e-a5b8-6e848578879c",
+                    "name": null,
+                    "ontologyproperty": "https://ontology.swissartresearch.net/aaao/ZP12_ascribes_classification",
+                    "rangenode_id": "a74351e0-0b3a-11f1-908c-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "cb1ebcb2-0b3a-11f1-a3ee-0242c0a8d007",
+                    "edgeid": "2ca0752e-a494-4f34-bd04-14c6b6f2730d",
+                    "graph_id": "e02a5b59-9b79-4f5e-a5b8-6e848578879c",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "rangenode_id": "d7e93ef4-0b3a-11f1-8d14-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "71a95d40-0b3a-11f1-bf80-0242c0a8d007",
+                    "edgeid": "33df1446-1e81-4707-9b29-3b4a631fff4a",
+                    "graph_id": "e02a5b59-9b79-4f5e-a5b8-6e848578879c",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by",
+                    "rangenode_id": "cb1ebcb2-0b3a-11f1-a3ee-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "71a95d40-0b3a-11f1-bf80-0242c0a8d007",
+                    "edgeid": "4e43317f-fc46-4a89-9b8a-dd9a7522c8a0",
+                    "graph_id": "e02a5b59-9b79-4f5e-a5b8-6e848578879c",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "rangenode_id": "84768344-0b3a-11f1-92bb-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "cb1ebcb2-0b3a-11f1-a3ee-0242c0a8d007",
+                    "edgeid": "50ba6caa-3ff5-45f2-890e-d430f1cdb0be",
+                    "graph_id": "e02a5b59-9b79-4f5e-a5b8-6e848578879c",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P3_has_note",
+                    "rangenode_id": "e95a958e-0b3a-11f1-8e4c-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "71a95d40-0b3a-11f1-bf80-0242c0a8d007",
+                    "edgeid": "5e6614fc-18b0-4332-aa58-cf7f2d36f5b1",
+                    "graph_id": "e02a5b59-9b79-4f5e-a5b8-6e848578879c",
+                    "name": null,
+                    "ontologyproperty": "https://ontology.swissartresearch.net/aaao/ZP42i_was_intentionally_initiated_by",
+                    "rangenode_id": "b7aa7f7c-0b3a-11f1-aefe-0242c0a8d007"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "71a95d40-0b3a-11f1-bf80-0242c0a8d007",
+                    "edgeid": "9697818a-1fb4-401d-be90-2066b079f427",
+                    "graph_id": "e02a5b59-9b79-4f5e-a5b8-6e848578879c",
+                    "name": null,
+                    "ontologyproperty": "https://ontology.swissartresearch.net/aaao/ZP13_ascribes_classification_relation",
+                    "rangenode_id": "9875c878-0b3a-11f1-8c23-0242c0a8d007"
+                }
+            ],
+            "functions_x_graphs": [],
+            "graphid": "e02a5b59-9b79-4f5e-a5b8-6e848578879c",
+            "iconclass": "",
+            "is_editable": true,
+            "isresource": false,
+            "jsonldcontext": null,
+            "name": {
+                "en": "Overall Condition"
+            },
+            "nodegroups": [
+                {
+                    "cardinality": "1",
+                    "legacygroupid": null,
+                    "nodegroupid": "71a95d40-0b3a-11f1-bf80-0242c0a8d007",
+                    "parentnodegroup_id": null
+                },
+                {
+                    "cardinality": "1",
+                    "legacygroupid": null,
+                    "nodegroupid": "cb1ebcb2-0b3a-11f1-a3ee-0242c0a8d007",
+                    "parentnodegroup_id": "71a95d40-0b3a-11f1-bf80-0242c0a8d007"
+                }
+            ],
+            "nodes": [
+                {
+                    "alias": null,
+                    "config": {
+                        "en": ""
+                    },
+                    "datatype": "semantic",
+                    "description": "",
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "e02a5b59-9b79-4f5e-a5b8-6e848578879c",
+                    "hascustomalias": false,
+                    "is_collector": true,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": true,
+                    "name": "Overall Condition",
+                    "nodegroup_id": "71a95d40-0b3a-11f1-bf80-0242c0a8d007",
+                    "nodeid": "71a95d40-0b3a-11f1-bf80-0242c0a8d007",
+                    "ontologyclass": "https://ontology.swissartresearch.net/aaao/ZE4_Classificatory_Status",
+                    "parentproperty": "",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "overall_condition_type",
+                    "config": {
+                        "en": ""
+                    },
+                    "datatype": "semantic",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "e02a5b59-9b79-4f5e-a5b8-6e848578879c",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Overall Condition Type",
+                    "nodegroup_id": "71a95d40-0b3a-11f1-bf80-0242c0a8d007",
+                    "nodeid": "84768344-0b3a-11f1-92bb-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "overall_condition_ascribed_relation",
+                    "config": {
+                        "rdmCollection": null
+                    },
+                    "datatype": "concept-list",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "e02a5b59-9b79-4f5e-a5b8-6e848578879c",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Overall Condition Ascribed Relation",
+                    "nodegroup_id": "71a95d40-0b3a-11f1-bf80-0242c0a8d007",
+                    "nodeid": "9875c878-0b3a-11f1-8c23-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "https://ontology.swissartresearch.net/aaao/ZP13_ascribes_classification_relation",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "overall_condition_ascribed_classification",
+                    "config": {
+                        "rdmCollection": null
+                    },
+                    "datatype": "concept-list",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "e02a5b59-9b79-4f5e-a5b8-6e848578879c",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Overall Condition Ascribed Classification",
+                    "nodegroup_id": "71a95d40-0b3a-11f1-bf80-0242c0a8d007",
+                    "nodeid": "a74351e0-0b3a-11f1-908c-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "https://ontology.swissartresearch.net/aaao/ZP12_ascribes_classification",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "overall_condition_initiating_act",
+                    "config": {
+                        "graphs": [
+                            {
+                                "graphid": "109b89a3-2d76-4dfc-addf-8fc3e3a1ab47",
+                                "inverseRelationshipConcept": "ac41d9be-79db-4256-b368-2f4559cfbe55",
+                                "name": "Monitoring Event 1",
+                                "relationshipCollection": "00000000-0000-0000-0000-000000000005",
+                                "relationshipConcept": "ac41d9be-79db-4256-b368-2f4559cfbe55",
+                                "useOntologyRelationship": false
+                            }
+                        ],
+                        "searchDsl": "",
+                        "searchString": ""
+                    },
+                    "datatype": "resource-instance-list",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "e02a5b59-9b79-4f5e-a5b8-6e848578879c",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Overall Condition Initiating Act",
+                    "nodegroup_id": "71a95d40-0b3a-11f1-bf80-0242c0a8d007",
+                    "nodeid": "b7aa7f7c-0b3a-11f1-aefe-0242c0a8d007",
+                    "ontologyclass": "http://www.ics.forth.gr/isl/CRMsci/S4_Observation",
+                    "parentproperty": "https://ontology.swissartresearch.net/aaao/ZP42i_was_intentionally_initiated_by",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "overall_condition_statement",
+                    "config": {
+                        "en": ""
+                    },
+                    "datatype": "semantic",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "e02a5b59-9b79-4f5e-a5b8-6e848578879c",
+                    "hascustomalias": false,
+                    "is_collector": true,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Overall Condition Statement",
+                    "nodegroup_id": "cb1ebcb2-0b3a-11f1-a3ee-0242c0a8d007",
+                    "nodeid": "cb1ebcb2-0b3a-11f1-a3ee-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "overall_condition_statement_type",
+                    "config": {
+                        "rdmCollection": null
+                    },
+                    "datatype": "concept-list",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "e02a5b59-9b79-4f5e-a5b8-6e848578879c",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Overall Condition Statement Type",
+                    "nodegroup_id": "cb1ebcb2-0b3a-11f1-a3ee-0242c0a8d007",
+                    "nodeid": "d7e93ef4-0b3a-11f1-8d14-0242c0a8d007",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "overall_condition_statement_content",
+                    "config": {
+                        "en": ""
+                    },
+                    "datatype": "string",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "e02a5b59-9b79-4f5e-a5b8-6e848578879c",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Overall Condition Statement Content",
+                    "nodegroup_id": "cb1ebcb2-0b3a-11f1-a3ee-0242c0a8d007",
+                    "nodeid": "e95a958e-0b3a-11f1-8e4c-0242c0a8d007",
+                    "ontologyclass": "http://www.w3.org/2000/01/rdf-schema#Literal",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P3_has_note",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                }
+            ],
+            "ontology_id": "e6e8db47-2ccf-11e6-927e-b8f6b115d7dd",
+            "publication": {
+                "graph_id": "e02a5b59-9b79-4f5e-a5b8-6e848578879c",
+                "notes": null,
+                "publicationid": "c982ea24-0b42-11f1-8ecc-0242c0a8d007",
+                "published_time": "2026-02-16T14:21:30.174"
+            },
+            "relatable_resource_model_ids": [],
+            "resource_2_resource_constraints": [],
+            "root": {
+                "alias": null,
+                "config": {
+                    "en": ""
+                },
+                "datatype": "semantic",
+                "description": "",
+                "exportable": false,
+                "fieldname": null,
+                "graph_id": "e02a5b59-9b79-4f5e-a5b8-6e848578879c",
+                "hascustomalias": false,
+                "is_collector": true,
+                "isrequired": false,
+                "issearchable": true,
+                "istopnode": true,
+                "name": "Overall Condition",
+                "nodegroup_id": "71a95d40-0b3a-11f1-bf80-0242c0a8d007",
+                "nodeid": "71a95d40-0b3a-11f1-bf80-0242c0a8d007",
+                "ontologyclass": "https://ontology.swissartresearch.net/aaao/ZE4_Classificatory_Status",
+                "sortorder": 0,
+                "sourcebranchpublication_id": null
+            },
+            "slug": null,
+            "subtitle": {
+                "en": ""
+            },
+            "template_id": "50000000-0000-0000-0000-000000000001",
+            "version": ""
+        }
+    ]
+}
