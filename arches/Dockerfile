@@ -231,8 +231,10 @@ RUN	cp -rn  ${HER_REPO_PATH}/arches_her/media/* ${APP_COMP_FOLDER}/media/
 # RUN	cp -rn  ${HER_REPO_PATH}/webpack/* ${APP_COMP_FOLDER}/webpack/
 
 # Modify the HER package for MEGA-J
-RUN echo "Update the HER packagage for MEGA-J";
+RUN echo "Update the HER package for MEGA-J";
 RUN echo "Update the HER ontology files for MEGA-J";
+# Delete an older version of the CRMsci ontology.
+RUN rm -rf ${HER_REPO_PATH}/arches_her/pkg/ontologies/cidoc_crm/CRMsci_v1.2.3.rdfs.xml
 COPY /arches/megaj_pkg/ontologies/AAAo_v2.0.1.rdf ${HER_REPO_PATH}/arches_her/pkg/ontologies/cidoc_crm/AAAo_v2.0.1.rdf
 COPY /arches/megaj_pkg/ontologies/CRMsci_v2.0.rdf ${HER_REPO_PATH}/arches_her/pkg/ontologies/cidoc_crm/CRMsci_v2.0.rdf
 COPY /arches/megaj_pkg/ontologies/ontology_config.json ${HER_REPO_PATH}/arches_her/pkg/ontologies/cidoc_crm/ontology_config.json
@@ -259,6 +261,7 @@ COPY /arches/megaj_pkg/reference_data/concepts/d_topography.xml ${HER_REPO_PATH}
 COPY /arches/megaj_pkg/reference_data/collections/collections.xml ${HER_REPO_PATH}/arches_her/pkg/reference_data/collections/collections.xml
 
 RUN echo "Update the HER RDM files for MEGA-J";
+RUN rm -rf ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/*.json
 COPY /arches/megaj_pkg/graphs/resource_models/Activity.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Activity.json
 COPY /arches/megaj_pkg/graphs/resource_models/Area.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Area.json
 COPY /arches/megaj_pkg/graphs/resource_models/Artefact.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Artefact.json

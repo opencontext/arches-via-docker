@@ -2,7 +2,6 @@
   "base": "cidoc_crm_v6.2.xml",
   "base_name": "CIDOC CRM v6.2",
   "extensions": [
-      "CRMsci_v1.2.3.rdfs.xml",
       "CRMarchaeo_v1.4.rdfs.xml",
       "CRMgeo_v1.2.rdfs.xml",
       "CRMdig_v3.2.1.rdfs.xml",
