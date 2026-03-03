@@ -502,7 +502,7 @@
                     "name": "Legal Violation Initiating Act",
                     "nodegroup_id": "c64933de-0cd4-11f1-b6ec-0242c0a8d007",
                     "nodeid": "c6493f1e-0cd4-11f1-b6ec-0242c0a8d007",
-                    "ontologyclass": "http://www.ics.forth.gr/isl/CRMsci/S4_Observation",
+                    "ontologyclass": "http://www.cidoc-crm.org/extensions/crmsci/S4_Observation",
                     "parentproperty": "https://ontology.swissartresearch.net/aaao/ZP42i_was_intentionally_initiated_by",
                     "sortorder": 0,
                     "sourcebranchpublication_id": null
@@ -528,7 +528,7 @@
                     "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object",
                     "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by",
                     "sortorder": 0,
-                    "sourcebranchpublication_id": "990c0696-0b42-11f1-a36c-0242c0a8d007"
+                    "sourcebranchpublication_id": null
                 },
                 {
                     "alias": "legal_violation_type",

@@ -494,7 +494,7 @@
                     "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object",
                     "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by",
                     "sortorder": 0,
-                    "sourcebranchpublication_id": "b3fc1766-0b42-11f1-8869-0242c0a8d007"
+                    "sourcebranchpublication_id": null
                 },
                 {
                     "alias": "overall_threat_ascribed_relation",
@@ -640,7 +640,7 @@
                     "name": "Overall Threat Initiating Act",
                     "nodegroup_id": "094d4986-0cd5-11f1-ba58-0242c0a8d007",
                     "nodeid": "094d64ca-0cd5-11f1-ba58-0242c0a8d007",
-                    "ontologyclass": "http://www.ics.forth.gr/isl/CRMsci/S4_Observation",
+                    "ontologyclass": "http://www.cidoc-crm.org/extensions/crmsci/S4_Observation",
                     "parentproperty": "https://ontology.swissartresearch.net/aaao/ZP42i_was_intentionally_initiated_by",
                     "sortorder": 0,
                     "sourcebranchpublication_id": null

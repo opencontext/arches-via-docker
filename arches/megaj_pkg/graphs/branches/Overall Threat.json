@@ -399,7 +399,7 @@
                     "name": "Overall Threat Initiating Act",
                     "nodegroup_id": "7a86b21a-0b39-11f1-acba-0242c0a8d007",
                     "nodeid": "fbce3b7c-0b39-11f1-8c99-0242c0a8d007",
-                    "ontologyclass": "http://www.ics.forth.gr/isl/CRMsci/S4_Observation",
+                    "ontologyclass": "http://www.cidoc-crm.org/extensions/crmsci/S4_Observation",
                     "parentproperty": "https://ontology.swissartresearch.net/aaao/ZP42i_was_intentionally_initiated_by",
                     "sortorder": 0,
                     "sourcebranchpublication_id": null

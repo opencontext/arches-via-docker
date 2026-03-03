@@ -330,7 +330,7 @@
                     "name": "Site Review Initiating Act",
                     "nodegroup_id": "de6a7944-0b14-11f1-8885-0242c0a8d007",
                     "nodeid": "7a9cc682-0b15-11f1-a509-0242c0a8d007",
-                    "ontologyclass": "http://www.ics.forth.gr/isl/CRMsci/S4_Observation",
+                    "ontologyclass": "http://www.cidoc-crm.org/extensions/crmsci/S4_Observation",
                     "parentproperty": "https://ontology.swissartresearch.net/aaao/ZP42i_was_intentionally_initiated_by",
                     "sortorder": 0,
                     "sourcebranchpublication_id": null

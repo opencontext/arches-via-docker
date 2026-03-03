@@ -330,7 +330,7 @@
                     "name": "Overall Condition Initiating Act",
                     "nodegroup_id": "71a95d40-0b3a-11f1-bf80-0242c0a8d007",
                     "nodeid": "b7aa7f7c-0b3a-11f1-aefe-0242c0a8d007",
-                    "ontologyclass": "http://www.ics.forth.gr/isl/CRMsci/S4_Observation",
+                    "ontologyclass": "http://www.cidoc-crm.org/extensions/crmsci/S4_Observation",
                     "parentproperty": "https://ontology.swissartresearch.net/aaao/ZP42i_was_intentionally_initiated_by",
                     "sortorder": 0,
                     "sourcebranchpublication_id": null

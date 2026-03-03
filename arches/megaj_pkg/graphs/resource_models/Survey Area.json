@@ -9072,7 +9072,7 @@
                     "edgeid": "1e5cb940-d163-11f0-a140-0eace793dd7e",
                     "graph_id": "1e451b82-d163-11f0-a140-0eace793dd7e",
                     "name": null,
-                    "ontologyproperty": "http://www.ics.forth.gr/isl/CRMsci/O18i_was_altered_by",
+                    "ontologyproperty": "http://www.cidoc-crm.org/extensions/crmsci/O18i_was_altered_by",
                     "rangenode_id": "1e4521a4-d163-11f0-a140-0eace793dd7e"
                 },
                 {
@@ -11610,7 +11610,7 @@
                     "edgeid": "1e5d1f7a-d163-11f0-a140-0eace793dd7e",
                     "graph_id": "1e451b82-d163-11f0-a140-0eace793dd7e",
                     "name": null,
-                    "ontologyproperty": "http://www.ics.forth.gr/isl/CRMsci/O18i_was_altered_by",
+                    "ontologyproperty": "http://www.cidoc-crm.org/extensions/crmsci/O18i_was_altered_by",
                     "rangenode_id": "1e4558f4-d163-11f0-a140-0eace793dd7e"
                 },
                 {
@@ -13094,7 +13094,7 @@
                     "nodegroup_id": "1e4521a4-d163-11f0-a140-0eace793dd7e",
                     "nodeid": "1e4521a4-d163-11f0-a140-0eace793dd7e",
                     "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E11_Modification",
-                    "parentproperty": "http://www.ics.forth.gr/isl/CRMsci/O18i_was_altered_by",
+                    "parentproperty": "http://www.cidoc-crm.org/extensions/crmsci/O18i_was_altered_by",
                     "sortorder": 0,
                     "sourcebranchpublication_id": null
                 },
@@ -13614,7 +13614,7 @@
                     "nodegroup_id": "1e4558f4-d163-11f0-a140-0eace793dd7e",
                     "nodeid": "1e4558f4-d163-11f0-a140-0eace793dd7e",
                     "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E11_Modification",
-                    "parentproperty": "http://www.ics.forth.gr/isl/CRMsci/O18i_was_altered_by",
+                    "parentproperty": "http://www.cidoc-crm.org/extensions/crmsci/O18i_was_altered_by",
                     "sortorder": 0,
                     "sourcebranchpublication_id": null
                 },

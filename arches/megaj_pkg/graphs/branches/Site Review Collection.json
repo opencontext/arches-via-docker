@@ -468,7 +468,7 @@
                     "name": "Site Review Initiating Act",
                     "nodegroup_id": "7ac14f32-0cd4-11f1-9620-0242c0a8d007",
                     "nodeid": "7ac15da6-0cd4-11f1-9620-0242c0a8d007",
-                    "ontologyclass": "http://www.ics.forth.gr/isl/CRMsci/S4_Observation",
+                    "ontologyclass": "http://www.cidoc-crm.org/extensions/crmsci/S4_Observation",
                     "parentproperty": "https://ontology.swissartresearch.net/aaao/ZP42i_was_intentionally_initiated_by",
                     "sortorder": 0,
                     "sourcebranchpublication_id": null
@@ -540,7 +540,7 @@
                     "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object",
                     "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by",
                     "sortorder": 0,
-                    "sourcebranchpublication_id": "03219532-0b43-11f1-817a-0242c0a8d007"
+                    "sourcebranchpublication_id": null
                 },
                 {
                     "alias": "site_review_type",

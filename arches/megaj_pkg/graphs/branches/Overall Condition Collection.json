@@ -557,7 +557,7 @@
                     "name": "Overall Condition Initiating Act",
                     "nodegroup_id": "f248136a-0cd4-11f1-815e-0242c0a8d007",
                     "nodeid": "f2485fdc-0cd4-11f1-815e-0242c0a8d007",
-                    "ontologyclass": "http://www.ics.forth.gr/isl/CRMsci/S4_Observation",
+                    "ontologyclass": "http://www.cidoc-crm.org/extensions/crmsci/S4_Observation",
                     "parentproperty": "https://ontology.swissartresearch.net/aaao/ZP42i_was_intentionally_initiated_by",
                     "sortorder": 0,
                     "sourcebranchpublication_id": null
@@ -606,7 +606,7 @@
                     "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object",
                     "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by",
                     "sortorder": 0,
-                    "sourcebranchpublication_id": "c982ea24-0b42-11f1-8ecc-0242c0a8d007"
+                    "sourcebranchpublication_id": null
                 },
                 {
                     "alias": "overall_condition_statement_content",

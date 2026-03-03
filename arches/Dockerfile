@@ -233,8 +233,10 @@ RUN	cp -rn  ${HER_REPO_PATH}/arches_her/media/* ${APP_COMP_FOLDER}/media/
 # Modify the HER package for MEGA-J
 RUN echo "Update the HER package for MEGA-J";
 RUN echo "Update the HER ontology files for MEGA-J";
-# Delete an older version of the CRMsci ontology.
+# Deletion of an older version of the CRMsci ontology.
+# Do this to avoid namespace confusion with hte new CRMsci ontology file.
 RUN rm -rf ${HER_REPO_PATH}/arches_her/pkg/ontologies/cidoc_crm/CRMsci_v1.2.3.rdfs.xml
+
 COPY /arches/megaj_pkg/ontologies/AAAo_v2.0.1.rdf ${HER_REPO_PATH}/arches_her/pkg/ontologies/cidoc_crm/AAAo_v2.0.1.rdf
 COPY /arches/megaj_pkg/ontologies/CRMsci_v2.0.rdf ${HER_REPO_PATH}/arches_her/pkg/ontologies/cidoc_crm/CRMsci_v2.0.rdf
 COPY /arches/megaj_pkg/ontologies/ontology_config.json ${HER_REPO_PATH}/arches_her/pkg/ontologies/cidoc_crm/ontology_config.json
@@ -262,21 +264,35 @@ COPY /arches/megaj_pkg/reference_data/collections/collections.xml ${HER_REPO_PAT
 
 RUN echo "Update the HER RDM files for MEGA-J";
 RUN rm -rf ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/*.json
-COPY /arches/megaj_pkg/graphs/resource_models/Activity.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Activity.json
-COPY /arches/megaj_pkg/graphs/resource_models/Area.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Area.json
-COPY /arches/megaj_pkg/graphs/resource_models/Artefact.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Artefact.json
-COPY ["/arches/megaj_pkg/graphs/resource_models/Bibliographic Source.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Bibliographic Source.json"]
-COPY ["/arches/megaj_pkg/graphs/resource_models/Digital Object.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Digital Object.json"]
-COPY ["/arches/megaj_pkg/graphs/resource_models/Monitoring Event.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Monitoring Event.json"]
-COPY /arches/megaj_pkg/graphs/resource_models/Organization.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Organization.json
-COPY /arches/megaj_pkg/graphs/resource_models/Period.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Period.json
-COPY /arches/megaj_pkg/graphs/resource_models/Person.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Person.json
-COPY /arches/megaj_pkg/graphs/resource_models/Place.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Place.json
-COPY ["/arches/megaj_pkg/graphs/resource_models/Site Element.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Site Element.json"]
-COPY /arches/megaj_pkg/graphs/resource_models/Site.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Site.json
-COPY ["/arches/megaj_pkg/graphs/resource_models/Survey Area.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Survey Area.json"]
 
+COPY /arches/megaj_pkg/graphs/resource_models/ ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/
+COPY /arches/megaj_pkg/graphs/branches/ ${HER_REPO_PATH}/arches_her/pkg/graphs/branches/
 
+# COPY /arches/megaj_pkg/graphs/resource_models/Activity.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Activity.json
+# COPY /arches/megaj_pkg/graphs/resource_models/Area.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Area.json
+# COPY /arches/megaj_pkg/graphs/resource_models/Artefact.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Artefact.json
+# COPY ["/arches/megaj_pkg/graphs/resource_models/Bibliographic Source.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Bibliographic Source.json"]
+# COPY ["/arches/megaj_pkg/graphs/resource_models/Digital Object.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Digital Object.json"]
+# COPY ["/arches/megaj_pkg/graphs/resource_models/Monitoring Event.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Monitoring Event.json"]
+# COPY /arches/megaj_pkg/graphs/resource_models/Organization.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Organization.json
+# COPY /arches/megaj_pkg/graphs/resource_models/Period.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Period.json
+# COPY /arches/megaj_pkg/graphs/resource_models/Person.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Person.json
+# COPY /arches/megaj_pkg/graphs/resource_models/Place.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Place.json
+# COPY ["/arches/megaj_pkg/graphs/resource_models/Site Element.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Site Element.json"]
+# COPY /arches/megaj_pkg/graphs/resource_models/Site.json ${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Site.json
+# COPY ["/arches/megaj_pkg/graphs/resource_models/Survey Area.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/resource_models/Survey Area.json"]
+
+# COPY ["arches/megaj_pkg/graphs/branches/Site Visits.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/branches/Site Visits.json"]
+# COPY ["arches/megaj_pkg/graphs/branches/Disturbance Collection.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/branches/Disturbance Collection.json"]
+# COPY ["arches/megaj_pkg/graphs/branches/Disturbance.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/branches/Disturbance.json"]
+# COPY ["arches/megaj_pkg/graphs/branches/Legal Violation Collection.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/branches/Legal Violation Collection.json"]
+# COPY ["arches/megaj_pkg/graphs/branches/Legal Violation.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/branches/Legal Violation.json"]
+# COPY ["arches/megaj_pkg/graphs/branches/Overall Condition Collection.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/branches/Overall Condition Collection.json"]
+# COPY ["arches/megaj_pkg/graphs/branches/Overall Condition.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/branches/Overall Condition.json"]
+# COPY ["arches/megaj_pkg/graphs/branches/Overall Threat Collection.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/branches/Overall Threat Collection.json"]
+# COPY ["arches/megaj_pkg/graphs/branches/Overall Threat.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/branches/Overall Threat.json"]
+# COPY ["arches/megaj_pkg/graphs/branches/Site Review Collection.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/branches/Site Review Collection.json"]
+# COPY ["arches/megaj_pkg/graphs/branches/Site Review.json", "${HER_REPO_PATH}/arches_her/pkg/graphs/branches/Site Review.json"]
 
 # This is a hack to install SSH keys inside the container. Don't use
 # these for anything other than cloning public git repos, since they

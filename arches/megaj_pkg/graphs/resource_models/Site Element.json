@@ -10996,7 +10996,7 @@
                     "edgeid": "76ef9126-d08d-11f0-bc33-6a94434d3aa9",
                     "graph_id": "76d765ce-d08d-11f0-bc33-6a94434d3aa9",
                     "name": null,
-                    "ontologyproperty": "http://www.ics.forth.gr/isl/CRMsci/O18i_was_altered_by",
+                    "ontologyproperty": "http://www.cidoc-crm.org/extensions/crmsci/O18i_was_altered_by",
                     "rangenode_id": "76d790ee-d08d-11f0-bc33-6a94434d3aa9"
                 },
                 {
@@ -12238,7 +12238,7 @@
                     "edgeid": "76efc16e-d08d-11f0-bc33-6a94434d3aa9",
                     "graph_id": "76d765ce-d08d-11f0-bc33-6a94434d3aa9",
                     "name": null,
-                    "ontologyproperty": "http://www.ics.forth.gr/isl/CRMsci/O18i_was_altered_by",
+                    "ontologyproperty": "http://www.cidoc-crm.org/extensions/crmsci/O18i_was_altered_by",
                     "rangenode_id": "76d7a3b8-d08d-11f0-bc33-6a94434d3aa9"
                 },
                 {
@@ -12283,7 +12283,7 @@
                     "edgeid": "76efc344-d08d-11f0-bc33-6a94434d3aa9",
                     "graph_id": "76d765ce-d08d-11f0-bc33-6a94434d3aa9",
                     "name": null,
-                    "ontologyproperty": "http://www.ics.forth.gr/isl/CRMsci/O7i_is_contained_or_confined",
+                    "ontologyproperty": "http://www.cidoc-crm.org/extensions/crmsci/O7i_is_confined_by",
                     "rangenode_id": "76d7aa16-d08d-11f0-bc33-6a94434d3aa9"
                 },
                 {
@@ -15286,7 +15286,7 @@
                     "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object",
                     "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by",
                     "sortorder": 0,
-                    "sourcebranchpublication_id": "b3fc1766-0b42-11f1-8869-0242c0a8d007"
+                    "sourcebranchpublication_id": null
                 },
                 {
                     "alias": "overall_threat_ascribed_classification",
@@ -15340,7 +15340,7 @@
                     "name": "Overall Threat Initiating Act",
                     "nodegroup_id": "397fb3ae-0b46-11f1-a0db-0242c0a8d007",
                     "nodeid": "397fce02-0b46-11f1-a0db-0242c0a8d007",
-                    "ontologyclass": "http://www.ics.forth.gr/isl/CRMsci/S4_Observation",
+                    "ontologyclass": "http://www.cidoc-crm.org/extensions/crmsci/S4_Observation",
                     "parentproperty": "https://ontology.swissartresearch.net/aaao/ZP42i_was_intentionally_initiated_by",
                     "sortorder": 0,
                     "sourcebranchpublication_id": null
@@ -15573,7 +15573,7 @@
                     "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object",
                     "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by",
                     "sortorder": 0,
-                    "sourcebranchpublication_id": "73dc8fe4-0b42-11f1-97d9-0242c0a8d007"
+                    "sourcebranchpublication_id": null
                 },
                 {
                     "alias": "disturbance_observed_by",
@@ -16140,7 +16140,7 @@
                     "nodegroup_id": "76d790ee-d08d-11f0-bc33-6a94434d3aa9",
                     "nodeid": "76d790ee-d08d-11f0-bc33-6a94434d3aa9",
                     "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E11_Modification",
-                    "parentproperty": "http://www.ics.forth.gr/isl/CRMsci/O18i_was_altered_by",
+                    "parentproperty": "http://www.cidoc-crm.org/extensions/crmsci/O18i_was_altered_by",
                     "sortorder": 0,
                     "sourcebranchpublication_id": null
                 },
@@ -16380,7 +16380,7 @@
                     "nodegroup_id": "76d7a3b8-d08d-11f0-bc33-6a94434d3aa9",
                     "nodeid": "76d7a3b8-d08d-11f0-bc33-6a94434d3aa9",
                     "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E11_Modification",
-                    "parentproperty": "http://www.ics.forth.gr/isl/CRMsci/O18i_was_altered_by",
+                    "parentproperty": "http://www.cidoc-crm.org/extensions/crmsci/O18i_was_altered_by",
                     "sortorder": 0,
                     "sourcebranchpublication_id": null
                 },
@@ -16443,7 +16443,7 @@
                     "nodegroup_id": "76d7aa16-d08d-11f0-bc33-6a94434d3aa9",
                     "nodeid": "76d7aa16-d08d-11f0-bc33-6a94434d3aa9",
                     "ontologyclass": "http://www.ics.forth.gr/isl/CRMgeo/SP6_Declarative_Place",
-                    "parentproperty": "http://www.ics.forth.gr/isl/CRMsci/O7i_is_contained_or_confined",
+                    "parentproperty": "http://www.cidoc-crm.org/extensions/crmsci/O7i_is_confined_by",
                     "sortorder": 0,
                     "sourcebranchpublication_id": null
                 },
@@ -25836,7 +25836,7 @@
                     "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object",
                     "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by",
                     "sortorder": 0,
-                    "sourcebranchpublication_id": "c982ea24-0b42-11f1-8ecc-0242c0a8d007"
+                    "sourcebranchpublication_id": null
                 },
                 {
                     "alias": "overall_condition_ascribed_classification",
@@ -25890,7 +25890,7 @@
                     "name": "Overall Condition Initiating Act",
                     "nodegroup_id": "9f65390a-0b46-11f1-81f2-0242c0a8d007",
                     "nodeid": "9f65488c-0b46-11f1-81f2-0242c0a8d007",
-                    "ontologyclass": "http://www.ics.forth.gr/isl/CRMsci/S4_Observation",
+                    "ontologyclass": "http://www.cidoc-crm.org/extensions/crmsci/S4_Observation",
                     "parentproperty": "https://ontology.swissartresearch.net/aaao/ZP42i_was_intentionally_initiated_by",
                     "sortorder": 0,
                     "sourcebranchpublication_id": null
@@ -25985,7 +25985,7 @@
                     "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object",
                     "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by",
                     "sortorder": 0,
-                    "sourcebranchpublication_id": "03219532-0b43-11f1-817a-0242c0a8d007"
+                    "sourcebranchpublication_id": null
                 },
                 {
                     "alias": "site_review_ascribed_classification",
@@ -26039,7 +26039,7 @@
                     "name": "Site Review Initiating Act",
                     "nodegroup_id": "a390face-0b45-11f1-baf2-0242c0a8d007",
                     "nodeid": "a3911644-0b45-11f1-baf2-0242c0a8d007",
-                    "ontologyclass": "http://www.ics.forth.gr/isl/CRMsci/S4_Observation",
+                    "ontologyclass": "http://www.cidoc-crm.org/extensions/crmsci/S4_Observation",
                     "parentproperty": "https://ontology.swissartresearch.net/aaao/ZP42i_was_intentionally_initiated_by",
                     "sortorder": 0,
                     "sourcebranchpublication_id": null
@@ -26318,7 +26318,7 @@
                     "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object",
                     "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by",
                     "sortorder": 0,
-                    "sourcebranchpublication_id": "990c0696-0b42-11f1-a36c-0242c0a8d007"
+                    "sourcebranchpublication_id": null
                 },
                 {
                     "alias": "legal_violation_ascribed_classification",
@@ -26418,7 +26418,7 @@
                     "name": "Legal Violation Initiating Act",
                     "nodegroup_id": "f10d409a-0b46-11f1-8bd8-0242c0a8d007",
                     "nodeid": "f10d559e-0b46-11f1-8bd8-0242c0a8d007",
-                    "ontologyclass": "http://www.ics.forth.gr/isl/CRMsci/S4_Observation",
+                    "ontologyclass": "http://www.cidoc-crm.org/extensions/crmsci/S4_Observation",
                     "parentproperty": "https://ontology.swissartresearch.net/aaao/ZP42i_was_intentionally_initiated_by",
                     "sortorder": 0,
                     "sourcebranchpublication_id": null

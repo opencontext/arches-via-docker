@@ -455,7 +455,7 @@
                     "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object",
                     "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by",
                     "sortorder": 0,
-                    "sourcebranchpublication_id": "73dc8fe4-0b42-11f1-97d9-0242c0a8d007"
+                    "sourcebranchpublication_id": null
                 },
                 {
                     "alias": "disturbance_statement_language",
