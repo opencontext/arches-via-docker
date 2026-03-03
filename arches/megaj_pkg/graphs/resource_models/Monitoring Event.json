@@ -24,7 +24,7 @@
                     },
                     "is_editable": true,
                     "name": {
-                        "en": "Monitoring Event Identifier "
+                        "en": "Monitoring Event Identifier"
                     },
                     "nodegroup_id": "290cb384-0b44-11f1-a91c-0242c0a8d007",
                     "sortorder": 1,
@@ -1923,7 +1923,7 @@
             "isresource": true,
             "jsonldcontext": null,
             "name": {
-                "en": "Monitoring Event 1"
+                "en": "Monitoring Event"
             },
             "nodegroups": [
                 {
@@ -3409,7 +3409,7 @@
                     "isrequired": false,
                     "issearchable": true,
                     "istopnode": true,
-                    "name": "Monitoring Event 1",
+                    "name": "Monitoring Event",
                     "nodegroup_id": null,
                     "nodeid": "f07e1e6a-0b41-11f1-9ee0-0242c0a8d007",
                     "ontologyclass": "http://www.ics.forth.gr/isl/CRMsci/S4_Observation",
@@ -3442,7 +3442,7 @@
                 "isrequired": false,
                 "issearchable": true,
                 "istopnode": true,
-                "name": "Monitoring Event 1",
+                "name": "Monitoring Event",
                 "nodegroup_id": null,
                 "nodeid": "f07e1e6a-0b41-11f1-9ee0-0242c0a8d007",
                 "ontologyclass": "http://www.ics.forth.gr/isl/CRMsci/S4_Observation",
