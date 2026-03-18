@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+CRMsci 1.2.3 Encoded in RDFS
+RDFS updated by FORTH <maria@ics.forth.gr> April 14, 2016
+
+RDFS updated by SednaSoft <info@sedna-soft.de> Thursday, April 02, 2015
+Changes:
+- fixed mistyped references to S19 Observable Entity [sic] in O12 has dimension (is dimension of)
+
+RDFS updated by FORTH <maria@ics.forth.gr> Friday, May 8, 2015
+Changes:
+- S7_Simulation-Prediction changed to S7_Simulation_or_Prediction
+- reversed the domain and range of O9i_property_type_was_observed_by 
+
+No other changes found to be relevant for RDFS since CRMsci 1.2
+
+
+Encoding Rules:
+1. The RDF spelling rules do not allow blanks. Hence we have replaced them by underscores.
+   The blank between the concept identifier and concept name is replaced by underscore too.
+   For instance "S1_Matter_Removal" or "O3_sampled_from".
+
+2. RDF does not allow to instantiate properties beginning from a range value.
+   Therefore, each CRMdig property is represented as two RDFS properties.
+   For instance "O3_sampled_from (was_sample_by)" is represented as:
+   "O3_sampled_from" for the domain to range direction and "O3i_was_sample_by" for the range to domain direction.
+
+-->
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+        xml:base="http://www.ics.forth.gr/isl/CRMsci/" xml:lang="en">
+
+
+    <rdf:Property rdf:about="O7_contains_or_confines">
+        <rdfs:domain rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E53_Place"/>
+        <rdfs:range rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E53_Place"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="O7i_is_contained_or_confined">
+        <rdfs:domain rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E53_Place"/>
+        <rdfs:range rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E53_Place"/>
+    </rdf:Property>
+
+
+</rdf:RDF>

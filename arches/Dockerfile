@@ -239,6 +239,7 @@ RUN rm -rf ${HER_REPO_PATH}/arches_her/pkg/ontologies/cidoc_crm/CRMsci_v1.2.3.rd
 
 COPY /arches/megaj_pkg/ontologies/AAAo_v2.0.1.rdf ${HER_REPO_PATH}/arches_her/pkg/ontologies/cidoc_crm/AAAo_v2.0.1.rdf
 COPY /arches/megaj_pkg/ontologies/CRMsci_v2.0.rdf ${HER_REPO_PATH}/arches_her/pkg/ontologies/cidoc_crm/CRMsci_v2.0.rdf
+COPY /arches/megaj_pkg/ontologies/CRMsci_v1.2.3_slim.rdfs.xml ${HER_REPO_PATH}/arches_her/pkg/ontologies/cidoc_crm/CRMsci_v1.2.3_slim.rdfs.xml
 COPY /arches/megaj_pkg/ontologies/ontology_config.json ${HER_REPO_PATH}/arches_her/pkg/ontologies/cidoc_crm/ontology_config.json
 
 RUN echo "Update the HER RDM files for MEGA-J";

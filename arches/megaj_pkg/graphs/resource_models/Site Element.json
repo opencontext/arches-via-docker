@@ -12283,7 +12283,7 @@
                     "edgeid": "76efc344-d08d-11f0-bc33-6a94434d3aa9",
                     "graph_id": "76d765ce-d08d-11f0-bc33-6a94434d3aa9",
                     "name": null,
-                    "ontologyproperty": "http://www.cidoc-crm.org/extensions/crmsci/O7i_is_confined_by",
+                    "ontologyproperty": "http://www.ics.forth.gr/isl/CRMsci/O7i_is_contained_or_confined",
                     "rangenode_id": "76d7aa16-d08d-11f0-bc33-6a94434d3aa9"
                 },
                 {
@@ -16443,7 +16443,7 @@
                     "nodegroup_id": "76d7aa16-d08d-11f0-bc33-6a94434d3aa9",
                     "nodeid": "76d7aa16-d08d-11f0-bc33-6a94434d3aa9",
                     "ontologyclass": "http://www.ics.forth.gr/isl/CRMgeo/SP6_Declarative_Place",
-                    "parentproperty": "http://www.cidoc-crm.org/extensions/crmsci/O7i_is_confined_by",
+                    "parentproperty": "http://www.ics.forth.gr/isl/CRMsci/O7i_is_contained_or_confined",
                     "sortorder": 0,
                     "sourcebranchpublication_id": null
                 },
