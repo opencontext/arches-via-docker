@@ -75,7 +75,8 @@ init_arches() {
 		run_setup_db
 		run_elastic_safe_migrations
 		setup_couchdb
-		run_AFRC_package
+		run_rascolls_package
+		run_report_load
 	fi
 }
 
@@ -167,15 +168,23 @@ run_es_reindex() {
 	python3 manage.py es reindex_database
 }
 
-run_AFRC_package() {
+run_rascolls_package() {
 	echo ""
 	echo "----- RUNNING PACKAGE LOAD FOR Rascolls -----"
 	echo "python3 manage.py packages -o load_package -a arches_rascolls -db -dev -y"
 	echo ""
 	cd ${APP_FOLDER}
-	python3 manage.py packages -o load_package -a arches_rascolls -db -dev -y
+	python manage.py packages -o load_package -a arches_rascolls -db -dev -y
 }
 
+run_report_load() {
+	echo ""
+	echo "----- RUNNING REPORT LOAD FOR Rascolls -----"
+	echo "python manage.py report_configs load"
+	echo ""
+	cd ${APP_FOLDER}
+	python manage.py report_configs load
+}
 
 run_collect_static() {
 	echo ""
@@ -411,9 +420,10 @@ do
 			wait_for_db
 			run_es_reindex
 		;;
-		run_AFRC_package)
+		run_rascolls_package)
 			wait_for_db
-			run_AFRC_package
+			run_rascolls_package
+			run_report_load
 		;;
 		help|-h)
 			display_help

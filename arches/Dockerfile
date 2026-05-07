@@ -140,7 +140,7 @@ RUN pip install --force-reinstall -U setuptools
 
 WORKDIR ${ARCHES_ROOT}
 ENV ARCHES_REPO=${ARCHES_ROOT}/arches
-ENV ARCHES_GIT_BRANCH=dev/8.1.x
+ENV ARCHES_GIT_BRANCH=dev/8.2.x
 ARG AFRC_CLONE
 RUN echo "Clone Arches for Reference and Sample Collections..."
 RUN git clone ${AFRC_CLONE};
@@ -211,7 +211,7 @@ RUN pip install supervisor==4.2.1 \
     && pip install pyasyncore
 
 # Added for rascolls
-RUN pip install django-csp
+RUN pip install django-csp==3.8
 
 RUN mkdir -p /new_arches_proj
 RUN arches-admin startproject ${ARCHES_PROJECT} --directory /new_arches_proj
