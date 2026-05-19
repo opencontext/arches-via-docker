@@ -1,0 +1,3 @@
+services:
+  arches_db:
+    platform: linux/amd64

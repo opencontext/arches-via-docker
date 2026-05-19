@@ -2,7 +2,7 @@ services:
 
   arches_db:
     container_name: arches_db
-    image: postgis/postgis:14-3.2
+    image: postgis/postgis:14-3.4
     env_file:
       - ./.env
     environment:
@@ -69,6 +69,7 @@ services:
 
   arches:
     container_name: arches
+    restart: unless-stopped
     image: arches
     env_file:
       - ./.env
@@ -97,8 +98,6 @@ services:
       - arches_redis
     command:
       - run_arches
-    expose:
-      - 8004:8000
     volumes:
       - arches-log:/web_root/logs
       - arches-static:/static_root

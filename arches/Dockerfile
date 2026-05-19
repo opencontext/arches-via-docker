@@ -162,7 +162,7 @@ RUN pip install supervisor \
     && pip install tzdata --upgrade \
     && pip install Redis \
     && pip install gunicorn \
-    && pip install arches
+    && pip install arches==8.1.2
 
 # create a new Arches project
 RUN mkdir -p /new_arches_proj
