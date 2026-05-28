@@ -143,6 +143,16 @@ INSTALLED_APPS = (
     "django.contrib.staticfiles",
     "django.contrib.gis",
     "django_hosts",
+
+    "django.contrib.postgres",
+    "arches_modular_reports",
+    "rest_framework",
+    "arches_querysets",
+    "arches_component_lab",
+    "arches_controlled_lists",
+    "arches_search",
+    "pgtrigger",
+
     "arches",
     "arches.app.models",
     "arches.management",
@@ -156,14 +166,6 @@ INSTALLED_APPS = (
     # Added for AfS (Arches for Science) project
     f"{APP_NAME}",  # Ensure the project is listed before any other arches applications
     "arches_rascolls",  # Ensure the project is listed before any other arches applications
-    "django.contrib.postgres",
-    "arches_modular_reports",
-    "rest_framework",
-    "arches_querysets",
-    "arches_component_lab",
-    "arches_controlled_lists",
-    "arches_search",
-    "pgtrigger",
 )
 
 # Added for AfRC (Arches for Reference and Sample Collections) project
