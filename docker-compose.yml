@@ -24,7 +24,7 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - arches_her_v7_net
+      - arches_megaj_v7_net
 
   arches_elasticsearch:
     container_name: arches_elasticsearch_her
@@ -48,7 +48,7 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - arches_her_v7_net
+      - arches_megaj_v7_net
 
   arches_redis:
     container_name: arches_redis_her
@@ -65,11 +65,11 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - arches_her_v7_net
+      - arches_megaj_v7_net
 
-  arches_her:
-    container_name: arches_her
-    image: arches_her
+  arches_megaj:
+    container_name: arches_megaj
+    image: arches_megaj
     env_file:
       - ./.env
     build:
@@ -111,7 +111,7 @@ services:
         max-size: "10m"
         max-file: "10"
     networks:
-      - arches_her_v7_net
+      - arches_megaj_v7_net
 
   arches_webpack:
     container_name: arches_webpack_her
@@ -130,14 +130,14 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./:/workdir:ro
     depends_on:
-      - arches_her
+      - arches_megaj
     logging:
       driver: "json-file"
       options:
         max-size: "1k"
         max-file: "3"
     networks:
-      - arches_her_v7_net
+      - arches_megaj_v7_net
 
   nginx:
     container_name: nginx
@@ -162,14 +162,14 @@ services:
       - "443:443"
     restart: always
     depends_on:
-      - arches_her
+      - arches_megaj
     logging:
       driver: "json-file"
       options:
         max-size: "10m"
         max-file: "10"
     networks:
-      - arches_her_v7_net
+      - arches_megaj_v7_net
 
   certbot:
     container_name: certbot
@@ -186,7 +186,7 @@ services:
         max-size: "1k"
         max-file: "3"
     networks:
-      - arches_her_v7_net
+      - arches_megaj_v7_net
 
   cron:
     container_name: cron
@@ -204,12 +204,12 @@ services:
         max-size: "1k"
         max-file: "3"
     networks:
-      - arches_her_v7_net
+      - arches_megaj_v7_net
 
 networks:
-  arches_her_v7_net:
+  arches_megaj_v7_net:
     driver: bridge
-    name: arches_her_v7_net
+    name: arches_megaj_v7_net
 
 volumes:
   nginx_ssl:
