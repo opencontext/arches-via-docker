@@ -90,12 +90,43 @@ ELASTICSEARCH_CONNECTION_OPTIONS = {"request_timeout": 30, "verify_certs": False
 # a prefix to append to all elasticsearch indexes, note: must be lower case
 ELASTICSEARCH_PREFIX = f"{APP_NAME}"
 
-ELASTICSEARCH_CUSTOM_INDEXES = []
-# [{
-#     'module': 'afs_plocal.search_indexes.sample_index.SampleIndex',
-#     'name': 'my_new_custom_index', <-- follow ES index naming rules
-#     'should_update_asynchronously': False  <-- denotes if asynchronously updating the index would affect custom functionality within the project.
-# }]
+
+REFERENCES_INDEX_NAME = "references"
+ELASTICSEARCH_CUSTOM_INDEXES = [
+    {
+        "module": "arches_controlled_lists.search_indexes.reference_index.ReferenceIndex",
+        "name": REFERENCES_INDEX_NAME,
+        "should_update_asynchronously": True,
+    }
+]
+TERM_SEARCH_TYPES = [
+    {
+        "type": "term",
+        "label": _("Term Matches"),
+        "key": "terms",
+        "module": "arches.app.search.search_term.TermSearch",
+    },
+    {
+        "type": "concept",
+        "label": _("Concepts"),
+        "key": "concepts",
+        "module": "arches.app.search.concept_search.ConceptSearch",
+    },
+    {
+        "type": "reference",
+        "label": _("References"),
+        "key": REFERENCES_INDEX_NAME,
+        "module": "arches_controlled_lists.search_indexes.reference_index.ReferenceIndex",
+    },
+]
+
+ES_MAPPING_MODIFIER_CLASSES = [
+    "arches_controlled_lists.search.references_es_mapping_modifier.ReferencesEsMappingModifier"
+]
+
+LOAD_DEFAULT_ONTOLOGY = False
+LOAD_PACKAGE_ONTOLOGIES = True
+
 
 KIBANA_URL = "http://localhost:5601/"
 KIBANA_CONFIG_BASEPATH = "kibana"  # must match Kibana config.yml setting (server.basePath) but without the leading slash,
@@ -117,7 +148,9 @@ DATABASES = {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
         "HOST": "localhost",
         "NAME": f"{APP_NAME}",
-        "OPTIONS": {},
+        "OPTIONS": {
+            "options": "-c cursor_tuple_fraction=1",
+        },
         "PASSWORD": "postgis",
         "PORT": "5432",
         "POSTGIS_TEMPLATE": "template_postgis",
@@ -135,6 +168,7 @@ DATABASES = {
 SEARCH_THUMBNAILS = False
 
 INSTALLED_APPS = (
+    "arches_rascolls",  # Ensure the project is listed before any other arches applications
     "webpack_loader",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -143,16 +177,7 @@ INSTALLED_APPS = (
     "django.contrib.staticfiles",
     "django.contrib.gis",
     "django_hosts",
-
-    "django.contrib.postgres",
-    "arches_modular_reports",
-    "rest_framework",
-    "arches_querysets",
-    "arches_component_lab",
     "arches_controlled_lists",
-    "arches_search",
-    "pgtrigger",
-
     "arches",
     "arches.app.models",
     "arches.management",
@@ -163,18 +188,14 @@ INSTALLED_APPS = (
     "oauth2_provider",
     "django_celery_results",
     "django_migrate_sql",
-    # Added for AfS (Arches for Science) project
-    f"{APP_NAME}",  # Ensure the project is listed before any other arches applications
-    "arches_rascolls",  # Ensure the project is listed before any other arches applications
-)
-
-# Added for AfRC (Arches for Reference and Sample Collections) project
-ARCHES_APPLICATIONS = (
-    "arches_rascolls",
+    # "silk",
+    "django.contrib.postgres",
+    "arches_modular_reports",
+    "rest_framework",
     "arches_querysets",
-    "arches_component_lab",
-    "arches_controlled_lists",
+    "arches_vue_components",
     "arches_search",
+    "pgtrigger",
 )
 
 # Placing this last ensures any templates provided by Arches Applications
@@ -183,6 +204,7 @@ INSTALLED_APPS += (
     "arches.app",
     "django.contrib.admin",
 )
+
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
@@ -199,11 +221,11 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "arches.app.utils.middleware.SetAnonymousUser",
     # "silk.middleware.SilkyMiddleware",
+    # "csp.middleware.CSPMiddleware",
 ]
 
 MIDDLEWARE.insert(  # this must resolve to first MIDDLEWARE entry
-    0,
-    "django_hosts.middleware.HostsRequestMiddleware"
+    0, "django_hosts.middleware.HostsRequestMiddleware"
 )
 
 MIDDLEWARE.append(  # this must resolve last MIDDLEWARE entry
@@ -408,7 +430,6 @@ RENDERERS = [
         "exclude": "tif,tiff,psd",
     },
 ]
-
 # By setting RESTRICT_MEDIA_ACCESS to True, media file requests outside of Arches will checked against nodegroup permissions.
 RESTRICT_MEDIA_ACCESS = False
 

@@ -2,6 +2,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 from django.urls import include, path, re_path
+from arches_rascolls.views.resource import (
+    ModularReportAddResourceView,
+    ModularReportUpdateResourceView,
+)
 from arches_rascolls.views.file_api import FileAPI
 from arches_rascolls.views.settings_api import SettingsAPI
 from arches_rascolls.views.search_api import SearchAPI
@@ -15,6 +19,7 @@ from arches_rascolls.views.map_api import (
     ResourceGeoJSONAPI,
 )
 from arches_rascolls.views.rascoll_search import RascollSearchView
+from arches_rascolls.views.resource_api import ResourceLastEditedAPI
 
 uuid_regex = settings.UUID_REGEX
 
@@ -37,6 +42,11 @@ urlpatterns = [
         name="api-resource-geojson",
     ),
     re_path(
+        "api-resource-last-edited/(?P<resourceid>%s)$" % (uuid_regex),
+        ResourceLastEditedAPI.as_view(),
+        name="api-resource-last-edited",
+    ),
+    re_path(
         r"^api-reference-collection-mvt/(?P<zoom>[0-9]+|\{z\})/(?P<x>[0-9]+|\{x\})/(?P<y>[0-9]+|\{y\}).pbf$",
         ReferenceCollectionMVT.as_view(),
         name="api-reference-collection-mvt",
@@ -47,11 +57,21 @@ urlpatterns = [
         name="api-reference-collection-search-mvt",
     ),
     re_path(r"^rascoll-search$", RascollSearchView.as_view(), name="rascoll-search"),
+    path(
+        "resource/<uuid:resourceid>",
+        ModularReportUpdateResourceView.as_view(),
+        name="resource_editor",
+    ),
+    path(
+        "add-resource/<uuid:graphid>",
+        ModularReportAddResourceView.as_view(),
+        name="add_resource",
+    ),
 ]
 
 urlpatterns.append(path("", include("arches_modular_reports.urls")))
 urlpatterns.append(path("", include("arches_controlled_lists.urls")))
-urlpatterns.append(path("", include("arches_component_lab.urls")))
+urlpatterns.append(path("", include("arches_vue_components.urls")))
 urlpatterns.append(path("", include("arches_search.urls")))
 
 # Ensure Arches core urls are superseded by project-level urls

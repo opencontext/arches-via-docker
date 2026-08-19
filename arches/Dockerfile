@@ -160,7 +160,7 @@ RUN git clone https://github.com/archesproject/arches-modular-reports.git
 RUN git clone https://github.com/archesproject/arches-querysets.git
 RUN git clone https://github.com/archesproject/arches-controlled-lists.git
 RUN git clone https://github.com/archesproject/arches-search.git
-RUN git clone https://github.com/archesproject/arches-component-lab.git
+RUN git clone https://github.com/archesproject/arches-vue-components.git
 WORKDIR ${ARCHES_ROOT}/arches-modular-reports
 RUN git fetch --all;
 RUN git checkout main;
@@ -173,13 +173,13 @@ RUN echo "Installing arches-querysets (main)..."
 RUN pip install -e '.[dev]'
 WORKDIR ${ARCHES_ROOT}/arches-controlled-lists
 RUN git fetch --all;
-RUN git checkout dev/1.1.x;
-RUN echo "Installing arches-controlled-lists (dev/1.1.x)..."
+RUN git checkout dev/1.3.x;
+RUN echo "Installing arches-controlled-lists (dev/1.3.x)..."
 RUN pip install -e '.[dev]'
-WORKDIR ${ARCHES_ROOT}/arches-component-lab
+WORKDIR ${ARCHES_ROOT}/arches-vue-components
 RUN git fetch --all;
-RUN git checkout main;
-RUN echo "Installing arches-component-lab (main)..."
+RUN git checkout dev/2.1.x;
+RUN echo "Installing arches-vue-components (dev/2.1.x)..."
 RUN pip install -e '.[dev]'
 WORKDIR ${ARCHES_ROOT}/arches-search
 RUN git fetch --all;
