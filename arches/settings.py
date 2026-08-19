@@ -88,6 +88,8 @@ ELASTICSEARCH_CONNECTION_OPTIONS = {"request_timeout": 30, "verify_certs": False
 # Or Kibana: https://www.elastic.co/guide/en/kibana/current/api-keys.html
 
 # a prefix to append to all elasticsearch indexes, note: must be lower case
+INDEX_BATCH_SIZE = 2000
+
 ELASTICSEARCH_PREFIX = f"{APP_NAME}"
 
 

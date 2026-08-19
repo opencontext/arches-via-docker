@@ -217,6 +217,9 @@ RUN mkdir -p /new_arches_proj
 RUN arches-admin startproject ${ARCHES_PROJECT} --directory /new_arches_proj
 RUN mv /new_arches_proj ${APP_ROOT}
 
+# Copy report configs
+RUN cp -r ${AFRC_REPO_DIR}/arches_rascolls/report_configs ${APP_COMP_FOLDER}/report_configs
+
 WORKDIR ${ARCHES_ROOT}
 
 RUN mkdir -p ${UPLOADED_FILES_FOLDER}
