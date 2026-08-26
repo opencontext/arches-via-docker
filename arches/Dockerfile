@@ -82,7 +82,7 @@ RUN set -ex \
         libgdal-dev \
         libpq-dev \
         python3-dev \
-        postgresql-client-14 \
+        postgresql-client-18 \
         dos2unix \
         gettext \
     " \

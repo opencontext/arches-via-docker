@@ -27,6 +27,9 @@ DEBUG = ast.literal_eval(get_env_variable("DJANGO_DEBUG"))
 
 DATABASES = {
     "default": {
+        "ATOMIC_REQUESTS": False,
+        "AUTOCOMMIT": True,
+        "CONN_MAX_AGE": 0,
         "ENGINE": "django.contrib.gis.db.backends.postgis",
         "NAME": get_env_variable("PGDBNAME"),
         "USER": get_env_variable("PGUSERNAME"),
@@ -34,8 +37,21 @@ DATABASES = {
         "HOST": get_env_variable("PGHOST"),
         "PORT": get_env_variable("PGPORT"),
         "POSTGIS_TEMPLATE": "template_postgis",
+        "TEST": {
+            "CHARSET": None,
+            "COLLATION": None,
+            "MIRROR": None,
+            "NAME": None
+        },
+        "TIME_ZONE": None,
+        "OPTIONS": {
+            "options": "-c cursor_tuple_fraction=1",
+        },
     }
 }
+
+PG_SUPERUSER = get_env_variable("PGUSERNAME")
+PG_SUPERUSER_PW = get_env_variable("PGPASSWORD")
 
 ARCHES_NAMESPACE_FOR_DATA_EXPORT = get_env_variable("ARCHES_NAMESPACE")
 
