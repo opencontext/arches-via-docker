@@ -286,6 +286,8 @@ FORCE_SCRIPT_NAME = None
 RESOURCE_IMPORT_LOG = os.path.join(APP_ROOT, 'logs', 'resource_import.log')
 DEFAULT_RESOURCE_IMPORT_USER = {'username': 'admin', 'userid': 1}
 
+PERMISSION_FRAMEWORK = "arches_default_deny.ArchesDefaultDenyPermissionFramework"
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
