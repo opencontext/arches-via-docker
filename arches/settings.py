@@ -169,6 +169,7 @@ DATABASES = {
 
 SEARCH_THUMBNAILS = False
 
+
 INSTALLED_APPS = (
     "arches_rascolls",  # Ensure the project is listed before any other arches applications
     "webpack_loader",
@@ -197,6 +198,7 @@ INSTALLED_APPS = (
     "arches_querysets",
     "arches_vue_components",
     "arches_search",
+    "arches_resource_sets",
     "pgtrigger",
 )
 
