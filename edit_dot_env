@@ -9,10 +9,10 @@ ARCHES_ROOT=/arches_app
 APP_ROOT=$ARCHES_ROOT/$ARCHES_PROJECT
 APP_COMP_FOLDER=$APP_ROOT/$ARCHES_PROJECT
 
-# AfRC specific settings
-AFRC_CLONE = 'https://github.com/archesproject/arches-rascolls.git'
-AFRC_GIT_BRANCH = 'main'
-AFRC_REPO_DIR = $ARCHES_ROOT/arches-rascolls
+# RASCOLLS specific settings
+RASCOLLS_CLONE = 'https://github.com/archesproject/arches-rascolls.git'
+RASCOLLS_GIT_BRANCH = 'main'
+RASCOLLS_REPO_DIR = $ARCHES_ROOT/arches-rascolls
 
 # AfS Cantaloupe
 UPLOADED_FILES_FOLDER=$APP_COMP_FOLDER/uploadedfiles

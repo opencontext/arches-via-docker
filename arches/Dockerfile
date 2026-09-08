@@ -141,9 +141,9 @@ RUN pip install --force-reinstall -U setuptools
 WORKDIR ${ARCHES_ROOT}
 ENV ARCHES_REPO=${ARCHES_ROOT}/arches
 ENV ARCHES_GIT_BRANCH=dev/8.2.x
-ARG AFRC_CLONE
+ARG RASCOLLS_CLONE
 RUN echo "Clone Arches for Reference and Sample Collections..."
-RUN git clone ${AFRC_CLONE};
+RUN git clone ${RASCOLLS_CLONE};
 RUN echo "Clone Arches (core) git repo"
 RUN git clone https://github.com/archesproject/arches.git
 
@@ -187,14 +187,14 @@ RUN git checkout main;
 RUN echo "Installing arches-search (main)..."
 RUN pip install -e '.[dev]'
 
-ARG AFRC_REPO_DIR
-WORKDIR ${AFRC_REPO_DIR}
-ARG AFRC_GIT_BRANCH
-ENV AFRC_GIT_BRANCH=${AFRC_GIT_BRANCH}
-RUN echo "Do: git checkout ${AFRC_GIT_BRANCH} for RASColls";
+ARG RASCOLLS_REPO_DIR
+WORKDIR ${RASCOLLS_REPO_DIR}
+ARG RASCOLLS_GIT_BRANCH
+ENV RASCOLLS_GIT_BRANCH=${RASCOLLS_GIT_BRANCH}
+RUN echo "Do: git checkout ${RASCOLLS_GIT_BRANCH} for RASColls";
 RUN git fetch --all;
-RUN git checkout ${AFRC_GIT_BRANCH};
-RUN git pull origin ${AFRC_GIT_BRANCH};
+RUN git checkout ${RASCOLLS_GIT_BRANCH};
+RUN git pull origin ${RASCOLLS_GIT_BRANCH};
 RUN pip install -e '.[dev]'
 
 WORKDIR ${ARCHES_ROOT}
@@ -218,7 +218,7 @@ RUN arches-admin startproject ${ARCHES_PROJECT} --directory /new_arches_proj
 RUN mv /new_arches_proj ${APP_ROOT}
 
 # Copy report configs
-RUN cp -r ${AFRC_REPO_DIR}/arches_rascolls/report_configs ${APP_COMP_FOLDER}/report_configs
+RUN cp -r ${RASCOLLS_REPO_DIR}/arches_rascolls/report_configs ${APP_COMP_FOLDER}/report_configs
 
 WORKDIR ${ARCHES_ROOT}
 

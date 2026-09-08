@@ -14,7 +14,7 @@ except ImportError:
     pass
 
 
-def get_os_env_variable(var_name):
+def get_env_variable(var_name):
     msg = "Set the %s environment variable"
     try:
         return os.environ[var_name]
@@ -23,8 +23,15 @@ def get_os_env_variable(var_name):
         raise ImproperlyConfigured(error_msg)
 
 
+def get_optional_env_variable(var_name, default=None) -> str:
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        return default
 
-APP_NAME = get_os_env_variable('ARCHES_PROJECT')
+
+
+APP_NAME = get_env_variable('ARCHES_PROJECT')
 APP_VERSION = semantic_version.Version(major=0, minor=0, patch=0)
 APP_ROOT = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 
@@ -137,10 +144,14 @@ KIBANA_CONFIG_BASEPATH = "kibana"  # must match Kibana config.yml setting (serve
 LOAD_DEFAULT_ONTOLOGY = False
 LOAD_PACKAGE_ONTOLOGIES = True
 
+PUBLIC_SERVER_ADDRESS = get_optional_env_variable(
+    "ARCHES_PUBLIC_SERVER_ADDRESS", "http://localhost:8004/"
+)
+
 # This is the namespace to use for export of data (for RDF/XML for example)
 # It must point to the url where you host your site
 # Make sure to use a trailing slash
-ARCHES_NAMESPACE_FOR_DATA_EXPORT = "http://localhost:8000/"
+ARCHES_NAMESPACE_FOR_DATA_EXPORT = "http://localhost:8004/"
 
 DATABASES = {
     "default": {
@@ -405,6 +416,27 @@ CANTALOUPE_HTTP_ENDPOINT = "http://localhost:8182/"
 
 ACCESSIBILITY_MODE = False
 
+BASEMAPS = [
+    {
+        "name": "positron",
+        "title": "Light",
+        "url": "https://tiles.openfreemap.org/styles/positron",
+        "attribution": "Tiles by <a href='https://www.openfreemap.org/'>Open Free Map</a>",
+        "addtomap": True,
+        "type": "xyz",
+        "iconclass": "fa fa-map",
+    },
+    {
+        "name": "liberty",
+        "title": "Streets",
+        "url": "https://tiles.openfreemap.org/styles/liberty",
+        "attribution": "Tiles by <a href='https://www.openfreemap.org/'>Open Free Map</a>",
+        "addtomap": False,
+        "type": "xyz",
+        "iconclass": "fa fa-map",
+    },
+]
+
 RENDERERS = [
     {
         "name": "imagereader",
@@ -482,17 +514,34 @@ SHOW_LANGUAGE_SWITCH = len(LANGUAGES) > 1
 
 
 COLLECTIONS_GRAPHID = "bda239c6-d376-11ef-a239-0275dc2ded29"
+COLLECTIONS_GRAPH_SLUG = "reference_and_sample_collection_item"
 
 
 
-# Added for AfS (Arches for Science) project
-FUNCTION_LOCATIONS.append("afrc.pkg.extensions.functions")
-FUNCTION_LOCATIONS.append("afrc.functions")
+# Implement this class to associate custom documents to the ES resource index
+# See tests.views.search_tests.TestEsMappingModifier class for example
+# ES_MAPPING_MODIFIER_CLASSES = ["arches_rascolls.search.es_mapping_modifier.EsMappingModifier"]
 
-if False:
-    TEMPLATES[0]["OPTIONS"]["context_processors"].append(
-        "afrc.utils.context_processors.project_settings"
-    )
+try:
+    from .package_settings import *
+except ImportError:
+    try:
+        from package_settings import *
+    except ImportError as e:
+        pass
+
+# Sometimes settings_local needs the arches app name - this is a method of passing it.
+os.environ.setdefault("ARCHES_APP_NAME", APP_NAME)
+
+os.environ.setdefault("ARCHES_SITE_ID", APP_NAME)
+
+try:
+    from .settings_local import *
+except ImportError as e:
+    try:
+        from settings_local import *
+    except ImportError as e:
+        pass
 
 RENDERERS += [
     {

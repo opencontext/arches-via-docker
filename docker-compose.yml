@@ -23,7 +23,7 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - afrc_net
+      - RASCOLLS_net
 
   arches_elasticsearch:
     container_name: arches_elasticsearch
@@ -47,7 +47,7 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - afrc_net
+      - RASCOLLS_net
 
   arches_redis:
     container_name: arches_redis
@@ -64,7 +64,7 @@ services:
         max-size: "10k"
         max-file: "10"
     networks:
-      - afrc_net
+      - RASCOLLS_net
 
   cantaloupe_afrc:
     container_name: cantaloupe_afrc
@@ -76,11 +76,11 @@ services:
     env_file:
     - ./.env
     networks:
-    - afrc_net
+    - RASCOLLS_net
 
   arches:
     container_name: arches
-    image: arches_afrc
+    image: arches_rascolls
     env_file:
       - ./.env
     build:
@@ -91,9 +91,9 @@ services:
         ARCHES_PROJECT: ${ARCHES_PROJECT}
         ARCHES_ROOT: ${ARCHES_ROOT}
         APP_ROOT: ${APP_ROOT}
-        AFRC_CLONE: ${AFRC_CLONE}
-        AFRC_GIT_BRANCH: ${AFRC_GIT_BRANCH}
-        AFRC_REPO_DIR: ${AFRC_REPO_DIR}
+        RASCOLLS_CLONE: ${RASCOLLS_CLONE}
+        RASCOLLS_GIT_BRANCH: ${RASCOLLS_GIT_BRANCH}
+        RASCOLLS_REPO_DIR: ${RASCOLLS_REPO_DIR}
         APP_COMP_FOLDER: ${APP_COMP_FOLDER}
         UPLOADED_FILES_FOLDER: ${UPLOADED_FILES_FOLDER}
     environment:
@@ -133,12 +133,12 @@ services:
         max-size: "10m"
         max-file: "10"
     networks:
-      - afrc_net
+      - RASCOLLS_net
 
 networks:
-  afrc_net:
+  RASCOLLS_net:
     driver: bridge
-    name: afrc_net
+    name: RASCOLLS_net
 
 volumes:
   redisdata:
