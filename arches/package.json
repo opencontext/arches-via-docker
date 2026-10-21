@@ -20,9 +20,9 @@
         "vitest": "vitest --run --coverage"
     },
     "dependencies": {
-        "arches": "archesproject/arches#semver:^v8.2.0-alpha.17",
-        "arches-modular-reports": "archesproject/arches-modular-reports#semver:^v2.1.0-alpha.4",
-        "arches-search": "archesproject/arches-search#semver:^v0.1.0-alpha.21",
+        "arches": "archesproject/arches#semver:^v8.2.0",
+        "arches-modular-reports": "archesproject/arches-modular-reports#semver:^v2.1.0",
+        "arches-search": "archesproject/arches-search#semver:^v0.1.0",
         "maplibre-gl": "6.9.0"
     },
     "nodeModulesPaths": {},

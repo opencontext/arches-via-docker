@@ -157,29 +157,21 @@ RUN pip install -e '.[dev]'
 # Install needed Arches modular applications
 WORKDIR ${ARCHES_ROOT}
 RUN git clone https://github.com/archesproject/arches-modular-reports.git
-RUN git clone https://github.com/archesproject/arches-querysets.git
-RUN git clone https://github.com/archesproject/arches-controlled-lists.git
+# RUN git clone https://github.com/archesproject/arches-querysets.git
+# RUN git clone https://github.com/archesproject/arches-controlled-lists.git
 RUN git clone https://github.com/archesproject/arches-search.git
-RUN git clone https://github.com/archesproject/arches-vue-components.git
+# RUN git clone https://github.com/archesproject/arches-vue-components.git
+RUN git clone https://github.com/archesproject/arches-resource-sets.git
 WORKDIR ${ARCHES_ROOT}/arches-modular-reports
 RUN git fetch --all;
-RUN git checkout main;
-RUN echo "Installing arches-modular-reports (main)..."
-RUN pip install -e '.[dev]'
-WORKDIR ${ARCHES_ROOT}/arches-querysets
-RUN git fetch --all;
-RUN git checkout main;
-RUN echo "Installing arches-querysets (main)..."
-RUN pip install -e '.[dev]'
-WORKDIR ${ARCHES_ROOT}/arches-controlled-lists
-RUN git fetch --all;
-RUN git checkout dev/1.3.x;
-RUN echo "Installing arches-controlled-lists (dev/1.3.x)..."
-RUN pip install -e '.[dev]'
-WORKDIR ${ARCHES_ROOT}/arches-vue-components
-RUN git fetch --all;
 RUN git checkout dev/2.1.x;
-RUN echo "Installing arches-vue-components (dev/2.1.x)..."
+RUN echo "Installing arches-modular-reports (dev/2.1.x)..."
+RUN pip install -e '.[dev]'
+
+WORKDIR ${ARCHES_ROOT}/arches-resource-sets
+RUN git fetch --all;
+RUN git checkout main;
+RUN echo "Installing arches-resource-sets (main)..."
 RUN pip install -e '.[dev]'
 WORKDIR ${ARCHES_ROOT}/arches-search
 RUN git fetch --all;
@@ -203,6 +195,7 @@ RUN pip install supervisor==4.2.1 \
     && pip install django-pgtrigger==4.9.0 \
     && pip install django-storages==1.13.2 \
     && pip install arches-templating==0.1.2 \
+    && pip install "setuptools<=81.0.0" \
     && pip install pytz --upgrade \
     && pip install tzdata --upgrade \
     && pip install Redis \
@@ -219,6 +212,7 @@ RUN mv /new_arches_proj ${APP_ROOT}
 
 # Copy report configs
 RUN cp -r ${RASCOLLS_REPO_DIR}/arches_rascolls/report_configs ${APP_COMP_FOLDER}/report_configs
+RUN cp -r ${RASCOLLS_REPO_DIR}/arches_rascolls/datatypes ${APP_COMP_FOLDER}/datatypes
 
 WORKDIR ${ARCHES_ROOT}
 
@@ -255,15 +249,28 @@ RUN mkdir -p /var/log/supervisor
 RUN mkdir -p /var/log/celery
 
 
-# Set some settings to make NPM less fussy
-RUN npm config set cafile null
-RUN npm config set strict-ssl false
-
 # remove any node_modules that might have been installed by the arches install
 RUN rm -rf ${APP_ROOT}/node_modules
 RUN rm -f ${APP_ROOT}/package-lock.json
-# Now do the NPM install
-RUN npm install
+
+# nvm environment variables
+ENV NODE_VERSION=20.14.0
+ENV NVM_DIR=/usr/local/nvm
+RUN mkdir $NVM_DIR
+
+# install nvm
+# https://github.com/nvm-sh/nvm#install-script
+RUN curl --silent -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash -
+
+# install node and npm
+RUN . $NVM_DIR/nvm.sh \
+    && nvm install $NODE_VERSION \
+    && nvm alias default $NODE_VERSION \
+    && nvm use default
+
+# add node and npm to path so the commands are available
+ENV NODE_PATH=$NVM_DIR/v$NODE_VERSION/lib/node_modules
+ENV PATH=$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
 # Make sure the entry point is available and lacks weird characters
 # that don't work in a Linux OS

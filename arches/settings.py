@@ -191,7 +191,7 @@ INSTALLED_APPS = (
     "django.contrib.staticfiles",
     "django.contrib.gis",
     "django_hosts",
-    "arches_controlled_lists",
+    "arches.extensions.controlled_lists",
     "arches",
     "arches.app.models",
     "arches.management",
@@ -206,8 +206,8 @@ INSTALLED_APPS = (
     "django.contrib.postgres",
     "arches_modular_reports",
     "rest_framework",
-    "arches_querysets",
-    "arches_vue_components",
+    "arches.extensions.querysets",
+    "arches.extensions.vue_components",
     "arches_search",
     "arches_resource_sets",
     "pgtrigger",
@@ -403,7 +403,7 @@ NOCAPTCHA = True
 
 
 
-CELERY_BROKER_URL = "" # RabbitMQ --> "amqp://guest:guest@localhost",  Redis --> "redis://localhost:6379/0"
+CELERY_BROKER_URL = "redis://@arches_redis:6379/0" # RabbitMQ --> "amqp://guest:guest@localhost",  Redis --> "redis://localhost:6379/0"
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_RESULT_BACKEND = 'django-db' # Use 'django-cache' if you want to use your cache as your backend
 CELERY_TASK_SERIALIZER = 'json'
@@ -413,8 +413,15 @@ CELERY_SEARCH_EXPORT_EXPIRES = 24 * 3600  # seconds
 CELERY_SEARCH_EXPORT_CHECK = 3600  # seconds
 
 CELERY_BEAT_SCHEDULE = {
-    "delete-expired-search-export": {"task": "arches.app.tasks.delete_file", "schedule": CELERY_SEARCH_EXPORT_CHECK,},
-    "notification": {"task": "arches.app.tasks.message", "schedule": CELERY_SEARCH_EXPORT_CHECK, "args": ("Celery Beat is Running",),},
+    "delete-expired-search-export": {
+        "task": "arches.app.tasks.delete_file",
+        "schedule": CELERY_SEARCH_EXPORT_CHECK,
+    },
+    "notification": {
+        "task": "arches.app.tasks.message",
+        "schedule": CELERY_SEARCH_EXPORT_CHECK,
+        "args": ("Celery Beat is Running",),
+    },
 }
 
 # Set to True if you want to send celery tasks to the broker without being able to detect celery.
@@ -484,7 +491,9 @@ RESTRICT_CELERY_EXPORT_FOR_ANONYMOUS_USER = False
 # Dictionary containing any additional context items for customising email templates
 EXTRA_EMAIL_CONTEXT = {
     "salutation": _("Hi"),
-    "expiration":(datetime.now() + timedelta(seconds=CELERY_SEARCH_EXPORT_EXPIRES)).strftime("%A, %d %B %Y")
+    "expiration": (
+        datetime.now() + timedelta(seconds=CELERY_SEARCH_EXPORT_EXPIRES)
+    ).strftime("%A, %d %B %Y"),
 }
 
 # see https://docs.djangoproject.com/en/1.9/topics/i18n/translation/#how-django-discovers-language-preference
