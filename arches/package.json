@@ -20,23 +20,16 @@
         "vitest": "vitest --run --coverage"
     },
     "dependencies": {
-        "arches": "archesproject/arches#dev/8.1.x",
-        "arches-component-lab": "archesproject/arches-component-lab#main",
-        "arches-controlled-lists": "archesproject/arches-controlled-lists#dev/1.1.x",
-        "arches-modular-reports": "archesproject/arches-modular-reports#main",
-        "arches-search": "archesproject/arches-search#main",
-        "maplibre-gl": "^4.6.0"
+        "arches": "archesproject/arches#semver:^v8.2.0-alpha.17",
+        "arches-modular-reports": "archesproject/arches-modular-reports#semver:^v2.1.0-alpha.4",
+        "arches-search": "archesproject/arches-search#semver:^v0.1.0-alpha.21",
+        "maplibre-gl": "6.9.0"
     },
-    "devDependencies": {
-        "arches-dev-dependencies": "archesproject/arches-dev-dependencies#dev/8.1.x"
-    },
-    "nodeModulesPaths": {
-    },
+    "nodeModulesPaths": {},
     "overrides": {
         "moment-timezone": "^0.5.45",
         "nomnom": "npm:@gerhobbelt/nomnom",
-        "rimraf": "^5.0.7", 
+        "rimraf": "^5.0.7",
         "underscore": "^1.13.6"
     }
 }
- 
