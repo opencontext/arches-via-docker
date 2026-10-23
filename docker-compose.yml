@@ -27,7 +27,7 @@ services:
 
   arches_elasticsearch:
     container_name: arches_elasticsearch
-    image: elasticsearch:9
+    image: elasticsearch:9.5.5
     restart: always
     env_file:
       - ./.env
@@ -97,7 +97,7 @@ services:
         APP_COMP_FOLDER: ${APP_COMP_FOLDER}
         UPLOADED_FILES_FOLDER: ${UPLOADED_FILES_FOLDER}
     environment:
-      - DEBUG="${DJANGO_DEBUG}"
+      - DEBUG=${DJANGO_DEBUG}
       - DJANGO_DEBUG=${DJANGO_DEBUG}
       - DJANGO_MODE=${DJANGO_MODE}
       - ARCHES_PROJECT=${ARCHES_PROJECT}
@@ -107,21 +107,19 @@ services:
       - PGHOST=${PGHOST}
       - PGPORT=${PGPORT}
       - ARCHES_NAMESPACE=${ARCHES_NAMESPACE}
-    stdin_open: true # docker run -i
-    tty: true        # docker run -t
+    stdin_open: true
+    tty: true
     ports:
       - "5432:5432"
-      - 8004:8000
-      - 5678:5678
-      - 5984:5984
+      - "8004:8000"
+      - "5678:5678"
+      - "5984:5984"
     depends_on:
       - arches_db
       - arches_elasticsearch
       - arches_redis
     command:
       - run_arches
-    expose:
-      - 8004:8000
     volumes:
       - arches-log:/web_root/logs
       - arches-static:/static_root
