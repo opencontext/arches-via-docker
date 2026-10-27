@@ -1,5 +1,5 @@
 {
-    "name": "rascolls",
+    "name": "arches_rascolls",
     "license": "AGPL-3.0-only",
     "scripts": {
         "build_development": "npm run eslint:check && npm run ts:check && cross-env webpack --config ./webpack/webpack.config.dev.js",
@@ -20,9 +20,9 @@
         "vitest": "vitest --run --coverage"
     },
     "dependencies": {
-        "arches": "archesproject/arches#semver:^v8.2.0",
-        "arches-modular-reports": "archesproject/arches-modular-reports#semver:^v2.1.0",
-        "arches-search": "archesproject/arches-search#semver:^v0.1.0",
+        "arches": "archesproject/arches#semver:^v8.2.0-alpha.17",
+        "arches-modular-reports": "archesproject/arches-modular-reports#semver:^v2.1.0-alpha.4",
+        "arches-search": "archesproject/arches-search#semver:^v0.1.0-alpha.21",
         "maplibre-gl": "6.9.0"
     },
     "nodeModulesPaths": {},

@@ -272,6 +272,8 @@ RUN . $NVM_DIR/nvm.sh \
 ENV NODE_PATH=$NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH=$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
+RUN npm cache clean --force
+
 # Make sure the entry point is available and lacks weird characters
 # that don't work in a Linux OS
 COPY /arches/entrypoint.sh ${APP_ROOT}/entrypoint.sh

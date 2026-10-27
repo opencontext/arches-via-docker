@@ -157,7 +157,7 @@ run_migrations() {
 	echo "----- RUNNING DATABASE MIGRATIONS -----"
 	echo ""
 	cd ${APP_FOLDER}
-	python3 manage.py migrate
+	python manage.py migrate
 }
 
 run_es_reindex() {
@@ -231,7 +231,7 @@ run_setup_arches_setup_webpack() {
 		echo "Starting Django development server" 
 		python manage.py runserver 0.0.0.0:8000 &
 		echo "Running npm build and collectstatic" 
-		npm i typescript@5.6.3 && npm i && npm run build_development && python manage.py collectstatic --noinput
+		npm i typescript@5.4.5 && npm i && npm run build_development --force && python manage.py collectstatic --noinput
 	else
 		echo "Webpack and Collectstatic for setup already completed.";
 	fi
@@ -262,7 +262,7 @@ run_webpack() {
 		cd ${APP_FOLDER}
 		echo "Do build_development."
 		echo "Running Webpack to do the NPM build_development thing."
-		exec sh -c "npm i typescript@5.6.3 && npm run build_development && python manage.py collectstatic --noinput"
+		exec sh -c "npm i typescript@5.4.5 && npm run build_development --force && python manage.py collectstatic --noinput"
 	fi
 }
 
