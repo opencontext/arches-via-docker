@@ -25,7 +25,7 @@ RUN apt-get update --fix-missing && apt-get install -y git
 RUN apt-get update
 RUN apt-get install -y postgresql-client-14
 
-FROM python:3.13
+FROM python:3.14
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
@@ -102,7 +102,7 @@ RUN set -ex \
 # ----------------------------------------------
 
 # Set environment variables
-ENV NODE_MAJOR=18
+ENV NODE_MAJOR=24
 
 # Update package lists and install necessary packages
 RUN apt-get update \
@@ -254,7 +254,7 @@ RUN rm -rf ${APP_ROOT}/node_modules
 RUN rm -f ${APP_ROOT}/package-lock.json
 
 # nvm environment variables
-ENV NODE_VERSION=20.14.0
+ENV NODE_VERSION=24.22.2
 ENV NVM_DIR=/usr/local/nvm
 RUN mkdir $NVM_DIR
 
