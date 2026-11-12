@@ -137,7 +137,7 @@ RUN pip install --upgrade pip
 RUN pip install --force-reinstall -U setuptools
 
 # Install our desired branch of Arches for Science
-
+RUN echo "Go fetch and install Arches, RASCOLLS, and extension apps..."
 WORKDIR ${ARCHES_ROOT}
 ENV ARCHES_REPO=${ARCHES_ROOT}/arches
 ENV ARCHES_GIT_BRANCH=dev/8.2.x
@@ -162,6 +162,7 @@ RUN git clone https://github.com/archesproject/arches-modular-reports.git
 RUN git clone https://github.com/archesproject/arches-search.git
 # RUN git clone https://github.com/archesproject/arches-vue-components.git
 RUN git clone https://github.com/archesproject/arches-resource-sets.git
+RUN git clone https://github.com/archesproject/arches-abac-permissions.git
 WORKDIR ${ARCHES_ROOT}/arches-modular-reports
 RUN git fetch --all;
 RUN git checkout dev/2.1.x;
@@ -177,6 +178,11 @@ WORKDIR ${ARCHES_ROOT}/arches-search
 RUN git fetch --all;
 RUN git checkout main;
 RUN echo "Installing arches-search (main)..."
+RUN pip install -e '.[dev]'
+WORKDIR ${ARCHES_ROOT}/arches-abac-permissions
+RUN git fetch --all;
+RUN git checkout main;
+RUN echo "Installing arches-abac-permissions (main)..."
 RUN pip install -e '.[dev]'
 
 ARG RASCOLLS_REPO_DIR

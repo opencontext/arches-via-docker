@@ -64,6 +64,13 @@ FILE_TYPES = [
     "xlsx",
     "csv",
     "zip",
+    "txt",
+    "dx",
+    "spx",
+    "bcf",
+    "raw",
+    "rpl",
+    "wxd",
 ]
 FILENAME_GENERATOR = "arches.app.utils.storage_filename_generator.generate_filename"
 UPLOADED_FILES_DIR = "uploadedfiles"
@@ -80,7 +87,13 @@ ROOT_HOSTCONF = f"{APP_NAME}.hosts"
 DEFAULT_HOST = f"{APP_NAME}"
 
 # Modify this line as needed for your project to connect to elasticsearch with a password that you generate
-ELASTICSEARCH_CONNECTION_OPTIONS = {"request_timeout": 30, "verify_certs": False, "basic_auth": ("elastic", "E1asticSearchforArche5")}
+ELASTICSEARCH_CONNECTION_OPTIONS = {
+    "request_timeout": 30, 
+    "verify_certs": False, 
+    "basic_auth": (
+        "elastic", "E1asticSearchforArche5"
+    )
+}
 
 # If you need to connect to Elasticsearch via an API key instead of username/password, use the syntax below:
 # ELASTICSEARCH_CONNECTION_OPTIONS = {"request_timeout": 30, "verify_certs": False, "api_key": "<ENCODED_API_KEY>"}
@@ -103,7 +116,7 @@ ELASTICSEARCH_PREFIX = f"{APP_NAME}"
 REFERENCES_INDEX_NAME = "references"
 ELASTICSEARCH_CUSTOM_INDEXES = [
     {
-        "module": "arches_controlled_lists.search_indexes.reference_index.ReferenceIndex",
+        "module": "arches.extensions.controlled_lists.search_indexes.reference_index.ReferenceIndex",
         "name": REFERENCES_INDEX_NAME,
         "should_update_asynchronously": True,
     }
@@ -125,12 +138,12 @@ TERM_SEARCH_TYPES = [
         "type": "reference",
         "label": _("References"),
         "key": REFERENCES_INDEX_NAME,
-        "module": "arches_controlled_lists.search_indexes.reference_index.ReferenceIndex",
+        "module": "arches.extensions.controlled_lists.search_indexes.reference_index.ReferenceIndex",
     },
 ]
 
 ES_MAPPING_MODIFIER_CLASSES = [
-    "arches_controlled_lists.search.references_es_mapping_modifier.ReferencesEsMappingModifier"
+    "arches.extensions.controlled_lists.search.references_es_mapping_modifier.ReferencesEsMappingModifier"
 ]
 
 LOAD_DEFAULT_ONTOLOGY = False
@@ -152,6 +165,35 @@ PUBLIC_SERVER_ADDRESS = get_optional_env_variable(
 # It must point to the url where you host your site
 # Make sure to use a trailing slash
 ARCHES_NAMESPACE_FOR_DATA_EXPORT = "http://localhost:8004/"
+
+
+# Pool is per process and opens lazily, but must be closed before any fork
+# (see celery.py; gunicorn --preload needs an equivalent pre-fork close). Budget:
+# (gunicorn workers + celery processes) * DB_POOL_MAX_SIZE <= max_connections.
+# Pool requires CONN_MAX_AGE = 0. Threads beyond max_size wait DB_POOL_TIMEOUT s.
+DB_POOL_ENABLED = get_optional_env_variable("ARCHES_DB_POOL", "True").lower() not in (
+    "false",
+    "0",
+    "no",
+    "off",
+)
+DB_POOL_MIN_SIZE = 2
+DB_POOL_MAX_SIZE = 10
+DB_POOL_TIMEOUT = 30
+if DB_POOL_MIN_SIZE > DB_POOL_MAX_SIZE:
+    raise ImproperlyConfigured(
+        "ARCHES_DB_POOL_MIN_SIZE must not exceed ARCHES_DB_POOL_MAX_SIZE."
+    )
+
+_db_options = {"options": "-c cursor_tuple_fraction=1"}
+if DB_POOL_ENABLED:
+    _db_options["pool"] = {
+        "min_size": DB_POOL_MIN_SIZE,
+        "max_size": DB_POOL_MAX_SIZE,
+        "timeout": DB_POOL_TIMEOUT,
+    }
+
+
 
 DATABASES = {
     "default": {
@@ -178,7 +220,23 @@ DATABASES = {
     }
 }
 
+
 SEARCH_THUMBNAILS = False
+
+PREFERRED_COORDINATE_SYSTEMS = (
+    {
+        "name": "Geographic",
+        "srid": "4326",
+        "proj4": "+proj=longlat +datum=WGS84 +no_defs",
+        "default": True,
+    },
+    {
+        "name": "British National Grid (OSGB36)",
+        "srid": "27700",
+        "proj4": "+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +datum=OSGB36 +units=m +no_defs",
+        "default": False,
+    },
+)
 
 
 INSTALLED_APPS = (
@@ -191,8 +249,6 @@ INSTALLED_APPS = (
     "django.contrib.staticfiles",
     "django.contrib.gis",
     "django_hosts",
-    "arches.extensions.controlled_lists",
-    "arches",
     "arches.app.models",
     "arches.management",
     "guardian",
@@ -208,14 +264,17 @@ INSTALLED_APPS = (
     "rest_framework",
     "arches.extensions.querysets",
     "arches.extensions.vue_components",
+    "arches.extensions.controlled_lists",
     "arches_search",
     "arches_resource_sets",
+    "arches_abac_permissions",
     "pgtrigger",
 )
 
 # Placing this last ensures any templates provided by Arches Applications
 # take precedence over core arches templates in arches/app/templates.
 INSTALLED_APPS += (
+    "arches",
     "arches.app",
     "django.contrib.admin",
 )
@@ -321,11 +380,21 @@ LOGGING = {
         }
     },
     'loggers': {
-        'arches': {
-            'handlers': ['file', 'console'],
-            'level': 'WARNING',
-            'propagate': True
-        }
+        "arches": {
+            "handlers": ["file", "console"],
+            "level": "WARNING",
+            "propagate": True,
+        },
+        "arches_rascolls": {
+            "handlers": ["file", "console"],
+            "level": "WARNING",
+            "propagate": True,
+        },
+        "django.request": {
+            "handlers": ["file", "console"],
+            "level": "WARNING",  # or consider ERROR if this is too noisy
+            "propagate": True,
+        },
     }
 }
 
